@@ -66,7 +66,7 @@ function startGame() {
 				document.getElementById("imageStory").src = "images/FireRed_" + playerGender + ".png";
 				// picture of boy from http://www.marriland.com/forums/pokemon-1st-2nd-3rd-generation/pokemon-firered-leafgreen/514280-girl-or-boy
 				// picture of girl from http://bulbapedia.bulbagarden.net/wiki/Leaf_%28game%29
-				document.getElementById("player").innerHTML = showPlayerStats; //playerGender is defined here
+				document.getElementById("player").innerHTML = showPlayerStats;
 				return playerGender;
 			}
 			if(counter == 14){
@@ -75,7 +75,7 @@ function startGame() {
 				while (playerName.length < 1) {
 					playerName = prompt("YOUR NAME? ", "");
 				}
-				showPlayerStats = playerName + " (" + showPlayerStats + ")"; //playerGender is undefined here
+				showPlayerStats = playerName + " (" + showPlayerStats + ")";
 				document.getElementById("player").innerHTML = showPlayerStats;
 				return playerName;
 			}
