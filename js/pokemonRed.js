@@ -4,8 +4,11 @@ Javascript code for the Pokemon FireRed Progress Quest
 Made on 20-07-2015
 by GeOdin */
 //change pokemonRed in pokemonFireRed
+// movie of start of game: https://www.youtube.com/watch?v=yUS1IcC5CBY
+// make sure to block the start button / ask for refreshing the game when it's pressed
+// in var tekst, Pokemon can be POK&eacute;MON, probably
 
-function startGame() {
+function startGame() { 
 	// Variables
 	var playerGender = "";
 	var showPlayerStats = "";
@@ -15,39 +18,74 @@ function startGame() {
 /* 	var gameWon = "false";
 	var progress = 0; */
 	
-	
-	confirm("Are you ready to play? ");
-	
-	// Short introduction
-	alert("In the world which you are about to \nenter, you will embark on a grand \nadventure with you as the hero. \n\nSpeak to people and check things \nwherever you go, be it towns, roads, \nor caves. Gather information and \nhints from every source. ");
-	alert("New paths will open to you by helping \npeople in need, overcoming challenges, \nand solving mysteries. \n\nAt times, you will be challenged by \nothers and attacked by wild creatures. \nBe brave and keep pushing on. ");
-	alert("Through your adventure, we hope \nthat you will interact with all sorts \nof people and achieve personal growth. \nThat is our biggest objective. \n\nLet your adventure begin! ");
-	
-	// Show picture of Professor Oak from http://bulbapedia.bulbagarden.net/wiki/Professor_Oak_%28anime%29
-	alert("Hello, there! \nGlad to meet you! ");
-	alert("Welcome to the world of POKeMON! ");
-	alert("My name is OAK. ");
-	alert("People affectionately refer to me \nas the POKeMON PROFESSOR. ");
-	alert("This world...");
-	alert("...is inhabited far and wide by creatures called POKeMON. ");
-	alert("For some people, POKeMON are pets. \nOthers use them for battling. ");
-	alert("As for myself... ");
-	alert("I study POKeMON as a profession. ");
-	alert("But first, tell me a little about \nyourself. ");
-	
-	// Get the player's gender
-	while(!(playerGender == "boy" | playerGender == "girl")) { // while(playerGender === "boy" | playerGender === "b" | playerGender === "male" | playerGender === "m" | playerGender === "girl" | playerGender === "g" | playerGender === "female" | playerGender === "f") {} // get this to work!
-		var playerGender = prompt("Now tell me. Are you a boy? \nOr are you a girl? ", "Boy / girl");
-		playerGender = playerGender.toLowerCase();
-	}
-	showPlayerStats = playerGender;
-	document.getElementById("imageStory").src = "images/FireRed_" + playerGender + ".png";
-	// picture of boy from http://www.marriland.com/forums/pokemon-1st-2nd-3rd-generation/pokemon-firered-leafgreen/514280-girl-or-boy
-	// picture of girl from http://bulbapedia.bulbagarden.net/wiki/Leaf_%28game%29
+	confirm("Are you ready to play? \nIt takes 5 seconds to start the game. ");
 
-	document.getElementById("player").innerHTML = showPlayerStats;
+	var text = [
+		// Short introduction
+		"In the world which you are about to <br/> enter, you will embark on a grand <br/> adventure with you as the hero. <br/> <br/> Speak to people and check things <br/> wherever you go, be it towns, roads, <br/> or caves. Gather information and <br/> hints from every source. ", 
+		"New paths will open to you by helping <br/> people in need, overcoming challenges, <br/> and solving mysteries. <br/> <br/> At times, you will be challenged by <br/> others and attacked by wild creatures. <br/> Be brave and keep pushing on. ",
+		"Through your adventure, we hope <br/> that you will interact with all sorts <br/> of people and achieve personal growth. <br/> That is our biggest objective. <br/> <br/> Let your adventure begin! ",
+		
+		//Show picture of Professor Oak from http://bulbapedia.bulbagarden.net/wiki/Professor_Oak_%28anime%29
+		"Hello, there! <br/> Glad to meet you! ",
+		"Welcome to the world of POKeMON! ",
+		"My name is OAK. ",
+		"People affectionately refer to me <br/> as the POKeMON PROFESSOR. ",
+		"This world...",
+		"...is inhabited far and wide by creatures called POKeMON. ",
+		"For some people, POKeMON are pets. <br/> Others use them for battling. ",
+		"As for myself... ",
+		"I study POKeMON as a profession. ",
+		"But first, tell me a little about <br/> yourself. ",
+		
+		"",
+		
+ 		"You walk towards your PC. ", 
+		"You booted up the PC. ",
+		"What would you like to do? ",
+		"ITEM STORAGE ",
+		"Take out items from the PC. ",
+		"POTION x 1" 
+	];
+	var counter = 0;
+	var elem = document.getElementById("pokemonRed");
+	window.setInterval(change, 5000); //5000 for 5 seconds; make it smaller for testing purposes?
+	function change() {
+		elem.innerHTML = text[counter];
+			counter++;
+			if(counter == 4){
+				document.getElementById("imageStory").src = "images/Professor_Oak_XY.png";
+			}
+			if(counter == 13){
+				// Get the player's gender
+				while(!(playerGender == "boy" | playerGender == "girl")) { // while(playerGender === "boy" | playerGender === "b" | playerGender === "male" | playerGender === "m" | playerGender === "girl" | playerGender === "g" | playerGender === "female" | playerGender === "f") {} // get this to work!
+					var playerGender = prompt("Now tell me. Are you a boy? \nOr are you a girl? ", "Boy / girl");
+					playerGender = playerGender.toLowerCase();
+				}
+				showPlayerStats = playerGender;
+				document.getElementById("imageStory").src = "images/FireRed_" + playerGender + ".png";
+				// picture of boy from http://www.marriland.com/forums/pokemon-1st-2nd-3rd-generation/pokemon-firered-leafgreen/514280-girl-or-boy
+				// picture of girl from http://bulbapedia.bulbagarden.net/wiki/Leaf_%28game%29
+				document.getElementById("player").innerHTML = showPlayerStats; //playerGender is defined here
+				return playerGender;
+			}
+			if(counter == 14){
+				// Get the player's name
+				playerName = prompt("Let's begin with your name. \nWhat is it? ", "Player's Name");
+				while (playerName.length < 1) {
+					playerName = prompt("YOUR NAME? ", "");
+				}
+				showPlayerStats = playerName + " (" + showPlayerStats + ")"; //playerGender is undefined here
+				document.getElementById("player").innerHTML = showPlayerStats;
+				return playerName;
+			}
+			if(counter >= text.length + 1) {
+				// End the game
+				elem.innerHTML = "Congratulations, you have won the game. <br/> Welcome to the HALL OF FAME! "; 
+			}
+	} 
 	
-	// Get the player's name
+/*  // Get the player's name
 	playerName = prompt("Let's begin with your name. \nWhat is it? ", "Player's Name");
 	while (playerName.length < 1) {
 		playerName = prompt("YOUR NAME? ", "");
@@ -77,10 +115,30 @@ function startGame() {
 	// picture of girl from http://bulbapedia.bulbagarden.net/wiki/Leaf_%28game%29
 	alert(playerName + "!"); // change picture to player
 	alert("Your very own POKeMON legend is \nabout to unfold! ");
-	alert("A world of dreams and adventures \nwith POKeMON awaits! Let's go! "); 
+	alert("A world of dreams and adventures \nwith POKeMON awaits! Let's go! ");  */
 
-	// End the game
- 	document.getElementById("pokemonRed").innerHTML = "Congratulations, you have won the game. <br/> Welcome to the HALL OF FAME! ";  
+/* 	var text = [
+		"In the world which you are about to <br/> enter, you will embark on a grand <br/> adventure with you as the hero. <br/> <br/> Speak to people and check things <br/> wherever you go, be it towns, roads, <br/> or caves. Gather information and <br/> hints from every source. ", 
+		"New paths will open to you by helping <br/> people in need, overcoming challenges, <br/> and solving mysteries. <br/> <br/> At times, you will be challenged by <br/> others and attacked by wild creatures. <br/> Be brave and keep pushing on. ",
+		"Through your adventure, we hope <br/> that you will interact with all sorts <br/> of people and achieve personal growth. <br/> That is our biggest objective. <br/> <br/> Let your adventure begin! ",
+		"You walk towards your PC. ", 
+		"You booted up the PC. ",
+		"What would you like to do? ",
+		"ITEM STORAGE ",
+		"Take out items from the PC. ",
+		"POTION x 1"
+	];
+	var counter = 0;
+	var elem = document.getElementById("pokemonRed");
+	window.setInterval(change, 5000); //5 seconds
+	function change() {
+		elem.innerHTML = text[counter];
+			counter++;
+			if(counter >= text.length + 1) {
+				// End the game
+				elem.innerHTML = "Congratulations, you have won the game. <br/> Welcome to the HALL OF FAME! "; 
+			}
+	}  */
 }
 
 /* 	// Get the starter Pokemon
