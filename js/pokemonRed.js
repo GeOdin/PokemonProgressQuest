@@ -49,7 +49,7 @@ function startGame() {
 			
 			"", 
 			
-			"Right... <br/>So your name is " + playerName, 
+			"Right... <br/>So your name is " + playerName + ".", 
 			
 			"You walk towards your PC. ", 
 			"You booted up the PC. ",
