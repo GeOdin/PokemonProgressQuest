@@ -172,7 +172,10 @@ p {
 }
 
 #imageStory{
-	display: block;
+	display: none; /* was block*/
+/* 	http://demosthenes.info/blog/304/Four-Ways-to-Make-Elements-Disappear-And-Reappear-Using-CSS
+	http://www.w3schools.com/cssref/pr_class_display.asp
+	http://www.w3schools.com/cssref/playit.asp?filename=playcss_display&preval=none */
 	margin-left: auto;
 	margin-right: auto;
 }

@@ -7,59 +7,69 @@ by GeOdin */
 // movie of start of game: https://www.youtube.com/watch?v=yUS1IcC5CBY
 // make sure to block the start button / ask for refreshing the game when it's pressed
 // in var tekst, Pokemon can be POK&eacute;MON, probably
+// perhaps ask gender, name and starter at beginning, so that game does no longer gets interrupted
+// shorten time of setInterval for testing purposes?
+// show active pokemon and their levels
+// show map where you currently are
 
 function startGame() { 
 	// Variables
-	var playerGender = "";
-	var showPlayerStats = "";
-	var playerName = null;
-	var rivalName = "";
-	var starterPokemon = "";
+	var playerGender;
+	var showPlayerStats;
+	var playerName = "";
+	// var rivalName = "";
+	// var starterPokemon = "";
 /* 	var gameWon = "false";
 	var progress = 0; */
 	
 	confirm("Are you ready to play? \nIt takes 5 seconds to start the game. ");
-
-	var text = [
-		// Short introduction
-		"In the world which you are about to <br/> enter, you will embark on a grand <br/> adventure with you as the hero. <br/> <br/> Speak to people and check things <br/> wherever you go, be it towns, roads, <br/> or caves. Gather information and <br/> hints from every source. ", 
-		"New paths will open to you by helping <br/> people in need, overcoming challenges, <br/> and solving mysteries. <br/> <br/> At times, you will be challenged by <br/> others and attacked by wild creatures. <br/> Be brave and keep pushing on. ",
-		"Through your adventure, we hope <br/> that you will interact with all sorts <br/> of people and achieve personal growth. <br/> That is our biggest objective. <br/> <br/> Let your adventure begin! ",
-		
-		//Show picture of Professor Oak from http://bulbapedia.bulbagarden.net/wiki/Professor_Oak_%28anime%29
-		"Hello, there! <br/> Glad to meet you! ",
-		"Welcome to the world of POKeMON! ",
-		"My name is OAK. ",
-		"People affectionately refer to me <br/> as the POKeMON PROFESSOR. ",
-		"This world...",
-		"...is inhabited far and wide by creatures called POKeMON. ",
-		"For some people, POKeMON are pets. <br/> Others use them for battling. ",
-		"As for myself... ",
-		"I study POKeMON as a profession. ",
-		"But first, tell me a little about <br/> yourself. ",
-		
-		"",
-		
- 		"You walk towards your PC. ", 
-		"You booted up the PC. ",
-		"What would you like to do? ",
-		"ITEM STORAGE ",
-		"Take out items from the PC. ",
-		"POTION x 1" 
-	];
 	var counter = 0;
 	var elem = document.getElementById("pokemonRed");
-	window.setInterval(change, 5000); //5000 for 5 seconds; make it smaller for testing purposes?
+	window.setInterval(change, 1000); //5000 for 5 seconds in final version;
+	
 	function change() {
+		// Variables
+		var text = [
+			// Short introduction
+			"In the world which you are about to <br/> enter, you will embark on a grand <br/> adventure with you as the hero. <br/> <br/> Speak to people and check things <br/> wherever you go, be it towns, roads, <br/> or caves. Gather information and <br/> hints from every source. ", 
+			"New paths will open to you by helping <br/> people in need, overcoming challenges, <br/> and solving mysteries. <br/> <br/> At times, you will be challenged by <br/> others and attacked by wild creatures. <br/> Be brave and keep pushing on. ",
+			"Through your adventure, we hope <br/> that you will interact with all sorts <br/> of people and achieve personal growth. <br/> That is our biggest objective. <br/> <br/> Let your adventure begin! ",
+			
+			//Show picture of Professor Oak from http://bulbapedia.bulbagarden.net/wiki/Professor_Oak_%28anime%29
+			"Hello, there! <br/> Glad to meet you! ",
+			"Welcome to the world of POKeMON! ",
+			"My name is OAK. ",
+			"People affectionately refer to me <br/> as the POKeMON PROFESSOR. ",
+			"This world...",
+			"...is inhabited far and wide by creatures called POKeMON. ",
+			"For some people, POKeMON are pets. <br/> Others use them for battling. ",
+			"As for myself... ",
+			"I study POKeMON as a profession. ",
+			"But first, tell me a little about <br/> yourself. ",
+			
+			"", 
+			
+			"Right... <br/>So your name is " + playerName, 
+			
+			"You walk towards your PC. ", 
+			"You booted up the PC. ",
+			"What would you like to do? ",
+			"ITEM STORAGE ",
+			"Take out items from the PC. ",
+			"POTION x 1" 
+		];		
+		
 		elem.innerHTML = text[counter];
 			counter++;
 			if(counter == 4){
 				document.getElementById("imageStory").src = "images/Professor_Oak_XY.png";
+				document.getElementById("imageStory").style.display = "block";
 			}
 			if(counter == 13){
 				// Get the player's gender
+				// currently, you can cancel this and the picture of oak stays
 				while(!(playerGender == "boy" | playerGender == "girl")) { // while(playerGender === "boy" | playerGender === "b" | playerGender === "male" | playerGender === "m" | playerGender === "girl" | playerGender === "g" | playerGender === "female" | playerGender === "f") {} // get this to work!
-					var playerGender = prompt("Now tell me. Are you a boy? \nOr are you a girl? ", "Boy / girl");
+					playerGender = prompt("Now tell me. Are you a boy? \nOr are you a girl? ", "Boy / girl");
 					playerGender = playerGender.toLowerCase();
 				}
 				showPlayerStats = playerGender;
@@ -71,11 +81,12 @@ function startGame() {
 			}
 			if(counter == 14){
 				// Get the player's name
-				playerName = prompt("Let's begin with your name. \nWhat is it? ", "Player's Name");
-				while (playerName.length < 1) {
-					playerName = prompt("YOUR NAME? ", "");
+				while (playerName.length < 1) { //typeof playerName == "undefined" | 
+					playerName = prompt("Let's begin with your name. \nWhat is it? ", "YOUR NAME?");
+					// return playerName;
 				}
-				showPlayerStats = playerName + " (" + showPlayerStats + ")";
+				//window.playerName = playerName;
+				showPlayerStats = playerName + " (" + playerGender + ")"; //showPlayerStats instead of playerGender
 				document.getElementById("player").innerHTML = showPlayerStats;
 				return playerName;
 			}
