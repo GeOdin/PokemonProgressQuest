@@ -14,6 +14,8 @@ by GeOdin */
 // show map where you currently are
 // use infowindows instead of alerts and/or prompts?
 // use male / female screenshots depending on playerGender
+// make Pokemonnames, stats and moves all uppercase?
+// shorten part about getting potion from room
 
 function startGame() { 
 
@@ -24,7 +26,8 @@ function startGame() {
 	var showPlayerStats;
 	var playerName = "";
 	var rivalName = "";
-	// var starterPokemon = "";
+	var starterPokemon = "";
+	var startInfo;
 	
 	confirm("Are you ready to play? \nIt takes 5 seconds to start the game. "); // game also starts if not confirmed
 	window.setInterval(change, 1000); //5000 for 5 seconds in final version / 3000 for 3 seconds;
@@ -33,6 +36,9 @@ function startGame() {
 	
 		// Variables
 		var text = [
+			// Get playerName, playerGender, rivalName and starterPokemon
+			"",
+		
 			// Short introduction about Pokemon
 			"In the world which you are about to <br/> enter, you will embark on a grand <br/> adventure with you as the hero. <br/> <br/> Speak to people and check things <br/> wherever you go, be it towns, roads, <br/> or caves. Gather information and <br/> hints from every source. ", 
 			"New paths will open to you by helping <br/> people in need, overcoming challenges, <br/> and solving mysteries. <br/> <br/> At times, you will be challenged by <br/> others and attacked by wild creatures. <br/> Be brave and keep pushing on. ",
@@ -85,7 +91,7 @@ function startGame() {
 			// Walk to PROF. OAK's
 			"You walk out of your house. ",
 			"PALLET TOWN", 
-			"You walk to " + rivalName + ". ", 
+			"You walk into " + rivalName + ". ", 
 			rivalName + ": What, it's only " + playerName + "? <br/> Gramps isn't around. ",
 			"PALLET TOWN",
 			"You try to walk out of PALLET TOWN. ",
@@ -106,7 +112,8 @@ function startGame() {
 			"But now, in my old age, I have <br/> only these three left. ",
 			"You can have one. <br/> Go on, choose! ",
 			rivalName + ": Hey! Gramps! No fair! <br/> What about me? ",
-			"OAK: Be patient, " + rivalName + ". <br/> You can have one, too! ",//counter 59
+			"OAK: Be patient, " + rivalName + ". <br/> You can have one, too! ",//counter 60
+			"", //61
 			
 			// Getting your first Pokemon
 		];		
@@ -115,72 +122,97 @@ function startGame() {
 
 		counter++;
 
-		if(counter == 4){
-			document.getElementById("imageStory").src = "images/Professor_Oak_XY.png"; // picture of Professor Oak from http://bulbapedia.bulbagarden.net/wiki/Professor_Oak_%28anime%29
-			document.getElementById("imageStory").style.display = "block";
-		} else if(counter == 13){
+		if(counter == 1){
+			// Get the player's name
+			while (playerName.length < 1) { //typeof playerName == "undefined" | 
+				playerName = prompt("Let's begin with your name. \nWhat is it? ", "YOUR NAME?");//insert Yes/no option?
+			}
+			
 			// Get the player's gender
 			// currently, you can cancel this and the picture of oak stays
 			while(!(playerGender == "boy" | playerGender == "girl")) { // while(playerGender === "boy" | playerGender === "b" | playerGender === "male" | playerGender === "m" | playerGender === "girl" | playerGender === "g" | playerGender === "female" | playerGender === "f") {} // get this to work!
 				playerGender = prompt("Now tell me. Are you a boy? \nOr are you a girl? ", "Boy / girl");
 				playerGender = playerGender.toLowerCase();
 			}
-			showPlayerStats = playerGender;
-			document.getElementById("imageStory").src = "images/FireRed_" + playerGender + ".png";
-			// picture of boy from http://www.marriland.com/forums/pokemon-1st-2nd-3rd-generation/pokemon-firered-leafgreen/514280-girl-or-boy
-			// picture of girl from http://bulbapedia.bulbagarden.net/wiki/Leaf_%28game%29
-			document.getElementById("player").innerHTML = showPlayerStats;
-			return playerGender;
-		} else if(counter == 14){
-			// Get the player's name
-			while (playerName.length < 1) { //typeof playerName == "undefined" | 
-				playerName = prompt("Let's begin with your name. \nWhat is it? ", "YOUR NAME?");//insert Yes/no option?
-			}
-			showPlayerStats = playerName + " (" + playerGender + ")"; //showPlayerStats instead of playerGender
-			document.getElementById("player").innerHTML = showPlayerStats;
-			return playerName;
-		} else if(counter == 16) {
-			document.getElementById("imageStory").src = "images/Gary.png";// picture of Gary from http://bulbapedia.bulbagarden.net/wiki/Blue_%28game%29
-		} else if(counter == 17) {
+			
+			// Get the rival's name
 			rivalName = prompt("...Erm, what was his name now? ", "RIVAL's NAME");
 			while (rivalName.length < 1) {
 				rivalName = prompt("RIVAL's NAME? ", ""); // alert("...Er, was it " + rivalName + "? "); //insert Yes/no option?
 			}
+			
+			// Show the player's name, gender and rival's name
 			showPlayerStats = playerName + " (" + playerGender + ") vs. " + rivalName;
+			document.getElementById("player").style.display = "block";
 			document.getElementById("player").innerHTML = showPlayerStats;
-			return rivalName;
-		} else if(counter == 19) {
+			
+			// Get the starter Pokemon
+			while(!(starterPokemon == "BULBASAUR" | starterPokemon == "CHARMANDER" | starterPokemon == "SQUIRTLE")) {
+				starterPokemon = prompt("Which Pokemon do you want as a starter? ", "Bulbasaur / Charmander / Squirtle");
+				starterPokemon = starterPokemon.toUpperCase();
+			}
+			activePokemon[1][0] = "5";
+			activePokemon[1][1] = starterPokemon;
+			
+			startInfo = new Array();
+			startInfo = [
+				playerName, 
+				playerGender, 
+				rivalName, 
+				activePokemon[1][0], 
+				activePokemon[1][1]
+			]
+			return ;
+		} else if(counter == 5){
+			document.getElementById("imageStory").src = "images/Professor_Oak_XY.png"; // picture of Professor Oak from http://bulbapedia.bulbagarden.net/wiki/Professor_Oak_%28anime%29
+			document.getElementById("imageStory").style.display = "block";
+		} else if(counter == 17) {
+			document.getElementById("imageStory").src = "images/Gary.png";// picture of Gary from http://bulbapedia.bulbagarden.net/wiki/Blue_%28game%29
+		} else if(counter == 20) {
 			document.getElementById("imageStory").src = "images/FireRed_" + playerGender + ".png";
 			// picture of boy from http://www.marriland.com/forums/pokemon-1st-2nd-3rd-generation/pokemon-firered-leafgreen/514280-girl-or-boy
 			// picture of girl from http://bulbapedia.bulbagarden.net/wiki/Leaf_%28game%29
-		} else if(counter == 22) {
+		} else if(counter == 23) {
 			document.getElementById("imageStory").src = "images/OwnRoom.png"; // screenshot from Pokemon FireRed game from GAME FREAK inc.
-		} else if(counter == 32) {
-			document.getElementById("imageStory").src = "images/Mom.png"; // screenshot from Pokemon FireRed game from GAME FREAK inc.
 		} else if(counter == 33) {
+			document.getElementById("imageStory").src = "images/Mom.png"; // screenshot from Pokemon FireRed game from GAME FREAK inc.
+		} else if(counter == 34) {
 			if (playerGender == "boy"){
 				document.getElementById("pokemonRed").innerHTML = "MOM: ...Right. <br/> All " + playerGender + "s leave home someday. "
 			} else {
 				document.getElementById("pokemonRed").innerHTML = "MOM: ...Right. <br/> All " + playerGender + "s dream of travelling. "
 			}
-		} else if(counter == 37) {
-			document.getElementById("imageStory").src = "images/PalletTown.png"; // screenshot from Pokemon FireRed game from GAME FREAK inc.
 		} else if(counter == 38) {
-			document.getElementById("imageStory").src = "images/Gary.png";// picture of Gary from http://bulbapedia.bulbagarden.net/wiki/Blue_%28game%29
-		} else if(counter == 40) {
 			document.getElementById("imageStory").src = "images/PalletTown.png"; // screenshot from Pokemon FireRed game from GAME FREAK inc.
+		} else if(counter == 39) {
+			document.getElementById("imageStory").src = "images/Gary.png";// picture of Gary from http://bulbapedia.bulbagarden.net/wiki/Blue_%28game%29
 		} else if(counter == 41) {
-			document.getElementById("imageStory").src = "images/PalletTown_2.png"; // screenshot from Pokemon FireRed game from GAME FREAK inc.
+			document.getElementById("imageStory").src = "images/PalletTown.png"; // screenshot from Pokemon FireRed game from GAME FREAK inc.
 		} else if(counter == 42) {
-			document.getElementById("imageStory").src = "images/Professor_Oak_XY.png"; // picture of Professor Oak from http://bulbapedia.bulbagarden.net/wiki/Professor_Oak_%28anime%29
+			document.getElementById("imageStory").src = "images/PalletTown_2.png"; // screenshot from Pokemon FireRed game from GAME FREAK inc.
 		} else if(counter == 43) {
-			document.getElementById("imageStory").src = "images/PalletTown_3.png"; // screenshot from Pokemon FireRed game from GAME FREAK inc.
+			document.getElementById("imageStory").src = "images/Professor_Oak_XY.png"; // picture of Professor Oak from http://bulbapedia.bulbagarden.net/wiki/Professor_Oak_%28anime%29
 		} else if(counter == 44) {
+			document.getElementById("imageStory").src = "images/PalletTown_3.png"; // screenshot from Pokemon FireRed game from GAME FREAK inc.
+		} else if(counter == 45) {
 			document.getElementById("imageStory").src = "images/PalletTown_4.png"; // screenshot from Pokemon FireRed game from GAME FREAK inc.
-		} else if(counter == 47) {
-			document.getElementById("imageStory").src = "images/PalletTown_5.png"; // screenshot from Pokemon FireRed game from GAME FREAK inc.
 		} else if(counter == 48) {
+			document.getElementById("imageStory").src = "images/PalletTown_5.png"; // screenshot from Pokemon FireRed game from GAME FREAK inc.
+		} else if(counter == 49) {
 			document.getElementById("imageStory").src = "images/PalletTown_ProfOakLab.png"; // screenshot from Pokemon FireRed game from GAME FREAK inc.
+		} else if(counter == 61) {
+			starterPokemon = activePokemon[1][1];
+			if (starterPokemon == "BULBASAUR") {
+				document.getElementById("pokemonRed").innerHTML = "I see! "+ starterPokemon + " is your choice. <br/> It's very easy to raise. ";
+			} else if (starterPokemon == "CHARMANDER") {
+				document.getElementById("pokemonRed").innerHTML = "Ah! " + starterPokemon + " is your choice. <br/> You should raise it patiently. ";
+			} else {
+				document.getElementById("pokemonRed").innerHTML = "Hm! " + starterPokemon + " is your choice. <br/> It's one worth raising. ";
+			}
+			document.getElementById("activePokemon").style.display = "block";
+			document.getElementById("activePokemon1Level").innerHTML = activePokemon[1][0];
+			document.getElementById("activePokemon1Name").innerHTML = activePokemon[1][1];
+			return starterPokemon;
 		} else if(counter >= text.length + 1) {
 			// End the game
 			document.getElementById("imageStory").src = "images/FireRed_" + playerGender + ".png";
@@ -188,13 +220,6 @@ function startGame() {
 		}
 	} 
 }
-
-/* 	// Get the starter Pokemon
-	while(!(starterPokemon == "bulbasaur" | starterPokemon == "charmander" | starterPokemon == "squirtle")) { // while(playerGender === "boy" | playerGender === "b" | playerGender === "male" | playerGender === "m" | playerGender === "girl" | playerGender === "g" | playerGender === "female" | playerGender === "f") {} // get this to work!
-		var starterPokemon = prompt("Which Pokemon do you want as a starter? ", "Bulbasaur / Charmander / Squirtle");
-		starterPokemon = starterPokemon.toLowerCase();
-	}
-	document.getElementById("player").innerHTML = playerName + " - " + playerGender + " - " + starterPokemon; */
 	
 /*  	while (gameWon == "false") {
 		for (i = 0; i < 1000; i++) {
@@ -224,5 +249,5 @@ function startGame() {
 
 
 // use story from Pokemon Red
-// get stats from Pokemon from text file
+// get stats from Pokemon from text file?
 // http://www.javascriptkit.com/javatutors/time3.shtml

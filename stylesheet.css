@@ -168,14 +168,23 @@ p {
 }
 
 #player{
+ 	display: none;
+	text-align: center;
+}
+
+#activePokemon{
+ 	display: none;
+/*   	margin: auto;  */
+/* 	margin-left: auto;
+	margin-right: auto;  */
+	color: #909090;
+	float: center;
+/*  	border: 2px solid #909090;  */
 	text-align: center;
 }
 
 #imageStory{
-	display: none; /* was block*/
-/* 	http://demosthenes.info/blog/304/Four-Ways-to-Make-Elements-Disappear-And-Reappear-Using-CSS
-	http://www.w3schools.com/cssref/pr_class_display.asp
-	http://www.w3schools.com/cssref/playit.asp?filename=playcss_display&preval=none */
+	display: none;
 	margin-left: auto;
 	margin-right: auto;
 }
