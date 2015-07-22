@@ -16,6 +16,7 @@ by GeOdin */
 // use male / female screenshots depending on playerGender
 // make Pokemonnames, stats and moves all uppercase?
 // shorten part about getting potion from room
+// include documentation for all files
 
 function startGame() { 
 
@@ -27,6 +28,7 @@ function startGame() {
 	var playerName = "";
 	var rivalName = "";
 	var starterPokemon = "";
+	var starterPokemonRival = "";
 	var startInfo;
 	
 	confirm("Are you ready to play? \nIt takes 5 seconds to start the game. "); // game also starts if not confirmed
@@ -114,6 +116,10 @@ function startGame() {
 			rivalName + ": Hey! Gramps! No fair! <br/> What about me? ",
 			"OAK: Be patient, " + rivalName + ". <br/> You can have one, too! ",//counter 60
 			"", //61
+			playerName + " received the " + starterPokemon + " <br/> from PROF. OAK! ", //62
+			rivalName + ": I'll take this one, then! ", //63
+			rivalName + " received the " + starterPokemonRival + " <br/> from PROF. OAK! ", //64
+			"OAK: If a wild POK&eacute;MON appears, <br/> your POK&eacute;MON can battle it. ", //65
 			
 			// Getting your first Pokemon
 		];		
@@ -153,6 +159,15 @@ function startGame() {
 			}
 			activePokemon[1][0] = "5";
 			activePokemon[1][1] = starterPokemon;
+			if (starterPokemon == "BULBASAUR") {
+				starterPokemonRival = "CHARMANDER";
+			} else if (starterPokemon == "CHARMANDER") {
+				starterPokemonRival = "SQUIRTLE";
+			} else if (starterPokemon == "SQUIRTLE") {
+				starterPokemonRival = "BULBASAUR";
+			} else {
+				starterPokemonRival = "BULBASAUR";
+			}
 			
 			startInfo = new Array();
 			startInfo = [
@@ -160,9 +175,10 @@ function startGame() {
 				playerGender, 
 				rivalName, 
 				activePokemon[1][0], 
-				activePokemon[1][1]
+				activePokemon[1][1],
+				starterPokemonRival
 			]
-			return ;
+			return ; //is this necessary?
 		} else if(counter == 5){
 			document.getElementById("imageStory").src = "images/Professor_Oak_XY.png"; // picture of Professor Oak from http://bulbapedia.bulbagarden.net/wiki/Professor_Oak_%28anime%29
 			document.getElementById("imageStory").style.display = "block";
@@ -209,10 +225,15 @@ function startGame() {
 			} else {
 				document.getElementById("pokemonRed").innerHTML = "Hm! " + starterPokemon + " is your choice. <br/> It's one worth raising. ";
 			}
+		} else if(counter == 62) {
 			document.getElementById("activePokemon").style.display = "block";
 			document.getElementById("activePokemon1Level").innerHTML = activePokemon[1][0];
 			document.getElementById("activePokemon1Name").innerHTML = activePokemon[1][1];
 			return starterPokemon;
+		} else if(counter == 63) {
+			document.getElementById("imageStory").src = "images/Gary.png";// picture of Gary from http://bulbapedia.bulbagarden.net/wiki/Blue_%28game%29
+		} else if(counter == 65) {
+			document.getElementById("imageStory").src = "images/Professor_Oak_XY.png"; // picture of Professor Oak from http://bulbapedia.bulbagarden.net/wiki/Professor_Oak_%28anime%29
 		} else if(counter >= text.length + 1) {
 			// End the game
 			document.getElementById("imageStory").src = "images/FireRed_" + playerGender + ".png";
