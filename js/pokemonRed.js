@@ -17,6 +17,8 @@ by GeOdin */
 // make Pokemonnames, stats and moves all uppercase?
 // shorten part about getting potion from room
 // include documentation for all files
+// create a variable for which pokemon are already caught
+// set up some sort of in-game PC-system
 
 function startGame() { 
 
@@ -30,14 +32,18 @@ function startGame() {
 	var starterPokemon = "";
 	var starterPokemonRival = "";
 	var startInfo;
+	var pokemonOne;
+	var pokemonOneRival;
 	
+	
+	// Start game
 	confirm("Are you ready to play? \nIt takes 5 seconds to start the game. "); // game also starts if not confirmed
 	window.setInterval(change, 1000); //5000 for 5 seconds in final version / 3000 for 3 seconds;
 	
 	function change() {
 	
 		// Variables
-		var text = [
+		var text = [// set to other file, and add the variables that are mentioned in here as var x; above var text ?
 			// Get playerName, playerGender, rivalName and starterPokemon
 			"",
 		
@@ -90,7 +96,7 @@ function startGame() {
 			"It said so on TV. ",
 			"Oh yes. PROF. OAK, next door, was <br/> looking for you. ",
 			
-			// Walk to PROF. OAK's
+			// Walk to PROF. OAK's and getting your first Pokemon
 			"You walk out of your house. ",
 			"PALLET TOWN", 
 			"You walk into " + rivalName + ". ", 
@@ -119,9 +125,27 @@ function startGame() {
 			playerName + " received the " + starterPokemon + " <br/> from PROF. OAK! ", //62
 			rivalName + ": I'll take this one, then! ", //63
 			rivalName + " received the " + starterPokemonRival + " <br/> from PROF. OAK! ", //64
-			"OAK: If a wild POK&eacute;MON appears, <br/> your POK&eacute;MON can battle it. ", //65
 			
-			// Getting your first Pokemon
+ 			// Your first battle
+			"OAK: If a wild POK&eacute;MON appears, <br/> your POK&eacute;MON can battle it. ", //65
+			"With it at your side, you should be <br/> able to reach the next town. ", //66
+			"", //67
+			rivalName + ": Wait, " + playerName + "! <br/> Let's check out our POK&Eacute;MON!", //68
+			"Come on, I'll take you on! ", //69
+			"RIVAL " + rivalName + " <br/> would like to battle! ", //70
+			"RIVAL " + rivalName + " sent <br/> out " + starterPokemonRival + "!", //71
+			"Go! " + starterPokemon + " ! ", //72
+			"OAK: Oh, for Pete's sake... <br/> So pushy, as always. ", //73
+			playerName + ". ", //74
+			"You've never had a POK&eacute;MON battle <br/> before, have you? ", //75
+			"A POK&eacute;MON battle is when TRAINERS <br/> pit their POK&eacute;MON against each ", //76
+			"other. ", //77
+			"The TRAINER that makes the other <br/> TRAINER's POK&eacute;MON faint by lowering ", //78
+			"their HP to '0', wins. ", //79
+			"But rather than talking about it, <br/> you'll learn more from experience. ", //80
+			"Try battling and see for yourself. ", //81
+			"", //82 
+			
 		];		
 
 		elem.innerHTML = text[counter];
@@ -157,7 +181,32 @@ function startGame() {
 				starterPokemon = prompt("Which Pokemon do you want as a starter? ", "Bulbasaur / Charmander / Squirtle");
 				starterPokemon = starterPokemon.toUpperCase();
 			}
-			activePokemon[1][0] = "5";
+			
+ 			for (i=0; i<pokemon.length; i++) {
+				if (pokemon[i][1] == starterPokemon) {
+					pokemonOne = new createPokemon(
+						pokemon[i][0], 
+						pokemon[i][1],
+						5,
+						pokemon[i][3],
+						pokemon[i][4],
+						pokemon[i][5],
+						pokemon[i][6],
+						pokemon[i][7],
+						pokemon[i][8],
+						pokemon[i][9],
+						pokemon[i][10],
+						pokemon[i][11],
+						pokemon[i][12],
+						pokemon[i][13],
+						pokemon[i][14], //adjust for level (bulbasaur/squirtle have 2nd move on level 5 instead of on level 1)
+						pokemon[i][15],
+						pokemon[i][16]
+					);
+				}
+			}
+			
+			activePokemon[1][0] = 5;
 			activePokemon[1][1] = starterPokemon;
 			if (starterPokemon == "BULBASAUR") {
 				starterPokemonRival = "CHARMANDER";
@@ -169,6 +218,30 @@ function startGame() {
 				starterPokemonRival = "BULBASAUR";
 			}
 			
+ 			for (i=0; i<pokemon.length; i++) {
+				if (pokemon[i][1] == starterPokemonRival) {
+					pokemonOneRival = new createPokemon(
+						pokemon[i][0], 
+						pokemon[i][1],
+						5,
+						pokemon[i][3],
+						pokemon[i][4],
+						pokemon[i][5],
+						pokemon[i][6],
+						pokemon[i][7],
+						pokemon[i][8],
+						pokemon[i][9],
+						pokemon[i][10],
+						pokemon[i][11],
+						pokemon[i][12],
+						pokemon[i][13],
+						pokemon[i][14], //adjust for level (bulbasaur/squirtle have 2nd move on level 5 instead of on level 1)
+						pokemon[i][15],
+						pokemon[i][16]
+					);
+				}
+			}
+			
 			startInfo = new Array();
 			startInfo = [
 				playerName, 
@@ -176,7 +249,7 @@ function startGame() {
 				rivalName, 
 				activePokemon[1][0], 
 				activePokemon[1][1],
-				starterPokemonRival
+				starterPokemonRival,
 			]
 			return ; //is this necessary?
 		} else if(counter == 5){
@@ -234,14 +307,25 @@ function startGame() {
 			document.getElementById("imageStory").src = "images/Gary.png";// picture of Gary from http://bulbapedia.bulbagarden.net/wiki/Blue_%28game%29
 		} else if(counter == 65) {
 			document.getElementById("imageStory").src = "images/Professor_Oak_XY.png"; // picture of Professor Oak from http://bulbapedia.bulbagarden.net/wiki/Professor_Oak_%28anime%29
+		} else if(counter == 67) {
+			document.getElementById("imageStory").src = "images/PalletTown_ProfOakLab2.png"; // screenshot from Pokemon FireRed game from GAME FREAK inc.
+		} else if(counter == 68) {
+			document.getElementById("imageStory").src = "images/Gary.png";// picture of Gary from http://bulbapedia.bulbagarden.net/wiki/Blue_%28game%29
+		} else if(counter == 70) {
+			document.getElementById("imageStory").src = "images/PalletTown_ProfOakLab3.png"; // screenshot from Pokemon FireRed game from GAME FREAK inc.
+		} else if(counter == 73) {
+			document.getElementById("imageStory").src = "images/Professor_Oak_XY.png"; // picture of Professor Oak from http://bulbapedia.bulbagarden.net/wiki/Professor_Oak_%28anime%29
+		} else if(counter == 82) {
+			document.getElementById("imageStory").src = "images/PalletTown_ProfOakLab3.png"; // screenshot from Pokemon FireRed game from GAME FREAK inc.
 		} else if(counter >= text.length + 1) {
 			// End the game
 			document.getElementById("imageStory").src = "images/FireRed_" + playerGender + ".png";
 			elem.innerHTML = "Congratulations, you have won the game. <br/> Welcome to the HALL OF FAME! "; 
 		}
-	} 
+	}
 }
-	
+
+
 /*  	while (gameWon == "false") {
 		for (i = 0; i < 1000; i++) {
 			if (i == 0) {
