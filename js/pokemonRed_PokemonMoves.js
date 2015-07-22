@@ -1,7 +1,7 @@
 var pokemonMoves = [
 	["Name", "Type", "Category", "PP", "Power", "Accuracy"],
-	["Tackle", "Normal", "Physical", "35", "50", "100"],
-	["Scratch", "Normal", "Physical", "35", "40", "100"]
+	["Tackle", "Normal", "Physical", 35, 50, 100], //http://bulbapedia.bulbagarden.net/wiki/Tackle_%28move%29
+	["Scratch", "Normal", "Physical", 35, 40, 100] //http://bulbapedia.bulbagarden.net/wiki/Scratch_%28move%29
 ];
 
 var pokemonMoves = {

@@ -192,12 +192,12 @@ function startGame() {
 						pokemon[i][4],
 						pokemon[i][5],
 						pokemon[i][6],
-						pokemon[i][7],
-						pokemon[i][8],
-						pokemon[i][9],
-						pokemon[i][10],
-						pokemon[i][11],
-						pokemon[i][12],
+						pokemon[i][7], //adjust hp for level 5 //getHP() function?
+						pokemon[i][8], //adjust attack for level 5
+						pokemon[i][9], //adjust defense defense for level 5
+						pokemon[i][10], //adjust spattack for level 5
+						pokemon[i][11], //adjust spdefense for level 5
+						pokemon[i][12], //adjust speed for level 5
 						pokemon[i][13],
 						pokemon[i][14], //adjust for level (bulbasaur/squirtle have 2nd move on level 5 instead of on level 1)
 						pokemon[i][15],
@@ -228,12 +228,12 @@ function startGame() {
 						pokemon[i][4],
 						pokemon[i][5],
 						pokemon[i][6],
-						pokemon[i][7],
-						pokemon[i][8],
-						pokemon[i][9],
-						pokemon[i][10],
-						pokemon[i][11],
-						pokemon[i][12],
+						pokemon[i][7], //adjust hp for level 5
+						pokemon[i][8], //adjust attack for level 5
+						pokemon[i][9], //adjust defense defense for level 5
+						pokemon[i][10], //adjust spattack for level 5
+						pokemon[i][11], //adjust spdefense for level 5
+						pokemon[i][12], //adjust speed for level 5
 						pokemon[i][13],
 						pokemon[i][14], //adjust for level (bulbasaur/squirtle have 2nd move on level 5 instead of on level 1)
 						pokemon[i][15],
@@ -317,6 +317,7 @@ function startGame() {
 			document.getElementById("imageStory").src = "images/Professor_Oak_XY.png"; // picture of Professor Oak from http://bulbapedia.bulbagarden.net/wiki/Professor_Oak_%28anime%29
 		} else if(counter == 82) {
 			document.getElementById("imageStory").src = "images/PalletTown_ProfOakLab3.png"; // screenshot from Pokemon FireRed game from GAME FREAK inc.
+			//damage calculation for battle --> http://www.psypokes.com/dex/damage.php
 		} else if(counter >= text.length + 1) {
 			// End the game
 			document.getElementById("imageStory").src = "images/FireRed_" + playerGender + ".png";
