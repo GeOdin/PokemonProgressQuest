@@ -5,7 +5,7 @@ Made on 20-07-2015
 by GeOdin */
 // change pokemonRed in pokemonFireRed
 // movie of start of game: https://www.youtube.com/watch?v=yUS1IcC5CBY
-// make sure to block the start button / ask for refreshing the game when it's pressed --> done
+// make sure to block the start button / ask for refreshing the game when it's pressed --> done // or remove start button when game is started!
 // remove name + (gender) when start button is pressed
 // in var tekst, Pokemon can be POK&eacute;MON, probably
 // perhaps ask gender, name and starter at beginning, so that game does no longer gets interrupted
@@ -27,7 +27,7 @@ function startGame() {
 	// var starterPokemon = "";
 	
 	confirm("Are you ready to play? \nIt takes 5 seconds to start the game. "); // game also starts if not confirmed
-	window.setInterval(change, 1000); //5000 for 5 seconds in final version;
+	window.setInterval(change, 1000); //5000 for 5 seconds in final version / 3000 for 3 seconds;
 	
 	function change() {
 	
@@ -140,7 +140,7 @@ function startGame() {
 			document.getElementById("player").innerHTML = showPlayerStats;
 			return playerName;
 		} else if(counter == 16) {
-			document.getElementById("imageStory").src = "images/FireRed_Gary.png";// picture of Gary from http://bulbapedia.bulbagarden.net/wiki/Blue_%28game%29
+			document.getElementById("imageStory").src = "images/Gary.png";// picture of Gary from http://bulbapedia.bulbagarden.net/wiki/Blue_%28game%29
 		} else if(counter == 17) {
 			rivalName = prompt("...Erm, what was his name now? ", "RIVAL's NAME");
 			while (rivalName.length < 1) {
@@ -166,7 +166,7 @@ function startGame() {
 		} else if(counter == 37) {
 			document.getElementById("imageStory").src = "images/PalletTown.png"; // screenshot from Pokemon FireRed game from GAME FREAK inc.
 		} else if(counter == 38) {
-			document.getElementById("imageStory").src = "images/FireRed_Gary.png";// picture of Gary from http://bulbapedia.bulbagarden.net/wiki/Blue_%28game%29
+			document.getElementById("imageStory").src = "images/Gary.png";// picture of Gary from http://bulbapedia.bulbagarden.net/wiki/Blue_%28game%29
 		} else if(counter == 40) {
 			document.getElementById("imageStory").src = "images/PalletTown.png"; // screenshot from Pokemon FireRed game from GAME FREAK inc.
 		} else if(counter == 41) {
