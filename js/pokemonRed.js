@@ -174,7 +174,18 @@ function startGame() {
 			player = new createPlayer (
 				playerName,
 				playerGender,
-				5000, //is this the correct starting amount
+				5000, //is this the correct starting amount?
+				"",
+				"",
+				"",
+				"",
+				"",
+				"",
+				"",
+				"",
+				"",
+				"",
+				"",
 				"",
 				""
 			); 
@@ -185,8 +196,26 @@ function startGame() {
 				rivalName = prompt("RIVAL's NAME? ", ""); // alert("...Er, was it " + rivalName + "? "); //insert Yes/no option?
 			}
 			
+ 			// Create a rival object
+			rival = new createRival (
+				rivalName,
+				"",
+				"",
+				"",
+				"",
+				"",
+				"",
+				"",
+				"",
+				"",
+				"",
+				"",
+				"",
+				""
+			); 
+			
 			// Show the player's name, gender and rival's name
-			showPlayerStats = player.name + " (" + player.gender + ") vs. " + rivalName;
+			showPlayerStats = player.name + " (" + player.gender + ") vs. " + rival.name;
 			document.getElementById("player").style.display = "block";
 			document.getElementById("player").innerHTML = showPlayerStats;
 			
@@ -195,18 +224,20 @@ function startGame() {
 				starterPokemon = prompt("Which Pokemon do you want as a starter? ", "Bulbasaur / Charmander / Squirtle");
 				starterPokemon = starterPokemon.toUpperCase();
 			}
+			player.starterPokemon = starterPokemon;
+			starterPokemonLevel = 5;
 			
  			for (i=0; i<pokemon.length; i++) {
-				if (pokemon[i][1] == starterPokemon) {
-					pokemonOne = new createPokemon(
+				if (pokemon[i][1] == player.starterPokemon) {
+					pokemonOne = new createPokemon(// bulbasaur / squirtle / charmander instead of pokemonOne
 						pokemon[i][0], 
 						pokemon[i][1],
-						5,
+						starterPokemonLevel,
 						pokemon[i][3],
 						pokemon[i][4],
 						pokemon[i][5],
 						pokemon[i][6],
-						pokemon[i][7], //adjust hp for level 5 //getHP() function?
+						pokemon[i][7], //getHP(player.starterPokemon, starterPokemonLevel), //adjust hp for level 5 //getHP() function? --> getHP(player.starterPokemon); variable pokemonStats uit pokemonRed_Pokemon.js?
 						pokemon[i][8], //adjust attack for level 5
 						pokemon[i][9], //adjust defense defense for level 5
 						pokemon[i][10], //adjust spattack for level 5
@@ -219,21 +250,24 @@ function startGame() {
 					);
 				}
 			}
+			//document.getElementById("player").innerHTML = pokemonOne.hp; --> to check whether getHP() function is working
 			
 			player.activePokemon1Level = 5;
-			player.activePokemon1Name = starterPokemon;
-			if (starterPokemon == "BULBASAUR") {
-				starterPokemonRival = "CHARMANDER";
-			} else if (starterPokemon == "CHARMANDER") {
-				starterPokemonRival = "SQUIRTLE";
-			} else if (starterPokemon == "SQUIRTLE") {
-				starterPokemonRival = "BULBASAUR";
+			player.activePokemon1Name = player.starterPokemon;
+			if (player.starterPokemon == "BULBASAUR") {
+				rival.starterPokemonRival = "CHARMANDER";
+			} else if (player.starterPokemon == "CHARMANDER") {
+				rival.starterPokemonRival = "SQUIRTLE";
+			} else if (player.starterPokemon == "SQUIRTLE") {
+				rival.starterPokemonRival = "BULBASAUR";
 			} else {
-				starterPokemonRival = "BULBASAUR";
+				rival.starterPokemonRival = "BULBASAUR";
 			}
+			rival.activePokemon1Level = 5;
+			rival.activePokemon1Name = rival.starterPokemonRival;
 			
  			for (i=0; i<pokemon.length; i++) {
-				if (pokemon[i][1] == starterPokemonRival) {
+				if (pokemon[i][1] == rival.starterPokemonRival) {
 					pokemonOneRival = new createPokemon(
 						pokemon[i][0], 
 						pokemon[i][1],
@@ -258,12 +292,13 @@ function startGame() {
 			
 			startInfo = new Array();
 			startInfo = [
-				playerName, 
-				playerGender, 
-				rivalName, 
+				player.name, 
+				player.gender, 
+				rival.name, 
+				player.starterPokemon,
 				player.activePokemon1Level, 
 				player.activePokemon1Name,
-				starterPokemonRival,
+				rival.starterPokemonRival,
 			]
 			return ; //is this necessary?
 		} else if(counter == 5){
@@ -272,7 +307,7 @@ function startGame() {
 		} else if(counter == 17) {
 			document.getElementById("imageStory").src = "images/Gary.png";// picture of Gary from http://bulbapedia.bulbagarden.net/wiki/Blue_%28game%29
 		} else if(counter == 20) {
-			document.getElementById("imageStory").src = "images/FireRed_" + playerGender + ".png";
+			document.getElementById("imageStory").src = "images/FireRed_" + player.gender + ".png";
 			// picture of boy from http://www.marriland.com/forums/pokemon-1st-2nd-3rd-generation/pokemon-firered-leafgreen/514280-girl-or-boy
 			// picture of girl from http://bulbapedia.bulbagarden.net/wiki/Leaf_%28game%29
 		} else if(counter == 23) {
@@ -281,9 +316,9 @@ function startGame() {
 			document.getElementById("imageStory").src = "images/Mom.png"; // screenshot from Pokemon FireRed game from GAME FREAK inc.
 		} else if(counter == 34) {
 			if (playerGender == "boy"){
-				document.getElementById("pokemonRed").innerHTML = "MOM: ...Right. <br/> All " + playerGender + "s leave home someday. "
+				document.getElementById("pokemonRed").innerHTML = "MOM: ...Right. <br/> All " + player.gender + "s leave home someday. "
 			} else {
-				document.getElementById("pokemonRed").innerHTML = "MOM: ...Right. <br/> All " + playerGender + "s dream of travelling. "
+				document.getElementById("pokemonRed").innerHTML = "MOM: ...Right. <br/> All " + player.gender + "s dream of travelling. "
 			}
 		} else if(counter == 38) {
 			document.getElementById("imageStory").src = "images/PalletTown.png"; // screenshot from Pokemon FireRed game from GAME FREAK inc.
@@ -306,11 +341,11 @@ function startGame() {
 		} else if(counter == 61) {
 			starterPokemon = player.activePokemon1Name;
 			if (starterPokemon == "BULBASAUR") {
-				document.getElementById("pokemonRed").innerHTML = "I see! "+ starterPokemon + " is your choice. <br/> It's very easy to raise. ";
+				document.getElementById("pokemonRed").innerHTML = "I see! "+ player.starterPokemon + " is your choice. <br/> It's very easy to raise. ";
 			} else if (starterPokemon == "CHARMANDER") {
-				document.getElementById("pokemonRed").innerHTML = "Ah! " + starterPokemon + " is your choice. <br/> You should raise it patiently. ";
+				document.getElementById("pokemonRed").innerHTML = "Ah! " + player.starterPokemon + " is your choice. <br/> You should raise it patiently. ";
 			} else {
-				document.getElementById("pokemonRed").innerHTML = "Hm! " + starterPokemon + " is your choice. <br/> It's one worth raising. ";
+				document.getElementById("pokemonRed").innerHTML = "Hm! " + player.starterPokemon + " is your choice. <br/> It's one worth raising. ";
 			}
 		} else if(counter == 62) {
 			document.getElementById("activePokemon").style.display = "inline";
@@ -334,7 +369,7 @@ function startGame() {
 			//damage calculation for battle --> http://www.psypokes.com/dex/damage.php
 		} else if(counter >= text.length + 1) {
 			// End the game
-			document.getElementById("imageStory").src = "images/FireRed_" + playerGender + ".png";
+			document.getElementById("imageStory").src = "images/FireRed_" + player.gender + ".png";
 			elem.innerHTML = "Congratulations, you have won the game. <br/> Welcome to the HALL OF FAME! "; 
 		}
 	}

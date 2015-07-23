@@ -1,66 +1,6 @@
 // stat calculator --> http://pycosites.com/pkmn/stat.html
 // moves for FireRed --> http://serebii.net/pokedex-rs/
 
-// Bulbasaur
-var bulbasaurStats = new Array(); //stat calculator --> http://pycosites.com/pkmn/stat.html --> 31IV, +Nature
-bulbasaurStats = [
-	["level", "hp", "attack", "defense", "spattack", "spdefense", "speed"],
-	[1, 12, 6, 6, 6, 6, 6],
-	[2, 14, 7, 7, 8, 8, 7],
-	[3, 16, 8, 8, 9, 9, 8],
-	[4, 18, 11, 11, 12, 12, 9],
-	[5, 21, 12, 12, 14, 14, 12]
-];
-var bulbasaurMoves = new Array();
-bulbasaurMoves = [
-	["level", "pokemonMove1", "pokemonMove2", "pokemonMove3", "pokemonMove4"],
-	[1, "Tackle", "", "", ""],
-	[2, "Tackle", "", "", ""],
-	[3, "Tackle", "", "", ""],
-	[4, "Tackle", "Growl", "", ""],
-	[5, "Tackle", "Growl", "", ""]
-];
-
-// Charmander
-var charmanderStats = new Array(); //stat calculator --> http://pycosites.com/pkmn/stat.html --> 31IV, +Nature
-charmanderStats = [
-	["level", "hp", "attack", "defense", "spattack", "spdefense", "speed"],
-	[1, 12, 6, 6, 6, 6, 6],
-	[2, 14, 7, 7, 8, 7, 8],
-	[3, 16, 9, 8, 9, 8, 9],
-	[4, 18, 11, 9, 12, 11, 12],
-	[5, 20, 12, 11, 13, 12, 14]
-];
-var charmanderMoves = new Array();
-charmanderMoves = [
-	["level", "pokemonMove1", "pokemonMove2", "pokemonMove3", "pokemonMove4"],
-	[1, "Scratch", "Growl", "", ""],
-	[2, "Scratch", "Growl", "", ""],
-	[3, "Scratch", "Growl", "", ""],
-	[4, "Scratch", "Growl", "", ""],
-	[5, "Scratch", "Growl", "", ""]
-];
-
-// Squirtle
-var squirtleStats = new Array(); //stat calculator --> http://pycosites.com/pkmn/stat.html --> 31IV, +Nature
-squirtleStats = [
-	["level", "hp", "attack", "defense", "spattack", "spdefense", "speed"],
-	[1, 12, 6, 6, 6, 6, 6],
-	[2, 14, 7, 8, 7, 8, 7],
-	[3, 16, 8, 9, 8, 9, 8],
-	[4, 18, 11, 12, 11, 12, 9],
-	[5, 20, 12, 14, 12, 13, 11]
-];
-var squirtleMoves = new Array(); // moves for FireRed --> http://serebii.net/pokedex-rs/
-squirtleMoves = [
-	["level", "pokemonMove1", "pokemonMove2", "pokemonMove3", "pokemonMove4"],
-	[1, "Tackle", "", "", ""],
-	[2, "Tackle", "", "", ""],
-	[3, "Tackle", "", "", ""],
-	[4, "Tackle", "Tail Whip", "", ""],
-	[5, "Tackle", "Tail Whip", "", ""]
-];
-
 //Pokemon background information
 var pokemon = [
 	//level 1 and accompanying stats and moves by default, or level of evolvement
@@ -74,6 +14,25 @@ var pokemon = [
 	["007", "SQUIRTLE", 1, "WATER", "", 16, "WARTORTLE", 12, 6, 6, 6, 6, 6, "Tackle", "", "", ""],
 	["008", "WARTORTLE", 16, "WATER", "", 36, "BLASTOISE", "HP", "Attack", "Defense", "Sp. Attack", "Sp. Defense", "Speed", "pokemonMove1", "pokemonMove2", "pokemonMove3", "pokemonMove4"],
 	["009", "BLASTOISE", 36, "WATER", "", 0, "BLASTOISE", "HP", "Attack", "Defense", "Sp. Attack", "Sp. Defense", "Speed", "pokemonMove1", "pokemonMove2", "pokemonMove3", "pokemonMove4"]
+];
+
+var pokemonStats = [ //make the variables here the same as for the function createPokemon()?
+	["pokemonNumber", "pokemonName", "pokemonLevel", "hp", "attack", "defense", "spattack", "spdefense", "speed", "pokemonMove1", "pokemonMove2", "pokemonMove3", "pokemonMove4"],
+	["001", "BULBASAUR", 1, 12, 6, 6, 6, 6, 6, "Tackle", "", "", ""],
+	["001", "BULBASAUR", 2, 14, 7, 7, 8, 8, 7, "Tackle", "", "", ""],
+	["001", "BULBASAUR", 3, 16, 8, 8, 9, 9, 8, "Tackle", "", "", ""],
+	["001", "BULBASAUR", 4, 18, 11, 11, 12, 12, 9, "Tackle", "Growl", "", ""],
+	["001", "BULBASAUR", 5, 21, 12, 12, 14, 14, 12, "Tackle", "Growl", "", ""],
+	["004", "CHARMANDER", 1, 12, 6, 6, 6, 6, 6, "Scratch", "Growl", "", ""],
+	["004", "CHARMANDER", 2, 14, 7, 7, 8, 7, 8, "Scratch", "Growl", "", ""],
+	["004", "CHARMANDER", 3, 16, 9, 8, 9, 8, 9, "Scratch", "Growl", "", ""],
+	["004", "CHARMANDER", 4, 18, 11, 9, 12, 11, 12, "Scratch", "Growl", "", ""],
+	["004", "CHARMANDER", 5, 20, 12, 11, 13, 12, 14, "Scratch", "Growl", "", ""],
+	["001", "SQUIRTLE", 1, 12, 6, 6, 6, 6, 6, "Tackle", "", "", ""],
+	["001", "SQUIRTLE", 2, 14, 7, 8, 7, 8, 7, "Tackle", "", "", ""],
+	["001", "SQUIRTLE", 3, 16, 8, 9, 8, 9, 8, "Tackle", "", "", ""],
+	["001", "SQUIRTLE", 4, 18, 11, 12, 11, 12, 9, "Tackle", "Tail Whip", "", ""],
+	["001", "SQUIRTLE", 5, 20, 12, 14, 12, 13, 11, "Tackle", "Tail Whip", "", ""]
 ];
 
 //Create pokemon function
@@ -96,3 +55,17 @@ function createPokemon(pokemonNumber, pokemonName, pokemonLevel, pokemonType1, p
 	this.pokemonMove3 = pokemonMove3; //15 - ""
 	this.pokemonMove4 = pokemonMove4; //16 - ""
 };
+
+// Get Pokemon HP corresponding to certain pokemon and level //currently not working
+/* function getHP(pokemonName, pokemonLevel){
+	for (i=0; i<pokemonStats.length; i++) {
+		if (pokemonStats[i][1] == pokemonName) {
+			for (j=0; j<pokemonStats[1]+1; j++){
+				if (pokemonStats[i][2] == pokemonLevel) {
+					HP = pokemonStats[i][3];
+				}
+			}
+		}
+	};
+	return HP;
+}; */
