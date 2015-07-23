@@ -1,16 +1,6 @@
 // stat calculator --> http://pycosites.com/pkmn/stat.html
 // moves for FireRed --> http://serebii.net/pokedex-rs/
 
-var activePokemon = [
-	["LEVEL", "POK&eacute;MON"],
-	["", ""],
-	["", ""],
-	["", ""],
-	["", ""],
-	["", ""],
-	["", ""]
-];
-
 // Bulbasaur
 var bulbasaurStats = new Array(); //stat calculator --> http://pycosites.com/pkmn/stat.html --> 31IV, +Nature
 bulbasaurStats = [

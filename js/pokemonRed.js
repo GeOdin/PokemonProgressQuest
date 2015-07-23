@@ -19,12 +19,17 @@ by GeOdin */
 // include documentation for all files
 // create a variable for which pokemon are already caught
 // set up some sort of in-game PC-system
+// kans om een shiny tegen te komen?
+// show images of pokemon on top of battle image and flip pokemon image of opponent ? --> https://css-tricks.com/snippets/css/flip-an-image/
+// reset amount of damage from attacks after battle (delete effects of growl, for example)
+// create object for player
 
 function startGame() { 
 
 	// Variables 
-	var elem = document.getElementById("pokemonRed");
+	var elem = document.getElementById("pokemonRed"); //create variables for other document.getElementById elements
 	var counter = 0;
+	var player;
 	var playerGender;
 	var showPlayerStats;
 	var playerName = "";
@@ -38,7 +43,7 @@ function startGame() {
 	
 	// Start game
 	confirm("Are you ready to play? \nIt takes 5 seconds to start the game. "); // game also starts if not confirmed
-	window.setInterval(change, 1000); //5000 for 5 seconds in final version / 3000 for 3 seconds;
+	window.setInterval(change, 1); //5000 for 5 seconds in final version / 3000 for 3 seconds;
 	
 	function change() {
 	
@@ -165,6 +170,15 @@ function startGame() {
 				playerGender = playerGender.toLowerCase();
 			}
 			
+ 			// Create a player object
+			player = new createPlayer (
+				playerName,
+				playerGender,
+				5000, //is this the correct starting amount
+				"",
+				""
+			); 
+			
 			// Get the rival's name
 			rivalName = prompt("...Erm, what was his name now? ", "RIVAL's NAME");
 			while (rivalName.length < 1) {
@@ -172,7 +186,7 @@ function startGame() {
 			}
 			
 			// Show the player's name, gender and rival's name
-			showPlayerStats = playerName + " (" + playerGender + ") vs. " + rivalName;
+			showPlayerStats = player.name + " (" + player.gender + ") vs. " + rivalName;
 			document.getElementById("player").style.display = "block";
 			document.getElementById("player").innerHTML = showPlayerStats;
 			
@@ -206,8 +220,8 @@ function startGame() {
 				}
 			}
 			
-			activePokemon[1][0] = 5;
-			activePokemon[1][1] = starterPokemon;
+			player.activePokemon1Level = 5;
+			player.activePokemon1Name = starterPokemon;
 			if (starterPokemon == "BULBASAUR") {
 				starterPokemonRival = "CHARMANDER";
 			} else if (starterPokemon == "CHARMANDER") {
@@ -247,8 +261,8 @@ function startGame() {
 				playerName, 
 				playerGender, 
 				rivalName, 
-				activePokemon[1][0], 
-				activePokemon[1][1],
+				player.activePokemon1Level, 
+				player.activePokemon1Name,
 				starterPokemonRival,
 			]
 			return ; //is this necessary?
@@ -290,7 +304,7 @@ function startGame() {
 		} else if(counter == 49) {
 			document.getElementById("imageStory").src = "images/PalletTown_ProfOakLab.png"; // screenshot from Pokemon FireRed game from GAME FREAK inc.
 		} else if(counter == 61) {
-			starterPokemon = activePokemon[1][1];
+			starterPokemon = player.activePokemon1Name;
 			if (starterPokemon == "BULBASAUR") {
 				document.getElementById("pokemonRed").innerHTML = "I see! "+ starterPokemon + " is your choice. <br/> It's very easy to raise. ";
 			} else if (starterPokemon == "CHARMANDER") {
@@ -299,9 +313,9 @@ function startGame() {
 				document.getElementById("pokemonRed").innerHTML = "Hm! " + starterPokemon + " is your choice. <br/> It's one worth raising. ";
 			}
 		} else if(counter == 62) {
-			document.getElementById("activePokemon").style.display = "block";
-			document.getElementById("activePokemon1Level").innerHTML = activePokemon[1][0];
-			document.getElementById("activePokemon1Name").innerHTML = activePokemon[1][1];
+			document.getElementById("activePokemon").style.display = "inline";
+			document.getElementById("imgActivePokemon1").src = "images/pokemonIcons/" + player.activePokemon1Name + ".gif";
+			document.getElementById("activePokemon1").innerHTML = "Lvl. " + player.activePokemon1Level + " " + player.activePokemon1Name;
 			return starterPokemon;
 		} else if(counter == 63) {
 			document.getElementById("imageStory").src = "images/Gary.png";// picture of Gary from http://bulbapedia.bulbagarden.net/wiki/Blue_%28game%29

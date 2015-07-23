@@ -3,6 +3,7 @@ stylesheet.css
 Stylesheet for the Pokemon Progress Quests
 Made on 20-07-2015
 by GeOdin */
+/* position: http://www.w3schools.com/css/css_positioning.asp */
 
 body {
 	background-color: #202020;
@@ -28,6 +29,10 @@ body {
 /* 	border-spacing: 0px; */
 /*	padding: 2px;*/
 }
+
+/* #td {
+	vertical-align: center;
+} */
 
 h2 {
 	font-family: Verdana;
@@ -182,6 +187,55 @@ p {
 	float: center;
 /*  	border: 2px solid #909090;  */
 	text-align: center;
+}
+
+#imgActivePokemon1{
+	display: inline;
+}
+
+#activePokemon1{
+	display: inline;
+	vertical-align: center;
+}
+
+#imgActivePokemon2{
+	display: inline;
+}
+
+#activePokemon2{
+	display: inline;
+}
+
+#imgActivePokemon3{
+	display: inline;
+}
+
+#activePokemon3{
+	display: inline;
+}
+
+#imgActivePokemon4{
+	display: inline;
+}
+
+#activePokemon4{
+	display: inline;
+}
+
+#imgActivePokemon5{
+	display: inline;
+}
+
+#activePokemon5{
+	display: inline;
+}
+
+#imgActivePokemon6{
+	display: inline;
+}
+
+#activePokemon6{
+	display: inline;
 }
 
 #imageStory{
