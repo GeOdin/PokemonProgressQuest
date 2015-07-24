@@ -65,12 +65,25 @@ p {
 	background-color: #404040;
 	border-top-left-radius: 15px;
 	border-top-right-radius: 15px;
+	vertical-align: middle; /* not necessary*/
 }
 
 #tableOfContent{
 	height: 50vh;
-	width: 170px;
+	width: 20%;
 	float: center;
+}
+
+#imgPlayer {
+	display: none;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#player{
+ 	display: none;
+	text-align: center;
+	color: white;
 }
 
 #buttonTags{
@@ -149,6 +162,10 @@ p {
 	font-size: 1em;
 }
 
+#gameName{
+	display: block;
+}
+
 #buttonStart{
 	border: 2px solid #000000;
 	margin: auto;
@@ -173,17 +190,12 @@ p {
 	bottom: 10px;
 }
 
-#player{
- 	display: none;
-	text-align: center;
-}
-
 #activePokemon{
  	display: none;
 /*   	margin: auto;  */
 /* 	margin-left: auto;
 	margin-right: auto;  */
-	color: #909090;
+	color: #A0A0A0;
 	float: center;
 /*  	border: 2px solid #909090;  */
 	text-align: center;
@@ -196,6 +208,7 @@ p {
 #activePokemon1{
 	display: inline;
 	vertical-align: center;
+	color: white;
 }
 
 #imgActivePokemon2{
@@ -204,6 +217,7 @@ p {
 
 #activePokemon2{
 	display: inline;
+	color: white;
 }
 
 #imgActivePokemon3{
@@ -212,6 +226,7 @@ p {
 
 #activePokemon3{
 	display: inline;
+	color: white;
 }
 
 #imgActivePokemon4{
@@ -220,6 +235,7 @@ p {
 
 #activePokemon4{
 	display: inline;
+	color: white;
 }
 
 #imgActivePokemon5{
@@ -228,6 +244,7 @@ p {
 
 #activePokemon5{
 	display: inline;
+	color: white;
 }
 
 #imgActivePokemon6{
@@ -236,6 +253,7 @@ p {
 
 #activePokemon6{
 	display: inline;
+	color: white;
 }
 
 #imageStory{
@@ -245,6 +263,7 @@ p {
 }
 
 #pokemonRed{
+	display: none;
 	text-align: center;
 }
 
@@ -255,4 +274,5 @@ p {
 	border-bottom-left-radius: 15px;
 	border-bottom-right-radius: 15px;
 	background-color: #404040;
+	vertical-align: middle; /* not necessary*/
 }

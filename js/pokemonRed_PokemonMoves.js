@@ -1,9 +1,11 @@
-//Pokémon moves from http://bulbapedia.bulbagarden.net/wiki/Main_Page
+//Pokémon moves information from http://bulbapedia.bulbagarden.net/wiki/Main_Page
 
 var pokemonMoves = [
-	["Name", "Type", "Category", "PP", "Power", "Accuracy"],
+	["Name", "Type", "Category", "PP", "Power", "Accuracy"], //add "Effect" for moves with type "Status" ? add PP-max for when PP UP items are introduced?
+	["Growl", "Normal", "Status", 40, 0, 100], //http://bulbapedia.bulbagarden.net/wiki/Growl_%28move%29
+	["Scratch", "Normal", "Physical", 35, 40, 100], //http://bulbapedia.bulbagarden.net/wiki/Scratch_%28move%29
 	["Tackle", "Normal", "Physical", 35, 50, 100], //http://bulbapedia.bulbagarden.net/wiki/Tackle_%28move%29
-	["Scratch", "Normal", "Physical", 35, 40, 100] //http://bulbapedia.bulbagarden.net/wiki/Scratch_%28move%29
+	["Tail Whip", "Normal", "Status", 30, 0, 100] //http://bulbapedia.bulbagarden.net/wiki/Tail_Whip_%28move%29
 ];
 
 var pokemonMoves = {

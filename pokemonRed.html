@@ -4,6 +4,10 @@ pokemonRed.html
 Page of the Pokemon FireRed Progress Quests
 Made on 20-07-2015
 by GeOdin -->
+
+<!-- add another <td> to the right of #mainFrame for Pokemon that are already caught? on pokemonnumber (not alphabetical) 
+added functionality of a pop-up when you click on/ hoover over one of these Pokemon? --> 
+
 <html>
 	<head>
 		<link type="text/css" rel="stylesheet" href="stylesheet.css"/>
@@ -35,60 +39,12 @@ by GeOdin -->
 				<tr>
 					<td id="header" colspan=2>
 						<p>
-							<h2>
-								Pok&eacute;mon Progress Quest
-							</h2>
-						</p>
-					</td>
-				</tr>
-				<tr>
-					<td id="tableOfContent">
-						<a href="index.html" style="text-decoration:none;">
-							<div id="buttonTags"> 
-								<p>
-									Main Page
-								</p>
-							</div> <br/>
-						</a>
-						<a href="pokemonRed.html" style="text-decoration:none;">
-							<div id="buttonTags2"> 
-								<p>
-									Pok&eacute;mon Red
-								</p>
-							</div>
-						</a>
-					</td>
-					<td id="mainFrame">
-						<p>
-							<h2>
-								Pok&eacute;mon Red
-							</h2>
-							
-							<div id="buttonStart" onclick="startGame()"> <!-- cursor: pointer; cursor: hand; in css-->
-								<p>
-								Start Game!
-								</p>
-							</div>
-							
-							<!-- <input name="inputText" type="text" maxLength="10"/> <!-- <input name="inputText" type="text" maxLength="10" id="inputText" class="textForm"/> -->
-							
-							<p id="player">
-							</p>
-							
 							<div id="activePokemon">
-								<table style="margin: 0 auto;" border=2>
+								<h2>
+									Active POK&eacute;MON
+								</h2>
+								<table style="margin: 0 auto;">
 									<tbody>
-										<tr>
-											<td>
-												Active POK&eacute;MON
-											</td>
-											<td>
-												Active POK&eacute;MON
-											</td>
-											<td>
-												Active POK&eacute;MON
-											</td>
-										</tr>
 										<tr>
 											<td>
 												<img id="imgActivePokemon1"/> <!-- images from serebii.net/pokedex-rs --> <br/>
@@ -104,8 +60,6 @@ by GeOdin -->
 												<p id="activePokemon3">
 												</p>
 											</td>
-										</tr>
-										<tr>
 											<td>
 												<img id="imgActivePokemon4"/> <!-- images from serebii.net/pokedex-rs --> <br/>
 												<p id="activePokemon4">
@@ -124,7 +78,36 @@ by GeOdin -->
 										</tr>
 									</tbody>
 								</table>
-							</div> </br>
+							</div>
+<!-- 							<h2>
+								Pok&eacute;mon Progress Quest
+							</h2> -->
+						</p>
+					</td>
+				</tr>
+				<tr>
+					<td id="tableOfContent">
+						<p id="player">
+						</p>
+						<img  id="imgPlayer" />
+					</td>
+					<td id="mainFrame">
+						<p>
+							<div id="gameName">
+								<p>
+								<h2>
+									Pok&eacute;mon Red
+								</h2>
+								</p>
+							</div>
+							
+							<div id="buttonStart" onclick="startGame()"> <!-- cursor: pointer; cursor: hand; in css-->
+								<p>
+								Start Game!
+								</p>
+							</div> <br/>
+							
+							<!-- <input name="inputText" type="text" maxLength="10"/> <!-- <input name="inputText" type="text" maxLength="10" id="inputText" class="textForm"/> -->
 							
 							<img id="imageStory"/> <!--width=100 height=100--> <!-- http://www.w3schools.com/js/tryit.asp?filename=tryjs_intro_lightbulb -->
 							<!-- image from http://bulbapedia.bulbagarden.net/wiki/Professor_Oak_%28anime%29 -->

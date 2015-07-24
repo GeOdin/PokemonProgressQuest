@@ -11,7 +11,7 @@ by GeOdin */
 // perhaps ask gender, name and starter at beginning, so that game does no longer gets interrupted
 // shorten time of setInterval for testing purposes?
 // show active pokemon and their levels
-// show map where you currently are
+// show map where you currently are --> town map http://bulbapedia.bulbagarden.net/wiki/File:Viridian_City_FRLG.png (in folder townMap in folder images, currently not yet used)
 // use infowindows instead of alerts and/or prompts?
 // use male / female screenshots depending on playerGender
 // make Pokemonnames, stats and moves all uppercase?
@@ -23,16 +23,25 @@ by GeOdin */
 // show images of pokemon on top of battle image and flip pokemon image of opponent ? --> https://css-tricks.com/snippets/css/flip-an-image/
 // reset amount of damage from attacks after battle (delete effects of growl, for example)
 // create object for player
+// show active pokemon title (without pokemon) after start game
+// show player title (without text) after start game
+// show story title after start game (instead of Pokemon Red)
+// document.getElementById("imageStory") --> HallofFame.png picture keeps popping up after restarting the game
+// add PAUSE button (which turns into a CONTINUE-button) to pause/ continue the game --> save value of counter and restart change() function with continue button
+// adding badges to #player?
+// show mainpage and pokemon red buttons before game is started (and after game is finished)?
 
 function startGame() { 
 
 	// Variables 
 	var elem = document.getElementById("pokemonRed"); //create variables for other document.getElementById elements
+	var elemStoryImage = document.getElementById("imageStory"); //create variables for other document.getElementById elements
 	var counter = 0;
 	var player;
 	var playerGender;
 	var showPlayerStats;
 	var playerName = "";
+	// var imgPlayer = "";
 	var rivalName = "";
 	var starterPokemon = "";
 	var starterPokemonRival = "";
@@ -43,7 +52,9 @@ function startGame() {
 	
 	// Start game
 	confirm("Are you ready to play? \nIt takes 5 seconds to start the game. "); // game also starts if not confirmed
-	window.setInterval(change, 1); //5000 for 5 seconds in final version / 3000 for 3 seconds;
+	document.getElementById("gameName").style.display = "none";
+	document.getElementById("buttonStart").style.display = "none";
+	window.setInterval(change, 1000); //5000 for 5 seconds in final version / 3000 for 3 seconds;
 	
 	function change() {
 	
@@ -63,7 +74,7 @@ function startGame() {
 			"My name is OAK. ",
 			"People affectionately refer to me <br/> as the POKeMON PROFESSOR. ",
 			"This world...",
-			"...is inhabited far and wide by creatures called POKeMON. ",
+			"...is inhabited far and wide by creatures called POKeMON. ",//10
 			"For some people, POKeMON are pets. <br/> Others use them for battling. ",
 			"As for myself... ",
 			"I study POKeMON as a profession. ",
@@ -71,20 +82,20 @@ function startGame() {
 			// Introduction player
 			"But first, tell me a little about <br/> yourself. ",
 			"",
-			"Right... <br/> So your name is " + playerName + ".", 
+			"Right... <br/> So your name is " + playerName + ".", //16
 			
 			// Introduction rival
 			"This is my grandson.",
 			"He's been your rival since you both <br/> were babies. ",
 			"That's right! I remember now! <br/> His name is " + rivalName + "! ",
 			
-			playerName + "!",
+			playerName + "!",//20
 			"Your very own POKeMON legend is <br/> about to unfold! ",
 			"A world of dreams and adventures <br/> with POKeMON awaits! Let's go! ",
 			
 			/////////////////
-			// PALLET TOWN //
-			/////////////////
+			// PALLET TOWN // //http://bulbapedia.bulbagarden.net/wiki/File:Pallet_Town_FRLG.png (not yet used, in folder PalletTown in folder images)
+			///////////////// //prof oaks lab --> http://bulbapedia.bulbagarden.net/wiki/File:Professor_Oak_Lab_inside_FRLG.png (not yet used, in folder PalletTown in folder images)
 			// Own House
 			"You walk to your PC. ", 
 			playerName + " booted up the PC. ",
@@ -93,7 +104,7 @@ function startGame() {
 			"WITHDRAW ITEM ",
 			"Take out items from the PC. ",
 			"POTION is selected. ", 
-			"POTION x 1",
+			"POTION x 1",//30
 			"A spray-type wound medicine. <br/> It restores the HP of one POK&eacute;MON by 20 points. ",
 			"Withdrew 1 POTION(s). ",
 			"You walk down to your mom. ",
@@ -105,7 +116,7 @@ function startGame() {
 			"You walk out of your house. ",
 			"PALLET TOWN", 
 			"You walk into " + rivalName + ". ", 
-			rivalName + ": What, it's only " + playerName + "? <br/> Gramps isn't around. ",
+			rivalName + ": What, it's only " + playerName + "? <br/> Gramps isn't around. ",//40
 			"PALLET TOWN",
 			"You try to walk out of PALLET TOWN. ",
 			"OAK: Hey! Wait! <br/> Don't go out! ",
@@ -139,7 +150,7 @@ function startGame() {
 			"Come on, I'll take you on! ", //69
 			"RIVAL " + rivalName + " <br/> would like to battle! ", //70
 			"RIVAL " + rivalName + " sent <br/> out " + starterPokemonRival + "!", //71
-			"Go! " + starterPokemon + " ! ", //72
+			"Go! " + starterPokemon + "! ", //72
 			"OAK: Oh, for Pete's sake... <br/> So pushy, as always. ", //73
 			playerName + ". ", //74
 			"You've never had a POK&eacute;MON battle <br/> before, have you? ", //75
@@ -151,9 +162,63 @@ function startGame() {
 			"Try battling and see for yourself. ", //81
 			"", //82 
 			
+			
+			/////////////
+			// Route 1 // // route 1 http://bulbapedia.bulbagarden.net/wiki/File:Kanto_Route_1_FRLG.png (not yet used, in folder images)
+			/////////////
+			
+			///////////////////
+			// Viridian City // // viridian city http://bulbapedia.bulbagarden.net/wiki/File:Viridian_City_FRLG.png (not yet used, in folder viridianCity in folder images)
+			///////////////////
+			
+			/////////////////
+			// Pallet Town // //http://bulbapedia.bulbagarden.net/wiki/File:Pallet_Town_FRLG.png (not yet used, in folder PalletTown in folder images)
+			///////////////// //prof oaks lab --> http://bulbapedia.bulbagarden.net/wiki/File:Professor_Oak_Lab_inside_FRLG.png (not yet used, in folder PalletTown in folder images)
+			
+			///////////////////
+			// Viridian City //
+			///////////////////
+			
+			//////////////
+			// Route 22 // //http://bulbapedia.bulbagarden.net/wiki/File:Kanto_Route_22_FRLG.png (not yet used, in folder images)
+			//////////////
+			
+			/////////////
+			// Route 2 // //http://bulbapedia.bulbagarden.net/wiki/File:Kanto_Route_2_FRLG.png (not yet used, in folder images)
+			///////////// //viridian forest --> http://bulbapedia.bulbagarden.net/wiki/File:Viridian_Forest_FRLG.png (not yet used, in folder images)
+			
+			//from bulbapedia: http://bulbapedia.bulbagarden.net/wiki/Appendix:FireRed_and_LeafGreen_walkthrough
+			//// Pewter City, Pewter Gym, Route 3, Mt. Moon, Route 4
+			//// Cerulean City, Cerulean Gym, Routes 24 and 25, Route 5
+			//// Route 6, Vermilion City, S.S. Anne, Vermilion Gym
+			//// Route 11, Route 2, Pewter City, Cerulean City, Routes 9 and 10 (north)
+			//// Rock Tunnel, Route 10 (south), Lavender Town, Route 8, Route 7
+			//// Celadon City, Celadon Gym, Rocket Hideout
+			//// Saffron City, Silph Co., Saffron Gym
+			//// Routes 16, 17, and 18, Fuchsia City, Fuchsia Gym, Safari Zone
+			//// Routes 12, 13, 14, and 15, Routes 19 and 20, Seafoam Islands
+			//// Cinnabar Island, Cinnabar Gym
+			//// One Island, Two Island, Three Island
+			//// Route 21, Power Plant, Viridian Gym
+			//// Routes 22 and 23, Victory Road
+			//// Indigo Plateau
 		];		
 
 		elem.innerHTML = text[counter];
+		
+		if (counter == 0) {
+			// Reset the variables
+			document.getElementById("imageStory").style.display = "none";
+			playerName = "";
+			rivalName = "";
+			starterPokemon = "";
+			starterPokemonRival = "";
+			document.getElementById("activePokemon").style.display = "none";
+			document.getElementById("player").style.display = "none";
+			document.getElementById("imgPlayer").style.display = "none";
+			document.getElementById("imageStory").style.display = "none";
+			document.getElementById("pokemonRed").style.display = "none";
+		}
 
 		counter++;
 
@@ -255,10 +320,13 @@ function startGame() {
 			player.activePokemon1Level = 5;
 			player.activePokemon1Name = player.starterPokemon;
 			if (player.starterPokemon == "BULBASAUR") {
+				starterPokemonRival = "CHARMANDER";
 				rival.starterPokemonRival = "CHARMANDER";
 			} else if (player.starterPokemon == "CHARMANDER") {
+				starterPokemonRival = "SQUIRTLE";
 				rival.starterPokemonRival = "SQUIRTLE";
 			} else if (player.starterPokemon == "SQUIRTLE") {
+				starterPokemonRival = "BULBASAUR";
 				rival.starterPokemonRival = "BULBASAUR";
 			} else {
 				rival.starterPokemonRival = "BULBASAUR";
@@ -300,16 +368,21 @@ function startGame() {
 				player.activePokemon1Name,
 				rival.starterPokemonRival,
 			]
-			return ; //is this necessary?
+			document.getElementById("pokemonRed").style.display = "block";
+			//return ; //is this necessary?
 		} else if(counter == 5){
 			document.getElementById("imageStory").src = "images/Professor_Oak_XY.png"; // picture of Professor Oak from http://bulbapedia.bulbagarden.net/wiki/Professor_Oak_%28anime%29
 			document.getElementById("imageStory").style.display = "block";
+		} else if(counter == 16) {
+			imgPlayer = "images/FireRed_" + player.gender + ".png";
+			document.getElementById("imgPlayer").src = imgPlayer;
+			// picture of boy from http://www.marriland.com/forums/pokemon-1st-2nd-3rd-generation/pokemon-firered-leafgreen/514280-girl-or-boy
+			// picture of girl from http://bulbapedia.bulbagarden.net/wiki/Leaf_%28game%29
+			document.getElementById("imgPlayer").style.display = "block";
 		} else if(counter == 17) {
 			document.getElementById("imageStory").src = "images/Gary.png";// picture of Gary from http://bulbapedia.bulbagarden.net/wiki/Blue_%28game%29
 		} else if(counter == 20) {
-			document.getElementById("imageStory").src = "images/FireRed_" + player.gender + ".png";
-			// picture of boy from http://www.marriland.com/forums/pokemon-1st-2nd-3rd-generation/pokemon-firered-leafgreen/514280-girl-or-boy
-			// picture of girl from http://bulbapedia.bulbagarden.net/wiki/Leaf_%28game%29
+			document.getElementById("imageStory").src = "images/Professor_Oak_XY.png"; // picture of Professor Oak from http://bulbapedia.bulbagarden.net/wiki/Professor_Oak_%28anime%29
 		} else if(counter == 23) {
 			document.getElementById("imageStory").src = "images/OwnRoom.png"; // screenshot from Pokemon FireRed game from GAME FREAK inc.
 		} else if(counter == 33) {
@@ -366,13 +439,17 @@ function startGame() {
 			document.getElementById("imageStory").src = "images/Professor_Oak_XY.png"; // picture of Professor Oak from http://bulbapedia.bulbagarden.net/wiki/Professor_Oak_%28anime%29
 		} else if(counter == 82) {
 			document.getElementById("imageStory").src = "images/PalletTown_ProfOakLab3.png"; // screenshot from Pokemon FireRed game from GAME FREAK inc.
-			//damage calculation for battle --> http://www.psypokes.com/dex/damage.php
 		} else if(counter >= text.length + 1) {
 			// End the game
-			document.getElementById("imageStory").src = "images/FireRed_" + player.gender + ".png";
-			elem.innerHTML = "Congratulations, you have won the game. <br/> Welcome to the HALL OF FAME! "; 
+			elemStoryImage.src = "images/HallOfFame.png"; //screenshot from https://www.youtube.com/watch?v=Uq9LTpj91Rw
+			elem.innerHTML = "Congratulations, you have won the game. <br/> Welcome to the HALL OF FAME! ";
+			//counter = 0;
+			document.getElementById("gameName").style.display = "block";
+			document.getElementById("buttonStart").style.display = "block";
+			return;
 		}
 	}
+	counter = 0;
 }
 
 
