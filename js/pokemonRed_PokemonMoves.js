@@ -17,7 +17,7 @@ var pokemonMoves = {
 	accuracy: 0
 };
 
-function calculateDamage() { //http://www.serebii.net/games/damage.shtml
+function calculateDamage() { //http://www.serebii.net/games/damage.shtml //when power of move > 0
 /* Seems long and confusing? Compared to the other formula's, this one is easy as pie. Let me explain all the variables first. 
 Damage is, well, damage, the output number. 
 Level is your pokemon's current level. 
@@ -27,6 +27,7 @@ AttackPower is the power of the specific move you're using. For example, if you 
 STAB is the same type attack bonus. If you're using a move that coordinates with your own type, you get a 1.5 bonus here. Otherwise, this variable is equal to 1. 
 Weakness/Resistance depends on if your move was super-effective or otherwise. This variable could be 0.25, 0.5, 1, 2, or 4 depending on how effective your attack was. 
 RandomNumber is simply a Random Number between 85 and 100. */
-	damage = ((((2 * Level / 5 + 2) * AttackStat * AttackPower / DefenseStat) / 50) + 2) * STAB * Weakness/Resistance * RandomNumber / 100
-}
+	damage = ((((2 * Level / 5 + 2) * AttackStat * AttackPower / DefenseStat) / 50) + 2) * STAB * Weakness/Resistance * RandomNumber / 100;
+	return damage;
+};
 

@@ -1,6 +1,7 @@
 //Pokemon Battle
 
-//function pokemonbattle {
+function pokemonbattle() {
+
 //// show battle screen (different depending on where you are?
 //// text opponent wants to battle you
 //// text opponent sents out certain pokemon
@@ -34,4 +35,26 @@
 //// 		}
 //// 	}
 //// }
-//}
+};
+
+
+function firstPokemonBattleStart() {
+	var counterTwo = 0;
+	window.setInterval(firstPokemonBattle, 1000);
+	function firstPokemonBattle() {
+		var battleText = [
+			"", //your pokemon uses a certain move
+		];
+		
+		elem.innerHTML = battleText[counterTwo];
+		
+		if (counter == 0) {
+			//reset variables
+		};
+		
+		counterTwo++;
+		
+		
+	};
+	counterTwo = 0;
+};

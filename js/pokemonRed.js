@@ -3,6 +3,7 @@ pokemonRed.js
 Javascript code for the Pokemon FireRed Progress Quest
 Made on 20-07-2015
 by GeOdin */
+// Story used from Pokemon FireRed
 // change pokemonRed in pokemonFireRed
 // movie of start of game: https://www.youtube.com/watch?v=yUS1IcC5CBY
 // make sure to block the start button / ask for refreshing the game when it's pressed --> done // or remove start button when game is started!
@@ -48,13 +49,15 @@ function startGame() {
 	var startInfo;
 	var pokemonOne;
 	var pokemonOneRival;
+	// var currentHPpokemon;
+	var maxHPpokemon;
 	
 	
 	// Start game
 	confirm("Are you ready to play? \nIt takes 5 seconds to start the game. "); // game also starts if not confirmed
 	document.getElementById("gameName").style.display = "none";
 	document.getElementById("buttonStart").style.display = "none";
-	window.setInterval(change, 1000); //5000 for 5 seconds in final version / 3000 for 3 seconds;
+	window.setInterval(change, 1); //5000 for 5 seconds in final version / 3000 for 3 seconds;
 	
 	function change() {
 	
@@ -81,15 +84,16 @@ function startGame() {
 
 			// Introduction player
 			"But first, tell me a little about <br/> yourself. ",
-			"",
+			"Let's begin with your name. <br/> What is it? ",
 			"Right... <br/> So your name is " + playerName + ".", //16
 			
 			// Introduction rival
 			"This is my grandson.",
-			"He's been your rival since you both <br/> were babies. ",
-			"That's right! I remember now! <br/> His name is " + rivalName + "! ",
+			"He's been your rival since you both <br/> were babies. ", //18
+			"...Erm, what was his name now? ",
+			"That's right! I remember now! <br/> His name is " + rivalName + "! ",//20
 			
-			playerName + "!",//20
+			playerName + "!",
 			"Your very own POKeMON legend is <br/> about to unfold! ",
 			"A world of dreams and adventures <br/> with POKeMON awaits! Let's go! ",
 			
@@ -98,69 +102,61 @@ function startGame() {
 			///////////////// //prof oaks lab --> http://bulbapedia.bulbagarden.net/wiki/File:Professor_Oak_Lab_inside_FRLG.png (not yet used, in folder PalletTown in folder images)
 			// Own House
 			"You walk to your PC. ", 
-			playerName + " booted up the PC. ",
-			"What would you like to do? ",
-			"ITEM STORAGE ",
-			"WITHDRAW ITEM ",
-			"Take out items from the PC. ",
-			"POTION is selected. ", 
-			"POTION x 1",//30
-			"A spray-type wound medicine. <br/> It restores the HP of one POK&eacute;MON by 20 points. ",
-			"Withdrew 1 POTION(s). ",
-			"You walk down to your mom. ",
+			"You withdraw the POTION from your PC. ", //25
+			"You walk down to your mom. ", 
 			"", 
 			"It said so on TV. ",
 			"Oh yes. PROF. OAK, next door, was <br/> looking for you. ",
 			
 			// Walk to PROF. OAK's and getting your first Pokemon
-			"You walk out of your house. ",
+			"You walk out of your house. ", //30
 			"PALLET TOWN", 
 			"You walk into " + rivalName + ". ", 
-			rivalName + ": What, it's only " + playerName + "? <br/> Gramps isn't around. ",//40
+			rivalName + ": What, it's only " + playerName + "? <br/> Gramps isn't around. ",
 			"PALLET TOWN",
-			"You try to walk out of PALLET TOWN. ",
+			"You try to walk out of PALLET TOWN. ",//35
 			"OAK: Hey! Wait! <br/> Don't go out! ",
 			"",
 			"OAK: It's unsafe! <br/> Wild POK&eacute;MON live in tall grass! ",
 			"You need your own POK&eacute;MON for <br/> your protection. ",
-			"I know! <br/> Here, come with me! ",
+			"I know! <br/> Here, come with me! ",//40
 			"You walk with PROF. OAK to his lab. ",
 			rivalName + ": Gramps! <br/> I'm fed up with waiting! ",
 			"OAK: " + rivalName + "? <br/> Let met think... ",
 			"Oh, that's right, I told you to <br/> come! Just wait! ",
-			"Here, " + playerName + ".",
+			"Here, " + playerName + ".",//45
 			"There are three POK&eacute;MON here. ",
 			"Haha! ",
 			"The POK&eacute;MON are held inside <br/> these POK&eacute; BALLS. ",
 			"When I was young, I was a serious <br/> POK&eacute;MON TRAINER. ",
-			"But now, in my old age, I have <br/> only these three left. ",
+			"But now, in my old age, I have <br/> only these three left. ",//50
 			"You can have one. <br/> Go on, choose! ",
 			rivalName + ": Hey! Gramps! No fair! <br/> What about me? ",
-			"OAK: Be patient, " + rivalName + ". <br/> You can have one, too! ",//counter 60
-			"", //61
-			playerName + " received the " + starterPokemon + " <br/> from PROF. OAK! ", //62
-			rivalName + ": I'll take this one, then! ", //63
-			rivalName + " received the " + starterPokemonRival + " <br/> from PROF. OAK! ", //64
+			"OAK: Be patient, " + rivalName + ". <br/> You can have one, too! ",
+			"", 
+			playerName + " received the " + starterPokemon + " <br/> from PROF. OAK! ", //55
+			rivalName + ": I'll take this one, then! ",
+			rivalName + " received the " + starterPokemonRival + " <br/> from PROF. OAK! ",
 			
  			// Your first battle
-			"OAK: If a wild POK&eacute;MON appears, <br/> your POK&eacute;MON can battle it. ", //65
-			"With it at your side, you should be <br/> able to reach the next town. ", //66
-			"", //67
-			rivalName + ": Wait, " + playerName + "! <br/> Let's check out our POK&Eacute;MON!", //68
-			"Come on, I'll take you on! ", //69
-			"RIVAL " + rivalName + " <br/> would like to battle! ", //70
-			"RIVAL " + rivalName + " sent <br/> out " + starterPokemonRival + "!", //71
-			"Go! " + starterPokemon + "! ", //72
-			"OAK: Oh, for Pete's sake... <br/> So pushy, as always. ", //73
-			playerName + ". ", //74
-			"You've never had a POK&eacute;MON battle <br/> before, have you? ", //75
-			"A POK&eacute;MON battle is when TRAINERS <br/> pit their POK&eacute;MON against each ", //76
-			"other. ", //77
-			"The TRAINER that makes the other <br/> TRAINER's POK&eacute;MON faint by lowering ", //78
-			"their HP to '0', wins. ", //79
-			"But rather than talking about it, <br/> you'll learn more from experience. ", //80
-			"Try battling and see for yourself. ", //81
-			"", //82 
+			"OAK: If a wild POK&eacute;MON appears, <br/> your POK&eacute;MON can battle it. ",
+			"With it at your side, you should be <br/> able to reach the next town. ",
+			"", //60
+			rivalName + ": Wait, " + playerName + "! <br/> Let's check out our POK&Eacute;MON!",
+			"Come on, I'll take you on! ",
+			"RIVAL " + rivalName + " <br/> would like to battle! ",
+			"RIVAL " + rivalName + " sent <br/> out " + starterPokemonRival + "!",
+			"Go! " + starterPokemon + "! ", //65
+			"OAK: Oh, for Pete's sake... <br/> So pushy, as always. ",
+			playerName + ". ",
+			"You've never had a POK&eacute;MON battle <br/> before, have you? ",
+			"A POK&eacute;MON battle is when TRAINERS <br/> pit their POK&eacute;MON against each ",
+			"other. ", //70
+			"The TRAINER that makes the other <br/> TRAINER's POK&eacute;MON faint by lowering ",
+			"their HP to '0', wins. ",
+			"But rather than talking about it, <br/> you'll learn more from experience. ",
+			"Try battling and see for yourself. ",
+			"", //75
 			
 			
 			/////////////
@@ -279,11 +275,6 @@ function startGame() {
 				""
 			); 
 			
-			// Show the player's name, gender and rival's name
-			showPlayerStats = player.name + " (" + player.gender + ") vs. " + rival.name;
-			document.getElementById("player").style.display = "block";
-			document.getElementById("player").innerHTML = showPlayerStats;
-			
 			// Get the starter Pokemon
 			while(!(starterPokemon == "BULBASAUR" | starterPokemon == "CHARMANDER" | starterPokemon == "SQUIRTLE")) {
 				starterPokemon = prompt("Which Pokemon do you want as a starter? ", "Bulbasaur / Charmander / Squirtle");
@@ -292,30 +283,38 @@ function startGame() {
 			player.starterPokemon = starterPokemon;
 			starterPokemonLevel = 5;
 			
- 			for (i=0; i<pokemon.length; i++) {
-				if (pokemon[i][1] == player.starterPokemon) {
-					pokemonOne = new createPokemon(// bulbasaur / squirtle / charmander instead of pokemonOne
-						pokemon[i][0], 
-						pokemon[i][1],
-						starterPokemonLevel,
-						pokemon[i][3],
-						pokemon[i][4],
-						pokemon[i][5],
-						pokemon[i][6],
-						pokemon[i][7], //getHP(player.starterPokemon, starterPokemonLevel), //adjust hp for level 5 //getHP() function? --> getHP(player.starterPokemon); variable pokemonStats uit pokemonRed_Pokemon.js?
-						pokemon[i][8], //adjust attack for level 5
-						pokemon[i][9], //adjust defense defense for level 5
-						pokemon[i][10], //adjust spattack for level 5
-						pokemon[i][11], //adjust spdefense for level 5
-						pokemon[i][12], //adjust speed for level 5
-						pokemon[i][13],
-						pokemon[i][14], //adjust for level (bulbasaur/squirtle have 2nd move on level 5 instead of on level 1)
-						pokemon[i][15],
-						pokemon[i][16]
-					);
+/* 			for (i=0; i<pokemonStats.length; i++) {
+				if (pokemonStats[i][1] == player.starterPokemon) {
+					if (pokemonStats[i][2] == starterPokemonLevel) {
+						currentHPpokemon = pokemonStats[i][3];
+					}
+				}
+				return currentHPpokemon;
+			}; */
+ 			for (i=0; i<pokemonStats.length; i++) {
+				if (pokemonStats[i][1] == player.starterPokemon) {
+					if (pokemonStats[i][2] == starterPokemonLevel) {
+						pokemonOne = new createPokemon(// bulbasaur / squirtle / charmander instead of pokemonOne
+							pokemonStats[i][0], 
+							pokemonStats[i][1],
+							pokemonStats[i][2],
+							pokemonStats[i][3],
+							pokemonStats[i][4],
+							pokemonStats[i][5],
+							pokemonStats[i][6],
+							pokemonStats[i][7],
+							pokemonStats[i][8],
+							pokemonStats[i][9],
+							pokemonStats[i][10],
+							pokemonStats[i][11],
+							pokemonStats[i][12],
+							pokemonStats[i][13],
+							pokemonStats[i][14],
+							pokemonStats[i][15],
+							pokemonStats[i][16]
+					);}
 				}
 			}
-			//document.getElementById("player").innerHTML = pokemonOne.hp; --> to check whether getHP() function is working
 			
 			player.activePokemon1Level = 5;
 			player.activePokemon1Name = player.starterPokemon;
@@ -334,31 +333,33 @@ function startGame() {
 			rival.activePokemon1Level = 5;
 			rival.activePokemon1Name = rival.starterPokemonRival;
 			
- 			for (i=0; i<pokemon.length; i++) {
-				if (pokemon[i][1] == rival.starterPokemonRival) {
-					pokemonOneRival = new createPokemon(
-						pokemon[i][0], 
-						pokemon[i][1],
-						5,
-						pokemon[i][3],
-						pokemon[i][4],
-						pokemon[i][5],
-						pokemon[i][6],
-						pokemon[i][7], //adjust hp for level 5
-						pokemon[i][8], //adjust attack for level 5
-						pokemon[i][9], //adjust defense defense for level 5
-						pokemon[i][10], //adjust spattack for level 5
-						pokemon[i][11], //adjust spdefense for level 5
-						pokemon[i][12], //adjust speed for level 5
-						pokemon[i][13],
-						pokemon[i][14], //adjust for level (bulbasaur/squirtle have 2nd move on level 5 instead of on level 1)
-						pokemon[i][15],
-						pokemon[i][16]
-					);
+			
+ 			for (i=0; i<pokemonStats.length; i++) {
+				if (pokemonStats[i][1] == rival.starterPokemonRival) {
+					if (pokemonStats[i][2] == starterPokemonLevel) {
+						pokemonOneRival = new createPokemon(// bulbasaur / squirtle / charmander instead of pokemonOne
+							pokemonStats[i][0], 
+							pokemonStats[i][1],
+							pokemonStats[i][2],
+							pokemonStats[i][3],
+							pokemonStats[i][4],
+							pokemonStats[i][5],
+							pokemonStats[i][6],
+							pokemonStats[i][7],
+							pokemonStats[i][8],
+							pokemonStats[i][9],
+							pokemonStats[i][10],
+							pokemonStats[i][11],
+							pokemonStats[i][12],
+							pokemonStats[i][13],
+							pokemonStats[i][14],
+							pokemonStats[i][15],
+							pokemonStats[i][16]
+					);}
 				}
 			}
 			
-			startInfo = new Array();
+			startInfo = new Array(); //needed?
 			startInfo = [
 				player.name, 
 				player.gender, 
@@ -374,44 +375,61 @@ function startGame() {
 			document.getElementById("imageStory").src = "images/Professor_Oak_XY.png"; // picture of Professor Oak from http://bulbapedia.bulbagarden.net/wiki/Professor_Oak_%28anime%29
 			document.getElementById("imageStory").style.display = "block";
 		} else if(counter == 16) {
+ 			// Show the player's name and gender
+			showPlayerStats = player.name + " (" + player.gender + ")";
+			document.getElementById("player").style.display = "block";
+			document.getElementById("player").innerHTML = showPlayerStats;
 			imgPlayer = "images/FireRed_" + player.gender + ".png";
 			document.getElementById("imgPlayer").src = imgPlayer;
+/* 			if (player.gender == "boy") { //flip image if player.gender == boy
+				// https://css-tricks.com/snippets/css/flip-an-image/
+				// http://monkeyraptor.johanpaul.net/2013/07/how-to-mirror-image-using-css3.html
+				document.getElementById("imgPlayer").style.-moz-transform = "scale(-1,1)";
+				document.getElementById("imgPlayer").style.-o-transform = "scale(-1,1)";
+				document.getElementById("imgPlayer").style.-webkit-transform = "scale(-1,1)";
+				document.getElementById("imgPlayer").style.-transform = "scale(-1,1)";
+			}; */
 			// picture of boy from http://www.marriland.com/forums/pokemon-1st-2nd-3rd-generation/pokemon-firered-leafgreen/514280-girl-or-boy
 			// picture of girl from http://bulbapedia.bulbagarden.net/wiki/Leaf_%28game%29
 			document.getElementById("imgPlayer").style.display = "block";
 		} else if(counter == 17) {
 			document.getElementById("imageStory").src = "images/Gary.png";// picture of Gary from http://bulbapedia.bulbagarden.net/wiki/Blue_%28game%29
 		} else if(counter == 20) {
+ 			// Show the player's name, gender and rival's name
+			showPlayerStats = player.name + " (" + player.gender + ") vs. " + rival.name;
+			document.getElementById("player").innerHTML = showPlayerStats;
+		} else if(counter == 21) {
 			document.getElementById("imageStory").src = "images/Professor_Oak_XY.png"; // picture of Professor Oak from http://bulbapedia.bulbagarden.net/wiki/Professor_Oak_%28anime%29
-		} else if(counter == 23) {
+		} else if(counter == 24) {
 			document.getElementById("imageStory").src = "images/OwnRoom.png"; // screenshot from Pokemon FireRed game from GAME FREAK inc.
-		} else if(counter == 33) {
+		} else if(counter == 26) {
 			document.getElementById("imageStory").src = "images/Mom.png"; // screenshot from Pokemon FireRed game from GAME FREAK inc.
-		} else if(counter == 34) {
+		} else if(counter == 27) {
 			if (playerGender == "boy"){
 				document.getElementById("pokemonRed").innerHTML = "MOM: ...Right. <br/> All " + player.gender + "s leave home someday. "
 			} else {
 				document.getElementById("pokemonRed").innerHTML = "MOM: ...Right. <br/> All " + player.gender + "s dream of travelling. "
 			}
-		} else if(counter == 38) {
+		} else if(counter == 31) {
 			document.getElementById("imageStory").src = "images/PalletTown.png"; // screenshot from Pokemon FireRed game from GAME FREAK inc.
-		} else if(counter == 39) {
+		} else if(counter == 32) {
 			document.getElementById("imageStory").src = "images/Gary.png";// picture of Gary from http://bulbapedia.bulbagarden.net/wiki/Blue_%28game%29
-		} else if(counter == 41) {
+		} else if(counter == 34) {
 			document.getElementById("imageStory").src = "images/PalletTown.png"; // screenshot from Pokemon FireRed game from GAME FREAK inc.
-		} else if(counter == 42) {
+		} else if(counter == 35) {
 			document.getElementById("imageStory").src = "images/PalletTown_2.png"; // screenshot from Pokemon FireRed game from GAME FREAK inc.
-		} else if(counter == 43) {
+		} else if(counter == 36) {
 			document.getElementById("imageStory").src = "images/Professor_Oak_XY.png"; // picture of Professor Oak from http://bulbapedia.bulbagarden.net/wiki/Professor_Oak_%28anime%29
-		} else if(counter == 44) {
+		} else if(counter == 37) {
 			document.getElementById("imageStory").src = "images/PalletTown_3.png"; // screenshot from Pokemon FireRed game from GAME FREAK inc.
-		} else if(counter == 45) {
+		} else if(counter == 38) {
 			document.getElementById("imageStory").src = "images/PalletTown_4.png"; // screenshot from Pokemon FireRed game from GAME FREAK inc.
-		} else if(counter == 48) {
+		} else if(counter == 41) {
 			document.getElementById("imageStory").src = "images/PalletTown_5.png"; // screenshot from Pokemon FireRed game from GAME FREAK inc.
-		} else if(counter == 49) {
+		} else if(counter == 42) {
 			document.getElementById("imageStory").src = "images/PalletTown_ProfOakLab.png"; // screenshot from Pokemon FireRed game from GAME FREAK inc.
-		} else if(counter == 61) {
+		} else if(counter == 54) {
+			// Show starter pokemon
 			starterPokemon = player.activePokemon1Name;
 			if (starterPokemon == "BULBASAUR") {
 				document.getElementById("pokemonRed").innerHTML = "I see! "+ player.starterPokemon + " is your choice. <br/> It's very easy to raise. ";
@@ -420,25 +438,37 @@ function startGame() {
 			} else {
 				document.getElementById("pokemonRed").innerHTML = "Hm! " + player.starterPokemon + " is your choice. <br/> It's one worth raising. ";
 			}
-		} else if(counter == 62) {
+			for (i=0; i<pokemonStats.length; i++) {
+				if (pokemonStats[i][1] == pokemonOne.name) {
+					if (pokemonStats[i][2] == pokemonOne.level) {
+						maxHPpokemon = pokemonStats[i][7];
+					}
+				}
+			}
 			document.getElementById("activePokemon").style.display = "inline";
 			document.getElementById("imgActivePokemon1").src = "images/pokemonIcons/" + player.activePokemon1Name + ".gif";
-			document.getElementById("activePokemon1").innerHTML = "Lvl. " + player.activePokemon1Level + " " + player.activePokemon1Name;
+			document.getElementById("activePokemon1").innerHTML = "Lvl. " + player.activePokemon1Level + " " + player.activePokemon1Name + " <br/> HP: " + pokemonOne.hp + "/" + maxHPpokemon;
 			return starterPokemon;
-		} else if(counter == 63) {
+		} else if(counter == 56) {
 			document.getElementById("imageStory").src = "images/Gary.png";// picture of Gary from http://bulbapedia.bulbagarden.net/wiki/Blue_%28game%29
-		} else if(counter == 65) {
+		} else if(counter == 58) {
 			document.getElementById("imageStory").src = "images/Professor_Oak_XY.png"; // picture of Professor Oak from http://bulbapedia.bulbagarden.net/wiki/Professor_Oak_%28anime%29
-		} else if(counter == 67) {
+		} else if(counter == 60) {
 			document.getElementById("imageStory").src = "images/PalletTown_ProfOakLab2.png"; // screenshot from Pokemon FireRed game from GAME FREAK inc.
-		} else if(counter == 68) {
+		} else if(counter == 61) {
 			document.getElementById("imageStory").src = "images/Gary.png";// picture of Gary from http://bulbapedia.bulbagarden.net/wiki/Blue_%28game%29
-		} else if(counter == 70) {
+		} else if(counter == 63) {
 			document.getElementById("imageStory").src = "images/PalletTown_ProfOakLab3.png"; // screenshot from Pokemon FireRed game from GAME FREAK inc.
-		} else if(counter == 73) {
+		} else if(counter == 66) {
 			document.getElementById("imageStory").src = "images/Professor_Oak_XY.png"; // picture of Professor Oak from http://bulbapedia.bulbagarden.net/wiki/Professor_Oak_%28anime%29
-		} else if(counter == 82) {
+		} else if(counter == 75) {
 			document.getElementById("imageStory").src = "images/PalletTown_ProfOakLab3.png"; // screenshot from Pokemon FireRed game from GAME FREAK inc.
+			// show your pokemon #imageStory
+			// your pokemon uses move 
+			// text pokemon used move #pokemonRed
+			// show opponent pokemon #imageStory
+			// opponent pokemon uses move
+			// text pokemon opponent used move #pokemonRed
 		} else if(counter >= text.length + 1) {
 			// End the game
 			elemStoryImage.src = "images/HallOfFame.png"; //screenshot from https://www.youtube.com/watch?v=Uq9LTpj91Rw
@@ -480,6 +510,5 @@ function startGame() {
 	document.getElementById("pokemonRed").innerHTML = "Hello"; */
 
 
-// use story from Pokemon Red
 // get stats from Pokemon from text file?
 // http://www.javascriptkit.com/javatutors/time3.shtml
