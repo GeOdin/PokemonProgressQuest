@@ -51,10 +51,10 @@ function createPokemon(pokemonNumber, pokemonName, pokemonLevel, pokemonType1, p
 	this.spattack = spattack; //10 - 0
 	this.spdefense = spdefense; //11 - 0
 	this.speed = speed; //12 - 0
-	this.pokemonMove1 = pokemonMove1; //13 - ""
-	this.pokemonMove2 = pokemonMove2; //14 - ""
-	this.pokemonMove3 = pokemonMove3; //15 - ""
-	this.pokemonMove4 = pokemonMove4; //16 - ""
+	this.move1 = pokemonMove1; //13 - ""
+	this.move2 = pokemonMove2; //14 - ""
+	this.move3 = pokemonMove3; //15 - ""
+	this.move4 = pokemonMove4; //16 - ""
 };
 
 // Get Pokemon HP corresponding to certain pokemon and level //currently not working

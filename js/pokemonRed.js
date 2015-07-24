@@ -57,7 +57,7 @@ function startGame() {
 	confirm("Are you ready to play? \nIt takes 5 seconds to start the game. "); // game also starts if not confirmed
 	document.getElementById("gameName").style.display = "none";
 	document.getElementById("buttonStart").style.display = "none";
-	window.setInterval(change, 1); //5000 for 5 seconds in final version / 3000 for 3 seconds;
+	window.setInterval(change, 1); //5000 for 5 seconds in final version / 3000 for 3 seconds; //1 for quick testing purposes; //1000 for slow testing purposes;
 	
 	function change() {
 	
@@ -463,12 +463,9 @@ function startGame() {
 			document.getElementById("imageStory").src = "images/Professor_Oak_XY.png"; // picture of Professor Oak from http://bulbapedia.bulbagarden.net/wiki/Professor_Oak_%28anime%29
 		} else if(counter == 75) {
 			document.getElementById("imageStory").src = "images/PalletTown_ProfOakLab3.png"; // screenshot from Pokemon FireRed game from GAME FREAK inc.
-			// show your pokemon #imageStory
-			// your pokemon uses move 
-			// text pokemon used move #pokemonRed
-			// show opponent pokemon #imageStory
-			// opponent pokemon uses move
-			// text pokemon opponent used move #pokemonRed
+			//pause current setInterval --> http://stackoverflow.com/questions/8432127/stop-setinterval-function-for-an-amount-of-time
+			firstPokemonBattleStart(pokemonOne, pokemonOneRival);
+			//continue with current setInterval
 		} else if(counter >= text.length + 1) {
 			// End the game
 			elemStoryImage.src = "images/HallOfFame.png"; //screenshot from https://www.youtube.com/watch?v=Uq9LTpj91Rw
