@@ -3,6 +3,11 @@ pokemonRed.js
 Javascript code for the Pokemon FireRed Progress Quest
 Made on 20-07-2015
 by GeOdin */
+
+// This includes the functions:
+//// startGame();
+////// change();
+
 // Story used from Pokemon FireRed
 // change pokemonRed in pokemonFireRed
 // movie of start of game: https://www.youtube.com/watch?v=yUS1IcC5CBY
@@ -57,7 +62,7 @@ function startGame() {
 	confirm("Are you ready to play? \nIt takes 5 seconds to start the game. "); // game also starts if not confirmed
 	document.getElementById("gameName").style.display = "none";
 	document.getElementById("buttonStart").style.display = "none";
-	window.setInterval(change, 1); //5000 for 5 seconds in final version / 3000 for 3 seconds; //1 for quick testing purposes; //1000 for slow testing purposes;
+	window.setInterval(change, 1000); //5000 for 5 seconds in final version / 3000 for 3 seconds; //1 for quick testing purposes; //1000 for slow testing purposes;
 	
 	function change() {
 	
@@ -464,7 +469,7 @@ function startGame() {
 		} else if(counter == 75) {
 			document.getElementById("imageStory").src = "images/PalletTown_ProfOakLab3.png"; // screenshot from Pokemon FireRed game from GAME FREAK inc.
 			//pause current setInterval --> http://stackoverflow.com/questions/8432127/stop-setinterval-function-for-an-amount-of-time
-			firstPokemonBattleStart(pokemonOne, pokemonOneRival);
+			pokemonBattleStartFirst(player, rival); //this is not functional; check whether all objects are proper objects
 			//continue with current setInterval
 		} else if(counter >= text.length + 1) {
 			// End the game
