@@ -43,26 +43,35 @@ function startGame() {
 	var elem = document.getElementById("pokemonRed"); //create variables for other document.getElementById elements
 	var elemStoryImage = document.getElementById("imageStory"); //create variables for other document.getElementById elements
 	var counter = 0;
-	var player;
-	var playerGender;
-	var showPlayerStats;
 	var playerName = "";
-	// var imgPlayer = "";
-	var rivalName = "";
+	var playerGender;
 	var starterPokemon = "";
-	var starterPokemonRival = "";
-	var startInfo;
 	var pokemonOne;
+	var player;
+	var rivalName = "";
+	var starterPokemonRival = "";
 	var pokemonOneRival;
-	// var currentHPpokemon;
-	var maxHPpokemon;
+	var rival;
+	var showPlayerStats;
+	var startInfo;
+	var pokemonMovetype = "";
+	var pokemonMoveCategory = "";
+	var pokemonMovePP = 0;
+	var pokemonMovePower = 0;
+	var pokemonMoveAccuracy = 100;
+	var pokemonMoveEffect = "";
+	var moveOne;
+/*	var moveTwo;
+	var moveThree;
+	var moveFour; */
+	var something; // can be deleted later; check CNTRL-f to see whether it's still furter in the code
 	
 	
 	// Start game
 	confirm("Are you ready to play? \nIt takes 5 seconds to start the game. "); // game also starts if not confirmed
 	document.getElementById("gameName").style.display = "none";
 	document.getElementById("buttonStart").style.display = "none";
-	window.setInterval(change, 1000); //5000 for 5 seconds in final version / 3000 for 3 seconds; //1 for quick testing purposes; //1000 for slow testing purposes;
+	window.setInterval(change, 5); //5000 for 5 seconds in final version / 3000 for 3 seconds; //1 for quick testing purposes; //1000 for slow testing purposes;
 	
 	function change() {
 	
@@ -141,7 +150,7 @@ function startGame() {
 			"", 
 			playerName + " received the " + starterPokemon + " <br/> from PROF. OAK! ", //55
 			rivalName + ": I'll take this one, then! ",
-			rivalName + " received the " + starterPokemonRival + " <br/> from PROF. OAK! ",
+			rivalName + " received the " + starterPokemonRival + " <br/> from PROF. OAK! ", // starterPokemonRival is no longer shown, but shown as ""
 			
  			// Your first battle
 			"OAK: If a wild POK&eacute;MON appears, <br/> your POK&eacute;MON can battle it. ",
@@ -150,7 +159,7 @@ function startGame() {
 			rivalName + ": Wait, " + playerName + "! <br/> Let's check out our POK&Eacute;MON!",
 			"Come on, I'll take you on! ",
 			"RIVAL " + rivalName + " <br/> would like to battle! ",
-			"RIVAL " + rivalName + " sent <br/> out " + starterPokemonRival + "!",
+			"RIVAL " + rivalName + " sent <br/> out " + starterPokemonRival + "!", // starterPokemonRival is no longer properly shown, but shown as ""
 			"Go! " + starterPokemon + "! ", //65
 			"OAK: Oh, for Pete's sake... <br/> So pushy, as always. ",
 			playerName + ". ",
@@ -161,7 +170,7 @@ function startGame() {
 			"their HP to '0', wins. ",
 			"But rather than talking about it, <br/> you'll learn more from experience. ",
 			"Try battling and see for yourself. ",
-			"", //75
+			"" //75
 			
 			
 			/////////////
@@ -218,7 +227,7 @@ function startGame() {
 			document.getElementById("player").style.display = "none";
 			document.getElementById("imgPlayer").style.display = "none";
 			document.getElementById("imageStory").style.display = "none";
-			document.getElementById("pokemonRed").style.display = "none";
+			document.getElementById("pokemonRed").style.display = "block";
 		}
 
 		counter++;
@@ -236,69 +245,41 @@ function startGame() {
 				playerGender = playerGender.toLowerCase();
 			}
 			
- 			// Create a player object
-			player = new createPlayer (
-				playerName,
-				playerGender,
-				5000, //is this the correct starting amount?
-				"",
-				"",
-				"",
-				"",
-				"",
-				"",
-				"",
-				"",
-				"",
-				"",
-				"",
-				"",
-				""
-			); 
-			
-			// Get the rival's name
-			rivalName = prompt("...Erm, what was his name now? ", "RIVAL's NAME");
-			while (rivalName.length < 1) {
-				rivalName = prompt("RIVAL's NAME? ", ""); // alert("...Er, was it " + rivalName + "? "); //insert Yes/no option?
-			}
-			
- 			// Create a rival object
-			rival = new createRival (
-				rivalName,
-				"",
-				"",
-				"",
-				"",
-				"",
-				"",
-				"",
-				"",
-				"",
-				"",
-				"",
-				"",
-				""
-			); 
-			
 			// Get the starter Pokemon
 			while(!(starterPokemon == "BULBASAUR" | starterPokemon == "CHARMANDER" | starterPokemon == "SQUIRTLE")) {
 				starterPokemon = prompt("Which Pokemon do you want as a starter? ", "Bulbasaur / Charmander / Squirtle");
 				starterPokemon = starterPokemon.toUpperCase();
 			}
-			player.starterPokemon = starterPokemon;
-			starterPokemonLevel = 5;
-			
-/* 			for (i=0; i<pokemonStats.length; i++) {
-				if (pokemonStats[i][1] == player.starterPokemon) {
+			//player.starterPokemon = starterPokemon;
+			var starterPokemonLevel = 5;
+
+/*			// Create the pokemonMoves
+ 			for (i=0; i<pokemonStats.length; i++) {
+				if (pokemonStats[i][1] == starterPokemon) {
 					if (pokemonStats[i][2] == starterPokemonLevel) {
-						currentHPpokemon = pokemonStats[i][3];
+
 					}
 				}
-				return currentHPpokemon;
-			}; */
+			};*/
+/*			for (i=0; i<pokemonMoves.length; i++) {
+				if (pokemonMoves[i][0] == pokemonMove[0]) {
+					// create the move
+					this.Name = pokemonMoves[i][0];
+					this.Type = pokemonMoves[i][1];
+					this.category = pokemonMoves[i][2];
+					this.pp = pokemonMoves[i][3];
+					this.power = pokemonMoves[i][4];
+					this.accuracy = pokemonMoves[i][5];
+					this.effect = pokemonMoves[i][6];
+					}
+				}
+			}*/
+
+			// Create the starterPokemon Object
  			for (i=0; i<pokemonStats.length; i++) {
-				if (pokemonStats[i][1] == player.starterPokemon) {
+				if (pokemonStats[i][1] == starterPokemon) {
 					if (pokemonStats[i][2] == starterPokemonLevel) {
+						// Create the starterPokemon Object
 						pokemonOne = new createPokemon(// bulbasaur / squirtle / charmander instead of pokemonOne
 							pokemonStats[i][0], 
 							pokemonStats[i][1],
@@ -316,31 +297,108 @@ function startGame() {
 							pokemonStats[i][13],
 							pokemonStats[i][14],
 							pokemonStats[i][15],
-							pokemonStats[i][16]
-					);}
+							pokemonStats[i][16],
+							pokemonStats[i][17]
+						);
+					}
 				}
-			}
+			};
 			
-			player.activePokemon1Level = 5;
-			player.activePokemon1Name = player.starterPokemon;
-			if (player.starterPokemon == "BULBASAUR") {
-				starterPokemonRival = "CHARMANDER";
-				rival.starterPokemonRival = "CHARMANDER";
-			} else if (player.starterPokemon == "CHARMANDER") {
-				starterPokemonRival = "SQUIRTLE";
-				rival.starterPokemonRival = "SQUIRTLE";
-			} else if (player.starterPokemon == "SQUIRTLE") {
-				starterPokemonRival = "BULBASAUR";
-				rival.starterPokemonRival = "BULBASAUR";
-			} else {
-				rival.starterPokemonRival = "BULBASAUR";
-			}
-			rival.activePokemon1Level = 5;
-			rival.activePokemon1Name = rival.starterPokemonRival;
-			
-			
+ 			// Create a player object
+			player = new createPlayer (
+				playerName,
+				playerGender,
+				5000, //is this the correct starting amount?
+				starterPokemon, // starterPokemon
+				pokemonOne, // active pokemon 1
+				"", // active pokemon 2
+				"", // active pokemon 3
+				"", // active pokemon 4
+				"", // active pokemon 5
+				"" // active pokemon 6
+			); 
+
+/*			// Create the pokemonMove Objects
  			for (i=0; i<pokemonStats.length; i++) {
-				if (pokemonStats[i][1] == rival.starterPokemonRival) {
+				if (pokemonStats[i][1] == starterPokemon) {
+					if (pokemonStats[i][2] == starterPokemonLevel) {
+						// Create the moves for the starterPokemon Object
+						moveOne = new createPokemonMove(
+							pokemonStats[i][14],
+							getPokemonMoveType(pokemonStats[i][14]), 
+							getPokemonMoveCategory(pokemonStats[i][14]),
+							getPokemonMovePP(pokemonStats[i][14]),
+							getPokemonMovePower(pokemonStats[i][14]),
+							getPokemonMoveAccuracy(pokemonStats[i][14]),
+							getPokemonMoveEffect(pokemonStats[i][14])
+						);
+						moveTwo = new createPokemonMove(
+							pokemonStats[i][15],
+							getPokemonMoveType(pokemonStats[i][15]), 
+							getPokemonMoveCategory(pokemonStats[i][15]),
+							getPokemonMovePP(pokemonStats[i][15]),
+							getPokemonMovePower(pokemonStats[i][15]),
+							getPokemonMoveAccuracy(pokemonStats[i][15]),
+							getPokemonMoveEffect(pokemonStats[i][15])
+						);
+						moveThree = new createPokemonMove(
+							pokemonStats[i][16],
+							getPokemonMoveType(pokemonStats[i][16]), 
+							getPokemonMoveCategory(pokemonStats[i][16]),
+							getPokemonMovePP(pokemonStats[i][16]),
+							getPokemonMovePower(pokemonStats[i][16]),
+							getPokemonMoveAccuracy(pokemonStats[i][16]),
+							getPokemonMoveEffect(pokemonStats[i][16])
+						);
+						moveFour = new createPokemonMove(
+							pokemonStats[i][17],
+							getPokemonMoveType(pokemonStats[i][17]), 
+							getPokemonMoveCategory(pokemonStats[i][17]),
+							getPokemonMovePP(pokemonStats[i][17]),
+							getPokemonMovePower(pokemonStats[i][17]),
+							getPokemonMoveAccuracy(pokemonStats[i][17]),
+							getPokemonMoveEffect(pokemonStats[i][17])
+						);
+					}
+				}
+			}; */
+			// Make the pokemon moves objects of the player's pokemon
+/*			var move1 = createPokemonMove(pokemonOne.move1);
+			player.activePokemon1.move1 = move1;
+			move2 = createPokemonMove(pokemonOne.move2);
+			pokemonOne.move2 = move2;
+			move3 = createPokemonMove(pokemonOne.move3);
+			pokemonOne.move3 = move3;
+			move4 = createPokemonMove(pokemonOne.move4);
+			pokemonOne.move4 = move4; */
+			// Make this pokemon the first active pokemon of the player
+			//player.activePokemon1 = new pokemonOne;
+
+			// Get the rival's name
+			rivalName = prompt("...Erm, what was his name now? ", "RIVAL's NAME");
+			while (rivalName.length < 1) {
+				rivalName = prompt("RIVAL's NAME? ", ""); // alert("...Er, was it " + rivalName + "? "); //insert Yes/no option?
+			};
+			
+			// Get the rivalStarterPokemon
+			////player.activePokemon1Name = player.starterPokemon;
+			if (starterPokemon == "BULBASAUR") {
+				starterPokemonRival = "CHARMANDER";
+			} else if (starterPokemon == "CHARMANDER") {
+				starterPokemonRival = "SQUIRTLE";
+			} else if (starterPokemon == "SQUIRTLE") {
+				starterPokemonRival = "BULBASAUR";
+			} else {
+				starterPokemonRival = "BULBASAUR";
+			}
+			//document.getElementById("player").innerHTML = starterPokemonRival;
+			// var starterPokemonRivalLevel = 5;
+			//// rival.activePokemon1Level = 5;
+			////rival.activePokemon1Name = rival.starterPokemonRival;
+			
+			// Create the pokemonOneRival object
+ 			for (i=0; i<pokemonStats.length; i++) {
+				if (pokemonStats[i][1] == starterPokemonRival) {
 					if (pokemonStats[i][2] == starterPokemonLevel) {
 						pokemonOneRival = new createPokemon(// bulbasaur / squirtle / charmander instead of pokemonOne
 							pokemonStats[i][0], 
@@ -359,29 +417,129 @@ function startGame() {
 							pokemonStats[i][13],
 							pokemonStats[i][14],
 							pokemonStats[i][15],
-							pokemonStats[i][16]
+							pokemonStats[i][16],
+							pokemonStats[i][17]
 					);}
 				}
 			}
 			
-			startInfo = new Array(); //needed?
+ 			// Create a rival object
+			rival = new createRival (
+				rivalName,
+				starterPokemonRival, //starterPokemonRival
+				pokemonOneRival, // active pokemon 1
+				"", // active pokemon 2
+				"", // active pokemon 3
+				"", // active pokemon 4
+				"", // active pokemon 5
+				"" // active pokemon 6
+			); 
+
+			// Create the pokemonMove Object (make this part of the createPokemonMove?)
+ 			for (i=0; i<pokemonStats.length; i++) {
+				if (pokemonStats[i][1] == starterPokemon) {
+					if (pokemonStats[i][2] == starterPokemonLevel) {
+						// Create the moves for the starterPokemon Object
+						moveOne = new setPokemonMove(
+							pokemonStats[i][14],
+							"",
+							"",
+							0,
+							0,
+							100,
+							""
+						);
+					}
+				}
+			}; 
+			for (i=0; i<pokemonMoves.length; i++) {
+				if (moveOne.Name == pokemonMoves[i][0]) {
+					moveOne = new setPokemonMove(
+						moveOne.Name,
+						pokemonMoves[i][1],
+						pokemonMoves[i][2],
+						pokemonMoves[i][3],
+						pokemonMoves[i][4],
+						pokemonMoves[i][5],
+						pokemonMoves[i][6]
+					);
+				}
+			};
+/*			moveOne = new createMove(
+				starterPokemon, 
+				starterPokemonLevel
+			);*/
+
+/*			something = ["Scratch", "Normal", "Physical", 35, 40, 100, ""];
+			// ["Scratch", "Normal", "Physical", 35, 40, 100, ""]
+			moveOne = new createPokemonMove(something[0], something[1], something[2], something[3], something[4], something[5], something[6]); // "Scratch", "Normal", "Physical", 35, 40, 100, "" works as arguments // something is wrong with the FR_PKMNmoves.js file*/
+
+/*			moveOne = {
+				Name: "Scratch",
+				Type: "Normal",
+				category: "Physical",
+				pp: 35, 
+				power: 40, 
+				accuracy: 100, 
+				effect: "",
+			}; */
+
+			// Update the starterPokemon Object
+ 			for (i=0; i<pokemonStats.length; i++) {
+				if (pokemonStats[i][1] == starterPokemon) {
+					if (pokemonStats[i][2] == starterPokemonLevel) {
+						// Create the starterPokemon Object
+						pokemonOne = new createPokemon(// bulbasaur / squirtle / charmander instead of pokemonOne
+							pokemonStats[i][0], 
+							pokemonStats[i][1],
+							pokemonStats[i][2],
+							pokemonStats[i][3],
+							pokemonStats[i][4],
+							pokemonStats[i][5],
+							pokemonStats[i][6],
+							pokemonStats[i][7],
+							pokemonStats[i][8],
+							pokemonStats[i][9],
+							pokemonStats[i][10],
+							pokemonStats[i][11],
+							pokemonStats[i][12],
+							pokemonStats[i][13],
+							moveOne,
+							pokemonStats[i][15],
+							pokemonStats[i][16],
+							pokemonStats[i][17]
+						);
+					}
+				}
+			};
+/*			moveName = pokemonOne.moveOne;
+			var moveNumber = 11;
+			pokemonOne.moveOne.Type = getPokemonMoveType("Scratch");*/
+/*			// Make the pokemon moves objects of the rival's pokemon
+			move1 = createPokemonMove(pokemonOneRival.move1);
+			pokemonOneRival.move1 = move1;
+			move2 = createPokemonMove(pokemonOneRival.move2);
+			pokemonOneRival.move2 = move2;
+			move3 = createPokemonMove(pokemonOneRival.move3);
+			pokemonOneRival.move3 = move3;
+			move4 = createPokemonMove(pokemonOneRival.move4);
+			pokemonOneRival.move4 = move4;
+			// Make this pokemon the first active pokemon of the rival
+			rival.activePokemon1 = pokemonOneRival;*/
+			
+			/*var startInfo = new Array(); //needed?
 			startInfo = [
-				player.name, 
-				player.gender, 
-				rival.name, 
-				player.starterPokemon,
-				player.activePokemon1Level, 
-				player.activePokemon1Name,
-				rival.starterPokemonRival,
-			]
+				player, 
+				rival,
+			]*/
 			document.getElementById("pokemonRed").style.display = "block";
-			//return ; //is this necessary?
+			//return startInfo; //is this necessary?
 		} else if(counter == 5){
 			document.getElementById("imageStory").src = "images/Professor_Oak_XY.png"; // picture of Professor Oak from http://bulbapedia.bulbagarden.net/wiki/Professor_Oak_%28anime%29
 			document.getElementById("imageStory").style.display = "block";
 		} else if(counter == 16) {
  			// Show the player's name and gender
-			showPlayerStats = player.name + " (" + player.gender + ")";
+			showPlayerStats = player.Name;
 			document.getElementById("player").style.display = "block";
 			document.getElementById("player").innerHTML = showPlayerStats;
 			imgPlayer = "images/FireRed_" + player.gender + ".png";
@@ -401,7 +559,7 @@ function startGame() {
 			document.getElementById("imageStory").src = "images/Gary.png";// picture of Gary from http://bulbapedia.bulbagarden.net/wiki/Blue_%28game%29
 		} else if(counter == 20) {
  			// Show the player's name, gender and rival's name
-			showPlayerStats = player.name + " (" + player.gender + ") vs. " + rival.name;
+			showPlayerStats = player.Name + " vs. " + rival.Name;
 			document.getElementById("player").innerHTML = showPlayerStats;
 		} else if(counter == 21) {
 			document.getElementById("imageStory").src = "images/Professor_Oak_XY.png"; // picture of Professor Oak from http://bulbapedia.bulbagarden.net/wiki/Professor_Oak_%28anime%29
@@ -435,7 +593,7 @@ function startGame() {
 			document.getElementById("imageStory").src = "images/PalletTown_ProfOakLab.png"; // screenshot from Pokemon FireRed game from GAME FREAK inc.
 		} else if(counter == 54) {
 			// Show starter pokemon
-			starterPokemon = player.activePokemon1Name;
+			// starterPokemon = player.activePokemon1.Name;
 			if (starterPokemon == "BULBASAUR") {
 				document.getElementById("pokemonRed").innerHTML = "I see! "+ player.starterPokemon + " is your choice. <br/> It's very easy to raise. ";
 			} else if (starterPokemon == "CHARMANDER") {
@@ -443,17 +601,10 @@ function startGame() {
 			} else {
 				document.getElementById("pokemonRed").innerHTML = "Hm! " + player.starterPokemon + " is your choice. <br/> It's one worth raising. ";
 			}
-			for (i=0; i<pokemonStats.length; i++) {
-				if (pokemonStats[i][1] == pokemonOne.name) {
-					if (pokemonStats[i][2] == pokemonOne.level) {
-						maxHPpokemon = pokemonStats[i][7];
-					}
-				}
-			}
 			document.getElementById("activePokemon").style.display = "inline";
-			document.getElementById("imgActivePokemon1").src = "images/pokemonIcons/" + player.activePokemon1Name + ".gif";
-			document.getElementById("activePokemon1").innerHTML = "Lvl. " + player.activePokemon1Level + " " + player.activePokemon1Name + " <br/> HP: " + pokemonOne.hp + "/" + maxHPpokemon;
-			return starterPokemon;
+			document.getElementById("imgActivePokemon1").src = "images/pokemonIcons/" + pokemonOne.Name + ".gif"; // player.starterPokemon works (is a String);
+			document.getElementById("activePokemon1").innerHTML = "Lvl. " + player.activePokemon1.level + " " + player.activePokemon1.Name + " <br/> HP: " + player.activePokemon1.currentHP + "/" + player.activePokemon1.maxHP; // + " " + pokemonOne.moveOne /*[object Object]*/ + " " + pokemonOne.moveOne.Name --> now correct displayed + " " + pokemonOne.moveOne.category --> now correct displayed; // http://www.w3schools.com/js/tryit.asp?filename=tryjs_objects_method // pokemonOne.moveOne.Type; // does return undefined //does not work // pokemonOne.level works (is an integer); pokemonOne.move1 returns "Scratch"; player.activePokemon1.move1 works; rival.activePokemon1.move1.Type == undefined;
+			//return starterPokemon;
 		} else if(counter == 56) {
 			document.getElementById("imageStory").src = "images/Gary.png";// picture of Gary from http://bulbapedia.bulbagarden.net/wiki/Blue_%28game%29
 		} else if(counter == 58) {

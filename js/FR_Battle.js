@@ -62,10 +62,10 @@ function pokemonBattleStart(player, opponent) {
 
 		while (battleStat == “busy”) {
 			// Move of firstPokemon
-			document.getElementById(“imageStory”).src = “images/pokemonIcons/” + firstPokemon.name + “.gif”;
+			document.getElementById(“imageStory”).src = “images/pokemonIcons/” + firstPokemon.Name + “.gif”;
 			getMove(firstPokemon);
 			useMove(firstPokemon);
-			document.getElementById(“pokemonRed”).innerHTML = firstPokemon “ used ” + move.name;
+			document.getElementById(“pokemonRed”).innerHTML = firstPokemon “ used ” + move.Name;
 			counterTwo++;
 
 			// Effect of move
@@ -79,15 +79,15 @@ function pokemonBattleStart(player, opponent) {
 
 			// Make a function for the part below that checks whether a pokemon is fainted
 			// Check if secondPokemon is fainted
-			if (secondPokemon.hp <= 0) {
+			if (secondPokemon.currentHP <= 0) {
 				document.getElementById(“pokemonRed”).innerHTML = secondPokemon + “has fainted.”;
 				switchPokemon(opponent); //not opponent but trainer!
 				//rename new pokemon to secondPokemon with secondPokemon.owner
 				counterTwo++;
-				if (secondPokemon.hp > 0) {
-					document.getElementById (“imageStory”).src = “images/pokemonIcons/” + secondPokemon.name + “.gif”;
-					document.getElementById(“pokemonRed”).innerHTML = secondPokemon.name + “ enters the battle. “;
-				} else if (secondPokemon.hp <= 0) {
+				if (secondPokemon.currentHP > 0) {
+					document.getElementById(“imageStory”).src = “images/pokemonIcons/” + secondPokemon.Name + “.gif”;
+					document.getElementById(“pokemonRed”).innerHTML = secondPokemon.Name + “ enters the battle. “;
+				} else if (secondPokemon.currentHP <= 0) {
 					if (secondPokemon.owner == “PLAYER”) {
 						battleStat = “lost”;
 						// add information/ function for when battle is lost → battleLost();
@@ -103,15 +103,15 @@ function pokemonBattleStart(player, opponent) {
 					}
 				}
 			// Check if firstPokemon is fainted
-			} else if (firstPokemon.hp <= 0) {
+			} else if (firstPokemon.currentHP <= 0) {
 				document.getElementById(“pokemonRed”).innerHTML = firstPokemon + “has fainted.”;
 				switchPokemon(player); //not player but trainer!
 				//rename new pokemon to secondPokemon with secondPokemon.owner
 				counterTwo++;
-				if (firstPokemon.hp > 0) {
-					document.getElementById (“imageStory”).src = “images/pokemonIcons/” + firstPokemon.name + “.gif”;
-					document.getElementById(“pokemonRed”).innerHTML = firstPokemon.name + “ enters the battle. “;
-				} else if (firstPokemon.hp <= 0) {
+				if (firstPokemon.currentHP > 0) {
+					document.getElementById(“imageStory”).src = “images/pokemonIcons/” + firstPokemon.Name + “.gif”;
+					document.getElementById(“pokemonRed”).innerHTML = firstPokemon.Name + “ enters the battle. “;
+				} else if (firstPokemon.currentHP <= 0) {
 					if (firstPokemon.owner == “PLAYER”) {
 						battleStat = “lost”;
 						// add information/ function for when battle is lost → battleLost();
@@ -178,11 +178,11 @@ function pokemonBattleStartFirst(player, opponent) {
 
 		while (battleStat == “busy”) {
 			// Move of firstPokemon
-			document.getElementById(“imageStory”).src = “images/pokemonIcons/” + firstPokemon.name + “.gif”;
+			document.getElementById(“imageStory”).src = “images/pokemonIcons/” + firstPokemon.Name + “.gif”;
 			getMove(firstPokemon);
-			createPokemonMove(move);
+			setPokemonMove(move);
 			useMove(firstPokemon);
-			document.getElementById(“pokemonRed”).innerHTML = firstPokemon “ used ” + move.name;
+			document.getElementById(“pokemonRed”).innerHTML = firstPokemon “ used ” + move.Name;
 			counterTwo++;
 
 			// Effect of move
@@ -196,15 +196,15 @@ function pokemonBattleStartFirst(player, opponent) {
 
 			// Make a function for the part below that checks whether a pokemon is fainted
 			// Check if secondPokemon is fainted
-			if (secondPokemon.hp <= 0) {
+			if (secondPokemon.currentHP <= 0) {
 				document.getElementById(“pokemonRed”).innerHTML = secondPokemon + “has fainted.”;
 				switchPokemon(opponent); //not opponent but trainer!
 				//rename new pokemon to secondPokemon with secondPokemon.owner
 				counterTwo++;
-				if (secondPokemon.hp > 0) {
-					document.getElementById (“imageStory”).src = “images/pokemonIcons/” + secondPokemon.name + “.gif”;
-					document.getElementById(“pokemonRed”).innerHTML = secondPokemon.name + “ enters the battle. “;
-				} else if (secondPokemon.hp <= 0) {
+				if (secondPokemon.currentHP > 0) {
+					document.getElementById(“imageStory”).src = “images/pokemonIcons/” + secondPokemon.Name + “.gif”;
+					document.getElementById(“pokemonRed”).innerHTML = secondPokemon.Name + “ enters the battle. “;
+				} else if (secondPokemon.currentHP <= 0) {
 					if (secondPokemon.owner == “PLAYER”) {
 						battleStat = “lost”;
 						// add information/ function for when battle is lost → battleLost();
@@ -220,15 +220,15 @@ function pokemonBattleStartFirst(player, opponent) {
 					}
 				}
 			// Check if firstPokemon is fainted
-			} else if (firstPokemon.hp <= 0) {
+			} else if (firstPokemon.currentHP <= 0) {
 				document.getElementById(“pokemonRed”).innerHTML = firstPokemon + “has fainted.”;
 				switchPokemon(player); //not player but trainer!
 				//rename new pokemon to secondPokemon with secondPokemon.owner
 				counterTwo++;
-				if (firstPokemon.hp > 0) {
-					document.getElementById (“imageStory”).src = “images/pokemonIcons/” + firstPokemon.name + “.gif”;
-					document.getElementById(“pokemonRed”).innerHTML = firstPokemon.name + “ enters the battle. “;
-				} else if (firstPokemon.hp <= 0) {
+				if (firstPokemon.currentHP > 0) {
+					document.getElementById(“imageStory”).src = “images/pokemonIcons/” + firstPokemon.Name + “.gif”;
+					document.getElementById(“pokemonRed”).innerHTML = firstPokemon.Name + “ enters the battle. “;
+				} else if (firstPokemon.currentHP <= 0) {
 					if (firstPokemon.owner == “PLAYER”) {
 						battleStat = “lost”;
 						// add information/ function for when battle is lost → battleLost();
@@ -242,11 +242,11 @@ function pokemonBattleStartFirst(player, opponent) {
 			}
 
 			// Move of secondPokemon
-			document.getElementById(“imageStory”).src = “images/pokemonIcons/” + secondPokemon.name + “.gif”;
+			document.getElementById(“imageStory”).src = “images/pokemonIcons/” + secondPokemon.Name + “.gif”;
 			getMove(secondPokemon);
-			createPokemonMove(move);
+			setPokemonMove(move);
 			useMove(secondPokemon);
-			document.getElementById(“pokemonRed”).innerHTML = secondPokemon “ used ” + move.name;
+			document.getElementById(“pokemonRed”).innerHTML = secondPokemon “ used ” + move.Name;
 			counterTwo++;
 
 			// Effect of move
@@ -260,15 +260,15 @@ function pokemonBattleStartFirst(player, opponent) {
 
 			// Make a function for the part below that checks whether a pokemon is fainted
 			// Check if firstPokemon is fainted
-			if (firstPokemon.hp <= 0) {
+			if (firstPokemon.currentHP <= 0) {
 				document.getElementById(“pokemonRed”).innerHTML = firstPokemon + “has fainted.”;
 				switchPokemon(player); //not player but trainer!
 				//rename new pokemon to secondPokemon with secondPokemon.owner
 				counterTwo++;
-				if (firstPokemon.hp > 0) {
-					document.getElementById (“imageStory”).src = “images/pokemonIcons/” + firstPokemon.name + “.gif”;
-					document.getElementById(“pokemonRed”).innerHTML = firstPokemon.name + “ enters the battle. “;
-				} else if (firstPokemon.hp <= 0) {
+				if (firstPokemon.currentHP > 0) {
+					document.getElementById(“imageStory”).src = “images/pokemonIcons/” + firstPokemon.Name + “.gif”;
+					document.getElementById(“pokemonRed”).innerHTML = firstPokemon.Name + “ enters the battle. “;
+				} else if (firstPokemon.currentHP <= 0) {
 					if (firstPokemon.owner == “PLAYER”) {
 						battleStat = “lost”;
 						// add information/ function for when battle is lost → battleLost();
@@ -284,15 +284,15 @@ function pokemonBattleStartFirst(player, opponent) {
 					}
 				}
 			// Check if secondPokemon is fainted
-			} else if (secondPokemon.hp <= 0) {
+			} else if (secondPokemon.currentHP <= 0) {
 				document.getElementById(“pokemonRed”).innerHTML = secondPokemon + “has fainted.”;
 				switchPokemon(opponent); //not opponent but trainer!
 				//rename new pokemon to secondPokemon with secondPokemon.owner
 				counterTwo++;
-				if (secondPokemon.hp > 0) {
-					document.getElementById (“imageStory”).src = “images/pokemonIcons/” + secondPokemon.name + “.gif”;
-					document.getElementById(“pokemonRed”).innerHTML = secondPokemon.name + “ enters the battle. “;
-				} else if (secondPokemon.hp <= 0) {
+				if (secondPokemon.currentHP > 0) {
+					document.getElementById(“imageStory”).src = “images/pokemonIcons/” + secondPokemon.Name + “.gif”;
+					document.getElementById(“pokemonRed”).innerHTML = secondPokemon.Name + “ enters the battle. “;
+				} else if (secondPokemon.currentHP <= 0) {
 					if (secondPokemon.owner == “PLAYER”) {
 						battleStat = “lost”;
 						// add information/ function for when battle is lost → battleLost();

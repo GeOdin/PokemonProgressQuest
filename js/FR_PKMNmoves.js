@@ -1,39 +1,133 @@
+// Something is wrong in this script
+
 //Pokémon moves information from http://bulbapedia.bulbagarden.net/wiki/Main_Page
 // This includes the functions:
+//// getPokemonMoveType(pokemonMoveName);
+//// getPokemonMoveCategory(pokemonMoveName);
+//// getPokemonMovePP(pokemonMoveName);
+//// getPokemonMovePower(pokemonMoveName);
+//// getPokemonMoveAccuracy(pokemonMoveName);
+//// getPokemonMoveEffect(pokemonMoveName);
 //// createPokemonMove(pokemonMoveName);
 //// calculateDamage(attackingPokemon, move, defendingPokemon);
 //// getMove(pokemon);
 //// useMove(pokemon);
 
-var pokemonMoves = [
-	//add "Effect" for moves with type "Status" ? add PP-max for when PP UP items are introduced?
-	["Name", "Type", "Category", "PP", "Power", "Accuracy"], 
-	["Growl", "Normal", "Status", 40, 0, 100], //http://bulbapedia.bulbagarden.net/wiki/Growl_%28move%29
-	["Scratch", "Normal", "Physical", 35, 40, 100], //http://bulbapedia.bulbagarden.net/wiki/Scratch_%28move%29
-	["Tackle", "Normal", "Physical", 35, 50, 100], //http://bulbapedia.bulbagarden.net/wiki/Tackle_%28move%29
-	["Tail Whip", "Normal", "Status", 30, 0, 100] //http://bulbapedia.bulbagarden.net/wiki/Tail_Whip_%28move%29
-];
+/*var pokemonMoveName = "";
+var pokemonMoveType = "";
+var pokemonMoveCategory = "";
+var pokemonMovePP = 0;
+var pokemonMovePower = 0;
+var pokemonMoveAccuracy = 100;
+var pokemonMoveEffect= "";*/
 
+function getPokemonMoveType (pokemonMoveName) {
+	var pokemonMoveType;
+	// Find specific move in pokemonMoves with pokemonMoveName
+	for (i=0; i<pokemonMoves.length; i++) {
+		if (pokemonMoves[i][0] == pokemonMoveName) {
+			pokemonMoveType = pokemonMoves[i][1];
+		}
+	}
+	return pokemonMoveType;
+};
+
+function getPokemonMoveCategory (pokemonMoveName) {
+	var pokemonMoveCategory;
+	// Find specific move in pokemonMoves with pokemonMoveName
+	for (i=0; i<pokemonMoves.length; i++) {
+		if (pokemonMoves[i][0] == pokemonMoveName) {
+			pokemonMoveCategory = pokemonMoves[i][2];
+		}
+	}
+	return pokemonMoveCategory;
+};
+
+function getPokemonMovePP (pokemonMoveName) {
+	var pokemonMovePP;
+	// Find specific move in pokemonMoves with pokemonMoveName
+	for (i=0; i<pokemonMoves.length; i++) {
+		if (pokemonMoves[i][0] == pokemonMoveName) {
+			pokemonMovePP = pokemonMoves[i][3];
+		}
+	}
+	return pokemonMovePP;
+};
+
+function getPokemonMovePower (pokemonMoveName) {
+	var pokemonMovePower;
+	// Find specific move in pokemonMoves with pokemonMoveName
+	for (i=0; i<pokemonMoves.length; i++) {
+		if (pokemonMoves[i][0] == pokemonMoveName) {
+			pokemonMovePower = pokemonMoves[i][4];
+		}
+	}
+	return pokemonMovePower;
+};
+
+function getPokemonMoveAccuracy (pokemonMoveName) {
+	var pokemonMoveAccuracy;
+	// Find specific move in pokemonMoves with pokemonMoveName
+	for (i=0; i<pokemonMoves.length; i++) {
+		if (pokemonMoves[i][0] == pokemonMoveName) {
+			pokemonMoveAccuracy = pokemonMoves[i][5];
+		}
+	}
+	return pokemonMoveAccuracy;
+};
+
+function getPokemonMoveEffect (pokemonMoveName) {
+	var pokemonMoveEffect;
+	// Find specific move in pokemonMoves with pokemonMoveName
+	for (i=0; i<pokemonMoves.length; i++) {
+		if (pokemonMoves[i][0] == pokemonMoveName) {
+			pokemonMoveEffect = pokemonMoves[i][6];
+		}
+	}
+	return pokemonMoveEffect;
+};
+
+/* //Other old function
+function createPokemonMove(pokemonMove) { 
+	// find specific move in pokemonMoves with pokemonMoveName
+	for (i=0; i<pokemonMoves.length; i++) {
+		if (pokemonMoves[i][0] == pokemonMove) {
+			// create the move
+			this.Name = pokemonMoves[i][0];
+			this.Type = pokemonMoves[i][1];
+			this.category = pokemonMoves[i][2];
+			this.pp = pokemonMoves[i][3];
+			this.power = pokemonMoves[i][4];
+			this.accuracy = pokemonMoves[i][5];
+			this.effect = pokemonMoves[i][6];
+			}
+		}
+	}
+};*/
+
+/*// Old createPokemonMove(...) function
 function createPokemonMove(pokemonMove) {
 	// find specific move in pokemonMoves with pokemonMoveName
+	var move;
 	for (i=0; i<pokemonMoves.length; i++) {
 		if (pokemonMoves[i][0] == pokemonMove[0]) {
 
 			// create the move
-			var move = {
-				name: pokemonMoves[i][0],
+			move = {
+				Name: pokemonMoves[i][0],
 				type: pokemonMoves[i][1],
 				category: pokemonMoves[i][2],
 				pp: pokemonMoves[i][3],
 				power: pokemonMoves[i][4],
-				accuracy: pokemonMoves[i][5]
+				accuracy: pokemonMoves[i][5],
+				effect:  pokemonMoves[i][6]
 			};
 		};
 	};
 
 	// return the move
 	return move;
-};
+};*/
 
 function calculateDamage(attackingPokemon, move, defendingPokemon) { //http://www.serebii.net/games/damage.shtml //when power of move > 0
 /* Seems long and confusing? Compared to the other formula's, this one is easy as pie. Let me explain all the variables first. 
@@ -49,6 +143,7 @@ RandomNumber is simply a Random Number between 85 and 100. */
 	var STAB = 1; // needs to be adjusted for move.type and attackingPokemon.type, if it's the same, this = 1.5;
 	var weaknessResistance = 1; // needs to be adjusted for move.type against defendingPokemon.type1 and defendingPokemon.type2 [array?]
 	var randNumb = Math.floor(Math.random() * (100 - 85 + 1)) + 85; // http://stackoverflow.com/questions/1527803/generating-random-numbers-in-javascript-in-a-specific-range
+	var damage = 0;
 
 	if (move.category == "Physical") {
 		move.damage = ((((2 * attackingPokemon.level / 5 + 2) * attackingPokemon.attack * move.power / defendingPokemon.defense) / 50) + 2) * STAB * weaknessResistance * randNumb / 100;
@@ -69,6 +164,7 @@ function getMove(pokemon) {
 	// Set variables
 	var moveName = “”; //or make it an object?
 	var randNumb1To4;
+	var move;
 
 	// Get the name of the move
 	while (moveName == “”) {
@@ -87,7 +183,16 @@ function getMove(pokemon) {
 	// Get the move
 	for (i=0; i<moveStats.length; i++) {
 		if (moveStats[i][0] == moveName) {
-			move = moveStats[i];
+			move = {
+				// Old --> move = moveStats[i];
+				this.Name = moveStats[i][0];
+				this.Type = moveStats[i][1];
+				this.category = moveStats[i][2];
+				this.pp = moveStats[i][3];
+				this.power = moveStats[i][4];
+				this.accuracy = moveStats[i][5];
+				this.effect = moveStats[i][6];
+			}
 		}
 	};
 
@@ -99,6 +204,7 @@ function getMove(pokemon) {
 function useMove(attackingPokemon, move, defendingPokemon) {
 	// Set variables
 	//var damage = 0;
+	move.recoilDamage = 0;
 
 	// Get the category of the attack (status/ physical/ special?)
 	if (move[2] == “Status”) { // move.category if move is made an object
