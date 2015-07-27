@@ -39,40 +39,40 @@ added functionality of a pop-up when you click on/ hoover over one of these Poke
 		<table id="table" border=2>
 			<tbody>
 				<tr>
-					<td id="header" colspan=2>
-						<p>
+					<td id="header" colspan=3>
 							<div id="activePokemon">
-								<h2>
+								
 									Active POK&eacute;MON
-								</h2>
+								
 								<table style="margin: 0 auto;">
 									<tbody>
 										<tr>
-											<td>
+											<td id = "activePokemon1Td">
 												<img id="imgActivePokemon1"/> <!-- images from serebii.net/pokedex-rs --> <br/>
 												<p id="activePokemon1">
 												</p>
-											<td>
+											</td>
+											<td id = "activePokemon2Td">
 												<img id="imgActivePokemon2"/> <!-- images from serebii.net/pokedex-rs --> <br/>
 												<p id="activePokemon2">
 												</p>
 											</td>
-											<td>
+											<td id = "activePokemon3Td">
 												<img id="imgActivePokemon3"/> <!-- images from serebii.net/pokedex-rs --> <br/>
 												<p id="activePokemon3">
 												</p>
 											</td>
-											<td>
+											<td id = "activePokemon4Td">
 												<img id="imgActivePokemon4"/> <!-- images from serebii.net/pokedex-rs --> <br/>
 												<p id="activePokemon4">
 												</p>
 											</td>
-											<td>
+											<td id = "activePokemon5Td">
 												<img id="imgActivePokemon5"/> <!-- images from serebii.net/pokedex-rs --> <br/>
 												<p id="activePokemon5">
 												</p>
 											</td>
-											<td>
+											<td id = "activePokemon6">
 												<img id="imgActivePokemon6"/> <!-- images from serebii.net/pokedex-rs --> <br/>
 												<p id="activePokemon6">
 												</p>
@@ -81,10 +81,6 @@ added functionality of a pop-up when you click on/ hoover over one of these Poke
 									</tbody>
 								</table>
 							</div>
-<!-- 							<h2>
-								Pok&eacute;mon Progress Quest
-							</h2> -->
-						</p>
 					</td>
 				</tr>
 				<tr>
@@ -97,17 +93,13 @@ added functionality of a pop-up when you click on/ hoover over one of these Poke
 						<p>
 							<div id="gameName">
 								<p>
-								<h2>
-									Pok&eacute;mon Red
-								</h2>
+									<h2>
+										Pok&eacute;mon Red
+									</h2>
 								</p>
 							</div>
-							
-							<div id="buttonStart" onclick="startGame()"> <!-- cursor: pointer; cursor: hand; in css-->
-								<p>
-								Start Game!
-								</p>
-							</div> <br/>
+							<div id="locationName">
+							</div>
 							
 							<!-- <input name="inputText" type="text" maxLength="10"/> <!-- <input name="inputText" type="text" maxLength="10" id="inputText" class="textForm"/> -->
 							
@@ -116,11 +108,20 @@ added functionality of a pop-up when you click on/ hoover over one of these Poke
 							
 							<p id="pokemonRed">
 							</p>
+							<div id="buttonStart" onclick="startGame()"> <!-- cursor: pointer; cursor: hand; in css-->
+								<p>
+								Start Game!
+								</p> <br/>
+							</div>
 						</p>
+					</td>
+					<td id ="pokedex">
+						<div id = "pokedexInfo">
+						</div>
 					</td>
 				</tr>
 				<tr>
-					<td id="footer" colspan=2>
+					<td id="footer" colspan=3>
 						<p>
 							<h3>
 								Credits Pok&eacute;mon: Nintento <br/>

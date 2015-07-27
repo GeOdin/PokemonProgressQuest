@@ -71,7 +71,7 @@ function startGame() {
 	confirm("Are you ready to play? \nIt takes 5 seconds to start the game. "); // game also starts if not confirmed
 	document.getElementById("gameName").style.display = "none";
 	document.getElementById("buttonStart").style.display = "none";
-	window.setInterval(change, 5); //5000 for 5 seconds in final version / 3000 for 3 seconds; //1 for quick testing purposes; //1000 for slow testing purposes;
+	window.setInterval(change, 1000); //5000 for 5 seconds in final version / 3000 for 3 seconds; //1 for quick testing purposes; //1000 for slow testing purposes;
 	
 	function change() {
 	
@@ -228,6 +228,9 @@ function startGame() {
 			document.getElementById("imgPlayer").style.display = "none";
 			document.getElementById("imageStory").style.display = "none";
 			document.getElementById("pokemonRed").style.display = "block";
+			document.getElementById("activePokemon1Td").style.display = "none";
+			document.getElementById("pokedexInfo").style.display = "none";
+			document.getElementById("pokedexInfo").innerHTML = "";
 		}
 
 		counter++;
@@ -569,11 +572,13 @@ function startGame() {
 			document.getElementById("imageStory").src = "images/Mom.png"; // screenshot from Pokemon FireRed game from GAME FREAK inc.
 		} else if(counter == 27) {
 			if (playerGender == "boy"){
-				document.getElementById("pokemonRed").innerHTML = "MOM: ...Right. <br/> All " + player.gender + "s leave home someday. "
+				document.getElementById("pokemonRed").innerHTML = "MOM: ...Right. <br/> All " + player.gender + "s leave home someday. ";
 			} else {
-				document.getElementById("pokemonRed").innerHTML = "MOM: ...Right. <br/> All " + player.gender + "s dream of travelling. "
+				document.getElementById("pokemonRed").innerHTML = "MOM: ...Right. <br/> All " + player.gender + "s dream of travelling. ";
 			}
 		} else if(counter == 31) {
+				document.getElementById("locationName").innerHTML = "<h3> Pallet Town </h3>"; // <p> <h3> Pallet Town </h3> </p> does not work 
+				document.getElementById("locationName").style.display = "block";
 			document.getElementById("imageStory").src = "images/PalletTown.png"; // screenshot from Pokemon FireRed game from GAME FREAK inc.
 		} else if(counter == 32) {
 			document.getElementById("imageStory").src = "images/Gary.png";// picture of Gary from http://bulbapedia.bulbagarden.net/wiki/Blue_%28game%29
@@ -601,9 +606,12 @@ function startGame() {
 			} else {
 				document.getElementById("pokemonRed").innerHTML = "Hm! " + player.starterPokemon + " is your choice. <br/> It's one worth raising. ";
 			}
-			document.getElementById("activePokemon").style.display = "inline";
+			document.getElementById("activePokemon").style.display = "block";
 			document.getElementById("imgActivePokemon1").src = "images/pokemonIcons/" + pokemonOne.Name + ".gif"; // player.starterPokemon works (is a String);
 			document.getElementById("activePokemon1").innerHTML = "Lvl. " + player.activePokemon1.level + " " + player.activePokemon1.Name + " <br/> HP: " + player.activePokemon1.currentHP + "/" + player.activePokemon1.maxHP; // + " " + pokemonOne.moveOne /*[object Object]*/ + " " + pokemonOne.moveOne.Name --> now correct displayed + " " + pokemonOne.moveOne.category --> now correct displayed; // http://www.w3schools.com/js/tryit.asp?filename=tryjs_objects_method // pokemonOne.moveOne.Type; // does return undefined //does not work // pokemonOne.level works (is an integer); pokemonOne.move1 returns "Scratch"; player.activePokemon1.move1 works; rival.activePokemon1.move1.Type == undefined;
+			document.getElementById("pokedexInfo").innerHTML = "<h3> Pok&eacutedex </h3>" + pokemonOne.Name;
+			document.getElementById("pokedexInfo").style.display = "block";
+			document.getElementById("activePokemon1Td").style.display = "inline";
 			//return starterPokemon;
 		} else if(counter == 56) {
 			document.getElementById("imageStory").src = "images/Gary.png";// picture of Gary from http://bulbapedia.bulbagarden.net/wiki/Blue_%28game%29
@@ -627,6 +635,7 @@ function startGame() {
 			elemStoryImage.src = "images/HallOfFame.png"; //screenshot from https://www.youtube.com/watch?v=Uq9LTpj91Rw
 			elem.innerHTML = "Congratulations, you have won the game. <br/> Welcome to the HALL OF FAME! ";
 			//counter = 0;
+			document.getElementById("locationName").style.display = "none";
 			document.getElementById("gameName").style.display = "block";
 			document.getElementById("buttonStart").style.display = "block";
 			return;

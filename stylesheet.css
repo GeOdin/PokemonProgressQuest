@@ -166,7 +166,20 @@ p {
 	display: block;
 }
 
+#locationName{
+	display: none;
+/*	position: fixed; */
+	top: 30vh;
+/*	left: 45%;*/
+	color: white;
+}
+
+#locationName h3{
+	color: white;
+}
+
 #buttonStart{
+	display: block;
 	border: 2px solid #000000;
 	margin: auto;
 /* 	float:left; */
@@ -201,6 +214,10 @@ p {
 	text-align: center;
 }
 
+#activePokemon1Td{
+	display: none;
+}
+
 #imgActivePokemon1{
 	display: inline;
 }
@@ -209,6 +226,10 @@ p {
 	display: inline;
 	vertical-align: center;
 	color: white;
+}
+
+#activePokemon2Td{
+	display: none;
 }
 
 #imgActivePokemon2{
@@ -220,6 +241,10 @@ p {
 	color: white;
 }
 
+#activePokemon3Td{
+	display: none;
+}
+
 #imgActivePokemon3{
 	display: inline;
 }
@@ -227,6 +252,10 @@ p {
 #activePokemon3{
 	display: inline;
 	color: white;
+}
+
+#activePokemon4Td{
+	display: none;
 }
 
 #imgActivePokemon4{
@@ -238,6 +267,10 @@ p {
 	color: white;
 }
 
+#activePokemon5Td{
+	display: none;
+}
+
 #imgActivePokemon5{
 	display: inline;
 }
@@ -245,6 +278,10 @@ p {
 #activePokemon5{
 	display: inline;
 	color: white;
+}
+
+#activePokemon6Td{
+	display: none;
 }
 
 #imgActivePokemon6{
@@ -265,6 +302,20 @@ p {
 #pokemonRed{
 	display: none;
 	text-align: center;
+}
+
+#pokedex{
+/*	visibility: hidden;*/
+	height: 50vh;
+	width: 20%;
+	float: center;
+}
+
+#pokedexInfo{
+	display: none;
+/*	vertical-align: top;*/
+	text-align: center;
+	color: white;
 }
 
 #footer{
