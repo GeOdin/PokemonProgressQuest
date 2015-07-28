@@ -318,6 +318,27 @@ p {
 	color: white;
 }
 
+#credits{
+	color: #A0A0A0;
+	text-align: center;
+}
+
+#credits h3{
+	color: #606060;
+}
+
+#credits a:link{
+	color: #A0A0A0;
+}
+
+#credits a:visited{
+	color: #A0A0A0;
+}
+
+#credits a:active{
+	color: #A0A0A0;
+}
+
 #footer{
 	height: 10vh;
 /*	clear: both;*/
