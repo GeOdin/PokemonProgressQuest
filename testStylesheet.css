@@ -65,6 +65,7 @@ body table {
 	position: relative;
 	top: 0vh;
 	left: 10.5%;
+	height: 100%;
 }
 
 #activePokemon table {
@@ -173,6 +174,6 @@ body table {
 
 #badgesImages{
 	position: absolute;
-	top: 0vh;
 	left: 20%;
+	height: 100%;
 }

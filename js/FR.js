@@ -150,7 +150,7 @@ function startGame() {
 			"", 
 			playerName + " received the " + starterPokemon + " <br/> from PROF. OAK! ", //55
 			rivalName + ": I'll take this one, then! ",
-			rivalName + " received the " + starterPokemonRival + " <br/> from PROF. OAK! ", // starterPokemonRival is no longer shown, but shown as ""
+			rivalName + " received the " + starterPokemonRival + " <br/> from PROF. OAK! ", 
 			
  			// Your first battle
 			"OAK: If a wild POK&eacute;MON appears, <br/> your POK&eacute;MON can battle it. ",
@@ -159,7 +159,7 @@ function startGame() {
 			rivalName + ": Wait, " + playerName + "! <br/> Let's check out our POK&Eacute;MON!",
 			"Come on, I'll take you on! ",
 			"RIVAL " + rivalName + " <br/> would like to battle! ",
-			"RIVAL " + rivalName + " sent <br/> out " + starterPokemonRival + "!", // starterPokemonRival is no longer properly shown, but shown as ""
+			"RIVAL " + rivalName + " sent <br/> out " + starterPokemonRival + "!", 
 			"Go! " + starterPokemon + "! ", //65
 			"OAK: Oh, for Pete's sake... <br/> So pushy, as always. ",
 			playerName + ". ",
