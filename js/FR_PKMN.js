@@ -1,9 +1,11 @@
 // stat calculator --> http://pycosites.com/pkmn/stat.html
 // moves for FireRed --> http://serebii.net/pokedex-rs/
-// This has the function
+// This has the functions
 //// createPokemon(pokemonNumber, pokemonName, pokemonLevel, pokemonType1, pokemonType2, pokemonEvolveLevel, pokemonEvolvePokemon, currentHP, maxHP, attack, defense, spattack, spdefense, speed, pokemonMove1, pokemonMove2, pokemonMove3, pokemonMove4);
+//// createPokemonMoves(pokemonObject);
+//// setPokemonMove(pokemonMoveName, pokemonMoveType, pokemonMoveCategory, pokemonMovePP, pokemonMovePower, pokemonMoveAccuracy, pokemonMoveEffect)
 
-//Pokemon background information
+//Pokemon background information per pokemon
 var pokemon = [
 	//level 1 and accompanying stats and moves by default, or level of evolvement
 	["pokemonNumber", "pokemonName", "pokemonLevel", "pokemonType1", "pokemonType2", "pokemonEvolveLevel", "pokemonEvolvePokemon", "hp", "attack", "defense", "spattack", "spdefense", "speed", "pokemonMove1", "pokemonMove2", "pokemonMove3", "pokemonMove4"], //0
@@ -18,6 +20,7 @@ var pokemon = [
 	["009", "BLASTOISE", 36, "WATER", "", 0, "", "HP", "Attack", "Defense", "Sp. Attack", "Sp. Defense", "Speed", "pokemonMove1", "pokemonMove2", "pokemonMove3", "pokemonMove4"]
 ];
 
+// Pokemon background information per pokemon per level
 var pokemonStats = [ //make the variables here the same as for the function createPokemon() //add exp needed for level up?
 	["pokemonNumber", "pokemonName", "pokemonLevel", "pokemonType1", "pokemonType2", "pokemonEvolveLevel", "pokemonEvolveName", "currentHP", "maxHP", "attack", "defense", "spattack", "spdefense", "speed", "pokemonMove1", "pokemonMove2", "pokemonMove3", "pokemonMove4"],
 	["001", "BULBASAUR", 1, "GRASS", "POISON", 16, "IVYSAUR", 12, 12, 6, 6, 6, 6, 6, "Tackle", "", "", ""],
@@ -29,7 +32,7 @@ var pokemonStats = [ //make the variables here the same as for the function crea
 	["004", "CHARMANDER", 2, "FIRE", "", 16, "CHARMELEON", 14, 14, 7, 7, 8, 7, 8, "Scratch", "Growl", "", ""],
 	["004", "CHARMANDER", 3, "FIRE", "", 16, "CHARMELEON", 16, 16, 9, 8, 9, 8, 9, "Scratch", "Growl", "", ""],
 	["004", "CHARMANDER", 4, "FIRE", "", 16, "CHARMELEON", 18, 18, 11, 9, 12, 11, 12, "Scratch", "Growl", "", ""],
-	["004", "CHARMANDER", 5, "FIRE", "", 16, "CHARMELEON", 20, 20, 12, 11, 13, 12, 14, "Scratch", "Growl", "", ""],
+	["004", "CHARMANDER", 5, "FIRE", "", 16, "CHARMELEON", 20, 20, 12, 11, 13, 12, 14, "Scratch", "Growl", "Tackle", "Tail Whip"],
 	["001", "SQUIRTLE", 1, "WATER", "", 16, "WARTORTLE", 12, 12, 6, 6, 6, 6, 6, "Tackle", "", "", ""],
 	["001", "SQUIRTLE", 2, "WATER", "", 16, "WARTORTLE", 14, 14, 7, 8, 7, 8, 7, "Tackle", "", "", ""],
 	["001", "SQUIRTLE", 3, "WATER", "", 16, "WARTORTLE", 16, 16, 8, 9, 8, 9, 8, "Tackle", "", "", ""],
@@ -37,6 +40,7 @@ var pokemonStats = [ //make the variables here the same as for the function crea
 	["001", "SQUIRTLE", 5, "WATER", "", 16, "WARTORTLE", 20, 20, 12, 14, 12, 13, 11, "Tackle", "Tail Whip", "", ""]
 ];
 
+// Pokemon moves background information
 var pokemonMoves = [
 	//add "Effect" for moves with type "Status" ? add PP-max for when PP UP items are introduced?
 	["Name", "Type", "category", "pp", "power", "accuracy", "effect"], 
@@ -69,45 +73,8 @@ function createPokemon(pokemonNumber, pokemonName, pokemonLevel, pokemonType1, p
 	this.moveTwo = pokemonMove2; //15 - ""
 	this.moveThree = pokemonMove3; //16 - ""
 	this.moveFour = pokemonMove4; //17 - ""
-	// return pokemon;
 };
 
-/*function createPokemonMove (pokemonName, pokemonLevel) {
-	var moveOneName;
-	var moveOne;
-	for (i=0; i<pokemonStats.length; i++) {
-		if (pokemonStats[i][1] == pokemonName) {
-			if (pokemonStats[i][2] == pokemonLevel) {
-				// Get the name of the pokemonMoves
-				moveOneName = pokemonStats[i][14];
-				// Create the moves for the starterPokemon Object
-				// moveOne = new setPokemonMove(
-				// 		pokemonStats[i][14],
-				// 		"",
-				//		"",
-				//		0,
-				//		0,
-				//		100,
-				//		""
-				//);
-			}
-		};
-		return moveOneName;
-	}; 
-	for (i=0; i<pokemonMoves.length; i++) {
-		if (moveOneName == pokemonMoves[i][0]) {
-			moveOne = new setPokemonMove(
-				pokemonMoves[i][0],
-				pokemonMoves[i][1],
-				pokemonMoves[i][2],
-				pokemonMoves[i][3],
-				pokemonMoves[i][4],
-				pokemonMoves[i][5],
-				pokemonMoves[i][6]
-			);
-		}
-	};
-};*/
 function setPokemonMove(pokemonMoveName, pokemonMoveType, pokemonMoveCategory, pokemonMovePP, pokemonMovePower, pokemonMoveAccuracy, pokemonMoveEffect) {
 	// Create the move
 	this.Name = pokemonMoveName; // pokemonMoves[i][0]
@@ -119,16 +86,112 @@ function setPokemonMove(pokemonMoveName, pokemonMoveType, pokemonMoveCategory, p
 	this.effect = pokemonMoveEffect; // pokemonMoves[i][6]
 };
 
-// Get Pokemon HP corresponding to certain pokemon and level //currently not working
-/* function getHP(pokemonName, pokemonLevel){
-	for (i=0; i<pokemonStats.length; i++) {
-		if (pokemonStats[i][1] == pokemonName) {
-			for (j=0; j<pokemonStats[1]+1; j++){
-				if (pokemonStats[i][2] == pokemonLevel) {
-					HP = pokemonStats[i][3];
-				}
-			}
-		}
+function createPokemonMoves(pokemonObject) {
+	var moveOneName;
+	var moveTwoName;
+	var moveThreeName;
+	var moveFourName;
+	for (i = 0; i < pokemonStats.length; i++) {
+		if (pokemonStats[i][1] == pokemonObject.Name) {
+			if (pokemonStats[i][2] == pokemonObject.level) {
+				// Get the moveName for the moves
+				moveOneName = pokemonStats[i][14];
+				moveTwoName = pokemonStats[i][15];
+				moveThreeName = pokemonStats[i][16];
+				moveFourName = pokemonStats[i][17];
+			};
+		};
 	};
-	return HP;
-}; */
+	for (i=0; i<pokemonMoves.length; i++) {
+		if (pokemonMoves[i][0] == moveOneName) {
+			// Create the moves
+			moveOne = new setPokemonMove(
+				pokemonMoves[i][0],
+				pokemonMoves[i][1],
+				pokemonMoves[i][2],
+				pokemonMoves[i][3],
+				pokemonMoves[i][4],
+				pokemonMoves[i][5],
+				pokemonMoves[i][6]
+			);
+			pokemonObject.move1 = moveOne;
+		} else if (pokemonMoves[i][0] == moveTwoName) {
+			moveTwo = new setPokemonMove(
+				pokemonMoves[i][0],
+				pokemonMoves[i][1],
+				pokemonMoves[i][2],
+				pokemonMoves[i][3],
+				pokemonMoves[i][4],
+				pokemonMoves[i][5],
+				pokemonMoves[i][6]
+			);
+			pokemonObject.move2 = moveTwo;
+		} else if (pokemonMoves[i][0] == moveThreeName) {
+			moveThree = new setPokemonMove(
+				pokemonMoves[i][0],
+				pokemonMoves[i][1],
+				pokemonMoves[i][2],
+				pokemonMoves[i][3],
+				pokemonMoves[i][4],
+				pokemonMoves[i][5],
+				pokemonMoves[i][6]
+			);
+			pokemonObject.move3 = moveThree;
+		} else if (pokemonMoves[i][0] == moveFourName) {
+			moveFour = new setPokemonMove(
+				pokemonMoves[i][0],
+				pokemonMoves[i][1],
+				pokemonMoves[i][2],
+				pokemonMoves[i][3],
+				pokemonMoves[i][4],
+				pokemonMoves[i][5],
+				pokemonMoves[i][6]
+			); 
+			pokemonObject.move4 = moveFour;
+		};
+	};
+/*	if (moveOneName == "") {
+		moveOne = new setPokemonMove(
+			"", 
+			"", 
+			"", 
+			0, 
+			0, 
+			100, 
+			""
+		);
+	};
+	if (moveTwoName == "") {
+		moveTwo = new setPokemonMove(
+			"", 
+			"", 
+			"", 
+			0, 
+			0, 
+			100, 
+			""
+		);
+	};
+	if (moveThreeName == "") {
+		moveThree = new setPokemonMove(
+			"", 
+			"", 
+			"", 
+			0, 
+			0, 
+			100, 
+			""
+		);
+	};
+	if (moveFourName == "") {
+		moveFour = new setPokemonMove(
+			"", 
+			"", 
+			"", 
+			0, 
+			0, 
+			100, 
+			""
+		);
+	};*/
+};

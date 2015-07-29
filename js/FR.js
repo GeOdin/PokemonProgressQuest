@@ -40,6 +40,7 @@ by GeOdin */
 function startGame() { 
 
 	// Variables 
+	var confirmStartGame;
 	var elem = document.getElementById("pokemonRed"); //create variables for other document.getElementById elements
 	var elemStoryImage = document.getElementById("imageStory"); //create variables for other document.getElementById elements
 	var counter = 0;
@@ -53,7 +54,6 @@ function startGame() {
 	var pokemonOneRival;
 	var rival;
 	var showPlayerStats;
-	var startInfo;
 	var pokemonMovetype = "";
 	var pokemonMoveCategory = "";
 	var pokemonMovePP = 0;
@@ -61,17 +61,20 @@ function startGame() {
 	var pokemonMoveAccuracy = 100;
 	var pokemonMoveEffect = "";
 	var moveOne;
-/*	var moveTwo;
+	var moveTwo;
 	var moveThree;
-	var moveFour; */
-	var something; // can be deleted later; check CNTRL-f to see whether it's still furter in the code
+	var moveFour;
 	
 	
 	// Start game
-	confirm("Are you ready to play? \nIt takes 5 seconds to start the game. "); // game also starts if not confirmed
+	if (confirm("Are you ready to play? \nIt takes 5 seconds to start the game. ") == true) {
+		confirmStartGame = true;
+	} else {
+		return;
+	}
 	document.getElementById("gameName").style.display = "none";
 	document.getElementById("buttonStart").style.display = "none";
-	window.setInterval(change, 1000); //5000 for 5 seconds in final version / 3000 for 3 seconds; //1 for quick testing purposes; //1000 for slow testing purposes;
+	window.setInterval(change, 1); //5000 for 5 seconds in final version / 3000 for 3 seconds; //1 for quick testing purposes; //1000 for slow testing purposes;
 	
 	function change() {
 	
@@ -256,28 +259,6 @@ function startGame() {
 			//player.starterPokemon = starterPokemon;
 			var starterPokemonLevel = 5;
 
-/*			// Create the pokemonMoves
- 			for (i=0; i<pokemonStats.length; i++) {
-				if (pokemonStats[i][1] == starterPokemon) {
-					if (pokemonStats[i][2] == starterPokemonLevel) {
-
-					}
-				}
-			};*/
-/*			for (i=0; i<pokemonMoves.length; i++) {
-				if (pokemonMoves[i][0] == pokemonMove[0]) {
-					// create the move
-					this.Name = pokemonMoves[i][0];
-					this.Type = pokemonMoves[i][1];
-					this.category = pokemonMoves[i][2];
-					this.pp = pokemonMoves[i][3];
-					this.power = pokemonMoves[i][4];
-					this.accuracy = pokemonMoves[i][5];
-					this.effect = pokemonMoves[i][6];
-					}
-				}
-			}*/
-
 			// Create the starterPokemon Object
  			for (i=0; i<pokemonStats.length; i++) {
 				if (pokemonStats[i][1] == starterPokemon) {
@@ -312,7 +293,7 @@ function startGame() {
 				playerName,
 				playerGender,
 				5000, //is this the correct starting amount?
-				starterPokemon, // starterPokemon
+				starterPokemon, // name of the starterPokemon
 				pokemonOne, // active pokemon 1
 				"", // active pokemon 2
 				"", // active pokemon 3
@@ -320,62 +301,6 @@ function startGame() {
 				"", // active pokemon 5
 				"" // active pokemon 6
 			); 
-
-/*			// Create the pokemonMove Objects
- 			for (i=0; i<pokemonStats.length; i++) {
-				if (pokemonStats[i][1] == starterPokemon) {
-					if (pokemonStats[i][2] == starterPokemonLevel) {
-						// Create the moves for the starterPokemon Object
-						moveOne = new createPokemonMove(
-							pokemonStats[i][14],
-							getPokemonMoveType(pokemonStats[i][14]), 
-							getPokemonMoveCategory(pokemonStats[i][14]),
-							getPokemonMovePP(pokemonStats[i][14]),
-							getPokemonMovePower(pokemonStats[i][14]),
-							getPokemonMoveAccuracy(pokemonStats[i][14]),
-							getPokemonMoveEffect(pokemonStats[i][14])
-						);
-						moveTwo = new createPokemonMove(
-							pokemonStats[i][15],
-							getPokemonMoveType(pokemonStats[i][15]), 
-							getPokemonMoveCategory(pokemonStats[i][15]),
-							getPokemonMovePP(pokemonStats[i][15]),
-							getPokemonMovePower(pokemonStats[i][15]),
-							getPokemonMoveAccuracy(pokemonStats[i][15]),
-							getPokemonMoveEffect(pokemonStats[i][15])
-						);
-						moveThree = new createPokemonMove(
-							pokemonStats[i][16],
-							getPokemonMoveType(pokemonStats[i][16]), 
-							getPokemonMoveCategory(pokemonStats[i][16]),
-							getPokemonMovePP(pokemonStats[i][16]),
-							getPokemonMovePower(pokemonStats[i][16]),
-							getPokemonMoveAccuracy(pokemonStats[i][16]),
-							getPokemonMoveEffect(pokemonStats[i][16])
-						);
-						moveFour = new createPokemonMove(
-							pokemonStats[i][17],
-							getPokemonMoveType(pokemonStats[i][17]), 
-							getPokemonMoveCategory(pokemonStats[i][17]),
-							getPokemonMovePP(pokemonStats[i][17]),
-							getPokemonMovePower(pokemonStats[i][17]),
-							getPokemonMoveAccuracy(pokemonStats[i][17]),
-							getPokemonMoveEffect(pokemonStats[i][17])
-						);
-					}
-				}
-			}; */
-			// Make the pokemon moves objects of the player's pokemon
-/*			var move1 = createPokemonMove(pokemonOne.move1);
-			player.activePokemon1.move1 = move1;
-			move2 = createPokemonMove(pokemonOne.move2);
-			pokemonOne.move2 = move2;
-			move3 = createPokemonMove(pokemonOne.move3);
-			pokemonOne.move3 = move3;
-			move4 = createPokemonMove(pokemonOne.move4);
-			pokemonOne.move4 = move4; */
-			// Make this pokemon the first active pokemon of the player
-			//player.activePokemon1 = new pokemonOne;
 
 			// Get the rival's name
 			rivalName = prompt("...Erm, what was his name now? ", "RIVAL's NAME");
@@ -438,105 +363,12 @@ function startGame() {
 				"" // active pokemon 6
 			); 
 
-			// Create the pokemonMove Object (make this part of the createPokemonMove?)
- 			for (i=0; i<pokemonStats.length; i++) {
-				if (pokemonStats[i][1] == starterPokemon) {
-					if (pokemonStats[i][2] == starterPokemonLevel) {
-						// Create the moves for the starterPokemon Object
-						moveOne = new setPokemonMove(
-							pokemonStats[i][14],
-							"",
-							"",
-							0,
-							0,
-							100,
-							""
-						);
-					}
-				}
-			}; 
-			for (i=0; i<pokemonMoves.length; i++) {
-				if (moveOne.Name == pokemonMoves[i][0]) {
-					moveOne = new setPokemonMove(
-						moveOne.Name,
-						pokemonMoves[i][1],
-						pokemonMoves[i][2],
-						pokemonMoves[i][3],
-						pokemonMoves[i][4],
-						pokemonMoves[i][5],
-						pokemonMoves[i][6]
-					);
-				}
-			};
-/*			moveOne = new createMove(
-				starterPokemon, 
-				starterPokemonLevel
-			);*/
+			// Update the starterPokemon object with move objects
+			createPokemonMoves(player.activePokemon1);
+			// Update the sterterPokemonRival object with move objects
+			createPokemonMoves(rival.activePokemon1);
 
-/*			something = ["Scratch", "Normal", "Physical", 35, 40, 100, ""];
-			// ["Scratch", "Normal", "Physical", 35, 40, 100, ""]
-			moveOne = new createPokemonMove(something[0], something[1], something[2], something[3], something[4], something[5], something[6]); // "Scratch", "Normal", "Physical", 35, 40, 100, "" works as arguments // something is wrong with the FR_PKMNmoves.js file*/
-
-/*			moveOne = {
-				Name: "Scratch",
-				Type: "Normal",
-				category: "Physical",
-				pp: 35, 
-				power: 40, 
-				accuracy: 100, 
-				effect: "",
-			}; */
-
-			// Update the starterPokemon Object
- 			for (i=0; i<pokemonStats.length; i++) {
-				if (pokemonStats[i][1] == starterPokemon) {
-					if (pokemonStats[i][2] == starterPokemonLevel) {
-						// Create the starterPokemon Object
-						pokemonOne = new createPokemon(// bulbasaur / squirtle / charmander instead of pokemonOne
-							pokemonStats[i][0], 
-							pokemonStats[i][1],
-							pokemonStats[i][2],
-							pokemonStats[i][3],
-							pokemonStats[i][4],
-							pokemonStats[i][5],
-							pokemonStats[i][6],
-							pokemonStats[i][7],
-							pokemonStats[i][8],
-							pokemonStats[i][9],
-							pokemonStats[i][10],
-							pokemonStats[i][11],
-							pokemonStats[i][12],
-							pokemonStats[i][13],
-							moveOne,
-							pokemonStats[i][15],
-							pokemonStats[i][16],
-							pokemonStats[i][17]
-						);
-					}
-				}
-			};
-/*			moveName = pokemonOne.moveOne;
-			var moveNumber = 11;
-			pokemonOne.moveOne.Type = getPokemonMoveType("Scratch");*/
-/*			// Make the pokemon moves objects of the rival's pokemon
-			move1 = createPokemonMove(pokemonOneRival.move1);
-			pokemonOneRival.move1 = move1;
-			move2 = createPokemonMove(pokemonOneRival.move2);
-			pokemonOneRival.move2 = move2;
-			move3 = createPokemonMove(pokemonOneRival.move3);
-			pokemonOneRival.move3 = move3;
-			move4 = createPokemonMove(pokemonOneRival.move4);
-			pokemonOneRival.move4 = move4;
-			// Make this pokemon the first active pokemon of the rival
-			rival.activePokemon1 = pokemonOneRival;*/
-			
-			/*var startInfo = new Array(); //needed?
-			startInfo = [
-				player, 
-				rival,
-			]*/
 			document.getElementById("pokemonRed").style.display = "block";
-			//return startInfo; //is this necessary?
 		} else if(counter == 5){
 			document.getElementById("imageStory").src = "images/Professor_Oak_XY.png"; // picture of Professor Oak from http://bulbapedia.bulbagarden.net/wiki/Professor_Oak_%28anime%29
 			document.getElementById("imageStory").style.display = "block";
@@ -608,7 +440,7 @@ function startGame() {
 			}
 			document.getElementById("activePokemon").style.display = "block";
 			document.getElementById("imgActivePokemon1").src = "images/pokemonIcons/" + pokemonOne.Name + ".gif"; // player.starterPokemon works (is a String);
-			document.getElementById("activePokemon1").innerHTML = "Lvl. " + player.activePokemon1.level + " " + player.activePokemon1.Name + " <br/> HP: " + player.activePokemon1.currentHP + "/" + player.activePokemon1.maxHP; // + " " + pokemonOne.moveOne /*[object Object]*/ + " " + pokemonOne.moveOne.Name --> now correct displayed + " " + pokemonOne.moveOne.category --> now correct displayed; // http://www.w3schools.com/js/tryit.asp?filename=tryjs_objects_method // pokemonOne.moveOne.Type; // does return undefined //does not work // pokemonOne.level works (is an integer); pokemonOne.move1 returns "Scratch"; player.activePokemon1.move1 works; rival.activePokemon1.move1.Type == undefined;
+			document.getElementById("activePokemon1").innerHTML = "Lvl. " + player.activePokemon1.level + " " + player.activePokemon1.Name + " <br/> HP: " + player.activePokemon1.currentHP + "/" + player.activePokemon1.maxHP;// + "<br>" + rival.activePokemon1.move2.category + " <br/> " + player.activePokemon1.move1.Name + player.activePokemon1.move2.Type + player.activePokemon1.move3.category + player.activePokemon1.move4.Name; // does not work if pokemon has "" for a movename//works // player.activePokemon1.moveOne.Name works // http://www.w3schools.com/js/tryit.asp?filename=tryjs_objects_method;
 			document.getElementById("pokedexInfo").innerHTML = "<h3> Pok&eacutedex </h3>" + pokemonOne.Name;
 			document.getElementById("pokedexInfo").style.display = "block";
 			document.getElementById("activePokemon1Td").style.display = "inline";
