@@ -440,6 +440,11 @@ function startGame() {
 /*			document.getElementById("imgActivePokemon1").src = "images/pokemonIcons/" + pokemonOne.Name + ".gif"; // player.starterPokemon works (is a String);*/
 			document.getElementById("activePokemon1").innerHTML = player.activePokemon1.Name + "<br/> <img src=images/pokemonIcons/" + player.activePokemon1.Name + ".gif /> <br/>Lvl. " + player.activePokemon1.level + " <br/> HP: " + player.activePokemon1.currentHP + "/" + player.activePokemon1.maxHP;// + "<br>" + rival.activePokemon1.move2.category + " <br/> " + player.activePokemon1.move1.Name + player.activePokemon1.move2.Type + player.activePokemon1.move3.category + player.activePokemon1.move4.Name; // does not work if pokemon has "" for a movename//works // player.activePokemon1.moveOne.Name works // http://www.w3schools.com/js/tryit.asp?filename=tryjs_objects_method;
 			document.getElementById("activePokemon").style.display = "block";
+			if (pokemonCaught[player.activePokemon1.Name] == 0) {
+				pokemonCaught[player.activePokemon1.Name] = 1;
+			};
+			document.getElementById("pokemonCaught").innerHTML = "<h3> Pok&eacute;dex: " + pokemonCaught.total() + "/151";
+			document.getElementById("pokemonCaught").style.display = "block";
 			document.getElementById("pokedex" + pokemonOne.Name).style.display = "block";
 		} else if(counter == 56) {
 			document.getElementById("imageStory").src = "images/Gary.png";// picture of Gary from http://bulbapedia.bulbagarden.net/wiki/Blue_%28game%29

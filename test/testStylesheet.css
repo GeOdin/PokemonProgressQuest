@@ -112,11 +112,65 @@ body table {
 	border: 2px solid #909090;
 }
 
-#story img{
+#storyImage{
+	position: absolute;
+	left: 30%;
 	height: 25vh;
+	display: block;
+}
+
+#pokemonOnTop1{
+	position: absolute;
+	left: 7%;
+	top: 4%;
+	width: 10%;
+	z-index: 1;
+}
+
+#pokemonOnTop2{
+	position: absolute;
+	left: 35%;
+	top: 2%;
+	width: 10%;
+	z-index: 1;
+}
+
+#pokemonOnTop3{
+	position: absolute;
+	left: 63%;
+	top: 4%;
+	width: 10%;
+	z-index: 1;
+}
+
+#pokemonOnTop4{
+	position: absolute;
+	left: 4%;
+	top: 34%;
+	width: 10%;
+	z-index: 2;
+}
+
+#pokemonOnTop5{
+	position: absolute;
+	left: 37%;
+	top: 35%;
+	width: 10%;
+	z-index: 2;
+}
+
+#pokemonOnTop6{
+	position: absolute;
+	left: 66%;
+	top: 34%;
+	width: 10%;
+	z-index: 2;
 }
 
 #story p {
+	position: absolute;
+	top: 44vh;
+	left: 28%;
 	font-size: 1.2em;
 	color: #D0D0D0;
 }
