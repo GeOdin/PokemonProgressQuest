@@ -511,6 +511,7 @@ function startGame() {
 		} else if (counter == 77) {
 			// 1st battle
 			firstPokemonBattle(player, rival); // first battle works, except that the usage of moves is not properly displayed; you also don't see the diminishing of HP, except for the end
+			// perhaps I do need to use clearInterval to clear the current interval? or also use a var textFirstBattle that the function can scroll through --- http://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_win_clearinterval
 			// add opponent pokemon with currentHP/maxHP somewhere
 		} else if (counter == 78) {
 			document.getElementById("pokemonRed").innerHTML = rival.activePokemon1.Name + " fainted! ";
