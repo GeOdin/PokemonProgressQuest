@@ -8,6 +8,13 @@ by GeOdin -->
 <html>
 	<head>
 		<link type="text/css" rel="stylesheet" href="stylesheet.css"/>
+		<script type="text/javascript">
+			function startPokemonFR() {
+				if (confirm("Ready to start Progress Quest - Pokemon FireRed? ") == true ) {
+					window.open("testPokemonRed.html", "_self");
+				}
+			};
+		</script>
 		<title>
 			Pok&eacute;mon Progress Quest
 		</title>
@@ -33,7 +40,14 @@ by GeOdin -->
 						<a href="pokemonRed.html" style="text-decoration:none;">
 							<div id="buttonTags2"> 
 								<p>
-									Pok&eacute;mon Red
+									Pok&eacute;mon FireRed
+								</p>
+							</div> <br/>
+						</a>
+						<a href="credits.html" style="text-decoration:none;">
+							<div id="buttonTags"> 
+								<p>
+									Credits
 								</p>
 							</div>
 						</a>
@@ -43,7 +57,7 @@ by GeOdin -->
 							<div id="gameName">
 								<p>
 									<h2>
-										Pok&eacute;mon Red
+										Pok&eacute;mon FireRed
 									</h2>
 								</p>
 							</div>
@@ -52,13 +66,11 @@ by GeOdin -->
 							
 							<!-- <input name="inputText" type="text" maxLength="10"/> <!-- <input name="inputText" type="text" maxLength="10" id="inputText" class="textForm"/> -->
 							
-							<img id="imageStory"/> <!--width=100 height=100--> <!-- http://www.w3schools.com/js/tryit.asp?filename=tryjs_intro_lightbulb -->
-							<!-- image from http://bulbapedia.bulbagarden.net/wiki/Professor_Oak_%28anime%29 -->
-							
+							<img id="imageStory"/> 
 							<p id="pokemonRed">
 							</p>
-							<a href="testPokemonRed.html" style="text-decoration:none;">
-								<div id="buttonStart"> <!-- cursor: pointer; cursor: hand; in css-->
+							<a href="#" onclick="startPokemonFR()" style="text-decoration:none;">
+								<div id="buttonStart">
 									<p>
 									Start Game!
 									</p> <br/>

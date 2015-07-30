@@ -1,16 +1,13 @@
 <!DOCTYPE html>
 <!-- 
 pokemonRed.html
-Page of the Pokemon FireRed Progress Quests
+Pokemon FireRed Progress Quests
 Made on 20-07-2015
 by GeOdin -->
 
-<!-- add another <td> to the right of #mainFrame for Pokemon that are already caught? on pokemonnumber (not alphabetical) 
-added functionality of a pop-up when you click on/ hoover over one of these Pokemon? --> 
-
 <html>
 	<head>
-		<link type="text/css" rel="stylesheet" href="stylesheet.css"/>
+		<link type="text/css" rel="stylesheet" href="stylesheetPokemonFireRed.css"/>
 		<script src="js/FR.js">
 		</script>
 		<script src="js/FR_Battle.js">
@@ -28,112 +25,110 @@ added functionality of a pop-up when you click on/ hoover over one of these Poke
 		<!-- test should be deleted in final version -->
 		<script src="js/test.js"> 
 		</script>
-		
-<!--		<script type="text/javascript" charset="utf-8" src="js/cordova-2.5.0.js">
-		</script>
-		<script type="text/javascript" charset="utf-8">
-		</script> -->
-		
 		<title>
 			Pok&eacute;mon Progress Quest - Pok&eacute;mon FireRed
 		</title>
 	</head>
-	<body>
-		<table id="table" border=2>
-			<tbody>
-				<tr>
-					<td id="header" colspan=3>
-						<div id="activePokemon">
-							
-								Active POK&eacute;MON
-							
-							<table style="margin: 0 auto;">
-								<tbody>
-									<tr>
-										<td id = "activePokemon1Td">
-											<img id="imgActivePokemon1"/> <!-- images from serebii.net/pokedex-rs --> <br/>
-											<p id="activePokemon1">
-											</p>
-										</td>
-										<td id = "activePokemon2Td">
-											<img id="imgActivePokemon2"/> <!-- images from serebii.net/pokedex-rs --> <br/>
-											<p id="activePokemon2">
-											</p>
-										</td>
-										<td id = "activePokemon3Td">
-											<img id="imgActivePokemon3"/> <!-- images from serebii.net/pokedex-rs --> <br/>
-											<p id="activePokemon3">
-											</p>
-										</td>
-										<td id = "activePokemon4Td">
-											<img id="imgActivePokemon4"/> <!-- images from serebii.net/pokedex-rs --> <br/>
-											<p id="activePokemon4">
-											</p>
-										</td>
-										<td id = "activePokemon5Td">
-											<img id="imgActivePokemon5"/> <!-- images from serebii.net/pokedex-rs --> <br/>
-											<p id="activePokemon5">
-											</p>
-										</td>
-										<td id = "activePokemon6">
-											<img id="imgActivePokemon6"/> <!-- images from serebii.net/pokedex-rs --> <br/>
-											<p id="activePokemon6">
-											</p>
-										</td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-					</td>
-				</tr>
-				<tr>
-					<td id="tableOfContent">
-						<p id="player">
-						</p>
-						<img  id="imgPlayer" />
-					</td>
-					<td id="mainFrame">
-						<p>
-							<div id="gameName">
-								<p>
-									<h2>
-										Pok&eacute;mon FireRed
-									</h2>
-								</p>
-							</div>
-							<div id="locationName">
-							</div>
-							
-							<!-- <input name="inputText" type="text" maxLength="10"/> <!-- <input name="inputText" type="text" maxLength="10" id="inputText" class="textForm"/> -->
-							
-							<img id="imageStory"/> <!--width=100 height=100--> <!-- http://www.w3schools.com/js/tryit.asp?filename=tryjs_intro_lightbulb -->
+	<body onload="startGame();">
+		<div id="activePokemon">
+			<div id="activePokemonTitle">
+				<h3>
+					Active Pok&eacute;mon
+				</h3>
+			</div>
+			<div id="activePokemonStats">
+<!--				<a href="#" onclick="window.open('BULBASAURactive.html', 'BULBASAUR', 'width=300,height=200');"> make some link to  a new window 'player.activePokemon1.Name'active.html -->
+					<p id="activePokemon1"> <!-- images from serebii.net/pokedex-rs -->
+					</p>
+<!--				</a> -->
+				<p id="activePokemon2"> <!-- images from serebii.net/pokedex-rs -->
+				</p>
+				<p id="activePokemon3"> <!-- images from serebii.net/pokedex-rs -->
+				</p>
+				<p id="activePokemon4"> <!-- images from serebii.net/pokedex-rs -->
+				</p>
+				<p id="activePokemon5"> <!-- images from serebii.net/pokedex-rs -->
+				</p>
+				<p id="activePokemon6"> <!-- images from serebii.net/pokedex-rs -->
+				</p>
+			</div>
+		</div>
+		<div id="main">
+			<div id="playerStats">
+				<p id="player">
+				</p>
+				<img id="imgPlayer" /> <br/>
+				<div id="playerMoney">
+					<img src="images/pokedollar.png" /> 50000 <!-- image from http://www.reddit.com/r/pokemon/comments/2tup93/how_do_you_pronounce_the_pokemon_currency_symbol/ -->
+				</div>
+			</div>
+			<div id="story">
+				<br/>
+				<div id="locationName"> 
+				</div> <br/>
+				<img id="imageStory"/> <br/> <!--width=100 height=100--> <!-- http://www.w3schools.com/js/tryit.asp?filename=tryjs_intro_lightbulb -->
 							<!-- image from http://bulbapedia.bulbagarden.net/wiki/Professor_Oak_%28anime%29 -->
 							
-							<p id="pokemonRed">
-							</p>
-							<div id="buttonStart" onclick="startGame()"> <!-- cursor: pointer; cursor: hand; in css-->
-								<p>
-								Start Game!
-								</p> <br/>
-							</div>
-						</p>
-					</td>
-					<td id ="pokedex">
-						<div id = "pokedexInfo">
-						</div>
-					</td>
-				</tr>
-				<tr>
-					<td id="footer" colspan=3>
-						<p>
-							<h3>
-								Credits Pok&eacute;mon: Nintento <br/>
-								Credits Pok&eacute;mon FireRed: GAME FREAK inc.
-							</h3>
-						</p>
-					</td>
-				</tr>
-			</tbody>
-		</table>
+				<p id="pokemonRed">
+				</p>
+			</div>
+			<div id="pokedex">
+				<h3>
+					Pok&eacute;dex
+				</h3>
+				<div id="pokedexBULBASAUR">
+					<a href="#" onclick="window.open('pokedex/BULBASAUR.html', 'BULBASAUR', 'width=300,height=200');">
+						BULBASAUR 
+					</a> <br/>
+				</div>
+				<div id="pokedexCHARMANDER">
+					<a href="#" onclick="window.open('pokedex/CHARMANDER.html', 'CHARMANDER', 'width=300,height=200');">
+						CHARMANDER 
+					</a> <br/>
+				</div>
+				<div id="pokedexSQUIRTLE">
+					<a href="#" onclick="window.open('pokedex/SQUIRTLE.html', 'SQUIRTLE', 'width=300,height=200');">
+						SQUIRTLE 
+					</a> <br/>
+				</div>
+			</div>
+		</div>
+		<div id="badges">
+			<div id="badgesTitle">
+				<h3>
+					Badges
+				</h3>
+			</div>
+			<div id="badgesImages">
+				<table>
+					<tr>
+						<td>
+							<img src="images/badges/BOULDER BADGE.png" />
+						</td>
+						<td>
+							<img src="images/badges/CASCADE BADGE.png" />
+						</td>
+						<td>
+							<img src="images/badges/THUNDER BADGE.png" />
+						</td>
+						<td>
+							<img src="images/badges/RAINBOW BADGE.png" />
+						</td>
+						<td>
+							<img src="images/badges/SOUL BADGE.png" />
+						</td>
+						<td>
+							<img src="images/badges/MARSH BADGE.png" />
+						</td>
+						<td>
+							<img src="images/badges/VOLCANO BADGE.png" />
+						</td>
+						<td>
+							<img src="images/badges/EARTH BADGE.png" />
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
 	</body>
 </html>

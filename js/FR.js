@@ -67,13 +67,11 @@ function startGame() {
 	
 	
 	// Start game
-	if (confirm("Are you ready to play? \nIt takes 5 seconds to start the game. ") == true) {
+/*	if (confirm("Are you ready to play? \nIt takes 5 seconds to start the game. ") == true) {
 		confirmStartGame = true;
 	} else {
 		return;
-	}
-	document.getElementById("gameName").style.display = "none";
-	document.getElementById("buttonStart").style.display = "none";
+	}*/
 	window.setInterval(change, 1); //5000 for 5 seconds in final version / 3000 for 3 seconds; //1 for quick testing purposes; //1000 for slow testing purposes;
 	
 	function change() {
@@ -127,10 +125,10 @@ function startGame() {
 			
 			// Walk to PROF. OAK's and getting your first Pokemon
 			"You walk out of your house. ", //30
-			"PALLET TOWN", 
+			"", 
 			"You walk into " + rivalName + ". ", 
 			rivalName + ": What, it's only " + playerName + "? <br/> Gramps isn't around. ",
-			"PALLET TOWN",
+			"",
 			"You try to walk out of PALLET TOWN. ",//35
 			"OAK: Hey! Wait! <br/> Don't go out! ",
 			"",
@@ -221,19 +219,19 @@ function startGame() {
 		
 		if (counter == 0) {
 			// Reset the variables
-			document.getElementById("imageStory").style.display = "none";
+/*			document.getElementById("imageStory").style.display = "none";*/
 			playerName = "";
 			rivalName = "";
 			starterPokemon = "";
 			starterPokemonRival = "";
-			document.getElementById("activePokemon").style.display = "none";
+/*			document.getElementById("activePokemon").style.display = "none";
 			document.getElementById("player").style.display = "none";
 			document.getElementById("imgPlayer").style.display = "none";
 			document.getElementById("imageStory").style.display = "none";
 			document.getElementById("pokemonRed").style.display = "block";
 			document.getElementById("activePokemon1Td").style.display = "none";
 			document.getElementById("pokedexInfo").style.display = "none";
-			document.getElementById("pokedexInfo").innerHTML = "";
+			document.getElementById("pokedexInfo").innerHTML = "";*/
 		}
 
 		counter++;
@@ -375,10 +373,11 @@ function startGame() {
 		} else if(counter == 16) {
  			// Show the player's name and gender
 			showPlayerStats = player.Name;
+			document.getElementById("player").innerHTML = "<h3>" + showPlayerStats + "</h3>";
 			document.getElementById("player").style.display = "block";
-			document.getElementById("player").innerHTML = showPlayerStats;
 			imgPlayer = "images/FireRed_" + player.gender + ".png";
 			document.getElementById("imgPlayer").src = imgPlayer;
+			document.getElementById("playerMoney").style.display = "block";
 /* 			if (player.gender == "boy") { //flip image if player.gender == boy
 				// https://css-tricks.com/snippets/css/flip-an-image/
 				// http://monkeyraptor.johanpaul.net/2013/07/how-to-mirror-image-using-css3.html
@@ -394,7 +393,7 @@ function startGame() {
 			document.getElementById("imageStory").src = "images/Gary.png";// picture of Gary from http://bulbapedia.bulbagarden.net/wiki/Blue_%28game%29
 		} else if(counter == 20) {
  			// Show the player's name, gender and rival's name
-			showPlayerStats = player.Name + " vs. " + rival.Name;
+			showPlayerStats = "<h3>" + player.Name + " vs. " + rival.Name + "</h3>";
 			document.getElementById("player").innerHTML = showPlayerStats;
 		} else if(counter == 21) {
 			document.getElementById("imageStory").src = "images/Professor_Oak_XY.png"; // picture of Professor Oak from http://bulbapedia.bulbagarden.net/wiki/Professor_Oak_%28anime%29
@@ -409,7 +408,7 @@ function startGame() {
 				document.getElementById("pokemonRed").innerHTML = "MOM: ...Right. <br/> All " + player.gender + "s dream of travelling. ";
 			}
 		} else if(counter == 31) {
-				document.getElementById("locationName").innerHTML = "<h3> Pallet Town </h3>"; // <p> <h3> Pallet Town </h3> </p> does not work 
+				document.getElementById("locationName").innerHTML = "<h2> Pallet Town </h2>"; // <p> <h3> Pallet Town </h3> </p> does not work 
 				document.getElementById("locationName").style.display = "block";
 			document.getElementById("imageStory").src = "images/PalletTown.png"; // screenshot from Pokemon FireRed game from GAME FREAK inc.
 		} else if(counter == 32) {
@@ -438,13 +437,10 @@ function startGame() {
 			} else {
 				document.getElementById("pokemonRed").innerHTML = "Hm! " + player.starterPokemon + " is your choice. <br/> It's one worth raising. ";
 			}
+/*			document.getElementById("imgActivePokemon1").src = "images/pokemonIcons/" + pokemonOne.Name + ".gif"; // player.starterPokemon works (is a String);*/
+			document.getElementById("activePokemon1").innerHTML = player.activePokemon1.Name + "<br/> <img src=images/pokemonIcons/" + player.activePokemon1.Name + ".gif /> <br/>Lvl. " + player.activePokemon1.level + " <br/> HP: " + player.activePokemon1.currentHP + "/" + player.activePokemon1.maxHP;// + "<br>" + rival.activePokemon1.move2.category + " <br/> " + player.activePokemon1.move1.Name + player.activePokemon1.move2.Type + player.activePokemon1.move3.category + player.activePokemon1.move4.Name; // does not work if pokemon has "" for a movename//works // player.activePokemon1.moveOne.Name works // http://www.w3schools.com/js/tryit.asp?filename=tryjs_objects_method;
 			document.getElementById("activePokemon").style.display = "block";
-			document.getElementById("imgActivePokemon1").src = "images/pokemonIcons/" + pokemonOne.Name + ".gif"; // player.starterPokemon works (is a String);
-			document.getElementById("activePokemon1").innerHTML = "Lvl. " + player.activePokemon1.level + " " + player.activePokemon1.Name + " <br/> HP: " + player.activePokemon1.currentHP + "/" + player.activePokemon1.maxHP;// + "<br>" + rival.activePokemon1.move2.category + " <br/> " + player.activePokemon1.move1.Name + player.activePokemon1.move2.Type + player.activePokemon1.move3.category + player.activePokemon1.move4.Name; // does not work if pokemon has "" for a movename//works // player.activePokemon1.moveOne.Name works // http://www.w3schools.com/js/tryit.asp?filename=tryjs_objects_method;
-			document.getElementById("pokedexInfo").innerHTML = "<h3> Pok&eacutedex </h3>" + pokemonOne.Name;
-			document.getElementById("pokedexInfo").style.display = "block";
-			document.getElementById("activePokemon1Td").style.display = "inline";
-			//return starterPokemon;
+			document.getElementById("pokedex" + pokemonOne.Name).style.display = "block";
 		} else if(counter == 56) {
 			document.getElementById("imageStory").src = "images/Gary.png";// picture of Gary from http://bulbapedia.bulbagarden.net/wiki/Blue_%28game%29
 		} else if(counter == 58) {
@@ -464,12 +460,11 @@ function startGame() {
 			//continue with current setInterval
 		} else if(counter >= text.length + 1) {
 			// End the game
+			document.getElementById("locationName").innerHTML = "<h2> Hall of Fame </h2>";
 			elemStoryImage.src = "images/HallOfFame.png"; //screenshot from https://www.youtube.com/watch?v=Uq9LTpj91Rw
-			elem.innerHTML = "Congratulations, you have won the game. <br/> Welcome to the HALL OF FAME! ";
+			elem.innerHTML = "CONGRATULATIONS! <br/> Welcome to the HALL OF FAME! ";
 			//counter = 0;
-			document.getElementById("locationName").style.display = "none";
-			document.getElementById("gameName").style.display = "block";
-			document.getElementById("buttonStart").style.display = "block";
+/*			document.getElementById("buttonStart").style.display = "block";*/
 			return;
 		}
 	}

@@ -2,6 +2,7 @@
 // to try out functions and variables
 // currently working on:
 //// function: testCreatePokemon(pokemonName, pokemonLevel);
+//// add getHP(...), and setAccuracy(...) etc. here?
 
 // Creates a pokemon object, including moves as objects
 function testCreatePokemon(pokemonName, pokemonLevel){
