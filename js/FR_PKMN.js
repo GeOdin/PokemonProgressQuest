@@ -10,14 +10,20 @@ var pokemon = [
 	//level 1 and accompanying stats and moves by default, or level of evolvement
 	["pokemonNumber", "pokemonName", "pokemonLevel", "pokemonType1", "pokemonType2", "pokemonEvolveLevel", "pokemonEvolvePokemon", "hp", "attack", "defense", "spattack", "spdefense", "speed", "pokemonMove1", "pokemonMove2", "pokemonMove3", "pokemonMove4"], //0
 	["001", "BULBASAUR", 1, "GRASS", "POISON", 16, "IVYSAUR", 12, 6, 6, 6, 6, 6, "Tackle", "", "", ""], //1
-	["002", "IVYSAUR", 16, "GRASS", "POISON", 32, "VENUSAUR", "HP", "Attack", "Defense", "Sp. Attack", "Sp. Defense", "Speed", "pokemonMove1", "pokemonMove2", "pokemonMove3", "pokemonMove4"],
-	["003", "VENUSAUR", 32, "GRASS", "POISON", 0, "", "HP", "Attack", "Defense", "Sp. Attack", "Sp. Defense", "Speed", "pokemonMove1", "pokemonMove2", "pokemonMove3", "pokemonMove4"],
+	["002", "IVYSAUR", 16, "GRASS", "POISON", 32, "VENUSAUR", "HP", "Attack", "Defense", "Sp. Attack", "Sp. Defense", "Speed", "", "", "", ""],
+	["003", "VENUSAUR", 32, "GRASS", "POISON", 0, "", "HP", "Attack", "Defense", "Sp. Attack", "Sp. Defense", "Speed", "", "", "", ""],
 	["004", "CHARMANDER", 1, "FIRE", "", 16, "CHARMELEON", 12, 6, 6, 6, 6, 6, "Scratch", "Growl", "", ""],
-	["005", "CHARMELEON", 16, "FIRE", "", 36, "CHARIZARD", "HP", "Attack", "Defense", "Sp. Attack", "Sp. Defense", "Speed", "pokemonMove1", "pokemonMove2", "pokemonMove3", "pokemonMove4"],
-	["006", "CHARIZARD", 36, "FIRE", "FLYING", 0, "", "HP", "Attack", "Defense", "Sp. Attack", "Sp. Defense", "Speed", "pokemonMove1", "pokemonMove2", "pokemonMove3", "pokemonMove4"],
+	["005", "CHARMELEON", 16, "FIRE", "", 36, "CHARIZARD", "HP", "Attack", "Defense", "Sp. Attack", "Sp. Defense", "Speed", "", "", "", ""],
+	["006", "CHARIZARD", 36, "FIRE", "FLYING", 0, "", "HP", "Attack", "Defense", "Sp. Attack", "Sp. Defense", "Speed", "", "", "", ""],
 	["007", "SQUIRTLE", 1, "WATER", "", 16, "WARTORTLE", 12, 6, 6, 6, 6, 6, "Tackle", "", "", ""],
-	["008", "WARTORTLE", 16, "WATER", "", 36, "BLASTOISE", "HP", "Attack", "Defense", "Sp. Attack", "Sp. Defense", "Speed", "pokemonMove1", "pokemonMove2", "pokemonMove3", "pokemonMove4"],
-	["009", "BLASTOISE", 36, "WATER", "", 0, "", "HP", "Attack", "Defense", "Sp. Attack", "Sp. Defense", "Speed", "pokemonMove1", "pokemonMove2", "pokemonMove3", "pokemonMove4"]
+	["008", "WARTORTLE", 16, "WATER", "", 36, "BLASTOISE", "HP", "Attack", "Defense", "Sp. Attack", "Sp. Defense", "Speed", "", "", "", ""],
+	["009", "BLASTOISE", 36, "WATER", "", 0, "", "HP", "Attack", "Defense", "Sp. Attack", "Sp. Defense", "Speed", "", "", "", ""],
+	["010", "CATERPIE", 1, "BUG", "", 7, "METAPOD", "HP", "Attack", "Defense", "Sp. Attack", "Sp. Defense", "Speed", "Tackle", "String Shot", "", ""],
+	["011", "METAPOD", 7, "BUG", "", 10, "BUTTERFREE", "HP", "Attack", "Defense", "Sp. Attack", "Sp. Defense", "Speed", "Tackle", "String Shot", "Harden", ""],
+	["012", "BUTTERFREE", 10, "BUG", "FLYING", 0, "", "HP", "Attack", "Defense", "Sp. Attack", "Sp. Defense", "Speed", "Tackle", "String Shot", "Harden", "Confusion"],
+	["013", "WEEDLE", 1, "BUG", "POISON", 7, "KAKUNA", "HP", "Attack", "Defense", "Sp. Attack", "Sp. Defense", "Speed", "Poison Sting", "String Shot", "", ""],
+	["014", "KAKUNA", 7, "BUG", "POISON", 10, "BEEDRILL", "HP", "Attack", "Defense", "Sp. Attack", "Sp. Defense", "Speed", "Poison Sting", "String Shot", "Harden", ""],
+	["015", "BEEDRILL", 10, "BUG", "POISON", 0, "", "HP", "Attack", "Defense", "Sp. Attack", "Sp. Defense", "Speed", "Poison Sting", "String Shot", "Harden", "Fury Attack"]
 ];
 
 // Pokemon background information per pokemon per level
@@ -42,10 +48,15 @@ var pokemonStats = [ //make the variables here the same as for the function crea
 
 // Pokemon moves background information
 var pokemonMoves = [
-	//add "Effect" for moves with type "Status" ? add PP-max for when PP UP items are introduced?
-	["Name", "Type", "category", "pp", "power", "accuracy", "effect"], 
+	//add "Effect" for moves with type "Status" ? add PP-max for when PP UP items are introduced? //also add description? //perhaps make accuracy a float instead of integer?
+	["Name", "Type", "category", "pp", "power", "accuracy", "effect"], //http://bulbapedia.bulbagarden.net/wiki/Confusion_(move)
+	["Confusion", "Psychic", "Special", 25, 50, 100, ""], //http://bulbapedia.bulbagarden.net/wiki/Growl_%28move%29
+	["Fury Attack", "Normal", "Physical", 20, 15, 85, ""], //http://bulbapedia.bulbagarden.net/wiki/Fury_Attack_(move)
 	["Growl", "Normal", "Status", 40, 0, 100, ""], //http://bulbapedia.bulbagarden.net/wiki/Growl_%28move%29
+	["Harden", "Normal", "Status", 30, 0, 100, ""], //accuracy is actually --- instead of 100% //http://bulbapedia.bulbagarden.net/wiki/Harden_(move)
+	["Poison Sting", "Poison", "Physical", 35, 15, 100, ""], //http://bulbapedia.bulbagarden.net/wiki/Poison_Sting_(move)
 	["Scratch", "Normal", "Physical", 35, 40, 100, ""], //http://bulbapedia.bulbagarden.net/wiki/Scratch_%28move%29
+	["String Shot", "Bug", "Status", 40, 0, 95, ""], //http://bulbapedia.bulbagarden.net/wiki/String_Shot_(move)
 	["Tackle", "Normal", "Physical", 35, 50, 100, ""], //http://bulbapedia.bulbagarden.net/wiki/Tackle_%28move%29
 	["Tail Whip", "Normal", "Status", 30, 0, 100, ""], //http://bulbapedia.bulbagarden.net/wiki/Tail_Whip_%28move%29
 	["", "", "", 0, 0, 0, ""] // for when pokemon don't have all 4 moves yet
