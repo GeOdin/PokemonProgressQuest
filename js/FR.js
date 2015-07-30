@@ -40,7 +40,7 @@ by GeOdin */
 function startGame() { 
 
 	// Variables 
-	var confirmStartGame;
+	var confirmStartGame;// still necessary?
 	var elem = document.getElementById("pokemonRed"); //create variables for other document.getElementById elements
 	var elemStoryImage = document.getElementById("imageStory"); //create variables for other document.getElementById elements
 	var counter = 0;
@@ -72,8 +72,9 @@ function startGame() {
 	} else {
 		return;
 	}*/
-	window.setInterval(change, 1); //5000 for 5 seconds in final version / 3000 for 3 seconds; //1 for quick testing purposes; //1000 for slow testing purposes;
-	
+	var gamePokemonFireRed = window.setInterval(change, 1); //5000 for 5 seconds in final version / 3000 for 3 seconds; //1 for quick testing purposes; //1000 for slow testing purposes;
+	gamePokemonFireRed;
+
 	function change() {
 	
 		// Variables
@@ -137,7 +138,7 @@ function startGame() {
 			"I know! <br/> Here, come with me! ",//40
 			"You walk with PROF. OAK to his lab. ",
 			rivalName + ": Gramps! <br/> I'm fed up with waiting! ",
-			"OAK: " + rivalName + "? <br/> Let met think... ",
+			"OAK: " + rivalName + "? <br/> Let me think... ",
 			"Oh, that's right, I told you to <br/> come! Just wait! ",
 			"Here, " + playerName + ".",//45
 			"There are three POK&eacute;MON here. ",
@@ -171,7 +172,10 @@ function startGame() {
 			"their HP to '0', wins. ",
 			"But rather than talking about it, <br/> you'll learn more from experience. ",
 			"Try battling and see for yourself. ",
-			"" //75
+			"", //75
+			"OAK: Inflicting damage on the foe <br/> is the key to any battle. ",
+			"",
+			""
 			
 			
 			/////////////
@@ -460,9 +464,56 @@ function startGame() {
 			document.getElementById("imageStory").src = "images/Professor_Oak_XY.png"; // picture of Professor Oak from http://bulbapedia.bulbagarden.net/wiki/Professor_Oak_%28anime%29
 		} else if(counter == 75) {
 			document.getElementById("imageStory").src = "images/PalletTown_ProfOakLab3.png"; // screenshot from Pokemon FireRed game from GAME FREAK inc.
-			//pause current setInterval --> http://stackoverflow.com/questions/8432127/stop-setinterval-function-for-an-amount-of-time
+			// Player has 1st move
+			if (player.activePokemon1.speed >= rival.activePokemon1.speed) {
+				if (player.activePokemon1.currentHP > 5) {
+					// picture of attacking pokemon?
+					if (player.activePokemon1.Name == "BULBASAUR") {
+						rival.activePokemon1.currentHP -= 5;
+					} else if (player.activePokemon1.Name == "CHARMANDER") {
+						rival.activePokemon1.currentHP -= 3;
+					} else if (player.activePokemon1.Name == "SQUIRTLE") {
+						rival.activePokemon1.currentHP -=5;
+					};
+					document.getElementById("pokemonRed").innerHTML = player.activePokemon1.Name + " used " + player.activePokemon1.move1.Name + ".";
+					// diminish pp for this move?
+					if (rival.activePokemon1.currentHP <= 0) {
+						if (rival.activePokemon1.currentHP < 0) {
+							rival.activePokemon1.currentHP = 0;
+						};
+						return;
+					};
+				} else if (player.activePokemon1.currentHP > 0) {
+					document.getElementById("pokemonRed").innerHTML = player.Name + "used POTION. "; //delete 1 potion from inventory
+					player.activePokemon1.currentHP += 20;
+					if (player.activePokemon1.currentHP > player.activePokemon1.maxHP) {
+						player.activePokemon1.currentHP = player.activePokemon1.maxHP;
+					};
+					document.getElementById("activePokemon1").innerHTML = player.activePokemon1.Name + "<br/> <img src=images/pokemonIcons/" + player.activePokemon1.Name + ".gif /> <br/>Lvl. " + player.activePokemon1.level + " <br/> HP: " + player.activePokemon1.currentHP + "/" + player.activePokemon1.maxHP;
+				};
+			// Rival has first move
+			} else if (player.activePokemon1.speed < rival.activePokemon1.speed) {
+				document.getElementById("pokemonRed").innerHTML = rival.activePokemon1.Name + " used " + rival.activePokemon1.move1.Name + ".";
+				if (rival.activePokemon1.Name == "BULBASAUR") {
+					player.activePokemon1.currentHP -= 4;
+				} else if (rival.activePokemon1.Name == "CHARMANDER") {
+					player.activePokemon1.currentHP -= 4;
+				} else if (rival.activePokemon1.Name == "SQUIRTLE") {
+					player.activePokemon1.currentHP -= 5;
+				};
+				document.getElementById("activePokemon1").innerHTML = player.activePokemon1.Name + "<br/> <img src=images/pokemonIcons/" + player.activePokemon1.Name + ".gif /> <br/>Lvl. " + player.activePokemon1.level + " <br/> HP: " + player.activePokemon1.currentHP + "/" + player.activePokemon1.maxHP;
+			};
+/*			//pause current setInterval --> http://stackoverflow.com/questions/8432127/stop-setinterval-function-for-an-amount-of-time
 			pokemonBattleStartFirst(player, rival); //this is not functional; check whether all objects are proper objects
-			//continue with current setInterval
+			//continue with current setInterval*/
+		} else if (counter == 76) {
+			document.getElementById("imageStory").src = "images/Professor_Oak_XY.png"; // picture of Professor Oak from http://bulbapedia.bulbagarden.net/wiki/Professor_Oak_%28anime%29
+		} else if (counter == 77) {
+			// 1st battle
+			firstPokemonBattle(player, rival); // first battle works, except that the usage of moves is not properly displayed; you also don't see the diminishing of HP, except for the end
+			// add opponent pokemon with currentHP/maxHP somewhere
+		} else if (counter == 78) {
+			document.getElementById("pokemonRed").innerHTML = rival.activePokemon1.Name + " fainted! ";
 		} else if(counter >= text.length + 1) {
 			// End the game
 			document.getElementById("locationName").innerHTML = "<h2> Hall of Fame </h2>";
