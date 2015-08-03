@@ -72,7 +72,7 @@ function startGame() {
 	} else {
 		return;
 	}*/
-	var gamePokemonFireRed = window.setInterval(change, 1); //5000 for 5 seconds in final version / 3000 for 3 seconds; //1 for quick testing purposes; //1000 for slow testing purposes;
+	var gamePokemonFireRed = window.setInterval(change, 1000); //5000 for 5 seconds in final version / 3000 for 3 seconds; //1 for quick testing purposes; //1000 for slow testing purposes;
 	gamePokemonFireRed;
 
 	function change() {
@@ -223,19 +223,10 @@ function startGame() {
 		
 		if (counter == 0) {
 			// Reset the variables
-/*			document.getElementById("imageStory").style.display = "none";*/
 			playerName = "";
 			rivalName = "";
 			starterPokemon = "";
 			starterPokemonRival = "";
-/*			document.getElementById("activePokemon").style.display = "none";
-			document.getElementById("player").style.display = "none";
-			document.getElementById("imgPlayer").style.display = "none";
-			document.getElementById("imageStory").style.display = "none";
-			document.getElementById("pokemonRed").style.display = "block";
-			document.getElementById("activePokemon1Td").style.display = "none";
-			document.getElementById("pokedexInfo").style.display = "none";
-			document.getElementById("pokedexInfo").innerHTML = "";*/
 		}
 
 		counter++;
@@ -520,6 +511,14 @@ function startGame() {
 			document.getElementById("locationName").innerHTML = "<h2> Hall of Fame </h2>";
 			elemStoryImage.src = "images/HallOfFame.png"; //screenshot from https://www.youtube.com/watch?v=Uq9LTpj91Rw
 			elem.innerHTML = "CONGRATULATIONS! <br/> Welcome to the HALL OF FAME! ";
+			document.getElementById("badge1").style.display = "block"; // image from http://bulbapedia.bulbagarden.net/wiki/Badge
+			document.getElementById("badge2").style.display = "block"; // image from http://bulbapedia.bulbagarden.net/wiki/Badge
+			document.getElementById("badge3").style.display = "block"; // image from http://bulbapedia.bulbagarden.net/wiki/Badge
+			document.getElementById("badge4").style.display = "block"; // image from http://bulbapedia.bulbagarden.net/wiki/Badge
+			document.getElementById("badge5").style.display = "block"; // image from http://bulbapedia.bulbagarden.net/wiki/Badge
+			document.getElementById("badge6").style.display = "block"; // image from http://bulbapedia.bulbagarden.net/wiki/Badge
+			document.getElementById("badge7").style.display = "block"; // image from http://bulbapedia.bulbagarden.net/wiki/Badge
+			document.getElementById("badge8").style.display = "block"; // image from http://bulbapedia.bulbagarden.net/wiki/Badge
 			//counter = 0;
 /*			document.getElementById("buttonStart").style.display = "block";*/
 			return;
