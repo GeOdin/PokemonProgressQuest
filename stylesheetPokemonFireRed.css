@@ -136,6 +136,10 @@ body h3 {
 	vertical-align: middle;
 }
 
+#playerMoneyAmount {
+	display: inline;
+}
+
 #story {
 	position: absolute;
 	left: 20.25%;

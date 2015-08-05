@@ -64,6 +64,9 @@ function startGame() {
 	var moveTwo;
 	var moveThree;
 	var moveFour;
+	var locationName;
+	var location;
+	var wildPokemon;
 	
 	
 	// Start game
@@ -72,7 +75,7 @@ function startGame() {
 	} else {
 		return;
 	}*/
-	var gamePokemonFireRed = window.setInterval(change, 1); //5000 for 5 seconds in final version / 3000 for 3 seconds; //1 for quick testing purposes; //1000 for slow testing purposes;
+	var gamePokemonFireRed = window.setInterval(change, 5); //5000 for 5 seconds in final version / 3000 for 3 seconds; //1 for quick testing purposes; //1000 for slow testing purposes;
 	gamePokemonFireRed;
 
 	function change() {
@@ -175,6 +178,11 @@ function startGame() {
 			"", //75
 			"OAK: Inflicting damage on the foe <br/> is the key to any battle. ",
 			"",
+			rivalName + ": Okay! I'll make my <br/> POK&eacute;MON battle to toughen it up!",
+			playerName + "! Gramps! <br/> Smell you later! ",
+			rivalName + " walks away. ", //80
+			"You walk out of the door... ",
+			"... and into ROUTE 1. ",
 			""
 			
 			
@@ -285,7 +293,7 @@ function startGame() {
 			player = new createPlayer (
 				playerName,
 				playerGender,
-				5000, //is this the correct starting amount?
+				3000, //is this the correct starting amount?
 				starterPokemon, // name of the starterPokemon
 				pokemonOne, // active pokemon 1
 				"", // active pokemon 2
@@ -372,6 +380,7 @@ function startGame() {
 			document.getElementById("player").style.display = "block";
 			imgPlayer = "images/FireRed_" + player.gender + ".png";
 			document.getElementById("imgPlayer").src = imgPlayer;
+			document.getElementById("playerMoneyAmount").innerHTML = player.money;
 			document.getElementById("playerMoney").style.display = "block";
 /* 			if (player.gender == "boy") { //flip image if player.gender == boy
 				// https://css-tricks.com/snippets/css/flip-an-image/
@@ -403,8 +412,28 @@ function startGame() {
 				document.getElementById("pokemonRed").innerHTML = "MOM: ...Right. <br/> All " + player.gender + "s dream of travelling. ";
 			}
 		} else if(counter == 31) {
-				document.getElementById("locationName").innerHTML = "<h2> Pallet Town </h2>"; // <p> <h3> Pallet Town </h3> </p> does not work 
-				document.getElementById("locationName").style.display = "block";
+			// Create the Pallet Town location
+			locationName = "Pallet Town";
+			for (i=0; i<locations.length; i++) {
+				if (locations[i][0] == locationName) {
+					location = new createLocation(
+						locations[i][0], 
+						locations[i][1], 
+						locations[i][2], 
+						locations[i][3], 
+						locations[i][4], 
+						locations[i][5], 
+						locations[i][6], 
+						locations[i][7], 
+						locations[i][8], 
+						locations[i][9],
+						locations[i][10],
+						locations[i][11]
+					);
+				};
+			};
+			document.getElementById("locationName").innerHTML = "<h2>" + location.Name + "</h2>"; // <h3> Pallet Town </h3> does not work
+			document.getElementById("locationName").style.display = "block";
 			document.getElementById("imageStory").src = "images/PalletTown.png"; // screenshot from Pokemon FireRed game from GAME FREAK inc.
 		} else if(counter == 32) {
 			document.getElementById("imageStory").src = "images/Gary.png";// picture of Gary from http://bulbapedia.bulbagarden.net/wiki/Blue_%28game%29
@@ -505,10 +534,63 @@ function startGame() {
 			// perhaps I do need to use clearInterval to clear the current interval? or also use a var textFirstBattle that the function can scroll through --- http://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_win_clearinterval
 			// add opponent pokemon with currentHP/maxHP somewhere
 		} else if (counter == 78) {
-			document.getElementById("pokemonRed").innerHTML = rival.activePokemon1.Name + " fainted! ";
-		} else if(counter >= text.length + 1) {
+			document.getElementById("imageStory").src = "images/PalletTown_ProfOakLab4.png"; // screenshot from Pokemon FireRed game from GAME FREAK inc.
+		} else if (counter == 80) {
+			document.getElementById("imageStory").src = "images/PalletTown_ProfOakLab5.png"; // screenshot from Pokemon FireRed game from GAME FREAK inc.
+		} else if (counter == 81) {
+			document.getElementById("imageStory").src = "images/PalletTown_ProfOakLab6.png"; // screenshot from Pokemon FireRed game from GAME FREAK inc.
+		} else if (counter == 82) {
+			// Create the Route 1 location
+			locationName = "Route 1";
+			for (i=0; i<locations.length; i++) {
+				if (locations[i][0] == locationName) {
+					location = new createLocation(
+						locations[i][0], 
+						locations[i][1], 
+						locations[i][2], 
+						locations[i][3], 
+						locations[i][4], 
+						locations[i][5], 
+						locations[i][6], 
+						locations[i][7], 
+						locations[i][8], 
+						locations[i][9],
+						locations[i][10],
+						locations[i][11]
+					);
+				};
+			};
+			document.getElementById("locationName").innerHTML = "<h2>" + location.Name + "</h2>";
+			document.getElementById("imageStory").src = "images/Route1.png"; // screenshot from Pokemon FireRed game from GAME FREAK inc.
+		} else if (counter == 83) {
+			// first drop by @ mom to heal pokemon?
+			// Update var pokemon and var pokemonStats to make the below code for counter == 83 work (update them for pidgey and rattata)
+			wildPokemon = new createWildPokemon(location);
+			document.getElementById("imageStory").src = "images/pokemonIcons/" + wildPokemon.Name + ".gif";
+			document.getElementById("pokemonRed").innerHTML = "Wild " + wildPokemon.Name + " appeared!";
+		} else if(counter > text.length) {
 			// End the game
-			document.getElementById("locationName").innerHTML = "<h2> Hall of Fame </h2>";
+			// Create the Route 1 location
+			locationName = "Hall of Fame";
+			for (i=0; i<locations.length; i++) {
+				if (locations[i][0] == locationName) {
+					location = new createLocation(
+						locations[i][0], 
+						locations[i][1], 
+						locations[i][2], 
+						locations[i][3], 
+						locations[i][4], 
+						locations[i][5], 
+						locations[i][6], 
+						locations[i][7], 
+						locations[i][8], 
+						locations[i][9],
+						locations[i][10],
+						locations[i][11]
+					);
+				};
+			};
+			document.getElementById("locationName").innerHTML = "<h2>" + location.Name + "</h2>";
 			elemStoryImage.src = "images/HallOfFame.png"; //screenshot from https://www.youtube.com/watch?v=Uq9LTpj91Rw
 			elem.innerHTML = "CONGRATULATIONS! <br/> Welcome to the HALL OF FAME! ";
 			document.getElementById("badge1").style.display = "block"; // image from http://bulbapedia.bulbagarden.net/wiki/Badge

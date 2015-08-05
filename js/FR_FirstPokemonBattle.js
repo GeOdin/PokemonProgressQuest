@@ -8,41 +8,56 @@
  */
 
 function firstPokemonBattle(player, rival) {
-	//var counterPokemonBattleOne = 0;
-/*	var player = player;
-	var rival = rival;*/
-	window.setInterval(actualFirstPokemonBattle(player, rival), 3000);
+	window.setInterval(actualFirstPokemonBattle(player, rival), 1); //3000 for 3
 
 	function actualFirstPokemonBattle (player, rival) {
 		var damage;
 		// Set the screenshot to first battle		
 		document.getElementById("imageStory").src = "images/PalletTown_ProfOakLab3.png"; // screenshot from Pokemon FireRed game from GAME FREAK inc.
+		// Put the different (attacking) Pokemon on top (z-index >=1) of the battle screenshot of #imageStory?
 
 		while (rival.activePokemon1.currentHP > 0){
 			if (rival.activePokemon1.currentHP > 0) {
 				// Move 1
 				// Either let the rival do his move...
 				if (player.activePokemon1.speed >= rival.activePokemon1.speed) {
-//					damage = Math.round(((((2 * rival.activePokemon1.level / 5 + 2) * rival.activePokemon1.attack * rival.activePokemon1.move1.power / player.activePokemon1.defense) / 50) + 2) * getSTAB(rival.activePokemon1, rival.activePokemon1.move1) * getWeakness(rival.activePokemon1.move1, player.activePokemon1) * (Math.floor(Math.random() * (100 - 85 + 1)) + 85) / 100);
-					damage = calculateDamageTest(rival.activePokemon1, rival.activePokemon1.move1, player.activePokemon1);
+					damage = calculateDamage(rival.activePokemon1, rival.activePokemon1.move1, player.activePokemon1);
 					player.activePokemon1.currentHP -= damage;
 					document.getElementById("activePokemon1").innerHTML = player.activePokemon1.Name + "<br/> <img src=images/pokemonIcons/" + player.activePokemon1.Name + ".gif /> <br/>Lvl. " + player.activePokemon1.level + " <br/> HP: " + player.activePokemon1.currentHP + "/" + player.activePokemon1.maxHP;
 					document.getElementById("pokemonRed").innerHTML = rival.activePokemon1.Name + " used " + rival.activePokemon1.move1.Name + ".";
+					if (player.activePokemon1.currentHP <=0) {
+						if (player.activePokemon1.currentHP < 0) {
+							player.activePokemon1.currentHP = 0;
+						};
+					document.getElementById("activePokemon1").innerHTML = player.activePokemon1.Name + "<br/> <img src=images/pokemonIcons/" + player.activePokemon1.Name + ".gif /> <br/>Lvl. " + player.activePokemon1.level + " <br/> HP: " + player.activePokemon1.currentHP + "/" + player.activePokemon1.maxHP;
+					document.getElementById("pokemonRed").innerHTML = player.activePokemon1.Name + " fainted.";
+					document.getElementById("pokemonRed").innerHTML = rival.Name + ": " + rival.activePokemon1.Name + ", come back!";
+					document.getElementById("pokemonRed").innerHTML = rival.Name + ": Yeah! <br/> Am I great or what? ";
+					document.getElementById("pokemonRed").innerHTML = "OAK: Hm... <br/> How dissappointing... ";
+					document.getElementById("pokemonRed").innerHTML = "If you win, you earn prize money, <br/> and your POK&eacute;MON grow. ";
+					document.getElementById("pokemonRed").innerHTML = "But if you lose, " + player.Name + ", you end <br/> up paying prize money... ";
+					document.getElementById("pokemonRed").innerHTML = "However, since you had no warning <br/> this time, I'll pay for you. ";
+					document.getElementById("pokemonRed").innerHTML = "But things won't be this way once <br/> you step outside these doors. ";
+					document.getElementById("pokemonRed").innerHTML = "That's why you must strengthen your <br/> POK&eacute;MON by battling wild POK&eacute;MON. ";
+					return;
+					};
 					// ... or let the player do his move
 				} else if (player.activePokemon1.speed < rival.activePokemon1.speed) {
 					if (player.activePokemon1.currentHP > 5) {
 						// picture of attacking pokemon?
-						damage = calculateDamageTest(player.activePokemon1, player.activePokemon1.move1, rival.activePokemon1);
+						damage = calculateDamage(player.activePokemon1, player.activePokemon1.move1, rival.activePokemon1);
 						rival.activePokemon1.currentHP -= damage;
-						document.getElementById("pokemonRed").innerHTML = player.activePokemon1.Name + " used " + player.activePokemon1.move1.Name + ".";
 						// diminish pp for this move?
+						document.getElementById("pokemonRed").innerHTML = player.activePokemon1.Name + " used " + player.activePokemon1.move1.Name + ".";
 						if (rival.activePokemon1.currentHP <= 0) {
 							if (rival.activePokemon1.currentHP < 0) {
 								rival.activePokemon1.currentHP = 0;
 							};
+							// Get money from rival
+							player.money += 80;
+							document.getElementById("playerMoneyAmount").innerHTML = player.money;
 							return;
 						};
-						// diminish pp for this move?
 					} else if (player.activePokemon1.currentHP > 0) {
 						document.getElementById("pokemonRed").innerHTML = player.Name + " used POTION. "; //delete 1 potion from inventory
 						player.activePokemon1.currentHP += 20;
@@ -62,15 +77,17 @@ function firstPokemonBattle(player, rival) {
 				if (player.activePokemon1.speed >= rival.activePokemon1.speed) {
 					if (player.activePokemon1.currentHP > 5) {
 						// picture of attacking pokemon?
-						
-						damage = calculateDamageTest(player.activePokemon1, player.activePokemon1.move1, rival.activePokemon1);
+						damage = calculateDamage(player.activePokemon1, player.activePokemon1.move1, rival.activePokemon1);
 						rival.activePokemon1.currentHP -= damage;
-						document.getElementById("pokemonRed").innerHTML = player.activePokemon1.Name + " used " + player.activePokemon1.move1.Name + ".";
 						// diminish pp for this move?
+						document.getElementById("pokemonRed").innerHTML = player.activePokemon1.Name + " used " + player.activePokemon1.move1.Name + ".";
 						if (rival.activePokemon1.currentHP <= 0) {
 							if (rival.activePokemon1.currentHP < 0) {
 								rival.activePokemon1.currentHP = 0;
 							};
+							// Get money from rival
+							player.money += 80;
+							document.getElementById("playerMoneyAmount").innerHTML = player.money;
 							return;
 						};
 					} else if (player.activePokemon1.currentHP > 0) {
@@ -83,10 +100,26 @@ function firstPokemonBattle(player, rival) {
 					};
 				// ... or let the rival do his move.
 				} else if (player.activePokemon1.speed < rival.activePokemon1.speed) {
-					damage = calculateDamageTest(rival.activePokemon1, rival.activePokemon1.move1, player.activePokemon1);
+					damage = calculateDamage(rival.activePokemon1, rival.activePokemon1.move1, player.activePokemon1);
 					player.activePokemon1.currentHP -= damage;
 					document.getElementById("activePokemon1").innerHTML = player.activePokemon1.Name + "<br/> <img src=images/pokemonIcons/" + player.activePokemon1.Name + ".gif /> <br/>Lvl. " + player.activePokemon1.level + " <br/> HP: " + player.activePokemon1.currentHP + "/" + player.activePokemon1.maxHP;
 					document.getElementById("pokemonRed").innerHTML = rival.activePokemon1.Name + " used " + rival.activePokemon1.move1.Name + ".";
+					if (player.activePokemon1.currentHP <=0) {
+						if (player.activePokemon1.currentHP < 0) {
+							player.activePokemon1.currentHP = 0;
+						};
+					document.getElementById("activePokemon1").innerHTML = player.activePokemon1.Name + "<br/> <img src=images/pokemonIcons/" + player.activePokemon1.Name + ".gif /> <br/>Lvl. " + player.activePokemon1.level + " <br/> HP: " + player.activePokemon1.currentHP + "/" + player.activePokemon1.maxHP;
+					document.getElementById("pokemonRed").innerHTML = player.activePokemon1.Name + " fainted.";
+					document.getElementById("pokemonRed").innerHTML = rival.Name + ": " + rival.activePokemon1.Name + ", come back!";
+					document.getElementById("pokemonRed").innerHTML = rival.Name + ": Yeah! <br/> Am I great or what? ";
+					document.getElementById("pokemonRed").innerHTML = "OAK: Hm... <br/> How dissappointing... ";
+					document.getElementById("pokemonRed").innerHTML = "If you win, you earn prize money, <br/> and your POK&eacute;MON grow. ";
+					document.getElementById("pokemonRed").innerHTML = "But if you lose, " + player.Name + ", you end <br/> up paying prize money... ";
+					document.getElementById("pokemonRed").innerHTML = "However, since you had no warning <br/> this time, I'll pay for you. ";
+					document.getElementById("pokemonRed").innerHTML = "But things won't be this way once <br/> you step outside these doors. ";
+					document.getElementById("pokemonRed").innerHTML = "That's why you must strengthen your <br/> POK&eacute;MON by battling wild POK&eacute;MON. ";
+					return;
+					};
 				};
 			/*			//pause current setInterval --> http://stackoverflow.com/questions/8432127/stop-setinterval-function-for-an-amount-of-time
 				pokemonBattleStartFirst(player, rival); //this is not functional; check whether all objects are proper objects
@@ -94,7 +127,6 @@ function firstPokemonBattle(player, rival) {
 			} else {
 				return;
 			};
-			//counterPokemonBattleOne++;
 		};
 	};
 };
@@ -143,7 +175,7 @@ function getWeakness(move, defendingPokemon) {
 	return totalWeakness;
 };
 
-function calculateDamageTest(attackingPokemon, move, defendingPokemon) { //http://www.serebii.net/games/damage.shtml //when power of move > 0
+function calculateDamage(attackingPokemon, move, defendingPokemon) { //http://www.serebii.net/games/damage.shtml //when power of move > 0
 /* Seems long and confusing? Compared to the other formula's, this one is easy as pie. Let me explain all the variables first. 
 Damage is, well, damage, the output number. 
 Level is your pokemon's current level. 
@@ -173,8 +205,11 @@ RandomNumber is simply a Random Number between 85 and 100. */
 	} else if (move.category == "Status") {
 		damage = 0;
 		// Also add possible effect
+		// add move.effectStat (eg ATTACK for Growl)
+		// add pokemon.minAttack (eg player.activePokemon1.minAttack = 40;)
+		// add pokemon.currentAttack (eg player.activePokemon1.currentAttack = 46;)
+		// add pokemon.maxAttack (eg player.activePokemon1.maxAttack = 52;)
 		// effect = "";
 	};
-	
 	return damage; //move with move.damage and move.effect
 };

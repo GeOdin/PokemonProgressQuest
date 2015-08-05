@@ -23,7 +23,12 @@ var pokemon = [
 	["012", "BUTTERFREE", 10, "BUG", "FLYING", 0, "", "HP", "Attack", "Defense", "Sp. Attack", "Sp. Defense", "Speed", "Tackle", "String Shot", "Harden", "Confusion"],
 	["013", "WEEDLE", 1, "BUG", "POISON", 7, "KAKUNA", "HP", "Attack", "Defense", "Sp. Attack", "Sp. Defense", "Speed", "Poison Sting", "String Shot", "", ""],
 	["014", "KAKUNA", 7, "BUG", "POISON", 10, "BEEDRILL", "HP", "Attack", "Defense", "Sp. Attack", "Sp. Defense", "Speed", "Poison Sting", "String Shot", "Harden", ""],
-	["015", "BEEDRILL", 10, "BUG", "POISON", 0, "", "HP", "Attack", "Defense", "Sp. Attack", "Sp. Defense", "Speed", "Poison Sting", "String Shot", "Harden", "Fury Attack"]
+	["015", "BEEDRILL", 10, "BUG", "POISON", 0, "", "HP", "Attack", "Defense", "Sp. Attack", "Sp. Defense", "Speed", "Poison Sting", "String Shot", "Harden", "Fury Attack"],
+	["016", "PIDGEY", 1, "NORMAL", "FLYING", 18, "PIDGEOTTO", "HP", "Attack", "Defense", "Sp. Attack", "Sp. Defense", "Speed", "Tackle", "", "", ""],
+	["017", "PIDGEOTTO", 18, "NORMAL", "FLYING", 36, "PIDGEOT", "HP", "Attack", "Defense", "Sp. Attack", "Sp. Defense", "Speed", "Tackle", "Sand-attack", "Gust", "Quick Attack"],
+	["018", "PIDGEOT", 36, "NORMAL", "FLYING", 0, "", "HP", "Attack", "Defense", "Sp. Attack", "Sp. Defense", "Speed", "Wing Attack", "Quick Attack", "Tackle", "Gust"],
+	["019", "RATTATA", 1, "NORMAL", "", 20, "RATICATE", "HP", "Attack", "Defense", "Sp. Attack", "Sp. Defense", "Speed", "Tackle", "Tail Whip", "", ""],
+	["020", "RATICATE", 20, "NORMAL", "", 0, "", "HP", "Attack", "Defense", "Sp. Attack", "Sp. Defense", "Speed", "Tackle", "Tail Whip", "Quick Attack", "Hyper Fang"]
 ];
 
 // Pokemon background information per pokemon per level
@@ -39,11 +44,21 @@ var pokemonStats = [ //make the variables here the same as for the function crea
 	["004", "CHARMANDER", 3, "FIRE", "", 16, "CHARMELEON", 16, 16, 9, 8, 9, 8, 9, "Scratch", "Growl", "", ""],
 	["004", "CHARMANDER", 4, "FIRE", "", 16, "CHARMELEON", 18, 18, 11, 9, 12, 11, 12, "Scratch", "Growl", "", ""],
 	["004", "CHARMANDER", 5, "FIRE", "", 16, "CHARMELEON", 20, 20, 12, 11, 13, 12, 14, "Scratch", "Growl", "Tackle", "Tail Whip"],
-	["001", "SQUIRTLE", 1, "WATER", "", 16, "WARTORTLE", 12, 12, 6, 6, 6, 6, 6, "Tackle", "", "", ""],
-	["001", "SQUIRTLE", 2, "WATER", "", 16, "WARTORTLE", 14, 14, 7, 8, 7, 8, 7, "Tackle", "", "", ""],
-	["001", "SQUIRTLE", 3, "WATER", "", 16, "WARTORTLE", 16, 16, 8, 9, 8, 9, 8, "Tackle", "", "", ""],
-	["001", "SQUIRTLE", 4, "WATER", "", 16, "WARTORTLE", 18, 18, 11, 12, 11, 12, 9, "Tackle", "Tail Whip", "", ""],
-	["001", "SQUIRTLE", 5, "WATER", "", 16, "WARTORTLE", 20, 20, 12, 14, 12, 13, 11, "Tackle", "Tail Whip", "", ""]
+	["007", "SQUIRTLE", 1, "WATER", "", 16, "WARTORTLE", 12, 12, 6, 6, 6, 6, 6, "Tackle", "", "", ""],
+	["007", "SQUIRTLE", 2, "WATER", "", 16, "WARTORTLE", 14, 14, 7, 8, 7, 8, 7, "Tackle", "", "", ""],
+	["007", "SQUIRTLE", 3, "WATER", "", 16, "WARTORTLE", 16, 16, 8, 9, 8, 9, 8, "Tackle", "", "", ""],
+	["007", "SQUIRTLE", 4, "WATER", "", 16, "WARTORTLE", 18, 18, 11, 12, 11, 12, 9, "Tackle", "Tail Whip", "", ""],
+	["007", "SQUIRTLE", 5, "WATER", "", 16, "WARTORTLE", 20, 20, 12, 14, 12, 13, 11, "Tackle", "Tail Whip", "", ""],
+	["016", "PIDGEY", 1, "", "", 18, "PIDGEOTTO", "currentHP", "maxHP", "attack", "defense", "spattack", "spdefense", "speed", "Tackle", "", "", ""],
+	["016", "PIDGEY", 2, "", "", 18, "PIDGEOTTO", "currentHP", "maxHP", "attack", "defense", "spattack", "spdefense", "speed", "Tackle", "", "", ""],
+	["016", "PIDGEY", 3, "", "", 18, "PIDGEOTTO", "currentHP", "maxHP", "attack", "defense", "spattack", "spdefense", "speed", "Tackle", "", "", ""],
+	["016", "PIDGEY", 4, "", "", 18, "PIDGEOTTO", "currentHP", "maxHP", "attack", "defense", "spattack", "spdefense", "speed", "Tackle", "", "", ""],
+	["016", "PIDGEY", 5, "", "", 18, "PIDGEOTTO", "currentHP", "maxHP", "attack", "defense", "spattack", "spdefense", "speed", "Tackle", "Sand-attack", "", ""],
+	["019", "RATTATA", 1, "", "", 20, "RATICATE", "currentHP", "maxHP", "attack", "defense", "spattack", "spdefense", "speed", "Tackle", "Tail Whip", "", ""],
+	["019", "RATTATA", 2, "", "", 20, "RATICATE", "currentHP", "maxHP", "attack", "defense", "spattack", "spdefense", "speed", "Tackle", "Tail Whip", "", ""],
+	["019", "RATTATA", 3, "", "", 20, "RATICATE", "currentHP", "maxHP", "attack", "defense", "spattack", "spdefense", "speed", "Tackle", "Tail Whip", "", ""],
+	["019", "RATTATA", 4, "", "", 20, "RATICATE", "currentHP", "maxHP", "attack", "defense", "spattack", "spdefense", "speed", "Tackle", "Tail Whip", "", ""],
+	["019", "RATTATA", 5, "", "", 20, "RATICATE", "currentHP", "maxHP", "attack", "defense", "spattack", "spdefense", "speed", "Tackle", "Tail Whip", "", ""]
 ];
 
 // Pokemon moves background information
@@ -54,12 +69,17 @@ var pokemonMoves = [
 	// Add fact for Fury attack that the attack can hit 2-5 times! - http://bulbapedia.bulbagarden.net/wiki/Fury_Attack_(move)
 	["Fury Attack", "NORMAL", "Physical", 20, 15, 85, ""], //http://bulbapedia.bulbagarden.net/wiki/Fury_Attack_(move)
 	["Growl", "NORMAL", "Status", 40, 0, 100, ""], //http://bulbapedia.bulbagarden.net/wiki/Growl_%28move%29
+	["Gust", "", "", 1, 1, 1, ""], 
 	["Harden", "NORMAL", "Status", 30, 0, 100, ""], //accuracy is actually --- instead of 100% //http://bulbapedia.bulbagarden.net/wiki/Harden_(move)
+	["Hyper Fang", "", "", 1, 1, 1, ""],
 	["Poison Sting", "POISON", "Physical", 35, 15, 100, ""], //http://bulbapedia.bulbagarden.net/wiki/Poison_Sting_(move)
+	["Quick Attack", "", "", 1, 1, 1, ""],
+	["Sand-attack", "", "", 1, 1, 1, ""],
 	["Scratch", "NORMAL", "Physical", 35, 40, 100, ""], //http://bulbapedia.bulbagarden.net/wiki/Scratch_%28move%29
 	["String Shot", "BUG", "Status", 40, 0, 95, ""], //http://bulbapedia.bulbagarden.net/wiki/String_Shot_(move)
 	["Tackle", "NORMAL", "Physical", 35, 50, 100, ""], //http://bulbapedia.bulbagarden.net/wiki/Tackle_%28move%29
 	["Tail Whip", "NORMAL", "Status", 30, 0, 100, ""], //http://bulbapedia.bulbagarden.net/wiki/Tail_Whip_%28move%29
+	["Wing Attack", "", "", 1, 1, 1, ""],
 	["", "", "", 0, 0, 0, ""] // for when pokemon don't have all 4 moves yet
 ];
 
