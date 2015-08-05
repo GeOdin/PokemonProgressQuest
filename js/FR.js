@@ -72,7 +72,7 @@ function startGame() {
 	} else {
 		return;
 	}*/
-	var gamePokemonFireRed = window.setInterval(change, 1000); //5000 for 5 seconds in final version / 3000 for 3 seconds; //1 for quick testing purposes; //1000 for slow testing purposes;
+	var gamePokemonFireRed = window.setInterval(change, 1); //5000 for 5 seconds in final version / 3000 for 3 seconds; //1 for quick testing purposes; //1000 for slow testing purposes;
 	gamePokemonFireRed;
 
 	function change() {
