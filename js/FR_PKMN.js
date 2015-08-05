@@ -1,4 +1,4 @@
-// stat calculator --> http://pycosites.com/pkmn/stat.html
+// stat calculator 31 IV and +Nature --> http://pycosites.com/pkmn/stat.html
 // moves for FireRed --> http://serebii.net/pokedex-rs/
 // This has the functions
 //// createPokemon(pokemonNumber, pokemonName, pokemonLevel, pokemonType1, pokemonType2, pokemonEvolveLevel, pokemonEvolvePokemon, currentHP, maxHP, attack, defense, spattack, spdefense, speed, pokemonMove1, pokemonMove2, pokemonMove3, pokemonMove4);
@@ -49,16 +49,16 @@ var pokemonStats = [ //make the variables here the same as for the function crea
 	["007", "SQUIRTLE", 3, "WATER", "", 16, "WARTORTLE", 16, 16, 8, 9, 8, 9, 8, "Tackle", "", "", ""],
 	["007", "SQUIRTLE", 4, "WATER", "", 16, "WARTORTLE", 18, 18, 11, 12, 11, 12, 9, "Tackle", "Tail Whip", "", ""],
 	["007", "SQUIRTLE", 5, "WATER", "", 16, "WARTORTLE", 20, 20, 12, 14, 12, 13, 11, "Tackle", "Tail Whip", "", ""],
-	["016", "PIDGEY", 1, "", "", 18, "PIDGEOTTO", "currentHP", "maxHP", "attack", "defense", "spattack", "spdefense", "speed", "Tackle", "", "", ""],
-	["016", "PIDGEY", 2, "", "", 18, "PIDGEOTTO", "currentHP", "maxHP", "attack", "defense", "spattack", "spdefense", "speed", "Tackle", "", "", ""],
-	["016", "PIDGEY", 3, "", "", 18, "PIDGEOTTO", "currentHP", "maxHP", "attack", "defense", "spattack", "spdefense", "speed", "Tackle", "", "", ""],
-	["016", "PIDGEY", 4, "", "", 18, "PIDGEOTTO", "currentHP", "maxHP", "attack", "defense", "spattack", "spdefense", "speed", "Tackle", "", "", ""],
-	["016", "PIDGEY", 5, "", "", 18, "PIDGEOTTO", "currentHP", "maxHP", "attack", "defense", "spattack", "spdefense", "speed", "Tackle", "Sand-attack", "", ""],
-	["019", "RATTATA", 1, "", "", 20, "RATICATE", "currentHP", "maxHP", "attack", "defense", "spattack", "spdefense", "speed", "Tackle", "Tail Whip", "", ""],
-	["019", "RATTATA", 2, "", "", 20, "RATICATE", "currentHP", "maxHP", "attack", "defense", "spattack", "spdefense", "speed", "Tackle", "Tail Whip", "", ""],
-	["019", "RATTATA", 3, "", "", 20, "RATICATE", "currentHP", "maxHP", "attack", "defense", "spattack", "spdefense", "speed", "Tackle", "Tail Whip", "", ""],
-	["019", "RATTATA", 4, "", "", 20, "RATICATE", "currentHP", "maxHP", "attack", "defense", "spattack", "spdefense", "speed", "Tackle", "Tail Whip", "", ""],
-	["019", "RATTATA", 5, "", "", 20, "RATICATE", "currentHP", "maxHP", "attack", "defense", "spattack", "spdefense", "speed", "Tackle", "Tail Whip", "", ""]
+	["016", "PIDGEY", 1, "NORMAL", "FLYING", 18, "PIDGEOTTO", 12, 12, 6, 6, 6, 6, 6, "Tackle", "", "", ""],
+	["016", "PIDGEY", 2, "NORMAL", "FLYING", 18, "PIDGEOTTO", 14, 14, 7, 7, 7, 7, 7, "Tackle", "", "", ""],
+	["016", "PIDGEY", 3, "NORMAL", "FLYING", 18, "PIDGEOTTO", 16, 16, 8, 8, 8, 8, 9, "Tackle", "", "", ""],
+	["016", "PIDGEY", 4, "NORMAL", "FLYING", 18, "PIDGEOTTO", 18, 18, 9, 9, 9, 9, 11, "Tackle", "", "", ""],
+	["016", "PIDGEY", 5, "NORMAL", "FLYING", 18, "PIDGEOTTO", 20, 20, 12, 11, 11, 11, 13, "Tackle", "Sand-attack", "", ""],
+	["019", "RATTATA", 1, "NORMAL", "", 20, "RATICATE", 11, 11, 6, 6, 6, 5, 6, "Tackle", "Tail Whip", "", ""],
+	["019", "RATTATA", 2, "NORMAL", "", 20, "RATICATE", 13, 13, 7, 7, 6, 7, 8, "Tackle", "Tail Whip", "", ""],
+	["019", "RATTATA", 3, "NORMAL", "", 20, "RATICATE", 15, 15, 9, 8, 7, 8, 11, "Tackle", "Tail Whip", "", ""],
+	["019", "RATTATA", 4, "NORMAL", "", 20, "RATICATE", 17, 17, 11, 9, 8, 9, 13, "Tackle", "Tail Whip", "", ""],
+	["019", "RATTATA", 5, "NORMAL", "", 20, "RATICATE", 19, 19, 13, 11, 9, 11, 14, "Tackle", "Tail Whip", "", ""]
 ];
 
 // Pokemon moves background information
@@ -68,18 +68,25 @@ var pokemonMoves = [
 	["Confusion", "PSYCHIC", "Special", 25, 50, 100, ""], //http://bulbapedia.bulbagarden.net/wiki/Growl_%28move%29
 	// Add fact for Fury attack that the attack can hit 2-5 times! - http://bulbapedia.bulbagarden.net/wiki/Fury_Attack_(move)
 	["Fury Attack", "NORMAL", "Physical", 20, 15, 85, ""], //http://bulbapedia.bulbagarden.net/wiki/Fury_Attack_(move)
+	// Add effect of attack -= 1 until end of battle
 	["Growl", "NORMAL", "Status", 40, 0, 100, ""], //http://bulbapedia.bulbagarden.net/wiki/Growl_%28move%29
-	["Gust", "", "", 1, 1, 1, ""], 
+	["Gust", "FLYING", "Special", 35, 40, 100, ""],  // http://bulbapedia.bulbagarden.net/wiki/Gust_(move)
+	// Add effect
 	["Harden", "NORMAL", "Status", 30, 0, 100, ""], //accuracy is actually --- instead of 100% //http://bulbapedia.bulbagarden.net/wiki/Harden_(move)
-	["Hyper Fang", "", "", 1, 1, 1, ""],
+	["Hyper Fang", "NORMAL", "Physical", 15, 80, 90, ""], // http://bulbapedia.bulbagarden.net/wiki/Hyper_Fang_(move)
+	// Add effect
 	["Poison Sting", "POISON", "Physical", 35, 15, 100, ""], //http://bulbapedia.bulbagarden.net/wiki/Poison_Sting_(move)
-	["Quick Attack", "", "", 1, 1, 1, ""],
-	["Sand-attack", "", "", 1, 1, 1, ""],
+	// priority +1 for Quick Attack
+	["Quick Attack", "NORMAL", "Physical", 30, 40, 100, ""], // http://bulbapedia.bulbagarden.net/wiki/Quick_Attack_(move)
+	// Add effect
+	["Sand-attack", "GROUND", "Status", 15, 0, 100, ""], // http://bulbapedia.bulbagarden.net/wiki/Sand_Attack_(move)
 	["Scratch", "NORMAL", "Physical", 35, 40, 100, ""], //http://bulbapedia.bulbagarden.net/wiki/Scratch_%28move%29
+	// Add effect
 	["String Shot", "BUG", "Status", 40, 0, 95, ""], //http://bulbapedia.bulbagarden.net/wiki/String_Shot_(move)
 	["Tackle", "NORMAL", "Physical", 35, 50, 100, ""], //http://bulbapedia.bulbagarden.net/wiki/Tackle_%28move%29
+	// Add effect
 	["Tail Whip", "NORMAL", "Status", 30, 0, 100, ""], //http://bulbapedia.bulbagarden.net/wiki/Tail_Whip_%28move%29
-	["Wing Attack", "", "", 1, 1, 1, ""],
+	["Wing Attack", "FLYING", "Physical", 35, 60, 100, ""], // http://bulbapedia.bulbagarden.net/wiki/Wing_Attack_(move)
 	["", "", "", 0, 0, 0, ""] // for when pokemon don't have all 4 moves yet
 ];
 

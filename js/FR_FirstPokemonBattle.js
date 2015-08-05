@@ -195,14 +195,17 @@ RandomNumber is simply a Random Number between 85 and 100. */
 	weakness = getWeakness(move, defendingPokemon);
 
 	if (move.category == "Physical") {
+		// include an if-statement with the accuracy of the move, if the move hits -> calculate damage, otherwise -> damage stays 0, nothing happens
 		damage = Math.round(((((2 * attackingPokemon.level / 5 + 2) * attackingPokemon.attack * move.power / defendingPokemon.defense) / 50) + 2) * STAB * weakness * randNumb / 100);
 		// Also add possible effect
 		// effect = "";
 	} else if (move.category == "Special") {
+		// include an if-statement with the accuracy of the move, if the move hits -> calculate damage, otherwise -> damage stays 0, nothing happens
 		damage = Math.round(((((2 * attackingPokemon.level / 5 + 2) * attackingPokemon.spattack * move.power / defendingPokemon.spdefense) / 50) + 2) * STAB * weakness * randNumb / 100);
 		// Also add possible effect
 		// effect = "";
 	} else if (move.category == "Status") {
+		// include an if-statement with the accuracy of the move, if the move hits -> calculate damage, otherwise -> damage stays 0, nothing happens
 		damage = 0;
 		// Also add possible effect
 		// add move.effectStat (eg ATTACK for Growl)
