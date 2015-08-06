@@ -23,13 +23,13 @@ function firstPokemonBattle(player, rival) {
 				if (player.activePokemon1.speed >= rival.activePokemon1.speed) {
 					damage = calculateDamage(rival.activePokemon1, rival.activePokemon1.move1, player.activePokemon1);
 					player.activePokemon1.currentHP -= damage;
-					document.getElementById("activePokemon1").innerHTML = player.activePokemon1.Name + "<br/> <img src=images/pokemonIcons/" + player.activePokemon1.Name + ".gif /> <br/>Lvl. " + player.activePokemon1.level + " <br/> HP: " + player.activePokemon1.currentHP + "/" + player.activePokemon1.maxHP;
+					document.getElementById("activePokemon1").innerHTML = player.activePokemon1.Name + "<br/> <img src=images/pokemonIconsTransparent/" + player.activePokemon1.Name + ".png /> <br/>Lvl. " + player.activePokemon1.level + " <br/> HP: " + player.activePokemon1.currentHP + "/" + player.activePokemon1.maxHP;
 					document.getElementById("pokemonRed").innerHTML = rival.activePokemon1.Name + " used " + rival.activePokemon1.move1.Name + ".";
 					if (player.activePokemon1.currentHP <=0) {
 						if (player.activePokemon1.currentHP < 0) {
 							player.activePokemon1.currentHP = 0;
 						};
-					document.getElementById("activePokemon1").innerHTML = player.activePokemon1.Name + "<br/> <img src=images/pokemonIcons/" + player.activePokemon1.Name + ".gif /> <br/>Lvl. " + player.activePokemon1.level + " <br/> HP: " + player.activePokemon1.currentHP + "/" + player.activePokemon1.maxHP;
+					document.getElementById("activePokemon1").innerHTML = player.activePokemon1.Name + "<br/> <img src=images/pokemonIconsTransparent/" + player.activePokemon1.Name + ".png /> <br/>Lvl. " + player.activePokemon1.level + " <br/> HP: " + player.activePokemon1.currentHP + "/" + player.activePokemon1.maxHP;
 					document.getElementById("pokemonRed").innerHTML = player.activePokemon1.Name + " fainted.";
 					document.getElementById("pokemonRed").innerHTML = rival.Name + ": " + rival.activePokemon1.Name + ", come back!";
 					document.getElementById("pokemonRed").innerHTML = rival.Name + ": Yeah! <br/> Am I great or what? ";
@@ -66,7 +66,7 @@ function firstPokemonBattle(player, rival) {
 						if (player.activePokemon1.currentHP > player.activePokemon1.maxHP) {
 							player.activePokemon1.currentHP = player.activePokemon1.maxHP;
 						};
-						document.getElementById("activePokemon1").innerHTML = player.activePokemon1.Name + "<br/> <img src=images/pokemonIcons/" + player.activePokemon1.Name + ".gif /> <br/>Lvl. " + player.activePokemon1.level + " <br/> HP: " + player.activePokemon1.currentHP + "/" + player.activePokemon1.maxHP;
+						document.getElementById("activePokemon1").innerHTML = player.activePokemon1.Name + "<br/> <img src=images/pokemonIconsTransparent/" + player.activePokemon1.Name + ".png /> <br/>Lvl. " + player.activePokemon1.level + " <br/> HP: " + player.activePokemon1.currentHP + "/" + player.activePokemon1.maxHP;
 					};
 				} else {
 					return;
@@ -100,19 +100,19 @@ function firstPokemonBattle(player, rival) {
 						if (player.activePokemon1.currentHP > player.activePokemon1.maxHP) {
 							player.activePokemon1.currentHP = player.activePokemon1.maxHP;
 						};
-						document.getElementById("activePokemon1").innerHTML = player.activePokemon1.Name + "<br/> <img src=images/pokemonIcons/" + player.activePokemon1.Name + ".gif /> <br/>Lvl. " + player.activePokemon1.level + " <br/> HP: " + player.activePokemon1.currentHP + "/" + player.activePokemon1.maxHP;
+						document.getElementById("activePokemon1").innerHTML = player.activePokemon1.Name + "<br/> <img src=images/pokemonIconsTransparent/" + player.activePokemon1.Name + ".png /> <br/>Lvl. " + player.activePokemon1.level + " <br/> HP: " + player.activePokemon1.currentHP + "/" + player.activePokemon1.maxHP;
 					};
 				// ... or let the rival do his move.
 				} else if (player.activePokemon1.speed < rival.activePokemon1.speed) {
 					damage = calculateDamage(rival.activePokemon1, rival.activePokemon1.move1, player.activePokemon1);
 					player.activePokemon1.currentHP -= damage;
-					document.getElementById("activePokemon1").innerHTML = player.activePokemon1.Name + "<br/> <img src=images/pokemonIcons/" + player.activePokemon1.Name + ".gif /> <br/>Lvl. " + player.activePokemon1.level + " <br/> HP: " + player.activePokemon1.currentHP + "/" + player.activePokemon1.maxHP;
+					document.getElementById("activePokemon1").innerHTML = player.activePokemon1.Name + "<br/> <img src=images/pokemonIconsTransparent/" + player.activePokemon1.Name + ".png /> <br/>Lvl. " + player.activePokemon1.level + " <br/> HP: " + player.activePokemon1.currentHP + "/" + player.activePokemon1.maxHP;
 					document.getElementById("pokemonRed").innerHTML = rival.activePokemon1.Name + " used " + rival.activePokemon1.move1.Name + ".";
 					if (player.activePokemon1.currentHP <=0) {
 						if (player.activePokemon1.currentHP < 0) {
 							player.activePokemon1.currentHP = 0;
 						};
-					document.getElementById("activePokemon1").innerHTML = player.activePokemon1.Name + "<br/> <img src=images/pokemonIcons/" + player.activePokemon1.Name + ".gif /> <br/>Lvl. " + player.activePokemon1.level + " <br/> HP: " + player.activePokemon1.currentHP + "/" + player.activePokemon1.maxHP;
+					document.getElementById("activePokemon1").innerHTML = player.activePokemon1.Name + "<br/> <img src=images/pokemonIconsTransparent/" + player.activePokemon1.Name + ".png /> <br/>Lvl. " + player.activePokemon1.level + " <br/> HP: " + player.activePokemon1.currentHP + "/" + player.activePokemon1.maxHP;
 					document.getElementById("pokemonRed").innerHTML = player.activePokemon1.Name + " fainted.";
 					document.getElementById("pokemonRed").innerHTML = rival.Name + ": " + rival.activePokemon1.Name + ", come back!";
 					document.getElementById("pokemonRed").innerHTML = rival.Name + ": Yeah! <br/> Am I great or what? ";

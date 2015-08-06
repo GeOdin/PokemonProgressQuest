@@ -24,6 +24,9 @@ by GeOdin */
 // document.getElementById("imageStory") --> HallofFame.png picture keeps popping up after restarting the game
 // add PAUSE button (which turns into a CONTINUE-button) to pause/ continue the game --> save value of counter and restart change() function with continue button
 // show mainpage and pokemon red buttons before game is started (and after game is finished)?
+// add disclaimer?
+// add credits/ read through at the start?
+// sprites for Pokemon Firered: http://www.spriters-resource.com/game_boy_advance/pokemonfireredleafgreen/sheet/3713/
 
 function startGame() { 
 
@@ -473,7 +476,7 @@ function startGame() {
 				document.getElementById("pokemonRed").innerHTML = "Hm! " + player.starterPokemon + " is your choice. <br/> It's one worth raising. ";
 			}
 			document.getElementById("imageStory").src = "images/wildPokemon/" + player.starterPokemon + ".png"; // image from Bulbapedia // http://bulbapedia.bulbagarden.net/wiki/Main_Page
-			document.getElementById("activePokemon1").innerHTML = player.activePokemon1.Name + "<br/> <img src=images/pokemonIcons/" + player.activePokemon1.Name + ".gif /> <br/>Lvl. " + player.activePokemon1.level + " <br/> HP: " + player.activePokemon1.currentHP + "/" + player.activePokemon1.maxHP;// + "<br>" + rival.activePokemon1.move2.category + " <br/> " + player.activePokemon1.move1.Name + player.activePokemon1.move2.Type + player.activePokemon1.move3.category + player.activePokemon1.move4.Name; // does not work if pokemon has "" for a movename//works // player.activePokemon1.moveOne.Name works // http://www.w3schools.com/js/tryit.asp?filename=tryjs_objects_method;
+			document.getElementById("activePokemon1").innerHTML = player.activePokemon1.Name + "<br/> <img src=images/pokemonIconsTransparent/" + player.activePokemon1.Name + ".png /> <br/>Lvl. " + player.activePokemon1.level + " <br/> HP: " + player.activePokemon1.currentHP + "/" + player.activePokemon1.maxHP;// + "<br>" + rival.activePokemon1.move2.category + " <br/> " + player.activePokemon1.move1.Name + player.activePokemon1.move2.Type + player.activePokemon1.move3.category + player.activePokemon1.move4.Name; // does not work if pokemon has "" for a movename//works // player.activePokemon1.moveOne.Name works // http://www.w3schools.com/js/tryit.asp?filename=tryjs_objects_method;
 			document.getElementById("activePokemonTitle").style.display = "block";
 			document.getElementById("activePokemon").style.display = "block";
 			if (pokemonCaught[player.activePokemon1.Name] == 0) {
@@ -523,7 +526,7 @@ function startGame() {
 					if (player.activePokemon1.currentHP > player.activePokemon1.maxHP) {
 						player.activePokemon1.currentHP = player.activePokemon1.maxHP;
 					};
-					document.getElementById("activePokemon1").innerHTML = player.activePokemon1.Name + "<br/> <img src=images/pokemonIcons/" + player.activePokemon1.Name + ".gif /> <br/>Lvl. " + player.activePokemon1.level + " <br/> HP: " + player.activePokemon1.currentHP + "/" + player.activePokemon1.maxHP;
+					document.getElementById("activePokemon1").innerHTML = player.activePokemon1.Name + "<br/> <img src=images/pokemonIconsTransparent/" + player.activePokemon1.Name + ".png /> <br/>Lvl. " + player.activePokemon1.level + " <br/> HP: " + player.activePokemon1.currentHP + "/" + player.activePokemon1.maxHP;
 				};
 			// Rival has first move
 			} else if (player.activePokemon1.speed < rival.activePokemon1.speed) {
@@ -535,7 +538,7 @@ function startGame() {
 				} else if (rival.activePokemon1.Name == "SQUIRTLE") {
 					player.activePokemon1.currentHP -= 5;
 				};
-				document.getElementById("activePokemon1").innerHTML = player.activePokemon1.Name + "<br/> <img src=images/pokemonIcons/" + player.activePokemon1.Name + ".gif /> <br/>Lvl. " + player.activePokemon1.level + " <br/> HP: " + player.activePokemon1.currentHP + "/" + player.activePokemon1.maxHP;
+				document.getElementById("activePokemon1").innerHTML = player.activePokemon1.Name + "<br/> <img src=images/pokemonIconsTransparent/" + player.activePokemon1.Name + ".png /> <br/>Lvl. " + player.activePokemon1.level + " <br/> HP: " + player.activePokemon1.currentHP + "/" + player.activePokemon1.maxHP;
 			};
 /*			//pause current setInterval --> http://stackoverflow.com/questions/8432127/stop-setinterval-function-for-an-amount-of-time
 			pokemonBattleStartFirst(player, rival); //this is not functional; check whether all objects are proper objects
@@ -555,7 +558,7 @@ function startGame() {
 			document.getElementById("imageStory").src = "images/PalletTown_6.png"; // screenshot from Pokemon FireRed game from GAME FREAK inc.
 		} else if (counter == 82) {
 			document.getElementById("imageStory").src = "images/Mom.png";
-			player.activePokemon1.currentHP = player.activePokemon1.maxHP;document.getElementById("activePokemon1").innerHTML = player.activePokemon1.Name + "<br/> <img src=images/pokemonIcons/" + player.activePokemon1.Name + ".gif /> <br/>Lvl. " + player.activePokemon1.level + " <br/> HP: " + player.activePokemon1.currentHP + "/" + player.activePokemon1.maxHP;
+			player.activePokemon1.currentHP = player.activePokemon1.maxHP;document.getElementById("activePokemon1").innerHTML = player.activePokemon1.Name + "<br/> <img src=images/pokemonIconsTransparent/" + player.activePokemon1.Name + ".png /> <br/>Lvl. " + player.activePokemon1.level + " <br/> HP: " + player.activePokemon1.currentHP + "/" + player.activePokemon1.maxHP;
 		} else if (counter == 83) {
 			// Create the Route 1 location
 			locationName = "Route 1";
