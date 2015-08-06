@@ -24,31 +24,71 @@ var pokemon = [
 	["013", "WEEDLE", 1, "BUG", "POISON", 7, "KAKUNA", "HP", "Attack", "Defense", "Sp. Attack", "Sp. Defense", "Speed", "Poison Sting", "String Shot", "", ""],
 	["014", "KAKUNA", 7, "BUG", "POISON", 10, "BEEDRILL", "HP", "Attack", "Defense", "Sp. Attack", "Sp. Defense", "Speed", "Poison Sting", "String Shot", "Harden", ""],
 	["015", "BEEDRILL", 10, "BUG", "POISON", 0, "", "HP", "Attack", "Defense", "Sp. Attack", "Sp. Defense", "Speed", "Poison Sting", "String Shot", "Harden", "Fury Attack"],
-	["016", "PIDGEY", 1, "NORMAL", "FLYING", 18, "PIDGEOTTO", "HP", "Attack", "Defense", "Sp. Attack", "Sp. Defense", "Speed", "Tackle", "", "", ""],
+	["016", "PIDGEY", 1, "NORMAL", "FLYING", 18, "PIDGEOTTO", 12, 6, 6, 6, 6, 6, "Tackle", "", "", ""],
 	["017", "PIDGEOTTO", 18, "NORMAL", "FLYING", 36, "PIDGEOT", "HP", "Attack", "Defense", "Sp. Attack", "Sp. Defense", "Speed", "Tackle", "Sand-attack", "Gust", "Quick Attack"],
 	["018", "PIDGEOT", 36, "NORMAL", "FLYING", 0, "", "HP", "Attack", "Defense", "Sp. Attack", "Sp. Defense", "Speed", "Wing Attack", "Quick Attack", "Tackle", "Gust"],
-	["019", "RATTATA", 1, "NORMAL", "", 20, "RATICATE", "HP", "Attack", "Defense", "Sp. Attack", "Sp. Defense", "Speed", "Tackle", "Tail Whip", "", ""],
+	["019", "RATTATA", 1, "NORMAL", "", 20, "RATICATE", 11, 6, 6, 6, 5, 6, "Tackle", "Tail Whip", "", ""],
 	["020", "RATICATE", 20, "NORMAL", "", 0, "", "HP", "Attack", "Defense", "Sp. Attack", "Sp. Defense", "Speed", "Tackle", "Tail Whip", "Quick Attack", "Hyper Fang"]
 ];
 
 // Pokemon background information per pokemon per level
 var pokemonStats = [ //make the variables here the same as for the function createPokemon() //add exp needed for level up?
+	// Experience: http://www.psypokes.com/lab/expguide.php
+/* Enemy Experience Stat * Enemy Level Stat * Enemy Tame Stat / 7 = Exp
+ * Note: This Equation is not entirely accurate, but it will still be very close to the actual number.
+ * Okay. First, the Enemy Experience Stat is a special stat given to each individual species of Pokemon (See Section 3.2 for list and details) and is applied here. 
+ * Next, is the level of the enemy. 
+ * Next, is either a 1 or a 1.5 on whether your enemy is a trainer's pokemon. If it's wild, it's 1, if it's a Trainer's, it's 1.5. 
+ * Finally, divide all this by 7, add any applied boosters, split evenly between Pokemon that battled, round them, and you've got about how many points each will earn from the battle. */
 	["pokemonNumber", "pokemonName", "pokemonLevel", "pokemonType1", "pokemonType2", "pokemonEvolveLevel", "pokemonEvolveName", "currentHP", "maxHP", "attack", "defense", "spattack", "spdefense", "speed", "pokemonMove1", "pokemonMove2", "pokemonMove3", "pokemonMove4"],
 	["001", "BULBASAUR", 1, "GRASS", "POISON", 16, "IVYSAUR", 12, 12, 6, 6, 6, 6, 6, "Tackle", "", "", ""],
 	["001", "BULBASAUR", 2, "GRASS", "POISON", 16, "IVYSAUR", 14, 14, 7, 7, 8, 8, 7, "Tackle", "", "", ""],
 	["001", "BULBASAUR", 3, "GRASS", "POISON", 16, "IVYSAUR", 16, 16, 8, 8, 9, 9, 8, "Tackle", "", "", ""],
 	["001", "BULBASAUR", 4, "GRASS", "POISON", 16, "IVYSAUR", 18, 18, 11, 11, 12, 12, 9, "Tackle", "Growl", "", ""],
 	["001", "BULBASAUR", 5, "GRASS", "POISON", 16, "IVYSAUR", 21, 21, 12, 12, 14, 14, 12, "Tackle", "Growl", "", ""],
+	["001", "BULBASAUR", 6, "GRASS", "POISON", 16, "IVYSAUR", 23, 23, 13, 13, 15, 15, 13, "Tackle", "Growl", "", ""],
+	["001", "BULBASAUR", 7, "GRASS", "POISON", 16, "IVYSAUR", 25, 25, 15, 15, 17, 17, 14, "Tackle", "Growl", "Leech Seed", ""],
+	["001", "BULBASAUR", 8, "GRASS", "POISON", 16, "IVYSAUR", 27, 27, 16, 16, 18, 18, 15, "Tackle", "Growl", "Leech Seed", ""],
+	["001", "BULBASAUR", 9, "GRASS", "POISON", 16, "IVYSAUR", 29, 29, 17, 17, 20, 20, 16, "Tackle", "Growl", "Leech Seed", ""],
+	["001", "BULBASAUR", 10, "GRASS", "POISON", 16, "IVYSAUR", 32, 32, 18, 18, 23, 23, 18, "Tackle", "Growl", "Leech Seed", "Vine Whip"],
+	["001", "BULBASAUR", 11, "GRASS", "POISON", 16, "IVYSAUR", 34, 34, 20, 20, 24, 24, 19, "Tackle", "Growl", "Leech Seed", "Vine Whip"],
+	["001", "BULBASAUR", 12, "GRASS", "POISON", 16, "IVYSAUR", 36, 36, 22, 22, 26, 26, 20, "Tackle", "Growl", "Leech Seed", "Vine Whip"],
+	["001", "BULBASAUR", 13, "GRASS", "POISON", 16, "IVYSAUR", 38, 38, 23, 23, 27, 27, 22, "Tackle", "Growl", "Leech Seed", "Vine Whip"],
+	["001", "BULBASAUR", 14, "GRASS", "POISON", 16, "IVYSAUR", 40, 40, 25, 25, 29, 29, 23, "Tackle", "Growl", "Leech Seed", "Vine Whip"],
+	["001", "BULBASAUR", 15, "GRASS", "POISON", 16, "IVYSAUR", 43, 43, 26, 26, 31, 31, 25, "Tackle", "Sleep Powder", "Leech Seed", "Vine Whip"],
+	["001", "BULBASAUR", 16, "GRASS", "POISON", 16, "IVYSAUR", 45, 45, 27, 27, 33, 33, 26, "Tackle", "Sleep Powder", "Leech Seed", "Vine Whip"],
 	["004", "CHARMANDER", 1, "FIRE", "", 16, "CHARMELEON", 12, 12, 6, 6, 6, 6, 6, "Scratch", "Growl", "", ""],
 	["004", "CHARMANDER", 2, "FIRE", "", 16, "CHARMELEON", 14, 14, 7, 7, 8, 7, 8, "Scratch", "Growl", "", ""],
 	["004", "CHARMANDER", 3, "FIRE", "", 16, "CHARMELEON", 16, 16, 9, 8, 9, 8, 9, "Scratch", "Growl", "", ""],
 	["004", "CHARMANDER", 4, "FIRE", "", 16, "CHARMELEON", 18, 18, 11, 9, 12, 11, 12, "Scratch", "Growl", "", ""],
-	["004", "CHARMANDER", 5, "FIRE", "", 16, "CHARMELEON", 20, 20, 12, 11, 13, 12, 14, "Scratch", "Growl", "Tackle", "Tail Whip"],
+	["004", "CHARMANDER", 5, "FIRE", "", 16, "CHARMELEON", 20, 20, 12, 11, 13, 12, 14, "Scratch", "Growl", "", ""],
+	["004", "CHARMANDER", 6, "FIRE", "", 16, "CHARMELEON", 22, 22, 14, 13, 15, 13, 15, "Scratch", "Growl", "", ""],
+	["004", "CHARMANDER", 7, "FIRE", "", 16, "CHARMELEON", 24, 24, 15, 14, 16, 15, 17, "Scratch", "Growl", "Ember", ""],
+	["004", "CHARMANDER", 8, "FIRE", "", 16, "CHARMELEON", 26, 26, 16, 15, 18, 16, 18, "Scratch", "Growl", "Ember", ""],
+	["004", "CHARMANDER", 9, "FIRE", "", 16, "CHARMELEON", 28, 28, 18, 16, 19, 17, 20, "Scratch", "Growl", "Ember", ""],
+	["004", "CHARMANDER", 10, "FIRE", "", 16, "CHARMELEON", 30, 30, 19, 17, 22, 19, 23, "Scratch", "Growl", "Ember", ""],
+	["004", "CHARMANDER", 11, "FIRE", "", 16, "CHARMELEON", 32, 32, 20, 18, 23, 20, 24, "Scratch", "Growl", "Ember", ""],
+	["004", "CHARMANDER", 12, "FIRE", "", 16, "CHARMELEON", 35, 35, 23, 20, 25, 22, 26, "Scratch", "Growl", "Ember", ""],
+	["004", "CHARMANDER", 13, "FIRE", "", 16, "CHARMELEON", 37, 37, 24, 22, 26, 24, 27, "Scratch", "Growl", "Ember", "Smokescreen"],
+	["004", "CHARMANDER", 14, "FIRE", "", 16, "CHARMELEON", 39, 39, 25, 23, 28, 25, 29, "Scratch", "Growl", "Ember", "Smokescreen"],
+	["004", "CHARMANDER", 15, "FIRE", "", 16, "CHARMELEON", 41, 41, 27, 24, 29, 26, 31, "Scratch", "Growl", "Ember", "Smokescreen"],
+	["004", "CHARMANDER", 16, "FIRE", "", 16, "CHARMELEON", 43, 43, 28, 25, 31, 27, 33, "Scratch", "Growl", "Ember", "Smokescreen"],
 	["007", "SQUIRTLE", 1, "WATER", "", 16, "WARTORTLE", 12, 12, 6, 6, 6, 6, 6, "Tackle", "", "", ""],
 	["007", "SQUIRTLE", 2, "WATER", "", 16, "WARTORTLE", 14, 14, 7, 8, 7, 8, 7, "Tackle", "", "", ""],
 	["007", "SQUIRTLE", 3, "WATER", "", 16, "WARTORTLE", 16, 16, 8, 9, 8, 9, 8, "Tackle", "", "", ""],
 	["007", "SQUIRTLE", 4, "WATER", "", 16, "WARTORTLE", 18, 18, 11, 12, 11, 12, 9, "Tackle", "Tail Whip", "", ""],
 	["007", "SQUIRTLE", 5, "WATER", "", 16, "WARTORTLE", 20, 20, 12, 14, 12, 13, 11, "Tackle", "Tail Whip", "", ""],
+	["007", "SQUIRTLE", 6, "WATER", "", 16, "WARTORTLE", 23, 23, 13, 15, 13, 15, 13, "Tackle", "Tail Whip", "", ""],
+	["007", "SQUIRTLE", 7, "WATER", "", 16, "WARTORTLE", 25, 25, 14, 17, 15, 17, 14, "Tackle", "Tail Whip", "Bubble", ""],
+	["007", "SQUIRTLE", 8, "WATER", "", 16, "WARTORTLE", 27, 27, 16, 18, 16, 18, 15, "Tackle", "Tail Whip", "Bubble", ""],
+	["007", "SQUIRTLE", 9, "WATER", "", 16, "WARTORTLE", 29, 29, 17, 20, 17, 20, 16, "Tackle", "Tail Whip", "Bubble", ""],
+	["007", "SQUIRTLE", 10, "WATER", "", 16, "WARTORTLE", 31, 31, 18, 23, 19, 22, 17, "Tackle", "Tail Whip", "Bubble", "Withdraw"],
+	["007", "SQUIRTLE", 11, "WATER", "", 16, "WARTORTLE", 34, 34, 19, 24, 20, 24, 18, "Tackle", "Tail Whip", "Bubble", "Withdraw"],
+	["007", "SQUIRTLE", 12, "WATER", "", 16, "WARTORTLE", 36, 36, 22, 26, 22, 26, 20, "Tackle", "Tail Whip", "Bubble", "Withdraw"],
+	["007", "SQUIRTLE", 13, "WATER", "", 16, "WARTORTLE", 38, 38, 23, 27, 24, 27, 22, "Tackle", "Tail Whip", "Bubble", "Water Gun"],
+	["007", "SQUIRTLE", 14, "WATER", "", 16, "WARTORTLE", 40, 40, 24, 29, 25, 29, 23, "Tackle", "Tail Whip", "Bubble", "Water Gun"],
+	["007", "SQUIRTLE", 15, "WATER", "", 16, "WARTORTLE", 42, 42, 26, 31, 26, 30, 24, "Tackle", "Tail Whip", "Bubble", "Water Gun"],
+	["007", "SQUIRTLE", 16, "WATER", "", 16, "WARTORTLE", 45, 45, 27, 33, 27, 33, 25, "Tackle", "Tail Whip", "Bubble", "Water Gun"],
 	["016", "PIDGEY", 1, "NORMAL", "FLYING", 18, "PIDGEOTTO", 12, 12, 6, 6, 6, 6, 6, "Tackle", "", "", ""],
 	["016", "PIDGEY", 2, "NORMAL", "FLYING", 18, "PIDGEOTTO", 14, 14, 7, 7, 7, 7, 7, "Tackle", "", "", ""],
 	["016", "PIDGEY", 3, "NORMAL", "FLYING", 18, "PIDGEOTTO", 16, 16, 8, 8, 8, 8, 9, "Tackle", "", "", ""],
@@ -65,7 +105,10 @@ var pokemonStats = [ //make the variables here the same as for the function crea
 var pokemonMoves = [
 	//add "Effect" for moves with type "Status" ? add PP-max for when PP UP items are introduced? //also add description? //perhaps make accuracy a float instead of integer?
 	["Name", "Type", "category", "pp", "power", "accuracy", "effect"], //http://bulbapedia.bulbagarden.net/wiki/Confusion_(move)
+	["Bubble", "WATER", "Special", 30, 40, 100, ""], // http://bulbapedia.bulbagarden.net/wiki/Bubble_(move)
 	["Confusion", "PSYCHIC", "Special", 25, 50, 100, ""], //http://bulbapedia.bulbagarden.net/wiki/Growl_%28move%29
+	// Add effect
+	["Ember", "FIRE", "Special", 25, 40, 100, ""], // http://bulbapedia.bulbagarden.net/wiki/Ember_(move)
 	// Add fact for Fury attack that the attack can hit 2-5 times! - http://bulbapedia.bulbagarden.net/wiki/Fury_Attack_(move)
 	["Fury Attack", "NORMAL", "Physical", 20, 15, 85, ""], //http://bulbapedia.bulbagarden.net/wiki/Fury_Attack_(move)
 	// Add effect of attack -= 1 until end of battle
@@ -75,6 +118,10 @@ var pokemonMoves = [
 	["Harden", "NORMAL", "Status", 30, 0, 100, ""], //accuracy is actually --- instead of 100% //http://bulbapedia.bulbagarden.net/wiki/Harden_(move)
 	["Hyper Fang", "NORMAL", "Physical", 15, 80, 90, ""], // http://bulbapedia.bulbagarden.net/wiki/Hyper_Fang_(move)
 	// Add effect
+	["Leech Seed", "GRASS", "Status", 10, 0, 90, ""], // http://bulbapedia.bulbagarden.net/wiki/Leech_Seed_(move)
+	// Add effect
+	["Poisonpowder", "POISON", "Status", 35, 0, 75, ""], // http://bulbapedia.bulbagarden.net/wiki/Poison_Powder_(move)
+	// Add effect
 	["Poison Sting", "POISON", "Physical", 35, 15, 100, ""], //http://bulbapedia.bulbagarden.net/wiki/Poison_Sting_(move)
 	// priority +1 for Quick Attack
 	["Quick Attack", "NORMAL", "Physical", 30, 40, 100, ""], // http://bulbapedia.bulbagarden.net/wiki/Quick_Attack_(move)
@@ -82,11 +129,20 @@ var pokemonMoves = [
 	["Sand-attack", "GROUND", "Status", 15, 0, 100, ""], // http://bulbapedia.bulbagarden.net/wiki/Sand_Attack_(move)
 	["Scratch", "NORMAL", "Physical", 35, 40, 100, ""], //http://bulbapedia.bulbagarden.net/wiki/Scratch_%28move%29
 	// Add effect
+	["Sleep Powder", "GRASS", "Status", 15, 0, 75, ""], // http://bulbapedia.bulbagarden.net/wiki/Sleep_Powder_(move)
+	// Add effect
+	["Smokescreen", "NORMAL", "Status", 20, 0, 100, ""], // http://bulbapedia.bulbagarden.net/wiki/Smokescreen_(move)
+	// Add effect
 	["String Shot", "BUG", "Status", 40, 0, 95, ""], //http://bulbapedia.bulbagarden.net/wiki/String_Shot_(move)
 	["Tackle", "NORMAL", "Physical", 35, 50, 100, ""], //http://bulbapedia.bulbagarden.net/wiki/Tackle_%28move%29
 	// Add effect
 	["Tail Whip", "NORMAL", "Status", 30, 0, 100, ""], //http://bulbapedia.bulbagarden.net/wiki/Tail_Whip_%28move%29
+	// Add effect
+	["Vine Whip", "GRASS", "Physical", 25, 45, 100, ""],
+	["Water Gun", "WATER", "Special", 25, 40, 100. ""], // http://bulbapedia.bulbagarden.net/wiki/Water_Gun_(move)
 	["Wing Attack", "FLYING", "Physical", 35, 60, 100, ""], // http://bulbapedia.bulbagarden.net/wiki/Wing_Attack_(move)
+	// Add effect
+	["Withdraw", "WATER", "Status", 40, 0, 100, ""], // accuracy is actually --- instead of 100% // http://bulbapedia.bulbagarden.net/wiki/Withdraw_(move)
 	["", "", "", 0, 0, 0, ""] // for when pokemon don't have all 4 moves yet
 ];
 

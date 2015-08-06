@@ -53,6 +53,8 @@ function firstPokemonBattle(player, rival) {
 							if (rival.activePokemon1.currentHP < 0) {
 								rival.activePokemon1.currentHP = 0;
 							};
+							// Add exp?
+							// Add story?
 							// Get money from rival
 							player.money += 80;
 							document.getElementById("playerMoneyAmount").innerHTML = player.money;
@@ -85,6 +87,8 @@ function firstPokemonBattle(player, rival) {
 							if (rival.activePokemon1.currentHP < 0) {
 								rival.activePokemon1.currentHP = 0;
 							};
+							// Add exp?
+							// Add story?
 							// Get money from rival
 							player.money += 80;
 							document.getElementById("playerMoneyAmount").innerHTML = player.money;
