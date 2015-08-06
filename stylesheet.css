@@ -128,6 +128,7 @@ p {
 /* 	left: 10px; */
 	color: black;
 	font-family: verdana;
+	overflow-y: auto;
 }
 
 #mainFrame p{

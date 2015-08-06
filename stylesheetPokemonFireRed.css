@@ -48,6 +48,7 @@ body h3 {
 }
 
 #activePokemonTitle{
+	display: none;
 	position: absolute;
 	top: 25%;
 	left: 0px;
@@ -214,6 +215,7 @@ body h3 {
 }
 
 #badgesTitle{
+	display: none;
 	position: absolute;
 	top: 25%;
 	left: 0px;

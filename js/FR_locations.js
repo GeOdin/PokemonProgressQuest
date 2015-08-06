@@ -11,6 +11,7 @@
 // Background information about the different locations (make different variables for routes and cities?)
 var locations = [
 	["locationName", "trainerAmount", "trainer1", "pokemonAmount", "pokemon1Name", "pokemon1MinLevel", "pokemon1MaxLevel", "pokemon1Chance", "pokemon2Name", "pokemon2MinLevel", "pokemon2MaxLevel", "pokemon2Chance"],
+	["Introduction", 0, "", 0, "", 1, 1, 1.0, "", 1, 1, 0.0],
 	["Pallet Town", 0, "", 0, "", 1, 1, 1.0, "", 1, 1, 0.0],
 	["Route 1", 0, "", 2, "PIDGEY", 2, 5, 0.5, "RATTATA", 2, 4, 0.5],
  	["Hall of Fame", 0, "", 1, "", 1, 1, 1.0, "", 1, 1, 0.0]

@@ -11,30 +11,18 @@ by GeOdin */
 // Story used from Pokemon FireRed
 // change pokemonRed in pokemonFireRed
 // movie of start of game: https://www.youtube.com/watch?v=yUS1IcC5CBY
-// make sure to block the start button / ask for refreshing the game when it's pressed --> done // or remove start button when game is started!
-// remove name + (gender) when start button is pressed
 // in var tekst, Pokemon can be POK&eacute;MON, probably
-// perhaps ask gender, name and starter at beginning, so that game does no longer gets interrupted
 // shorten time of setInterval for testing purposes?
-// show active pokemon and their levels
 // show map where you currently are --> town map http://bulbapedia.bulbagarden.net/wiki/File:Viridian_City_FRLG.png (in folder townMap in folder images, currently not yet used)
-// use infowindows instead of alerts and/or prompts?
 // use male / female screenshots depending on playerGender
 // make Pokemonnames, stats and moves all uppercase?
-// shorten part about getting potion from room
 // include documentation for all files
-// create a variable for which pokemon are already caught
 // set up some sort of in-game PC-system
-// kans om een shiny tegen te komen?
+// chance to encounter a shiny?
 // show images of pokemon on top of battle image and flip pokemon image of opponent ? --> https://css-tricks.com/snippets/css/flip-an-image/
 // reset amount of damage from attacks after battle (delete effects of growl, for example)
-// create object for player
-// show active pokemon title (without pokemon) after start game
-// show player title (without text) after start game
-// show story title after start game (instead of Pokemon Red)
 // document.getElementById("imageStory") --> HallofFame.png picture keeps popping up after restarting the game
 // add PAUSE button (which turns into a CONTINUE-button) to pause/ continue the game --> save value of counter and restart change() function with continue button
-// adding badges to #player?
 // show mainpage and pokemon red buttons before game is started (and after game is finished)?
 
 function startGame() { 
@@ -75,7 +63,7 @@ function startGame() {
 	} else {
 		return;
 	}*/
-	var gamePokemonFireRed = window.setInterval(change, 5); //5000 for 5 seconds in final version / 3000 for 3 seconds; //1 for quick testing purposes; //1000 for slow testing purposes;
+	var gamePokemonFireRed = window.setInterval(change, 500); //5000 for 5 seconds in final version / 3000 for 3 seconds; //1 for quick testing purposes; //1000 for slow testing purposes;
 	gamePokemonFireRed;
 
 	function change() {
@@ -182,6 +170,7 @@ function startGame() {
 			playerName + "! Gramps! <br/> Smell you later! ",
 			rivalName + " walks away. ", //80
 			"You walk out of the door... ",
+			"... to your mom to heal your POK&eacute;MON ...",
 			"... and into ROUTE 1. ",
 			""
 			
@@ -235,7 +224,7 @@ function startGame() {
 			rivalName = "";
 			starterPokemon = "";
 			starterPokemonRival = "";
-		}
+		};
 
 		counter++;
 
@@ -370,6 +359,28 @@ function startGame() {
 			createPokemonMoves(rival.activePokemon1);
 
 			document.getElementById("pokemonRed").style.display = "block";
+		} else if(counter == 2){
+			// Create the Route 1 location
+			locationName = "Introduction";
+			for (i=0; i<locations.length; i++) {
+				if (locations[i][0] == locationName) {
+					location = new createLocation(
+						locations[i][0], 
+						locations[i][1], 
+						locations[i][2], 
+						locations[i][3], 
+						locations[i][4], 
+						locations[i][5], 
+						locations[i][6], 
+						locations[i][7], 
+						locations[i][8], 
+						locations[i][9],
+						locations[i][10],
+						locations[i][11]
+					);
+				};
+			};
+			document.getElementById("locationName").innerHTML = "<h2>" + location.Name + "</h2>";
 		} else if(counter == 5){
 			document.getElementById("imageStory").src = "images/Professor_Oak_XY.png"; // picture of Professor Oak from http://bulbapedia.bulbagarden.net/wiki/Professor_Oak_%28anime%29
 			document.getElementById("imageStory").style.display = "block";
@@ -402,16 +413,6 @@ function startGame() {
 		} else if(counter == 21) {
 			document.getElementById("imageStory").src = "images/Professor_Oak_XY.png"; // picture of Professor Oak from http://bulbapedia.bulbagarden.net/wiki/Professor_Oak_%28anime%29
 		} else if(counter == 24) {
-			document.getElementById("imageStory").src = "images/OwnRoom.png"; // screenshot from Pokemon FireRed game from GAME FREAK inc.
-		} else if(counter == 26) {
-			document.getElementById("imageStory").src = "images/Mom.png"; // screenshot from Pokemon FireRed game from GAME FREAK inc.
-		} else if(counter == 27) {
-			if (playerGender == "boy"){
-				document.getElementById("pokemonRed").innerHTML = "MOM: ...Right. <br/> All " + player.gender + "s leave home someday. ";
-			} else {
-				document.getElementById("pokemonRed").innerHTML = "MOM: ...Right. <br/> All " + player.gender + "s dream of travelling. ";
-			}
-		} else if(counter == 31) {
 			// Create the Pallet Town location
 			locationName = "Pallet Town";
 			for (i=0; i<locations.length; i++) {
@@ -434,6 +435,16 @@ function startGame() {
 			};
 			document.getElementById("locationName").innerHTML = "<h2>" + location.Name + "</h2>"; // <h3> Pallet Town </h3> does not work
 			document.getElementById("locationName").style.display = "block";
+			document.getElementById("imageStory").src = "images/OwnRoom.png"; // screenshot from Pokemon FireRed game from GAME FREAK inc.
+		} else if(counter == 26) {
+			document.getElementById("imageStory").src = "images/Mom.png"; // screenshot from Pokemon FireRed game from GAME FREAK inc.
+		} else if(counter == 27) {
+			if (playerGender == "boy"){
+				document.getElementById("pokemonRed").innerHTML = "MOM: ...Right. <br/> All " + player.gender + "s leave home someday. ";
+			} else {
+				document.getElementById("pokemonRed").innerHTML = "MOM: ...Right. <br/> All " + player.gender + "s dream of travelling. ";
+			}
+		} else if(counter == 31) {
 			document.getElementById("imageStory").src = "images/PalletTown.png"; // screenshot from Pokemon FireRed game from GAME FREAK inc.
 		} else if(counter == 32) {
 			document.getElementById("imageStory").src = "images/Gary.png";// picture of Gary from http://bulbapedia.bulbagarden.net/wiki/Blue_%28game%29
@@ -461,8 +472,9 @@ function startGame() {
 			} else {
 				document.getElementById("pokemonRed").innerHTML = "Hm! " + player.starterPokemon + " is your choice. <br/> It's one worth raising. ";
 			}
-/*			document.getElementById("imgActivePokemon1").src = "images/pokemonIcons/" + pokemonOne.Name + ".gif"; // player.starterPokemon works (is a String);*/
+			document.getElementById("imageStory").src = "images/wildPokemon/" + player.starterPokemon + ".png"; // image from Bulbapedia // http://bulbapedia.bulbagarden.net/wiki/Main_Page
 			document.getElementById("activePokemon1").innerHTML = player.activePokemon1.Name + "<br/> <img src=images/pokemonIcons/" + player.activePokemon1.Name + ".gif /> <br/>Lvl. " + player.activePokemon1.level + " <br/> HP: " + player.activePokemon1.currentHP + "/" + player.activePokemon1.maxHP;// + "<br>" + rival.activePokemon1.move2.category + " <br/> " + player.activePokemon1.move1.Name + player.activePokemon1.move2.Type + player.activePokemon1.move3.category + player.activePokemon1.move4.Name; // does not work if pokemon has "" for a movename//works // player.activePokemon1.moveOne.Name works // http://www.w3schools.com/js/tryit.asp?filename=tryjs_objects_method;
+			document.getElementById("activePokemonTitle").style.display = "block";
 			document.getElementById("activePokemon").style.display = "block";
 			if (pokemonCaught[player.activePokemon1.Name] == 0) {
 				pokemonCaught[player.activePokemon1.Name] = 1;
@@ -472,6 +484,8 @@ function startGame() {
 			document.getElementById("pokedex" + pokemonOne.Name).style.display = "block";
 		} else if(counter == 56) {
 			document.getElementById("imageStory").src = "images/Gary.png";// picture of Gary from http://bulbapedia.bulbagarden.net/wiki/Blue_%28game%29
+		} else if(counter == 57) {
+			document.getElementById("imageStory").src = "images/wildPokemon/" + rival.starterPokemon + ".png"; // image from Bulbapedia // http://bulbapedia.bulbagarden.net/wiki/Main_Page
 		} else if(counter == 58) {
 			document.getElementById("imageStory").src = "images/Professor_Oak_XY.png"; // picture of Professor Oak from http://bulbapedia.bulbagarden.net/wiki/Professor_Oak_%28anime%29
 		} else if(counter == 60) {
@@ -538,8 +552,11 @@ function startGame() {
 		} else if (counter == 80) {
 			document.getElementById("imageStory").src = "images/PalletTown_ProfOakLab5.png"; // screenshot from Pokemon FireRed game from GAME FREAK inc.
 		} else if (counter == 81) {
-			document.getElementById("imageStory").src = "images/PalletTown_ProfOakLab6.png"; // screenshot from Pokemon FireRed game from GAME FREAK inc.
+			document.getElementById("imageStory").src = "images/PalletTown_6.png"; // screenshot from Pokemon FireRed game from GAME FREAK inc.
 		} else if (counter == 82) {
+			document.getElementById("imageStory").src = "images/Mom.png";
+			player.activePokemon1.currentHP = player.activePokemon1.maxHP;document.getElementById("activePokemon1").innerHTML = player.activePokemon1.Name + "<br/> <img src=images/pokemonIcons/" + player.activePokemon1.Name + ".gif /> <br/>Lvl. " + player.activePokemon1.level + " <br/> HP: " + player.activePokemon1.currentHP + "/" + player.activePokemon1.maxHP;
+		} else if (counter == 83) {
 			// Create the Route 1 location
 			locationName = "Route 1";
 			for (i=0; i<locations.length; i++) {
@@ -562,11 +579,9 @@ function startGame() {
 			};
 			document.getElementById("locationName").innerHTML = "<h2>" + location.Name + "</h2>";
 			document.getElementById("imageStory").src = "images/Route1.png"; // screenshot from Pokemon FireRed game from GAME FREAK inc.
-		} else if (counter == 83) {
-			// first drop by @ mom to heal pokemon?
-			// Update var pokemon and var pokemonStats to make the below code for counter == 83 work (update them for pidgey and rattata)
+		} else if (counter == 84) {
 			wildPokemon = new createWildPokemon(location);
-			document.getElementById("imageStory").src = "images/pokemonIcons/" + wildPokemon.Name + ".gif";
+			document.getElementById("imageStory").src = "images/wildPokemon/" + wildPokemon.Name + ".png"; // image from Bulbapedia // http://bulbapedia.bulbagarden.net/wiki/Main_Page
 			document.getElementById("pokemonRed").innerHTML = "Wild " + wildPokemon.Name + " appeared!";
 		} else if(counter > text.length) {
 			// End the game
@@ -593,6 +608,7 @@ function startGame() {
 			document.getElementById("locationName").innerHTML = "<h2>" + location.Name + "</h2>";
 			elemStoryImage.src = "images/HallOfFame.png"; //screenshot from https://www.youtube.com/watch?v=Uq9LTpj91Rw
 			elem.innerHTML = "CONGRATULATIONS! <br/> Welcome to the HALL OF FAME! ";
+			document.getElementById("badgesTitle").style.display = "block";
 			document.getElementById("badge1").style.display = "block"; // image from http://bulbapedia.bulbagarden.net/wiki/Badge
 			document.getElementById("badge2").style.display = "block"; // image from http://bulbapedia.bulbagarden.net/wiki/Badge
 			document.getElementById("badge3").style.display = "block"; // image from http://bulbapedia.bulbagarden.net/wiki/Badge
