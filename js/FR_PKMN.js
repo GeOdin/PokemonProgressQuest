@@ -139,7 +139,7 @@ var pokemonMoves = [
 	["Tail Whip", "NORMAL", "Status", 30, 0, 100, ""], //http://bulbapedia.bulbagarden.net/wiki/Tail_Whip_%28move%29
 	// Add effect
 	["Vine Whip", "GRASS", "Physical", 25, 45, 100, ""],
-	["Water Gun", "WATER", "Special", 25, 40, 100. ""], // http://bulbapedia.bulbagarden.net/wiki/Water_Gun_(move)
+	["Water Gun", "WATER", "Special", 25, 40, 100, ""], // http://bulbapedia.bulbagarden.net/wiki/Water_Gun_(move)
 	["Wing Attack", "FLYING", "Physical", 35, 60, 100, ""], // http://bulbapedia.bulbagarden.net/wiki/Wing_Attack_(move)
 	// Add effect
 	["Withdraw", "WATER", "Status", 40, 0, 100, ""], // accuracy is actually --- instead of 100% // http://bulbapedia.bulbagarden.net/wiki/Withdraw_(move)
