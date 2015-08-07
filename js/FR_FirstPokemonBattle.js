@@ -1,4 +1,4 @@
-/* FR_firstPokemonBattle.js
+/* FR_FirstPokemonBattle.js
  * This JavaScript file contains the code for the first Pokemon Battle against the rival, since it differs from the rest
  * created by Geodin
  * on 30-07-2015
@@ -21,7 +21,7 @@ function firstPokemonBattle(player, rival) {
 				// Move 1
 				// Either let the rival do his move...
 				if (player.activePokemon1.speed >= rival.activePokemon1.speed) {
-					damage = calculateDamage(rival.activePokemon1, rival.activePokemon1.move1, player.activePokemon1);
+					damage = calculateDamageFirstBattle(rival.activePokemon1, rival.activePokemon1.move1, player.activePokemon1);
 					player.activePokemon1.currentHP -= damage;
 					document.getElementById("activePokemon1").innerHTML = player.activePokemon1.Name + "<br/> <img src=images/pokemonIconsTransparent/" + player.activePokemon1.Name + ".png /> <br/>Lvl. " + player.activePokemon1.level + " <br/> HP: " + player.activePokemon1.currentHP + "/" + player.activePokemon1.maxHP;
 					document.getElementById("pokemonRed").innerHTML = rival.activePokemon1.Name + " used " + rival.activePokemon1.move1.Name + ".";
@@ -45,7 +45,7 @@ function firstPokemonBattle(player, rival) {
 				} else if (player.activePokemon1.speed < rival.activePokemon1.speed) {
 					if (player.activePokemon1.currentHP > 5) {
 						// picture of attacking pokemon?
-						damage = calculateDamage(player.activePokemon1, player.activePokemon1.move1, rival.activePokemon1);
+						damage = calculateDamageFirstBattle(player.activePokemon1, player.activePokemon1.move1, rival.activePokemon1);
 						rival.activePokemon1.currentHP -= damage;
 						// diminish pp for this move?
 						document.getElementById("pokemonRed").innerHTML = player.activePokemon1.Name + " used " + player.activePokemon1.move1.Name + ".";
@@ -68,7 +68,7 @@ function firstPokemonBattle(player, rival) {
 											pokemonStats[i][4],
 											pokemonStats[i][5],
 											pokemonStats[i][6],
-											pokemonStats[i][7],
+											player.activePokemon1.currentHP + (pokemonStats[i][7] - pokemonStats[i-1][7]), // add difference between current and next level HP
 											pokemonStats[i][8],
 											pokemonStats[i][9],
 											pokemonStats[i][10],
@@ -83,6 +83,7 @@ function firstPokemonBattle(player, rival) {
 									}
 								}
 							};
+							createPokemonMoves(player.activePokemon1);
 							document.getElementById("activePokemon1").innerHTML = player.activePokemon1.Name + "<br/> <img src=images/pokemonIconsTransparent/" + player.activePokemon1.Name + ".png /> <br/>Lvl. " + player.activePokemon1.level + " <br/> HP: " + player.activePokemon1.currentHP + "/" + player.activePokemon1.maxHP;
 							document.getElementById("pokemonRed").innerHTML = player.activePokemon1.Name + " leveled up! ";
 							// Add story?
@@ -110,7 +111,7 @@ function firstPokemonBattle(player, rival) {
 				if (player.activePokemon1.speed >= rival.activePokemon1.speed) {
 					if (player.activePokemon1.currentHP > 5) {
 						// picture of attacking pokemon?
-						damage = calculateDamage(player.activePokemon1, player.activePokemon1.move1, rival.activePokemon1);
+						damage = calculateDamageFirstBattle(player.activePokemon1, player.activePokemon1.move1, rival.activePokemon1);
 						rival.activePokemon1.currentHP -= damage;
 						// diminish pp for this move?
 						document.getElementById("pokemonRed").innerHTML = player.activePokemon1.Name + " used " + player.activePokemon1.move1.Name + ".";
@@ -133,7 +134,7 @@ function firstPokemonBattle(player, rival) {
 											pokemonStats[i][4],
 											pokemonStats[i][5],
 											pokemonStats[i][6],
-											pokemonStats[i][7],
+											player.activePokemon1.currentHP + (pokemonStats[i][7] - pokemonStats[i-1][7]), // add difference between current and next level HP
 											pokemonStats[i][8],
 											pokemonStats[i][9],
 											pokemonStats[i][10],
@@ -148,6 +149,7 @@ function firstPokemonBattle(player, rival) {
 									}
 								}
 							};
+							createPokemonMoves(player.activePokemon1);
 							document.getElementById("activePokemon1").innerHTML = player.activePokemon1.Name + "<br/> <img src=images/pokemonIconsTransparent/" + player.activePokemon1.Name + ".png /> <br/>Lvl. " + player.activePokemon1.level + " <br/> HP: " + player.activePokemon1.currentHP + "/" + player.activePokemon1.maxHP;
 							document.getElementById("pokemonRed").innerHTML = player.activePokemon1.Name + " leveled up! ";
 							// Add story?
@@ -166,7 +168,7 @@ function firstPokemonBattle(player, rival) {
 					};
 				// ... or let the rival do his move.
 				} else if (player.activePokemon1.speed < rival.activePokemon1.speed) {
-					damage = calculateDamage(rival.activePokemon1, rival.activePokemon1.move1, player.activePokemon1);
+					damage = calculateDamageFirstBattle(rival.activePokemon1, rival.activePokemon1.move1, player.activePokemon1);
 					player.activePokemon1.currentHP -= damage;
 					document.getElementById("activePokemon1").innerHTML = player.activePokemon1.Name + "<br/> <img src=images/pokemonIconsTransparent/" + player.activePokemon1.Name + ".png /> <br/>Lvl. " + player.activePokemon1.level + " <br/> HP: " + player.activePokemon1.currentHP + "/" + player.activePokemon1.maxHP;
 					document.getElementById("pokemonRed").innerHTML = rival.activePokemon1.Name + " used " + rival.activePokemon1.move1.Name + ".";
@@ -198,7 +200,7 @@ function firstPokemonBattle(player, rival) {
 };
 
 // Get the STAB of a pokemon for a move -- STAB = Special Type Ability Bonus?
-function getSTAB(attackingPokemon, move) {
+function getSTABFirstBattle(attackingPokemon, move) {
 	var STAB = 1;
 	if (move.Type == attackingPokemon.type1) {
 		STAB = 1.5;
@@ -208,30 +210,29 @@ function getSTAB(attackingPokemon, move) {
 	return STAB;
 };
 
-// Array with weaknesses and resistances. The type of the defending pokemon are the columns, the type of the move of the attacking pokemon are the rows.
-// Pokemon Type Chart from http://pokemondb.net/type
-var weaknessResistance = [ // update this
-	["WEAKNESS", "FIRE", "GRASS", "NORMAL", "WATER"],
-	["FIRE", 0,5, 2, 1, 0.5],
-	["GRASS", 0.5, 0.5, 1, 2],
-	["NORMAL", 1, 1, 1, 1],
-	["WATER", 2, 0.5, 1, 0.5]
-];
 // Get the weakness of the pokemon for a move.Type
-function getWeakness(move, defendingPokemon) {
+function getWeaknessFirstBattle(move, defendingPokemon) {// Array with weaknesses and resistances. The type of the defending pokemon are the columns, the type of the move of the attacking pokemon are the rows.
 	var weakness1 = 1;
 	var weakness2 = 1;
 	var totalWeakness;
-	for (i=0; i<weaknessResistance.length; i++) {
-		for (j=0; j<weaknessResistance.length; j++) {
-			if (weaknessResistance[i][0] == move.Type) {
+	// Pokemon Type Chart from http://pokemondb.net/type
+	var weaknessResistanceFirstBattle = [ // update this
+		["WEAKNESS", "FIRE", "GRASS", "NORMAL", "WATER"],
+		["FIRE", 0,5, 2, 1, 0.5],
+		["GRASS", 0.5, 0.5, 1, 2],
+		["NORMAL", 1, 1, 1, 1],
+		["WATER", 2, 0.5, 1, 0.5]
+	];
+	for (i=0; i<weaknessResistanceFirstBattle.length; i++) {
+		for (j=0; j<weaknessResistanceFirstBattle.length; j++) {
+			if (weaknessResistanceFirstBattle[i][0] == move.Type) {
 				// Get the first weakness
-				if (weaknessResistance[0][j] == defendingPokemon.type1) {
-					weakness1 = weaknessResistance[i][j];
+				if (weaknessResistanceFirstBattle[0][j] == defendingPokemon.type1) {
+					weakness1 = weaknessResistanceFirstBattle[i][j];
 				};
 				// Get the second weakness
-				if (weaknessResistance[0][j] == defendingPokemon.type2) {
-					weakness2 = weaknessResistance[i][j];
+				if (weaknessResistanceFirstBattle[0][j] == defendingPokemon.type2) {
+					weakness2 = weaknessResistanceFirstBattle[i][j];
 				};
 			};
 		};
@@ -241,7 +242,7 @@ function getWeakness(move, defendingPokemon) {
 	return totalWeakness;
 };
 
-function calculateDamage(attackingPokemon, move, defendingPokemon) { //http://www.serebii.net/games/damage.shtml //when power of move > 0
+function calculateDamageFirstBattle(attackingPokemon, move, defendingPokemon) { //http://www.serebii.net/games/damage.shtml //when power of move > 0
 /* Seems long and confusing? Compared to the other formula's, this one is easy as pie. Let me explain all the variables first. 
 Damage is, well, damage, the output number. 
 Level is your pokemon's current level. 
@@ -257,8 +258,8 @@ RandomNumber is simply a Random Number between 85 and 100. */
 	var randNumb = Math.floor(Math.random() * (100 - 85 + 1)) + 85; // http://stackoverflow.com/questions/1527803/generating-random-numbers-in-javascript-in-a-specific-range
 	var damage = 0;
 
-	STAB = getSTAB(attackingPokemon, move);
-	weakness = getWeakness(move, defendingPokemon);
+	STAB = getSTABFirstBattle(attackingPokemon, move);
+	weakness = getWeaknessFirstBattle(move, defendingPokemon);
 
 	if (move.category == "Physical") {
 		// include an if-statement with the accuracy of the move, if the move hits -> calculate damage, otherwise -> damage stays 0, nothing happens

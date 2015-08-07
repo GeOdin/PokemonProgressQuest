@@ -28,6 +28,13 @@ by GeOdin */
 // add credits/ read through at the start?
 // sprites for Pokemon Firered: http://www.spriters-resource.com/game_boy_advance/pokemonfireredleafgreen/sheet/3713/
 // add possibility that moves crit
+// add function to check whether pokemon levels up in battle(check exp?)
+////  then add function to arrange the level up
+// add flee option to/before wildPokemonBattle function when wildPokemon.level >= player.activePokemon1.level -2 // -1 ?
+// add also flee option to/before wildPokemonBattle when the player.activePokemon1.currentHP < ((2/3) * player.activePokemon1.maxHP) // or something like that?
+// add var healingLocations to FR_locations.js
+// add var lastVisitedHealingLocation to FR.js, so that player can either return there by choice (pokemon low on health) or by teleport (when all pokemon are fainted/currentHP 0)
+// test wildPokemonBattle --> set wildPokemon as #activePokemon1 in html code
 
 function startGame() { 
 
@@ -590,59 +597,8 @@ function startGame() {
 			document.getElementById("imageStory").src = "images/wildPokemon/" + wildPokemon.Name + ".png"; // image from Bulbapedia // http://bulbapedia.bulbagarden.net/wiki/Main_Page
 			document.getElementById("pokemonRed").innerHTML = "Wild " + wildPokemon.Name + " appeared!";
 		} else if (counter == 85) {
-			document.getElementById("imageStory").src = "images/battle/BattleGrass.png";
-			// trouble with calculateDamage function?
-			// put all functions and variables inside wildPokemonBattle function to not have overlap with firstPokemonBattle function??
-			// and do the same for the frstPokemonBattleFunction
-/*			document.getElementById("playerMoneyAmount").innerHTML = player.activePokemon1.currentHP + " " + player.activePokemon1.maxHP + " " + player.activePokemon1.speed;
-			document.getElementById("player").innerHTML = wildPokemon.currentHP + " " + wildPokemon.maxHP + " " + wildPokemon.speed;
-			// Player has 1st move
-			if (player.activePokemon1.speed >= wildPokemon.speed) {
-				if (player.activePokemon1.currentHP > 5) {
-					// picture of attacking pokemon?
-					calculateDamage(player.activePokemon1, player.activePokemon1.move1, wildPokemon);
-					document.getElementById("pokemonRed").innerHTML = player.activePokemon1.Name + " used " + player.activePokemon1.move1.Name + ".";
-					// diminish pp for this move?
-					if (wildPokemon.currentHP <= 0) {
-						if (wildPokemon.currentHP < 0) {
-							wildPokemon.currentHP = 0;
-						};
-						return;
-					};
-				} else if (player.activePokemon1.currentHP > 0) {
-					document.getElementById("pokemonRed").innerHTML = player.Name + "used POTION. "; //delete 1 potion from inventory
-					player.activePokemon1.currentHP += 20;
-					if (player.activePokemon1.currentHP > player.activePokemon1.maxHP) {
-						player.activePokemon1.currentHP = player.activePokemon1.maxHP;
-					};
-					document.getElementById("activePokemon1").innerHTML = player.activePokemon1.Name + "<br/> <img src=images/pokemonIconsTransparent/" + player.activePokemon1.Name + ".png /> <br/>Lvl. " + player.activePokemon1.level + " <br/> HP: " + player.activePokemon1.currentHP + "/" + player.activePokemon1.maxHP;
-				};
-			document.getElementById("playerMoneyAmount").innerHTML = player.activePokemon1.currentHP + player.activePokemon1.speed;
-			// wildPokemon has first move
-			} else if (player.activePokemon1.speed < wildPokemon.speed) {
-				document.getElementById("pokemonRed").innerHTML = wildPokemon.Name + " used " + wildPokemon.move1.Name + ".";
-				calculateDamage(wildPokemon, wildPokemon.move1, player.activePokemon1);
-				document.getElementById("activePokemon1").innerHTML = player.activePokemon1.Name + "<br/> <img src=images/pokemonIconsTransparent/" + player.activePokemon1.Name + ".png /> <br/>Lvl. " + player.activePokemon1.level + " <br/> HP: " + player.activePokemon1.currentHP + "/" + player.activePokemon1.maxHP;
-			};
-			document.getElementById("imageStory").src="images/pokemonIcons/ARCANINE.gif";*/
-/*			//pause current setInterval --> http://stackoverflow.com/questions/8432127/stop-setinterval-function-for-an-amount-of-time
-			pokemonBattleStartFirst(player, rival); //this is not functional; check whether all objects are proper objects
-			//continue with current setInterval*/
-		} else if (counter == 86) {
-/*			wildPokemonBattle(player, wildPokemon);*/
-/*		} else if (counter == 85) {
-			// wild pokemon battle?
-			// adjust counter to this
-			// set new counter to variable
-			// use this variable for the next else if (counter == var)..
-			document.getElementById("imageStory").src = "images/wildPokemon/ARCANINE.png";
-			document.getElementById("pokemonRed").innerHTML = "ARCANINE";
-		} else if (counter == 86) {
-			document.getElementById("imageStory").src = "images/wildPokemon/GROWLITHE.png";
-			document.getElementById("pokemonRed").innerHTML = "GROWLITHE";
-		} else if (counter == 87) {
-			document.getElementById("imageStory").src = "images/wildPokemon/KANGASKHAN.png";
-			document.getElementById("pokemonRed").innerHTML = "KANGASKHAN";*/
+			// add flee option to wildPokemonBattle function id wildPokemon.level >= player.activePokemon1.level
+			wildPokemonBattle(player, wildPokemon);
 		} else if(counter > text.length-1) {
 			// End the game
 			// Create the Route 1 location

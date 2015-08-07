@@ -278,7 +278,7 @@ var pokemonMoves = [
 	["Smokescreen", "NORMAL", "Status", 20, 0, 100, ""], // http://bulbapedia.bulbagarden.net/wiki/Smokescreen_(move)
 	// Add effect
 	["String Shot", "BUG", "Status", 40, 0, 95, ""], //http://bulbapedia.bulbagarden.net/wiki/String_Shot_(move)
-	["Tackle", "NORMAL", "Physical", 35, 50, 100, ""], //http://bulbapedia.bulbagarden.net/wiki/Tackle_%28move%29
+	["Tackle", "NORMAL", "Physical", 35, 50, 100, ""], // http://bulbapedia.bulbagarden.net/wiki/Tackle_(move)
 	// Add effect
 	["Tail Whip", "NORMAL", "Status", 30, 0, 100, ""], //http://bulbapedia.bulbagarden.net/wiki/Tail_Whip_%28move%29
 	// Add effect
