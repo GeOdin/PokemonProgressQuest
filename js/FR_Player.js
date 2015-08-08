@@ -15,7 +15,7 @@ function createPlayer(playerName, playerGender, playerMoney, starterPokemon, act
 	this.activePokemon4 = activePokemon4; //7 - object
 	this.activePokemon5 = activePokemon5; //8 - object
 	this.activePokemon6 = activePokemon6; //9 - object
-	// return player;
+	//this.bag = bag; //10 - object
 };
 
 /*// Old function below

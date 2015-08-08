@@ -123,6 +123,19 @@ body h3 {
 	overflow-y: auto;
 }
 
+#playerStats a:link{
+	text-decoration: none;
+	color: #D0D0D0;
+}
+
+#playerStats a:visited{
+	color: #D0D0D0;
+}
+
+#playerStats a:active{
+	color: #D0D0D0;
+}
+
 #imgPlayer {
 	display: none;
 	height: 35vh;

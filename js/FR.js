@@ -47,6 +47,8 @@ by GeOdin */
 // also add --- as current HP for lvl 100 Pokemon
 // more elaborative exp-gained-formula: http://bulbapedia.bulbagarden.net/wiki/Experience
 // add function to check whether pokemon levels up in battle(check exp?)
+// make the use of the potion in FR_FirstPokemonBattle.js a function healPokemonWithItem(healItem) from FR_Items.js (potion object is already created as player.bag.potion);
+// make a bag html page pop-up (like for the pokedex) for #playerStats that shows the bag and items in the bag (among other stuff?)
 
 function startGame() { 
 
@@ -307,7 +309,7 @@ function startGame() {
 					}
 				}
 			};
-			
+
  			// Create a player object
 			player = new createPlayer (
 				playerName,
@@ -470,6 +472,12 @@ function startGame() {
 			document.getElementById("locationName").innerHTML = "<h2>" + location.Name + "</h2>"; // <h3> Pallet Town </h3> does not work
 			document.getElementById("locationName").style.display = "block";
 			document.getElementById("imageStory").src = "images/OwnRoom.png"; // screenshot from Pokemon FireRed game from GAME FREAK inc.
+		} else if(counter == 25) {
+			// Create the bag
+			player.bag = new createBag();
+			// Create a potion object in the bag
+			player.bag.HEAL = new createHEALtype();
+			player.bag.HEAL.potion = new createItem("Potion");
 		} else if(counter == 26) {
 			document.getElementById("imageStory").src = "images/Mom.png"; // screenshot from Pokemon FireRed game from GAME FREAK inc.
 		} else if(counter == 27) {

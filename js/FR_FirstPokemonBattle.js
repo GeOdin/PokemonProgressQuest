@@ -115,12 +115,7 @@ function firstPokemonBattle(player, rival, counter) {
 							return counterExtra;
 						};
 					} else if (player.activePokemon1.currentHP > 0) {
-						document.getElementById("pokemonRed").innerHTML = player.Name + " used POTION. "; //delete 1 potion from inventory
-						player.activePokemon1.currentHP += 20;
-						if (player.activePokemon1.currentHP > player.activePokemon1.maxHP) {
-							player.activePokemon1.currentHP = player.activePokemon1.maxHP;
-						};
-						document.getElementById("activePokemon1").innerHTML = player.activePokemon1.Name + "<br/>Lvl: " + player.activePokemon1.level + "<br/> <img src=images/pokemonIconsTransparent/" + player.activePokemon1.Name + ".png /> <br/>HP: " + player.activePokemon1.currentHP + "/" + player.activePokemon1.maxHP + "<br/> Exp: " + player.activePokemon1.currentExp + "/" + player.activePokemon1.expNextLevel;
+						healPokemonWithItem(player.activePokemon1, player.bag.HEAL.potion);
 					};
 				} else {
 					return;
@@ -198,12 +193,7 @@ function firstPokemonBattle(player, rival, counter) {
 							return counterExtra;
 						};
 					} else if (player.activePokemon1.currentHP > 0) {
-						document.getElementById("pokemonRed").innerHTML = player.Name + "used POTION. "; //delete 1 potion from inventory
-						player.activePokemon1.currentHP += 20;
-						if (player.activePokemon1.currentHP > player.activePokemon1.maxHP) {
-							player.activePokemon1.currentHP = player.activePokemon1.maxHP;
-						};
-						document.getElementById("activePokemon1").innerHTML = player.activePokemon1.Name + "<br/>Lvl: " + player.activePokemon1.level + "<br/> <img src=images/pokemonIconsTransparent/" + player.activePokemon1.Name + ".png /> <br/>HP: " + player.activePokemon1.currentHP + "/" + player.activePokemon1.maxHP + "<br/> Exp: " + player.activePokemon1.currentExp + "/" + player.activePokemon1.expNextLevel;
+						healPokemonWithItem(player.activePokemon1, player.bag.HEAL.potion);
 					};
 				// ... or let the rival do his move.
 				} else if (player.activePokemon1.speed < rival.activePokemon1.speed) {

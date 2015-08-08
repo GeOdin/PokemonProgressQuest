@@ -82,12 +82,13 @@ function wildPokemonBattle(player, wildPokemon) {
 							return;
 						};
 					} else if (player.activePokemon1.currentHP > 0) {
-						document.getElementById("pokemonRed").innerHTML = player.Name + " used POTION. "; //delete 1 potion from inventory
-						player.activePokemon1.currentHP += 20;
-						if (player.activePokemon1.currentHP > player.activePokemon1.maxHP) {
-							player.activePokemon1.currentHP = player.activePokemon1.maxHP;
-						};
-						document.getElementById("activePokemon1").innerHTML = player.activePokemon1.Name + "<br/>Lvl: " + player.activePokemon1.level + "<br/> <img src=images/pokemonIconsTransparent/" + player.activePokemon1.Name + ".png /> <br/>HP: " + player.activePokemon1.currentHP + "/" + player.activePokemon1.maxHP + "<br/> Exp: " + player.activePokemon1.currentExp + "/" + player.activePokemon1.expNextLevel;
+						// use potion if player.items.potion > 0
+						// add healing effect
+						// substract potion
+						// teleport to last healingPlace
+					} else {
+						// teleport to last healingPlace
+						// return;
 					};
 				// ... or let the wildPokemon do its move.
 				} else if (player.activePokemon1.speed < wildPokemon.speed) {
@@ -101,6 +102,7 @@ function wildPokemonBattle(player, wildPokemon) {
 						};
 					document.getElementById("activePokemon1").innerHTML = player.activePokemon1.Name + "<br/>Lvl: " + player.activePokemon1.level + "<br/> <img src=images/pokemonIconsTransparent/" + player.activePokemon1.Name + ".png /> <br/>HP: " + player.activePokemon1.currentHP + "/" + player.activePokemon1.maxHP + "<br/> Exp: " + player.activePokemon1.currentExp + "/" + player.activePokemon1.expNextLevel;
 					document.getElementById("pokemonRed").innerHTML = player.activePokemon1.Name + " fainted.";
+					// teleport to last healingPlace
 					return;
 					};
 				} else {
@@ -121,6 +123,7 @@ function wildPokemonBattle(player, wildPokemon) {
 						};
 					document.getElementById("activePokemon1").innerHTML = player.activePokemon1.Name + "<br/>Lvl: " + player.activePokemon1.level + "<br/> <img src=images/pokemonIconsTransparent/" + player.activePokemon1.Name + ".png /> <br/>HP: " + player.activePokemon1.currentHP + "/" + player.activePokemon1.maxHP + "<br/> Exp: " + player.activePokemon1.currentExp + "/" + player.activePokemon1.expNextLevel;
 					document.getElementById("pokemonRed").innerHTML = player.activePokemon1.Name + " fainted.";
+					// teleport to last healingPlace
 					return;
 					};
 /*				//pause current setInterval --> http:
