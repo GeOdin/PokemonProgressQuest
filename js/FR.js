@@ -28,13 +28,25 @@ by GeOdin */
 // add credits/ read through at the start?
 // sprites for Pokemon Firered: http://www.spriters-resource.com/game_boy_advance/pokemonfireredleafgreen/sheet/3713/
 // add possibility that moves crit
-// add function to check whether pokemon levels up in battle(check exp?)
 ////  then add function to arrange the level up
 // add flee option to/before wildPokemonBattle function when wildPokemon.level >= player.activePokemon1.level -2 // -1 ?
 // add also flee option to/before wildPokemonBattle when the player.activePokemon1.currentHP < ((2/3) * player.activePokemon1.maxHP) // or something like that?
 // add var healingLocations to FR_locations.js
 // add var lastVisitedHealingLocation to FR.js, so that player can either return there by choice (pokemon low on health) or by teleport (when all pokemon are fainted/currentHP 0)
 // test wildPokemonBattle --> set wildPokemon as #activePokemon1 in html code
+// make wild pokemon appeared part of start of wildPokemonBattle function?
+// use counter also as input for battle functions to properly show them, also get counter back as output or a variable for the difference
+// use an if statement to check whether or not to run the main setInterval // http://javascript.info/tutorial/settimeout-setinterval
+// other kind of setInterval // http://www.thecodeship.com/web-development/alternative-to-javascript-evil-setinterval/
+//// problem is that Javascript does not support multi-threading
+//// multi-treading with web workers:
+////// http://www.htmlgoodies.com/html5/tutorials/introducing-html-5-web-workers-bringing-multi-threading-to-javascript.html#fbid=r2YYsyj7_ud
+////// https://msdn.microsoft.com/en-us/hh549259.aspx
+////// http://www.infoq.com/articles/js_multithread
+// add EV-training
+// also add --- as current HP for lvl 100 Pokemon
+// more elaborative exp-gained-formula: http://bulbapedia.bulbagarden.net/wiki/Experience
+// add function to check whether pokemon levels up in battle(check exp?)
 
 function startGame() { 
 
@@ -65,6 +77,7 @@ function startGame() {
 	var moveFour;
 	var locationName;
 	var location;
+	var counterExtra;
 	var wildPokemon;
 	
 	
@@ -285,7 +298,11 @@ function startGame() {
 							pokemonStats[i][14],
 							pokemonStats[i][15],
 							pokemonStats[i][16],
-							pokemonStats[i][17]
+							pokemonStats[i][17],
+							pokemonStats[i][18],
+							pokemonStats[i][19],
+							pokemonStats[i][20],
+							pokemonStats[i][21]
 						);
 					}
 				}
@@ -349,7 +366,11 @@ function startGame() {
 							pokemonStats[i][14],
 							pokemonStats[i][15],
 							pokemonStats[i][16],
-							pokemonStats[i][17]
+							pokemonStats[i][17],
+							pokemonStats[i][18],
+							pokemonStats[i][19],
+							pokemonStats[i][20],
+							pokemonStats[i][21]
 					);}
 				}
 			}
@@ -486,7 +507,7 @@ function startGame() {
 				document.getElementById("pokemonRed").innerHTML = "Hm! " + player.starterPokemon + " is your choice. <br/> It's one worth raising. ";
 			}
 			document.getElementById("imageStory").src = "images/wildPokemon/" + player.starterPokemon + ".png"; // image from Bulbapedia // http://bulbapedia.bulbagarden.net/wiki/Main_Page
-			document.getElementById("activePokemon1").innerHTML = player.activePokemon1.Name + "<br/> <img src=images/pokemonIconsTransparent/" + player.activePokemon1.Name + ".png /> <br/>Lvl. " + player.activePokemon1.level + " <br/> HP: " + player.activePokemon1.currentHP + "/" + player.activePokemon1.maxHP;// + "<br>" + rival.activePokemon1.move2.category + " <br/> " + player.activePokemon1.move1.Name + player.activePokemon1.move2.Type + player.activePokemon1.move3.category + player.activePokemon1.move4.Name; // does not work if pokemon has "" for a movename//works // player.activePokemon1.moveOne.Name works // http://www.w3schools.com/js/tryit.asp?filename=tryjs_objects_method;
+			document.getElementById("activePokemon1").innerHTML = player.activePokemon1.Name + "<br/>Lvl: " + player.activePokemon1.level + "<br/> <img src=images/pokemonIconsTransparent/" + player.activePokemon1.Name + ".png /> <br/>HP: " + player.activePokemon1.currentHP + "/" + player.activePokemon1.maxHP + "<br/> Exp: " + player.activePokemon1.currentExp + "/" + player.activePokemon1.expNextLevel;
 			document.getElementById("activePokemonTitle").style.display = "block";
 			document.getElementById("activePokemon").style.display = "block";
 			if (pokemonCaught[player.activePokemon1.Name] == 0) {
@@ -536,7 +557,7 @@ function startGame() {
 					if (player.activePokemon1.currentHP > player.activePokemon1.maxHP) {
 						player.activePokemon1.currentHP = player.activePokemon1.maxHP;
 					};
-					document.getElementById("activePokemon1").innerHTML = player.activePokemon1.Name + "<br/> <img src=images/pokemonIconsTransparent/" + player.activePokemon1.Name + ".png /> <br/>Lvl. " + player.activePokemon1.level + " <br/> HP: " + player.activePokemon1.currentHP + "/" + player.activePokemon1.maxHP;
+			document.getElementById("activePokemon1").innerHTML = player.activePokemon1.Name + "<br/>Lvl: " + player.activePokemon1.level + "<br/> <img src=images/pokemonIconsTransparent/" + player.activePokemon1.Name + ".png /> <br/>HP: " + player.activePokemon1.currentHP + "/" + player.activePokemon1.maxHP + "<br/> Exp: " + player.activePokemon1.currentExp + "/" + player.activePokemon1.expNextLevel;
 				};
 			// Rival has first move
 			} else if (player.activePokemon1.speed < rival.activePokemon1.speed) {
@@ -548,7 +569,7 @@ function startGame() {
 				} else if (rival.activePokemon1.Name == "SQUIRTLE") {
 					player.activePokemon1.currentHP -= 5;
 				};
-				document.getElementById("activePokemon1").innerHTML = player.activePokemon1.Name + "<br/> <img src=images/pokemonIconsTransparent/" + player.activePokemon1.Name + ".png /> <br/>Lvl. " + player.activePokemon1.level + " <br/> HP: " + player.activePokemon1.currentHP + "/" + player.activePokemon1.maxHP;
+			document.getElementById("activePokemon1").innerHTML = player.activePokemon1.Name + "<br/>Lvl: " + player.activePokemon1.level + "<br/> <img src=images/pokemonIconsTransparent/" + player.activePokemon1.Name + ".png /> <br/>HP: " + player.activePokemon1.currentHP + "/" + player.activePokemon1.maxHP + "<br/> Exp: " + player.activePokemon1.currentExp + "/" + player.activePokemon1.expNextLevel;
 			};
 /*			//pause current setInterval --> http://stackoverflow.com/questions/8432127/stop-setinterval-function-for-an-amount-of-time
 			pokemonBattleStartFirst(player, rival); //this is not functional; check whether all objects are proper objects
@@ -557,7 +578,7 @@ function startGame() {
 			document.getElementById("imageStory").src = "images/Professor_Oak_XY.png"; // picture of Professor Oak from http://bulbapedia.bulbagarden.net/wiki/Professor_Oak_%28anime%29
 		} else if (counter == 77) {
 			// 1st battle
-			firstPokemonBattle(player, rival); // first battle works, except that the usage of moves is not properly displayed; you also don't see the diminishing of HP, except for the end
+			counterExtra = firstPokemonBattle(player, rival, counter); // first battle works, except that the usage of moves is not properly displayed; you also don't see the diminishing of HP, except for the end
 			// perhaps I do need to use clearInterval to clear the current interval? or also use a var textFirstBattle that the function can scroll through --- http://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_win_clearinterval
 			// add opponent pokemon with currentHP/maxHP somewhere
 		} else if (counter == 78) {
@@ -568,7 +589,8 @@ function startGame() {
 			document.getElementById("imageStory").src = "images/PalletTown_6.png"; // screenshot from Pokemon FireRed game from GAME FREAK inc.
 		} else if (counter == 82) {
 			document.getElementById("imageStory").src = "images/Mom.png";
-			player.activePokemon1.currentHP = player.activePokemon1.maxHP;document.getElementById("activePokemon1").innerHTML = player.activePokemon1.Name + "<br/> <img src=images/pokemonIconsTransparent/" + player.activePokemon1.Name + ".png /> <br/>Lvl. " + player.activePokemon1.level + " <br/> HP: " + player.activePokemon1.currentHP + "/" + player.activePokemon1.maxHP;
+			player.activePokemon1.currentHP = player.activePokemon1.maxHP;
+			document.getElementById("activePokemon1").innerHTML = player.activePokemon1.Name + "<br/>Lvl: " + player.activePokemon1.level + "<br/> <img src=images/pokemonIconsTransparent/" + player.activePokemon1.Name + ".png /> <br/>HP: " + player.activePokemon1.currentHP + "/" + player.activePokemon1.maxHP + "<br/> Exp: " + player.activePokemon1.currentExp + "/" + player.activePokemon1.expNextLevel;
 		} else if (counter == 83) {
 			// Create the Route 1 location
 			locationName = "Route 1";
@@ -595,7 +617,7 @@ function startGame() {
 		} else if (counter == 84) {
 			wildPokemon = new createWildPokemon(location);
 			document.getElementById("imageStory").src = "images/wildPokemon/" + wildPokemon.Name + ".png"; // image from Bulbapedia // http://bulbapedia.bulbagarden.net/wiki/Main_Page
-			document.getElementById("pokemonRed").innerHTML = "Wild " + wildPokemon.Name + " appeared!";
+			document.getElementById("pokemonRed").innerHTML = "Wild " + wildPokemon.Name + " level " + wildPokemon.level + " appeared!";
 		} else if (counter == 85) {
 			// add flee option to wildPokemonBattle function id wildPokemon.level >= player.activePokemon1.level
 			wildPokemonBattle(player, wildPokemon);
@@ -633,7 +655,6 @@ function startGame() {
 			document.getElementById("badge6").style.display = "block"; // image from http://bulbapedia.bulbagarden.net/wiki/Badge
 			document.getElementById("badge7").style.display = "block"; // image from http://bulbapedia.bulbagarden.net/wiki/Badge
 			document.getElementById("badge8").style.display = "block"; // image from http://bulbapedia.bulbagarden.net/wiki/Badge
-			//counter = 0;
 /*			document.getElementById("buttonStart").style.display = "block";*/
 			return;
 		};

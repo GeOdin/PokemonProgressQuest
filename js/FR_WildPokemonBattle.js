@@ -24,7 +24,6 @@ function wildPokemonBattle(player, wildPokemon) {
 					if (player.activePokemon1.currentHP > 5) {
 						// picture of attacking pokemon?
 						damage = calculateDamageWildPokemon(player.activePokemon1, player.activePokemon1.move1, wildPokemon);
-						document.getElementById("imageStory").src = "images/wildPokemon/ARCANINE.png";
 						wildPokemon.currentHP -= damage;
 						// diminish pp for this move?
 						document.getElementById("pokemonRed").innerHTML = player.activePokemon1.Name + " used " + player.activePokemon1.move1.Name + ".";
@@ -33,39 +32,52 @@ function wildPokemonBattle(player, wildPokemon) {
 								wildPokemon.currentHP = 0;
 							};
 							// Add comment that wildPokemon fainted?
-							// Add exp?
-							document.getElementById("imageStory").src = "images/wildPokemon/" + player.activePokemon1.Name + ".png"; // screenshot from Pokemon FireRed game from GAME FREAK inc.
-							// check if Pokemon goes level up
-/*							player.activePokemon1.level++;
-				 			for (i=0; i<pokemonStats.length; i++) {
-								if (pokemonStats[i][1] == player.activePokemon1.Name) {
-									if (pokemonStats[i][2] == player.activePokemon1.level) {
-										// Create the starterPokemon Object
-										player.activePokemon1 = new createPokemon(
-											pokemonStats[i][0], 
-											pokemonStats[i][1],
-											pokemonStats[i][2],
-											pokemonStats[i][3],
-											pokemonStats[i][4],
-											pokemonStats[i][5],
-											pokemonStats[i][6],
-											player.activePokemon1.currentHP + (pokemonStats[i][7] - pokemonStats[i-1][7]), // add difference between current and next level HP
-											pokemonStats[i][8],
-											pokemonStats[i][9],
-											pokemonStats[i][10],
-											pokemonStats[i][11],
-											pokemonStats[i][12],
-											pokemonStats[i][13],
-											pokemonStats[i][14],
-											pokemonStats[i][15],
-											pokemonStats[i][16],
-											pokemonStats[i][17]
-										);
+							// Add exp
+							exp = getExpWildPokemonBattle(wildPokemon);
+							// add exp to current exp
+							player.activePokemon1.currentExp = player.activePokemon1.currentExp + exp;
+
+							// Level up if necessary
+							if (player.activePokemon1.currentExp >= player.activePokemon1.expNextLevel) {
+								expTemp = player.activePokemon1.currentExp - player.activePokemon1.expNextLevel;
+								// Actual levelling
+								player.activePokemon1.level++;
+								document.getElementById("imageStory").src = "images/wildPokemon/" + player.activePokemon1.Name + ".png"; // image from bulbapedia
+					 			for (i=0; i<pokemonStats.length; i++) {
+									if (pokemonStats[i][1] == player.activePokemon1.Name) {
+										if (pokemonStats[i][2] == player.activePokemon1.level) {
+											// Create the starterPokemon Object
+											player.activePokemon1 = new createPokemon(
+												pokemonStats[i][0], 
+												pokemonStats[i][1],
+												pokemonStats[i][2],
+												pokemonStats[i][3],
+												pokemonStats[i][4],
+												pokemonStats[i][5],
+												pokemonStats[i][6],
+												player.activePokemon1.currentHP + (pokemonStats[i][7] - pokemonStats[i-1][7]), // add difference between current and next level HP
+												pokemonStats[i][8],
+												pokemonStats[i][9],
+												pokemonStats[i][10],
+												pokemonStats[i][11],
+												pokemonStats[i][12],
+												pokemonStats[i][13],
+												pokemonStats[i][14],
+												pokemonStats[i][15],
+												pokemonStats[i][16],
+												pokemonStats[i][17],
+												pokemonStats[i][18],
+												expTemp,
+												pokemonStats[i][20],
+												pokemonStats[i][21]
+											);
+										}
 									}
-								}
-							};
-							document.getElementById("activePokemon1").innerHTML = player.activePokemon1.Name + "<br/> <img src=images/pokemonIconsTransparent/" + player.activePokemon1.Name + ".png /> <br/>Lvl. " + player.activePokemon1.level + " <br/> HP: " + player.activePokemon1.currentHP + "/" + player.activePokemon1.maxHP;
-							document.getElementById("pokemonRed").innerHTML = player.activePokemon1.Name + " leveled up! ";*/
+								};
+								createPokemonMoves(player.activePokemon1);
+								document.getElementById("activePokemon1").innerHTML = player.activePokemon1.Name + "<br/>Lvl: " + player.activePokemon1.level + "<br/> <img src=images/pokemonIconsTransparent/" + player.activePokemon1.Name + ".png /> <br/>HP: " + player.activePokemon1.currentHP + "/" + player.activePokemon1.maxHP + "<br/> Exp: " + player.activePokemon1.currentExp + "/" + player.activePokemon1.expNextLevel;
+								document.getElementById("pokemonRed").innerHTML = player.activePokemon1.Name + " leveled up! ";
+							}
 							// Add story?
 							return;
 						};
@@ -75,19 +87,19 @@ function wildPokemonBattle(player, wildPokemon) {
 						if (player.activePokemon1.currentHP > player.activePokemon1.maxHP) {
 							player.activePokemon1.currentHP = player.activePokemon1.maxHP;
 						};
-						document.getElementById("activePokemon1").innerHTML = player.activePokemon1.Name + "<br/> <img src=images/pokemonIconsTransparent/" + player.activePokemon1.Name + ".png /> <br/>Lvl. " + player.activePokemon1.level + " <br/> HP: " + player.activePokemon1.currentHP + "/" + player.activePokemon1.maxHP;
+						document.getElementById("activePokemon1").innerHTML = player.activePokemon1.Name + "<br/>Lvl: " + player.activePokemon1.level + "<br/> <img src=images/pokemonIconsTransparent/" + player.activePokemon1.Name + ".png /> <br/>HP: " + player.activePokemon1.currentHP + "/" + player.activePokemon1.maxHP + "<br/> Exp: " + player.activePokemon1.currentExp + "/" + player.activePokemon1.expNextLevel;
 					};
 				// ... or let the wildPokemon do its move.
 				} else if (player.activePokemon1.speed < wildPokemon.speed) {
 					damage = calculateDamageWildPokemon(wildPokemon, wildPokemon.move1, player.activePokemon1);
 					player.activePokemon1.currentHP -= damage;
-					document.getElementById("activePokemon1").innerHTML = player.activePokemon1.Name + "<br/> <img src=images/pokemonIconsTransparent/" + player.activePokemon1.Name + ".png /> <br/>Lvl. " + player.activePokemon1.level + " <br/> HP: " + player.activePokemon1.currentHP + "/" + player.activePokemon1.maxHP;
+					document.getElementById("activePokemon1").innerHTML = player.activePokemon1.Name + "<br/>Lvl: " + player.activePokemon1.level + "<br/> <img src=images/pokemonIconsTransparent/" + player.activePokemon1.Name + ".png /> <br/>HP: " + player.activePokemon1.currentHP + "/" + player.activePokemon1.maxHP + "<br/> Exp: " + player.activePokemon1.currentExp + "/" + player.activePokemon1.expNextLevel;
 					document.getElementById("pokemonRed").innerHTML = wildPokemon.Name + " used " + wildPokemon.move1.Name + ".";
 					if (player.activePokemon1.currentHP <=0) {
 						if (player.activePokemon1.currentHP < 0) {
 							player.activePokemon1.currentHP = 0;
 						};
-					document.getElementById("activePokemon1").innerHTML = player.activePokemon1.Name + "<br/> <img src=images/pokemonIconsTransparent/" + player.activePokemon1.Name + ".png /> <br/>Lvl. " + player.activePokemon1.level + " <br/> HP: " + player.activePokemon1.currentHP + "/" + player.activePokemon1.maxHP;
+					document.getElementById("activePokemon1").innerHTML = player.activePokemon1.Name + "<br/>Lvl: " + player.activePokemon1.level + "<br/> <img src=images/pokemonIconsTransparent/" + player.activePokemon1.Name + ".png /> <br/>HP: " + player.activePokemon1.currentHP + "/" + player.activePokemon1.maxHP + "<br/> Exp: " + player.activePokemon1.currentExp + "/" + player.activePokemon1.expNextLevel;
 					document.getElementById("pokemonRed").innerHTML = player.activePokemon1.Name + " fainted.";
 					return;
 					};
@@ -101,13 +113,13 @@ function wildPokemonBattle(player, wildPokemon) {
 				if (player.activePokemon1.speed >= wildPokemon.speed) {
 					damage = calculateDamageWildPokemon(wildPokemon, wildPokemon.move1, player.activePokemon1);
 					player.activePokemon1.currentHP -= damage;
-					document.getElementById("activePokemon1").innerHTML = player.activePokemon1.Name + "<br/> <img src=images/pokemonIconsTransparent/" + player.activePokemon1.Name + ".png /> <br/>Lvl. " + player.activePokemon1.level + " <br/> HP: " + player.activePokemon1.currentHP + "/" + player.activePokemon1.maxHP;
+					document.getElementById("activePokemon1").innerHTML = player.activePokemon1.Name + "<br/>Lvl: " + player.activePokemon1.level + "<br/> <img src=images/pokemonIconsTransparent/" + player.activePokemon1.Name + ".png /> <br/>HP: " + player.activePokemon1.currentHP + "/" + player.activePokemon1.maxHP + "<br/> Exp: " + player.activePokemon1.currentExp + "/" + player.activePokemon1.expNextLevel;
 					document.getElementById("pokemonRed").innerHTML = wildPokemon.Name + " used " + wildPokemon.move1.Name + ".";
 					if (player.activePokemon1.currentHP <=0) {
 						if (player.activePokemon1.currentHP < 0) {
 							player.activePokemon1.currentHP = 0;
 						};
-					document.getElementById("activePokemon1").innerHTML = player.activePokemon1.Name + "<br/> <img src=images/pokemonIconsTransparent/" + player.activePokemon1.Name + ".png /> <br/>Lvl. " + player.activePokemon1.level + " <br/> HP: " + player.activePokemon1.currentHP + "/" + player.activePokemon1.maxHP;
+					document.getElementById("activePokemon1").innerHTML = player.activePokemon1.Name + "<br/>Lvl: " + player.activePokemon1.level + "<br/> <img src=images/pokemonIconsTransparent/" + player.activePokemon1.Name + ".png /> <br/>HP: " + player.activePokemon1.currentHP + "/" + player.activePokemon1.maxHP + "<br/> Exp: " + player.activePokemon1.currentExp + "/" + player.activePokemon1.expNextLevel;
 					document.getElementById("pokemonRed").innerHTML = player.activePokemon1.Name + " fainted.";
 					return;
 					};
@@ -130,39 +142,52 @@ function wildPokemonBattle(player, wildPokemon) {
 								wildPokemon.currentHP = 0;
 							};
 							// Add comment that wildPokemon fainted?
-							// Add exp?
-							// check if pokemon levels up
-/*							document.getElementById("imageStory").src = "images/wildPokemon/" + player.activePokemon1.Name + ".png"; // screenshot from Pokemon FireRed game from GAME FREAK inc.
-							player.activePokemon1.level++;
-				 			for (i=0; i<pokemonStats.length; i++) {
-								if (pokemonStats[i][1] == player.activePokemon1.Name) {
-									if (pokemonStats[i][2] == player.activePokemon1.level) {
-										// Create the starterPokemon Object
-										player.activePokemon1 = new createPokemon(
-											pokemonStats[i][0], 
-											pokemonStats[i][1],
-											pokemonStats[i][2],
-											pokemonStats[i][3],
-											pokemonStats[i][4],
-											pokemonStats[i][5],
-											pokemonStats[i][6],
-											player.activePokemon1.currentHP + (pokemonStats[i][7] - pokemonStats[i-1][7]), // add difference between current and next level HP
-											pokemonStats[i][8],
-											pokemonStats[i][9],
-											pokemonStats[i][10],
-											pokemonStats[i][11],
-											pokemonStats[i][12],
-											pokemonStats[i][13],
-											pokemonStats[i][14],
-											pokemonStats[i][15],
-											pokemonStats[i][16],
-											pokemonStats[i][17]
-										);
+							// Add exp
+							exp = getExpWildPokemonBattle(wildPokemon);
+							// add exp to current exp
+							player.activePokemon1.currentExp = player.activePokemon1.currentExp + exp;
+
+							// Level up if necessary
+							if (player.activePokemon1.currentExp >= player.activePokemon1.expNextLevel) {
+								expTemp = player.activePokemon1.currentExp - player.activePokemon1.expNextLevel;
+								// Actual levelling
+								player.activePokemon1.level++;
+								document.getElementById("imageStory").src = "images/wildPokemon/" + player.activePokemon1.Name + ".png"; // image from bulbapedia
+					 			for (i=0; i<pokemonStats.length; i++) {
+									if (pokemonStats[i][1] == player.activePokemon1.Name) {
+										if (pokemonStats[i][2] == player.activePokemon1.level) {
+											// Create the starterPokemon Object
+											player.activePokemon1 = new createPokemon(
+												pokemonStats[i][0], 
+												pokemonStats[i][1],
+												pokemonStats[i][2],
+												pokemonStats[i][3],
+												pokemonStats[i][4],
+												pokemonStats[i][5],
+												pokemonStats[i][6],
+												player.activePokemon1.currentHP + (pokemonStats[i][7] - pokemonStats[i-1][7]), // add difference between current and next level HP
+												pokemonStats[i][8],
+												pokemonStats[i][9],
+												pokemonStats[i][10],
+												pokemonStats[i][11],
+												pokemonStats[i][12],
+												pokemonStats[i][13],
+												pokemonStats[i][14],
+												pokemonStats[i][15],
+												pokemonStats[i][16],
+												pokemonStats[i][17],
+												pokemonStats[i][18],
+												expTemp,
+												pokemonStats[i][20],
+												pokemonStats[i][21]
+											);
+										}
 									}
-								}
+								};
+								createPokemonMoves(player.activePokemon1);
+								document.getElementById("activePokemon1").innerHTML = player.activePokemon1.Name + "<br/>Lvl: " + player.activePokemon1.level + "<br/> <img src=images/pokemonIconsTransparent/" + player.activePokemon1.Name + ".png /> <br/>HP: " + player.activePokemon1.currentHP + "/" + player.activePokemon1.maxHP + "<br/> Exp: " + player.activePokemon1.currentExp + "/" + player.activePokemon1.expNextLevel;
+								document.getElementById("pokemonRed").innerHTML = player.activePokemon1.Name + " leveled up! ";
 							};
-							document.getElementById("activePokemon1").innerHTML = player.activePokemon1.Name + "<br/> <img src=images/pokemonIconsTransparent/" + player.activePokemon1.Name + ".png /> <br/>Lvl. " + player.activePokemon1.level + " <br/> HP: " + player.activePokemon1.currentHP + "/" + player.activePokemon1.maxHP;
-							document.getElementById("pokemonRed").innerHTML = player.activePokemon1.Name + " leveled up! ";*/
 							// Add story?
 							return;
 						};
@@ -172,7 +197,7 @@ function wildPokemonBattle(player, wildPokemon) {
 						if (player.activePokemon1.currentHP > player.activePokemon1.maxHP) {
 							player.activePokemon1.currentHP = player.activePokemon1.maxHP;
 						};
-						document.getElementById("activePokemon1").innerHTML = player.activePokemon1.Name + "<br/> <img src=images/pokemonIconsTransparent/" + player.activePokemon1.Name + ".png /> <br/>Lvl. " + player.activePokemon1.level + " <br/> HP: " + player.activePokemon1.currentHP + "/" + player.activePokemon1.maxHP;
+						document.getElementById("activePokemon1").innerHTML = player.activePokemon1.Name + "<br/>Lvl: " + player.activePokemon1.level + "<br/> <img src=images/pokemonIconsTransparent/" + player.activePokemon1.Name + ".png /> <br/>HP: " + player.activePokemon1.currentHP + "/" + player.activePokemon1.maxHP + "<br/> Exp: " + player.activePokemon1.currentExp + "/" + player.activePokemon1.expNextLevel;
 					};
 				} else {
 					return;
@@ -201,7 +226,7 @@ function getWeaknessWildPokemon(move, defendingPokemon) {// Array with weaknesse
 	// Pokemon Type Chart from http://pokemondb.net/type
 	var weaknessResistanceWildPokemon = [ // update this
 		["WEAKNESS", "FIRE", "GRASS", "NORMAL", "WATER"],
-		["FIRE", 0,5, 2, 1, 0.5],
+		["FIRE", 0.5, 2, 1, 0.5],
 		["GRASS", 0.5, 0.5, 1, 2],
 		["NORMAL", 1, 1, 1, 1],
 		["WATER", 2, 0.5, 1, 0.5]
@@ -265,4 +290,32 @@ RandomNumber is simply a Random Number between 85 and 100. */
 		// effect = "";
 	};
 	return damage; //move with move.damage and move.effect
+};
+
+// Get the exp for the first battle
+//// Exp function // from http://www.psypokes.com/lab/expguide.php
+//// Enemy Experience Stat * Enemy Level Stat * Enemy Tame Stat / 7 = Exp
+////// Note: This Equation is not entirely accurate, but it will still be very close to the actual number.
+////// Okay. First, the Enemy Experience Stat is a special stat given to each individual species of Pokemon (See Section 3.2 for list and details) and is applied here. 
+////// Next, is the level of the enemy. 
+////// Next, is either a 1 or a 1.5 on whether your enemy is a trainer's pokemon. If it's wild, it's 1, if it's a Trainer's, it's 1.5. 
+////// Finally, divide all this by 7, add any applied boosters, split evenly between Pokemon that battled, round them, and you've got about how many points each will earn from the battle.
+function getExpWildPokemon(wildPokemon) {
+	var exp;
+	exp = Math.round(wildPokemon.baseExpYield * wildPokemon.level * 1.5 / 7);
+	return exp;
+};
+
+// Get the exp for the first battle
+//// Exp function // from http://www.psypokes.com/lab/expguide.php
+//// Enemy Experience Stat * Enemy Level Stat * Enemy Tame Stat / 7 = Exp
+////// Note: This Equation is not entirely accurate, but it will still be very close to the actual number.
+////// Okay. First, the Enemy Experience Stat is a special stat given to each individual species of Pokemon (See Section 3.2 for list and details) and is applied here. 
+////// Next, is the level of the enemy. 
+////// Next, is either a 1 or a 1.5 on whether your enemy is a trainer's pokemon. If it's wild, it's 1, if it's a Trainer's, it's 1.5. 
+////// Finally, divide all this by 7, add any applied boosters, split evenly between Pokemon that battled, round them, and you've got about how many points each will earn from the battle.
+function getExpWildPokemonBattle(wildPokemon) {
+	var exp;
+	exp = Math.round(wildPokemon.baseExpYield * wildPokemon.level * 1 / 7);
+	return exp;
 };

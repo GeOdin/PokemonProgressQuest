@@ -83,7 +83,11 @@ function createWildPokemon(locationObject) {
 					pokemonStats[i][14],
 					pokemonStats[i][15],
 					pokemonStats[i][16],
-					pokemonStats[i][17]
+					pokemonStats[i][17],
+					pokemonStats[i][18],
+					pokemonStats[i][19],
+					pokemonStats[i][20],
+					pokemonStats[i][21]
 				);
 			};
 		};

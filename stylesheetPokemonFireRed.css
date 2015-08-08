@@ -3,6 +3,7 @@ stylesheetPokemonRed.css
 For the layout for the Pokemon FireRed Progress Quests
 Made on 25-07-2015
 by GeOdin */
+/* make activePokemon1..6 position not fixed (but absolute/relative), so that a scrollbar can be done properly with overflow-y: auto; */
 
 body {
 	background-color: #202020;
@@ -20,11 +21,11 @@ body h3 {
 	color: white;
 }
 
-#activePokemon {
+#activePokemon{
 	position: fixed;
 	top: 0.5%;
 	display: block;
-	height: 21.95vh;
+	height: 25vh; /*was 21.95 vh*/
 	width: 98%;
 	margin: auto;
 	background-color: #404040;
@@ -106,7 +107,7 @@ body h3 {
 
 #main {
 	position: absolute;
-	top: 22.75vh;
+	top: 25.8vh; /*was 22.75vh*/
 	left: 0.75%;
 	right: 0.75%;
 	bottom: 16.47vh;
@@ -119,11 +120,12 @@ body h3 {
 	height: 100%;
 	width: 20%;
 	border: 2px solid #909090;
+	overflow-y: auto;
 }
 
 #imgPlayer {
 	display: none;
-	height: 40vh;
+	height: 35vh;
 	margin-left: auto;
 	margin-right: auto;
 }
@@ -212,6 +214,7 @@ body h3 {
 	border-bottom-left-radius: 10px;
 	border-bottom-right-radius: 10px;
 	border: 2px solid #909090;
+	overflow-y: auto;
 }
 
 #badgesTitle{
