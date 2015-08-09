@@ -103,8 +103,11 @@ function wildPokemonBattle(player, wildPokemon, locationObject) {
 						// substract potion
 						// teleport to last healingPlace
 					} else {
-						// teleport to last healingPlace
-						// return;
+						document.getElementById("imageStory").src = player.lastHealingLocation.image;
+						document.getElementById("pokemonRed").innerHTML = player.lastHealingLocation.storyText;
+						healAllPokemon(player);
+						document.getElementById("activePokemon1").innerHTML = player.activePokemon1.Name + "<br/>Lvl: " + player.activePokemon1.level + "<br/> <img src=images/pokemonIconsTransparent/" + player.activePokemon1.Name + ".png /> <br/>HP: " + player.activePokemon1.currentHP + "/" + player.activePokemon1.maxHP + "<br/> Exp: " + player.activePokemon1.currentExp + "/" + player.activePokemon1.expNextLevel;
+						return;
 					};
 				// ... or let the wildPokemon do its move.
 				} else if (player.activePokemon1.speed < wildPokemon.speed) {
@@ -116,13 +119,16 @@ function wildPokemonBattle(player, wildPokemon, locationObject) {
 						if (player.activePokemon1.currentHP < 0) {
 							player.activePokemon1.currentHP = 0;
 						};
-					document.getElementById("imageStoryPlayerPokemon").style.display = "none";
-					document.getElementById("imageStoryOpponentPokemon").style.display = "none";
-					document.getElementById("pokemonRed").src = "images/wildPokemon/" + player.activePokemon1.Name + ".png";
-					document.getElementById("activePokemon1").innerHTML = player.activePokemon1.Name + "<br/>Lvl: " + player.activePokemon1.level + "<br/> <img src=images/pokemonIconsTransparent/" + player.activePokemon1.Name + ".png /> <br/>HP: " + player.activePokemon1.currentHP + "/" + player.activePokemon1.maxHP + "<br/> Exp: " + player.activePokemon1.currentExp + "/" + player.activePokemon1.expNextLevel;
-					document.getElementById("pokemonRed").innerHTML = player.activePokemon1.Name + " fainted.";
-					// teleport to last healingPlace
-					return;
+						document.getElementById("imageStoryPlayerPokemon").style.display = "none";
+						document.getElementById("imageStoryOpponentPokemon").style.display = "none";
+						document.getElementById("pokemonRed").src = "images/wildPokemon/" + player.activePokemon1.Name + ".png";
+						document.getElementById("activePokemon1").innerHTML = player.activePokemon1.Name + "<br/>Lvl: " + player.activePokemon1.level + "<br/> <img src=images/pokemonIconsTransparent/" + player.activePokemon1.Name + ".png /> <br/>HP: " + player.activePokemon1.currentHP + "/" + player.activePokemon1.maxHP + "<br/> Exp: " + player.activePokemon1.currentExp + "/" + player.activePokemon1.expNextLevel;
+						document.getElementById("pokemonRed").innerHTML = player.activePokemon1.Name + " fainted.";
+						document.getElementById("imageStory").src = player.lastHealingLocation.image;
+						document.getElementById("pokemonRed").innerHTML = player.lastHealingLocation.storyText;
+						healAllPokemon(player);
+						document.getElementById("activePokemon1").innerHTML = player.activePokemon1.Name + "<br/>Lvl: " + player.activePokemon1.level + "<br/> <img src=images/pokemonIconsTransparent/" + player.activePokemon1.Name + ".png /> <br/>HP: " + player.activePokemon1.currentHP + "/" + player.activePokemon1.maxHP + "<br/> Exp: " + player.activePokemon1.currentExp + "/" + player.activePokemon1.expNextLevel;
+						return;
 					};
 				} else {
 					return;
@@ -140,12 +146,15 @@ function wildPokemonBattle(player, wildPokemon, locationObject) {
 						if (player.activePokemon1.currentHP < 0) {
 							player.activePokemon1.currentHP = 0;
 						};
-					document.getElementById("imageStoryPlayerPokemon").style.display = "none";
-					document.getElementById("imageStoryOpponentPokemon").style.display = "none";
-					document.getElementById("pokemonRed").src = "images/wildPokemon/" + player.activePokemon1.Name + ".png";
-					document.getElementById("activePokemon1").innerHTML = player.activePokemon1.Name + "<br/>Lvl: " + player.activePokemon1.level + "<br/> <img src=images/pokemonIconsTransparent/" + player.activePokemon1.Name + ".png /> <br/>HP: " + player.activePokemon1.currentHP + "/" + player.activePokemon1.maxHP + "<br/> Exp: " + player.activePokemon1.currentExp + "/" + player.activePokemon1.expNextLevel;
-					document.getElementById("pokemonRed").innerHTML = player.activePokemon1.Name + " fainted.";
-					// teleport to last healingPlace
+						document.getElementById("imageStoryPlayerPokemon").style.display = "none";
+						document.getElementById("imageStoryOpponentPokemon").style.display = "none";
+						document.getElementById("pokemonRed").src = "images/wildPokemon/" + player.activePokemon1.Name + ".png";
+						document.getElementById("activePokemon1").innerHTML = player.activePokemon1.Name + "<br/>Lvl: " + player.activePokemon1.level + "<br/> <img src=images/pokemonIconsTransparent/" + player.activePokemon1.Name + ".png /> <br/>HP: " + player.activePokemon1.currentHP + "/" + player.activePokemon1.maxHP + "<br/> Exp: " + player.activePokemon1.currentExp + "/" + player.activePokemon1.expNextLevel;
+						document.getElementById("pokemonRed").innerHTML = player.activePokemon1.Name + " fainted.";
+						document.getElementById("imageStory").src = player.lastHealingLocation.image;
+						document.getElementById("pokemonRed").innerHTML = player.lastHealingLocation.storyText;
+						healAllPokemon(player);
+						document.getElementById("activePokemon1").innerHTML = player.activePokemon1.Name + "<br/>Lvl: " + player.activePokemon1.level + "<br/> <img src=images/pokemonIconsTransparent/" + player.activePokemon1.Name + ".png /> <br/>HP: " + player.activePokemon1.currentHP + "/" + player.activePokemon1.maxHP + "<br/> Exp: " + player.activePokemon1.currentExp + "/" + player.activePokemon1.expNextLevel;
 					return;
 					};
 /*				//pause current setInterval --> http:
@@ -221,6 +230,12 @@ function wildPokemonBattle(player, wildPokemon, locationObject) {
 						};
 					} else if (player.activePokemon1.currentHP > 0) {
 						healPokemonWithItem(player.activePokemon1, player.bag.HEAL.potion);
+					} else {
+						document.getElementById("imageStory").src = player.lastHealingLocation.image;
+						document.getElementById("pokemonRed").innerHTML = player.lastHealingLocation.storyText;
+						healAllPokemon(player);
+						document.getElementById("activePokemon1").innerHTML = player.activePokemon1.Name + "<br/>Lvl: " + player.activePokemon1.level + "<br/> <img src=images/pokemonIconsTransparent/" + player.activePokemon1.Name + ".png /> <br/>HP: " + player.activePokemon1.currentHP + "/" + player.activePokemon1.maxHP + "<br/> Exp: " + player.activePokemon1.currentExp + "/" + player.activePokemon1.expNextLevel;
+						return;
 					};
 				} else {
 					return;

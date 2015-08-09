@@ -50,6 +50,8 @@ by GeOdin */
 // make the use of the potion in FR_FirstPokemonBattle.js a function healPokemonWithItem(healItem) from FR_Items.js (potion object is already created as player.bag.potion);
 // make a bag html page pop-up (like for the pokedex) for #playerStats that shows the bag and items in the bag (among other stuff?)
 // make the battle back-ground variable, depending on laction (make it a property of location)
+// make location an object of player, like lastHealingLocation is also an object of player
+// make a function for when all pokemon are fainter --> lastHealingLocation
 
 function startGame() { 
 
@@ -80,6 +82,7 @@ function startGame() {
 	var moveFour;
 	var locationName;
 	var location;
+	var lastHealingLocation;
 	var counterExtra;
 	var wildPokemon;
 	
@@ -488,7 +491,8 @@ function startGame() {
 				document.getElementById("pokemonRed").innerHTML = "MOM: ...Right. <br/> All " + player.gender + "s leave home someday. ";
 			} else {
 				document.getElementById("pokemonRed").innerHTML = "MOM: ...Right. <br/> All " + player.gender + "s dream of travelling. ";
-			}
+			};
+			player.lastHealingLocation = new getHealingLocation("MOM");
 		} else if(counter == 31) {
 			document.getElementById("imageStory").src = "images/PalletTown.png"; // screenshot from Pokemon FireRed game from GAME FREAK inc.
 		} else if(counter == 32) {

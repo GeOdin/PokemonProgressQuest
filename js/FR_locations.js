@@ -12,12 +12,18 @@
  // add background for battle as part of location
 
 // Background information about the different locations (make different variables for routes and cities?)
+// include locationNumber
 var locations = [
 	["locationName", "battleBackground", "trainerAmount", "trainer1", "pokemonAmount", "pokemon1Name", "pokemon1MinLevel", "pokemon1MaxLevel", "pokemon1Chance", "pokemon2Name", "pokemon2MinLevel", "pokemon2MaxLevel", "pokemon2Chance"],
 	["Introduction", "BattleGrass", 0, "", 0, "", 1, 1, 1.0, "", 1, 1, 0.0],
 	["Pallet Town", "BattleGrass", 0, "", 0, "", 1, 1, 1.0, "", 1, 1, 0.0],
 	["Route 1", "BattleGrass", 0, "BattleGrass", 2, "PIDGEY", 2, 5, 0.5, "RATTATA", 2, 4, 0.5],
  	["Hall of Fame", "BattleGrass", 0, "", 1, "", 1, 1, 1.0, "", 1, 1, 0.0]
+];
+// Background information for the different healing locations
+var healingLocations = [
+	["healingLocationNumber", "healingLocationName", "healingLocationLocation", "healingLocationImage", "healingLocationText"],
+	["001", "MOM", getLocation("Pallet Town"), "images/Mom.png", "Mom healed all your Pok&eacute;mon. "]
 ];
 
 // Function to create the different locations
@@ -38,6 +44,55 @@ function createLocation(locationName, battleBackground, trainerAmount, trainer1,
 	this.pokemon2MinLevel = pokemon2MinLevel; //10
 	this.pokemon2MaxLevel = pokemon2MaxLevel; //11
 	this.pokemon2Chance = pokemon2Chance; //12
+};
+
+function getLocation(locationName){
+	var newLocation;
+	for (i=0; i<locations.length; i++) {
+		if (locations[i][0] == locationName) {
+			newLocation = new createLocation(
+				locations[i][0],
+				locations[i][1],
+				locations[i][2],
+				locations[i][3],
+				locations[i][4],
+				locations[i][5],
+				locations[i][6],
+				locations[i][7],
+				locations[i][8],
+				locations[i][9],
+				locations[i][10],
+				locations[i][11],
+				locations[i][12]
+			);
+		};
+	};
+	return newLocation;
+};
+
+// Function to create a healing location
+function getHealingLocation(healingLocationName){
+	var newHealingLocation;
+	for (i=0; i<healingLocations.length; i++) {
+		if (healingLocations[i][1] == healingLocationName) {
+			newHealingLocation = new createHealingLocation(
+				healingLocations[i][0],
+				healingLocations[i][1],
+				healingLocations[i][2],
+				healingLocations[i][3],
+				healingLocations[i][4]
+			);
+		};
+	};
+	return newHealingLocation;
+};
+
+function createHealingLocation(healingLocationNumber, healingLocationName, healingLocationLocation, healingLocationImage, healingLocationText){
+	this.number = healingLocationNumber;
+	this.Name = healingLocationName;
+	this.locatedIn = healingLocationLocation;
+	this.image = healingLocationImage;
+	this.storyText = healingLocationText;
 };
 
 // Function to create wild Pokemon for a certain location 
@@ -107,4 +162,14 @@ function createWildPokemon(locationObject) {
 function setBattleBackground(locationObject){
 	// Set the battle background
 	document.getElementById("imageStory").src = "images/battle/" + locationObject.battleBackground + ".png";
+};
+
+function healAllPokemon(player) {
+	for (i=0; i<6; i++) {
+		var activePokemonNumber = i + 1;
+		var activePokemonCall = "activePokemon" + activePokemonNumber;
+		if (player[activePokemonCall] != "") {
+			player[activePokemonCall].currentHP = player[activePokemonCall].maxHP;
+		};
+	};
 };
