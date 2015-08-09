@@ -18,6 +18,7 @@ function firstPokemonBattle(player, rival, counter) {
 		var counterExtra = 0;
 		var exp;
 		var expTemp;
+		var move;
 
 		while (rival.activePokemon1.currentHP > 0){
 			// Set the screenshot to first battle		
@@ -27,7 +28,7 @@ function firstPokemonBattle(player, rival, counter) {
 				// Move 1
 				// Either let the rival do his move...
 				if (player.activePokemon1.speed >= rival.activePokemon1.speed) {
-					damage = calculateDamageFirstBattle(rival.activePokemon1, rival.activePokemon1.move1, player.activePokemon1);
+					damage = calculateDamageFirstBattle(rival.activePokemon1, move = getMoveFirstBattle(rival.activePokemon1), player.activePokemon1);
 					player.activePokemon1.currentHP -= damage;
 					document.getElementById("activePokemon1").innerHTML = player.activePokemon1.Name + "<br/>Lvl: " + player.activePokemon1.level + "<br/> <img src=images/pokemonIconsTransparent/" + player.activePokemon1.Name + ".png /> <br/>HP: " + player.activePokemon1.currentHP + "/" + player.activePokemon1.maxHP + "<br/> Exp: " + player.activePokemon1.currentExp + "/" + player.activePokemon1.expNextLevel;
 					document.getElementById("pokemonRed").innerHTML = rival.activePokemon1.Name + " used " + rival.activePokemon1.move1.Name + ".";
@@ -63,6 +64,7 @@ function firstPokemonBattle(player, rival, counter) {
 							exp = getExpFirstBattle(rival);
 							// add exp to current exp
 							player.activePokemon1.currentExp = player.activePokemon1.currentExp + exp;
+							document.getElementById("activePokemon1").innerHTML = player.activePokemon1.Name + "<br/>Lvl: " + player.activePokemon1.level + "<br/> <img src=images/pokemonIconsTransparent/" + player.activePokemon1.Name + ".png /> <br/>HP: " + player.activePokemon1.currentHP + "/" + player.activePokemon1.maxHP + "<br/> Exp: " + player.activePokemon1.currentExp + "/" + player.activePokemon1.expNextLevel;
 
 							// Level up if necessary
 							if (player.activePokemon1.currentExp >= player.activePokemon1.expNextLevel) {
@@ -112,6 +114,7 @@ function firstPokemonBattle(player, rival, counter) {
 							document.getElementById("playerMoneyAmount").innerHTML = player.money;
 							window.clearInterval(firstPokemonBattle);
 //							gamePokemonFireRed;
+/*							reset stats such as attack and defense (after possible growl/..) */
 							return counterExtra;
 						};
 					} else if (player.activePokemon1.currentHP > 0) {
@@ -141,6 +144,7 @@ function firstPokemonBattle(player, rival, counter) {
 							exp = getExpFirstBattle(rival);
 							// add exp to current exp
 							player.activePokemon1.currentExp = player.activePokemon1.currentExp + exp;
+							document.getElementById("activePokemon1").innerHTML = player.activePokemon1.Name + "<br/>Lvl: " + player.activePokemon1.level + "<br/> <img src=images/pokemonIconsTransparent/" + player.activePokemon1.Name + ".png /> <br/>HP: " + player.activePokemon1.currentHP + "/" + player.activePokemon1.maxHP + "<br/> Exp: " + player.activePokemon1.currentExp + "/" + player.activePokemon1.expNextLevel;
 
 							// Level up if necessary
 							if (player.activePokemon1.currentExp >= player.activePokemon1.expNextLevel) {
@@ -190,6 +194,7 @@ function firstPokemonBattle(player, rival, counter) {
 							document.getElementById("playerMoneyAmount").innerHTML = player.money;
 							window.clearInterval(firstPokemonBattle);
 //							gamePokemonFireRed;
+/*							reset stats such as attack and defense (after possible growl/..) */
 							return counterExtra;
 						};
 					} else if (player.activePokemon1.currentHP > 0) {
@@ -197,7 +202,7 @@ function firstPokemonBattle(player, rival, counter) {
 					};
 				// ... or let the rival do his move.
 				} else if (player.activePokemon1.speed < rival.activePokemon1.speed) {
-					damage = calculateDamageFirstBattle(rival.activePokemon1, rival.activePokemon1.move1, player.activePokemon1);
+					damage = calculateDamageFirstBattle(rival.activePokemon1, move = getMoveFirstBattle(rival.activePokemon1), player.activePokemon1);
 					player.activePokemon1.currentHP -= damage;
 					document.getElementById("activePokemon1").innerHTML = player.activePokemon1.Name + "<br/>Lvl: " + player.activePokemon1.level + "<br/> <img src=images/pokemonIconsTransparent/" + player.activePokemon1.Name + ".png /> <br/>HP: " + player.activePokemon1.currentHP + "/" + player.activePokemon1.maxHP + "<br/> Exp: " + player.activePokemon1.currentExp + "/" + player.activePokemon1.expNextLevel;
 					document.getElementById("pokemonRed").innerHTML = rival.activePokemon1.Name + " used " + rival.activePokemon1.move1.Name + ".";
@@ -273,6 +278,26 @@ function getWeaknessFirstBattle(move, defendingPokemon) {// Array with weaknesse
 	return totalWeakness;
 };
 
+// Function to get the move of a pokemon
+function getMoveFirstBattle(pokemonObject) {
+	// Set variables
+	var randNumb1To4;
+	var moveCall = "move1";
+	var move;
+	var moveName = "";
+
+	// Get the move
+	while (moveName == "") {
+		randNumb1To4 = Math.ceil(4 * Math.random());
+		moveCall = "move" + randNumb1To4;
+		move = pokemonObject[moveCall];
+		moveName = move.Name;
+	};
+
+	// Return the move
+	return move;
+};
+
 function calculateDamageFirstBattle(attackingPokemon, move, defendingPokemon) { //http://www.serebii.net/games/damage.shtml //when power of move > 0
 /* Seems long and confusing? Compared to the other formula's, this one is easy as pie. Let me explain all the variables first. 
 Damage is, well, damage, the output number. 
@@ -305,6 +330,29 @@ RandomNumber is simply a Random Number between 85 and 100. */
 	} else if (move.category == "Status") {
 		// include an if-statement with the accuracy of the move, if the move hits -> calculate damage, otherwise -> damage stays 0, nothing happens
 		damage = 0;
+/*		for (i=0; i<pokemonMoves.length; i++){
+			if (pokemonMoves[i][0] == move.Name) {
+				if (pokemonMoves[i][6] == "attackOpponent") {
+					defendingPokemon.attack += pokemonMoves[i][7];
+					if (defendingPokemon.attack < (getAttackStat(defendingPokemon) - 6) {
+						defendingPokemon.attack = getAttackStat(defendingPokemon) - 6;
+						document.getElementById("pokemonRed").innerHTML = defendingPokemon.Name + "'s attack won't go any lower. ";
+					};
+					if (defendingPokemon.attack <= 0) {
+						defendingPokemon.attack = 1;
+					};
+				} else if (pokemonMoves[i][6] == "defenseOpponent") {
+					defendingPokemon.defense += pokemonMoves[i][7];
+					if (defendingPokemon.defense < (getDefenseStat(defendingPokemon) - 6) {
+						defendingPokemon.defense = getDefenseStat(defendingPokemon) - 6;
+						document.getElementById("pokemonRed").innerHTML = defendingPokemon.Name + "'s defense won't go any lower. ";
+					};
+					if (defendingPokemon.defense <= 0) {
+						defendingPokemon.defense = 1;
+					};
+				};
+			};
+		};*/
 		// Also add possible effect
 		// add move.effectStat (eg ATTACK for Growl)
 		// add pokemon.minAttack (eg player.activePokemon1.minAttack = 40;)
@@ -327,4 +375,47 @@ function getExpFirstBattle(opponent) {
 	var exp;
 	exp = Math.round(opponent.activePokemon1.baseExpYield * opponent.activePokemon1.level * 1.5 / 7);
 	return exp;
+};
+
+function getAttackStatFirstBattle(pokemonObject) {
+	var attackStat;
+	for (i=0; i<pokemonStats.length; i++) {
+		if (pokemonStats[i][1] == pokemonObject.Name) {
+			for (j=0; j<pokemonStats.length; j++) {
+				if (pokemonStats[i+j][2] == pokemonObject.level) {
+					attackStat = pokemonStats[i+j][9];
+				};
+			};
+		};
+	};
+	return attackStat;
+};
+
+function getDefenseStatFirstBattle(pokemonObject) {
+	var defenseStat;
+	for (i=0; i<pokemonStats.length; i++) {
+		if (pokemonStats[i][1] == pokemonObject.Name) {
+			for (j=0; j<pokemonStats.length; j++) {
+				if (pokemonStats[i+j][2] == pokemonObject.level) {
+					defenseStat = pokemonStats[i+j][10];
+				};
+			};
+		};
+	};
+	return defenseStat;
+};
+
+function resetStatsAfterFirstBattle(pokemonObject){
+	for (i=0; i<pokemonStats.length; i++){
+		if (pokemonStats[i][1] == pokemonObject.Name) {
+			for (j=0; j<pokemonStats.length; j++) {
+				// reset stats if level is also according to pokemonObject.level
+				pokemonObject.attack = pokemonStats[i+j][9];
+				pokemonObject.defense = pokemonStats[i+j][10];
+				pokemonObject.spattack = pokemonStats[i+j][11];
+				pokemonObject.spdefense = pokemonStats[i+j][12];
+				pokemonObject.speed = pokemonStats[i+j][13];
+			};
+		};
+	};
 };

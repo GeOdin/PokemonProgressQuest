@@ -7,33 +7,37 @@
  * var locations // with background information about the different locations
  * function createLocation(...) // to create the different locations
  */
+ // Add healingLocations/ make it a special version of locations
+ // also create call to lastHealingPlace to teleport to if player faints
+ // add background for battle as part of location
 
 // Background information about the different locations (make different variables for routes and cities?)
 var locations = [
-	["locationName", "trainerAmount", "trainer1", "pokemonAmount", "pokemon1Name", "pokemon1MinLevel", "pokemon1MaxLevel", "pokemon1Chance", "pokemon2Name", "pokemon2MinLevel", "pokemon2MaxLevel", "pokemon2Chance"],
-	["Introduction", 0, "", 0, "", 1, 1, 1.0, "", 1, 1, 0.0],
-	["Pallet Town", 0, "", 0, "", 1, 1, 1.0, "", 1, 1, 0.0],
-	["Route 1", 0, "", 2, "PIDGEY", 2, 5, 0.5, "RATTATA", 2, 4, 0.5],
- 	["Hall of Fame", 0, "", 1, "", 1, 1, 1.0, "", 1, 1, 0.0]
+	["locationName", "battleBackground", "trainerAmount", "trainer1", "pokemonAmount", "pokemon1Name", "pokemon1MinLevel", "pokemon1MaxLevel", "pokemon1Chance", "pokemon2Name", "pokemon2MinLevel", "pokemon2MaxLevel", "pokemon2Chance"],
+	["Introduction", "BattleGrass", 0, "", 0, "", 1, 1, 1.0, "", 1, 1, 0.0],
+	["Pallet Town", "BattleGrass", 0, "", 0, "", 1, 1, 1.0, "", 1, 1, 0.0],
+	["Route 1", "BattleGrass", 0, "BattleGrass", 2, "PIDGEY", 2, 5, 0.5, "RATTATA", 2, 4, 0.5],
+ 	["Hall of Fame", "BattleGrass", 0, "", 1, "", 1, 1, 1.0, "", 1, 1, 0.0]
 ];
 
 // Function to create the different locations
 // add amount of trainers
 // add amount of pokemon
 // add items and amount of items?
-function createLocation(locationName, trainerAmount, trainer1, pokemonAmount, pokemon1Name, pokemon1MinLevel, pokemon1MaxLevel, pokemon1Chance, pokemon2Name, pokemon2MinLevel, pokemon2MaxLevel, pokemon2Chance) {
-	this.Name = locationName;
-	this.trainerAmount = trainerAmount;
-	this.trainer1 = trainer1;
-	this.pokemonAmount = pokemonAmount;
-	this.pokemon1Name = pokemon1Name;
-	this.pokemon1MinLevel = pokemon1MinLevel;
-	this.pokemon1MaxLevel = pokemon1MaxLevel;
-	this.pokemon1Chance = pokemon1Chance;
-	this.pokemon2Name = pokemon2Name;
-	this.pokemon2MinLevel = pokemon2MinLevel;
-	this.pokemon2MaxLevel = pokemon2MaxLevel;
-	this.pokemon2Chance = pokemon2Chance;
+function createLocation(locationName, battleBackground, trainerAmount, trainer1, pokemonAmount, pokemon1Name, pokemon1MinLevel, pokemon1MaxLevel, pokemon1Chance, pokemon2Name, pokemon2MinLevel, pokemon2MaxLevel, pokemon2Chance) {
+	this.Name = locationName; //0
+	this.battleBackground = battleBackground; //1
+	this.trainerAmount = trainerAmount; //2
+	this.trainer1 = trainer1; //3
+	this.pokemonAmount = pokemonAmount; //4
+	this.pokemon1Name = pokemon1Name; //5
+	this.pokemon1MinLevel = pokemon1MinLevel; //6
+	this.pokemon1MaxLevel = pokemon1MaxLevel; //7
+	this.pokemon1Chance = pokemon1Chance; //8
+	this.pokemon2Name = pokemon2Name; //9
+	this.pokemon2MinLevel = pokemon2MinLevel; //10
+	this.pokemon2MaxLevel = pokemon2MaxLevel; //11
+	this.pokemon2Chance = pokemon2Chance; //12
 };
 
 // Function to create wild Pokemon for a certain location 
@@ -98,4 +102,9 @@ function createWildPokemon(locationObject) {
 
 	// Return the pokemon object
 	return wildPokemon;
+};
+
+function setBattleBackground(locationObject){
+	// Set the battle background
+	document.getElementById("imageStory").src = "images/battle/" + locationObject.battleBackground + ".png";
 };

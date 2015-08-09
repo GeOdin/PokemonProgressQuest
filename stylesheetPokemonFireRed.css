@@ -165,6 +165,11 @@ body h3 {
 	overflow-y: auto;
 }
 
+#story p {
+	font-size: 1.2em;
+	color: #D0D0D0;
+}
+
 #imageStory{
 	display: none;
 	height: 25vh;
@@ -172,9 +177,85 @@ body h3 {
 	margin-right: auto;
 }
 
-#story p {
-	font-size: 1.2em;
-	color: #D0D0D0;
+#imageStoryPlayerPokemon{
+	display: none;
+	position: absolute;
+	top: 57%;
+	left: 30%;
+	width: 10%;
+	z-index: 2;
+/* code to flip an image horizontal from:
+ * https://css-tricks.com/snippets/css/flip-an-image/
+ */
+    -moz-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+    filter: FlipH;
+    -ms-filter: "FlipH";
+}
+
+#imageStoryOpponentPokemon{
+	display: none;
+	position: absolute;
+	top: 40%;
+	left: 58.5%;
+	width: 10%;
+	z-index: 1;
+}
+
+#pokemonOnTop1{
+	display: none;
+	position: absolute;
+	top: 37%;
+	left: 34%;
+	width: 10%;
+	z-index: 3;
+}
+
+#pokemonOnTop2{
+	display: none;
+	position: absolute;
+	top: 35%;
+	left: 45%;
+	width: 10%;
+	z-index: 4;
+}
+
+#pokemonOnTop3{
+	display: none;
+	position: absolute;
+	top: 37%;
+	left: 56%;
+	width: 10%;
+	z-index: 2;
+}
+
+#pokemonOnTop4{
+	display: none;
+	position: absolute;
+	top: 50%;
+	left: 33%;
+	width: 10%;
+	z-index: 6;
+}
+
+#pokemonOnTop5{
+	display: none;
+	position: absolute;
+	top: 50.5%;
+	left: 45.5%;
+	width: 10%;
+	z-index: 7;
+}
+
+#pokemonOnTop6{
+	display: none;
+	position: absolute;
+	top: 50%;
+	left: 58%;
+	width: 10%;
+	z-index: 5;
 }
 
 #pokedex {

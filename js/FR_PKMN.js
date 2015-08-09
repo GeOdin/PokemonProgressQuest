@@ -367,49 +367,49 @@ var pokemonStats = [ //make the variables here the same as for the function crea
 // Pokemon moves background information
 var pokemonMoves = [
 	//add "Effect" for moves with type "Status" ? add PP-max for when PP UP items are introduced? //also add description? //perhaps make accuracy a float instead of integer?
-	["Name", "Type", "category", "pp", "power", "accuracy", "effect"], //http://bulbapedia.bulbagarden.net/wiki/Confusion_(move)
-	["Bubble", "WATER", "Special", 30, 40, 100, ""], // http://bulbapedia.bulbagarden.net/wiki/Bubble_(move)
-	["Confusion", "PSYCHIC", "Special", 25, 50, 100, ""], //http://bulbapedia.bulbagarden.net/wiki/Growl_%28move%29
+	["Name", "Type", "category", "pp", "power", "accuracy", "statOpponent", "statOpponentDecrease", "statOpponentMaxDecrease"], //http://bulbapedia.bulbagarden.net/wiki/Confusion_(move)
+	["Bubble", "WATER", "Special", 30, 40, 100, "", "", ""], // http://bulbapedia.bulbagarden.net/wiki/Bubble_(move)
+	["Confusion", "PSYCHIC", "Special", 25, 50, 100, "", "", ""], //http://bulbapedia.bulbagarden.net/wiki/Growl_%28move%29
 	// Add effect
-	["Ember", "FIRE", "Special", 25, 40, 100, ""], // http://bulbapedia.bulbagarden.net/wiki/Ember_(move)
+	["Ember", "FIRE", "Special", 25, 40, 100, "", "", ""], // http://bulbapedia.bulbagarden.net/wiki/Ember_(move)
 	// Add fact for Fury attack that the attack can hit 2-5 times! - http://bulbapedia.bulbagarden.net/wiki/Fury_Attack_(move)
-	["Fury Attack", "NORMAL", "Physical", 20, 15, 85, ""], //http://bulbapedia.bulbagarden.net/wiki/Fury_Attack_(move)
+	["Fury Attack", "NORMAL", "Physical", 20, 15, 85, "", "", ""], //http://bulbapedia.bulbagarden.net/wiki/Fury_Attack_(move)
 	// Add effect of attack -= 1 until end of battle
-	["Growl", "NORMAL", "Status", 40, 0, 100, ""], //http://bulbapedia.bulbagarden.net/wiki/Growl_%28move%29
-	["Gust", "FLYING", "Special", 35, 40, 100, ""],  // http://bulbapedia.bulbagarden.net/wiki/Gust_(move)
+	["Growl", "NORMAL", "Status", 40, 0, 100, "attackOpponent", -1, -6], //http://bulbapedia.bulbagarden.net/wiki/Growl_%28move%29
+	["Gust", "FLYING", "Special", 35, 40, 100, "", "", ""],  // http://bulbapedia.bulbagarden.net/wiki/Gust_(move)
 	// Add effect
-	["Harden", "NORMAL", "Status", 30, 0, 100, ""], //accuracy is actually --- instead of 100% //http://bulbapedia.bulbagarden.net/wiki/Harden_(move)
-	["Hyper Fang", "NORMAL", "Physical", 15, 80, 90, ""], // http://bulbapedia.bulbagarden.net/wiki/Hyper_Fang_(move)
+	["Harden", "NORMAL", "Status", 30, 0, 100, "", "", ""], //accuracy is actually --- instead of 100% //http://bulbapedia.bulbagarden.net/wiki/Harden_(move)
+	["Hyper Fang", "NORMAL", "Physical", 15, 80, 90, "", "", ""], // http://bulbapedia.bulbagarden.net/wiki/Hyper_Fang_(move)
 	// Add effect
-	["Leech Seed", "GRASS", "Status", 10, 0, 90, ""], // http://bulbapedia.bulbagarden.net/wiki/Leech_Seed_(move)
+	["Leech Seed", "GRASS", "Status", 10, 0, 90, "", "", ""], // http://bulbapedia.bulbagarden.net/wiki/Leech_Seed_(move)
 	// Add effect
-	["Leer", "NORMAL", "Status", 30, 0, 100, ""], // http://bulbapedia.bulbagarden.net/wiki/Leer_(move)
-	["Peck", "FLYING", "Physical", 35, 35, 100, ""], // http://bulbapedia.bulbagarden.net/wiki/Peck_(move)
+	["Leer", "NORMAL", "Status", 30, 0, 100, "", "", ""], // http://bulbapedia.bulbagarden.net/wiki/Leer_(move)
+	["Peck", "FLYING", "Physical", 35, 35, 100, "", "", ""], // http://bulbapedia.bulbagarden.net/wiki/Peck_(move)
 	// Add effect
-	["Poisonpowder", "POISON", "Status", 35, 0, 75, ""], // http://bulbapedia.bulbagarden.net/wiki/Poison_Powder_(move)
+	["Poisonpowder", "POISON", "Status", 35, 0, 75, "", "", ""], // http://bulbapedia.bulbagarden.net/wiki/Poison_Powder_(move)
 	// Add effect
-	["Poison Sting", "POISON", "Physical", 35, 15, 100, ""], //http://bulbapedia.bulbagarden.net/wiki/Poison_Sting_(move)
+	["Poison Sting", "POISON", "Physical", 35, 15, 100, "", "", ""], //http://bulbapedia.bulbagarden.net/wiki/Poison_Sting_(move)
 	// priority +1 for Quick Attack
-	["Quick Attack", "NORMAL", "Physical", 30, 40, 100, ""], // http://bulbapedia.bulbagarden.net/wiki/Quick_Attack_(move)
+	["Quick Attack", "NORMAL", "Physical", 30, 40, 100, "", "", ""], // http://bulbapedia.bulbagarden.net/wiki/Quick_Attack_(move)
 	// Add effect
-	["Sand-attack", "GROUND", "Status", 15, 0, 100, ""], // http://bulbapedia.bulbagarden.net/wiki/Sand_Attack_(move)
-	["Scratch", "NORMAL", "Physical", 35, 40, 100, ""], //http://bulbapedia.bulbagarden.net/wiki/Scratch_%28move%29
+	["Sand-attack", "GROUND", "Status", 15, 0, 100, "", "", ""], // http://bulbapedia.bulbagarden.net/wiki/Sand_Attack_(move)
+	["Scratch", "NORMAL", "Physical", 35, 40, 100, "", "", ""], //http://bulbapedia.bulbagarden.net/wiki/Scratch_%28move%29
 	// Add effect
-	["Sleep Powder", "GRASS", "Status", 15, 0, 75, ""], // http://bulbapedia.bulbagarden.net/wiki/Sleep_Powder_(move)
+	["Sleep Powder", "GRASS", "Status", 15, 0, 75, "", "", ""], // http://bulbapedia.bulbagarden.net/wiki/Sleep_Powder_(move)
 	// Add effect
-	["Smokescreen", "NORMAL", "Status", 20, 0, 100, ""], // http://bulbapedia.bulbagarden.net/wiki/Smokescreen_(move)
+	["Smokescreen", "NORMAL", "Status", 20, 0, 100, "", "", ""], // http://bulbapedia.bulbagarden.net/wiki/Smokescreen_(move)
 	// Add effect
-	["String Shot", "BUG", "Status", 40, 0, 95, ""], //http://bulbapedia.bulbagarden.net/wiki/String_Shot_(move)
-	["Tackle", "NORMAL", "Physical", 35, 50, 100, ""], // http://bulbapedia.bulbagarden.net/wiki/Tackle_(move)
+	["String Shot", "BUG", "Status", 40, 0, 95, "", "", ""], //http://bulbapedia.bulbagarden.net/wiki/String_Shot_(move)
+	["Tackle", "NORMAL", "Physical", 35, 50, 100, "", "", ""], // http://bulbapedia.bulbagarden.net/wiki/Tackle_(move)
 	// Add effect
-	["Tail Whip", "NORMAL", "Status", 30, 0, 100, ""], //http://bulbapedia.bulbagarden.net/wiki/Tail_Whip_%28move%29
+	["Tail Whip", "NORMAL", "Status", 30, 0, 100, "defenseOpponent", -1, -6], //http://bulbapedia.bulbagarden.net/wiki/Tail_Whip_%28move%29
 	// Add effect
-	["Vine Whip", "GRASS", "Physical", 25, 45, 100, ""],
-	["Water Gun", "WATER", "Special", 25, 40, 100, ""], // http://bulbapedia.bulbagarden.net/wiki/Water_Gun_(move)
-	["Wing Attack", "FLYING", "Physical", 35, 60, 100, ""], // http://bulbapedia.bulbagarden.net/wiki/Wing_Attack_(move)
+	["Vine Whip", "GRASS", "Physical", 25, 45, 100, "", "", ""],
+	["Water Gun", "WATER", "Special", 25, 40, 100, "", "", ""], // http://bulbapedia.bulbagarden.net/wiki/Water_Gun_(move)
+	["Wing Attack", "FLYING", "Physical", 35, 60, 100, "", "", ""], // http://bulbapedia.bulbagarden.net/wiki/Wing_Attack_(move)
 	// Add effect
-	["Withdraw", "WATER", "Status", 40, 0, 100, ""], // accuracy is actually --- instead of 100% // http://bulbapedia.bulbagarden.net/wiki/Withdraw_(move)
-	["", "", "", 0, 0, 0, ""] // for when pokemon don't have all 4 moves yet
+	["Withdraw", "WATER", "Status", 40, 0, 100, "", "", ""], // accuracy is actually --- instead of 100% // http://bulbapedia.bulbagarden.net/wiki/Withdraw_(move)
+	["", "", "", 0, 0, 0, "", "", ""] // for when pokemon don't have all 4 moves yet
 ];
 
 // Get exp needed for next level
@@ -509,7 +509,9 @@ function createPokemonMoves(pokemonObject) {
 				pokemonMoves[i][3],
 				pokemonMoves[i][4],
 				pokemonMoves[i][5],
-				pokemonMoves[i][6]
+				pokemonMoves[i][6],
+				pokemonMoves[i][7],
+				pokemonMoves[i][8]
 			);
 			pokemonObject.move1 = moveOne;
 		} else if (pokemonMoves[i][0] == moveTwoName) {
@@ -520,7 +522,9 @@ function createPokemonMoves(pokemonObject) {
 				pokemonMoves[i][3],
 				pokemonMoves[i][4],
 				pokemonMoves[i][5],
-				pokemonMoves[i][6]
+				pokemonMoves[i][6],
+				pokemonMoves[i][7],
+				pokemonMoves[i][8]
 			);
 			pokemonObject.move2 = moveTwo;
 		} else if (pokemonMoves[i][0] == moveThreeName) {
@@ -531,7 +535,9 @@ function createPokemonMoves(pokemonObject) {
 				pokemonMoves[i][3],
 				pokemonMoves[i][4],
 				pokemonMoves[i][5],
-				pokemonMoves[i][6]
+				pokemonMoves[i][6],
+				pokemonMoves[i][7],
+				pokemonMoves[i][8]
 			);
 			pokemonObject.move3 = moveThree;
 		} else if (pokemonMoves[i][0] == moveFourName) {
@@ -542,53 +548,11 @@ function createPokemonMoves(pokemonObject) {
 				pokemonMoves[i][3],
 				pokemonMoves[i][4],
 				pokemonMoves[i][5],
-				pokemonMoves[i][6]
+				pokemonMoves[i][6],
+				pokemonMoves[i][7],
+				pokemonMoves[i][8]
 			); 
 			pokemonObject.move4 = moveFour;
 		};
 	};
-/*	if (moveOneName == "") {
-		moveOne = new setPokemonMove(
-			"", 
-			"", 
-			"", 
-			0, 
-			0, 
-			100, 
-			""
-		);
-	};
-	if (moveTwoName == "") {
-		moveTwo = new setPokemonMove(
-			"", 
-			"", 
-			"", 
-			0, 
-			0, 
-			100, 
-			""
-		);
-	};
-	if (moveThreeName == "") {
-		moveThree = new setPokemonMove(
-			"", 
-			"", 
-			"", 
-			0, 
-			0, 
-			100, 
-			""
-		);
-	};
-	if (moveFourName == "") {
-		moveFour = new setPokemonMove(
-			"", 
-			"", 
-			"", 
-			0, 
-			0, 
-			100, 
-			""
-		);
-	};*/
 };

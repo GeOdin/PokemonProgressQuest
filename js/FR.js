@@ -49,6 +49,7 @@ by GeOdin */
 // add function to check whether pokemon levels up in battle(check exp?)
 // make the use of the potion in FR_FirstPokemonBattle.js a function healPokemonWithItem(healItem) from FR_Items.js (potion object is already created as player.bag.potion);
 // make a bag html page pop-up (like for the pokedex) for #playerStats that shows the bag and items in the bag (among other stuff?)
+// make the battle back-ground variable, depending on laction (make it a property of location)
 
 function startGame() { 
 
@@ -89,7 +90,7 @@ function startGame() {
 	} else {
 		return;
 	}*/
-	var gamePokemonFireRed = window.setInterval(change, 500); //5000 for 5 seconds in final version / 3000 for 3 seconds; //1 for quick testing purposes; //1000 for slow testing purposes;
+	var gamePokemonFireRed = window.setInterval(change, 3000); //3000 for 3 seconds; //1 for quick testing purposes; //500 for slow testing purposes;
 	gamePokemonFireRed;
 
 	function change() {
@@ -325,7 +326,7 @@ function startGame() {
 			); 
 
 			// Get the rival's name
-			rivalName = prompt("...Erm, what was his name now? ", "RIVAL's NAME");
+			rivalName = prompt("What is the name of your rival? ", "RIVAL's NAME");
 			while (rivalName.length < 1) {
 				rivalName = prompt("RIVAL's NAME? ", ""); // alert("...Er, was it " + rivalName + "? "); //insert Yes/no option?
 			};
@@ -412,7 +413,8 @@ function startGame() {
 						locations[i][8], 
 						locations[i][9],
 						locations[i][10],
-						locations[i][11]
+						locations[i][11],
+						locations[i][12]
 					);
 				};
 			};
@@ -465,7 +467,8 @@ function startGame() {
 						locations[i][8], 
 						locations[i][9],
 						locations[i][10],
-						locations[i][11]
+						locations[i][11],
+						locations[i][12]
 					);
 				};
 			};
@@ -565,7 +568,7 @@ function startGame() {
 					if (player.activePokemon1.currentHP > player.activePokemon1.maxHP) {
 						player.activePokemon1.currentHP = player.activePokemon1.maxHP;
 					};
-			document.getElementById("activePokemon1").innerHTML = player.activePokemon1.Name + "<br/>Lvl: " + player.activePokemon1.level + "<br/> <img src=images/pokemonIconsTransparent/" + player.activePokemon1.Name + ".png /> <br/>HP: " + player.activePokemon1.currentHP + "/" + player.activePokemon1.maxHP + "<br/> Exp: " + player.activePokemon1.currentExp + "/" + player.activePokemon1.expNextLevel;
+					document.getElementById("activePokemon1").innerHTML = player.activePokemon1.Name + "<br/>Lvl: " + player.activePokemon1.level + "<br/> <img src=images/pokemonIconsTransparent/" + player.activePokemon1.Name + ".png /> <br/>HP: " + player.activePokemon1.currentHP + "/" + player.activePokemon1.maxHP + "<br/> Exp: " + player.activePokemon1.currentExp + "/" + player.activePokemon1.expNextLevel;
 				};
 			// Rival has first move
 			} else if (player.activePokemon1.speed < rival.activePokemon1.speed) {
@@ -577,7 +580,7 @@ function startGame() {
 				} else if (rival.activePokemon1.Name == "SQUIRTLE") {
 					player.activePokemon1.currentHP -= 5;
 				};
-			document.getElementById("activePokemon1").innerHTML = player.activePokemon1.Name + "<br/>Lvl: " + player.activePokemon1.level + "<br/> <img src=images/pokemonIconsTransparent/" + player.activePokemon1.Name + ".png /> <br/>HP: " + player.activePokemon1.currentHP + "/" + player.activePokemon1.maxHP + "<br/> Exp: " + player.activePokemon1.currentExp + "/" + player.activePokemon1.expNextLevel;
+				document.getElementById("activePokemon1").innerHTML = player.activePokemon1.Name + "<br/>Lvl: " + player.activePokemon1.level + "<br/> <img src=images/pokemonIconsTransparent/" + player.activePokemon1.Name + ".png /> <br/>HP: " + player.activePokemon1.currentHP + "/" + player.activePokemon1.maxHP + "<br/> Exp: " + player.activePokemon1.currentExp + "/" + player.activePokemon1.expNextLevel;
 			};
 /*			//pause current setInterval --> http://stackoverflow.com/questions/8432127/stop-setinterval-function-for-an-amount-of-time
 			pokemonBattleStartFirst(player, rival); //this is not functional; check whether all objects are proper objects
@@ -616,7 +619,8 @@ function startGame() {
 						locations[i][8], 
 						locations[i][9],
 						locations[i][10],
-						locations[i][11]
+						locations[i][11],
+						locations[i][12]
 					);
 				};
 			};
@@ -628,7 +632,35 @@ function startGame() {
 			document.getElementById("pokemonRed").innerHTML = "Wild " + wildPokemon.Name + " level " + wildPokemon.level + " appeared!";
 		} else if (counter == 85) {
 			// add flee option to wildPokemonBattle function id wildPokemon.level >= player.activePokemon1.level
-			wildPokemonBattle(player, wildPokemon);
+			wildPokemonBattle(player, wildPokemon, location);
+		} else if (counter == 86) {
+			wildPokemon = new createWildPokemon(location);
+			document.getElementById("imageStory").src = "images/wildPokemon/" + wildPokemon.Name + ".png"; // image from Bulbapedia // http://bulbapedia.bulbagarden.net/wiki/Main_Page
+			document.getElementById("pokemonRed").innerHTML = "Wild " + wildPokemon.Name + " level " + wildPokemon.level + " appeared!";
+		} else if (counter == 87) {
+			// add flee option to wildPokemonBattle function id wildPokemon.level >= player.activePokemon1.level
+			wildPokemonBattle(player, wildPokemon, location);
+		} else if (counter == 88) {
+			wildPokemon = new createWildPokemon(location);
+			document.getElementById("imageStory").src = "images/wildPokemon/" + wildPokemon.Name + ".png"; // image from Bulbapedia // http://bulbapedia.bulbagarden.net/wiki/Main_Page
+			document.getElementById("pokemonRed").innerHTML = "Wild " + wildPokemon.Name + " level " + wildPokemon.level + " appeared!";
+		} else if (counter == 89) {
+			// add flee option to wildPokemonBattle function id wildPokemon.level >= player.activePokemon1.level
+			wildPokemonBattle(player, wildPokemon, location);
+		} else if (counter == 90) {
+			wildPokemon = new createWildPokemon(location);
+			document.getElementById("imageStory").src = "images/wildPokemon/" + wildPokemon.Name + ".png"; // image from Bulbapedia // http://bulbapedia.bulbagarden.net/wiki/Main_Page
+			document.getElementById("pokemonRed").innerHTML = "Wild " + wildPokemon.Name + " level " + wildPokemon.level + " appeared!";
+		} else if (counter == 91) {
+			// add flee option to wildPokemonBattle function id wildPokemon.level >= player.activePokemon1.level
+			wildPokemonBattle(player, wildPokemon, location);
+		} else if (counter == 92) {
+			wildPokemon = new createWildPokemon(location);
+			document.getElementById("imageStory").src = "images/wildPokemon/" + wildPokemon.Name + ".png"; // image from Bulbapedia // http://bulbapedia.bulbagarden.net/wiki/Main_Page
+			document.getElementById("pokemonRed").innerHTML = "Wild " + wildPokemon.Name + " level " + wildPokemon.level + " appeared!";
+		} else if (counter == 93) {
+			// add flee option to wildPokemonBattle function id wildPokemon.level >= player.activePokemon1.level
+			wildPokemonBattle(player, wildPokemon, location);
 		} else if(counter > text.length-1) {
 			// End the game
 			// Create the Route 1 location
@@ -647,12 +679,22 @@ function startGame() {
 						locations[i][8], 
 						locations[i][9],
 						locations[i][10],
-						locations[i][11]
+						locations[i][11],
+						locations[i][12]
 					);
 				};
 			};
 			document.getElementById("locationName").innerHTML = "<h2>" + location.Name + "</h2>";
-			elemStoryImage.src = "images/HallOfFame.png"; //screenshot from https://www.youtube.com/watch?v=Uq9LTpj91Rw
+			elemStoryImage.src = "images/HallOfFameBackground.png"; //screenshot from https://www.youtube.com/watch?v=Uq9LTpj91Rw
+			for (i=0; i<6; i++) {
+				var activePokemonNumber = i + 1;
+				var activePokemonCall = "activePokemon" + activePokemonNumber;
+				if (player[activePokemonCall] != "") {
+					document.getElementById("pokemonOnTop" + activePokemonNumber).src = "images/pokemonIconsTransparent/" + player[activePokemonCall].Name + ".png";
+					document.getElementById("pokemonOnTop" + activePokemonNumber).style.display = "inline";
+				};
+			};
+			// add confetti on top of Hll of Fame image (z-index: 8;)
 			elem.innerHTML = "CONGRATULATIONS! <br/> Welcome to the HALL OF FAME! ";
 			document.getElementById("badgesTitle").style.display = "block";
 			document.getElementById("badge1").style.display = "block"; // image from http://bulbapedia.bulbagarden.net/wiki/Badge

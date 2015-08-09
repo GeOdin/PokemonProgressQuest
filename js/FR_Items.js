@@ -82,14 +82,15 @@ function createPokeballItem(itemObject){
 	};
 };
 
-function healPokemonWithItem(pokemon, healItemObject){
+function healPokemonWithItem(pokemonObject, healItemObject){
 	// check if it's a healItemObject so no amount of other items is diminished?
+	// if (healItemObject.amount > 0) {healPokemonWithItem(pokemon, healItemObject)}; --> no, put this in the battlefuntion before this choice is made, otherwise the player should use a move
 	if (healItemObject.stat == "HP") {
-		pokemon.currentHP += healItemObject.statAdd;
-		if (pokemon.currentHP > pokemon.maxHP) {
-			pokemon.currentHP = pokemon.maxHP;
+		pokemonObject.currentHP += healItemObject.statAdd;
+		if (pokemonObject.currentHP > pokemonObject.maxHP) {
+			pokemonObject.currentHP = pokemonObject.maxHP;
 		};
-		document.getElementById("activePokemon1").innerHTML = pokemon.Name + "<br/>Lvl: " + pokemon.level + "<br/> <img src=images/pokemonIconsTransparent/" + pokemon.Name + ".png /> <br/>HP: " + pokemon.currentHP + "/" + pokemon.maxHP + "<br/> Exp: " + pokemon.currentExp + "/" + pokemon.expNextLevel;
+		document.getElementById("activePokemon1").innerHTML = pokemonObject.Name + "<br/>Lvl: " + pokemonObject.level + "<br/> <img src=images/pokemonIconsTransparent/" + pokemonObject.Name + ".png /> <br/>HP: " + pokemonObject.currentHP + "/" + pokemonObject.maxHP + "<br/> Exp: " + pokemonObject.currentExp + "/" + pokemonObject.expNextLevel;
 		healItemObject.amount -= 1;
 	};
 };

@@ -159,7 +159,7 @@ RandomNumber is simply a Random Number between 85 and 100. */
 	return damage; //move with move.damage and move.effect
 };
 
-// Function to get the move of a pokemon
+/*// Function to get the move of a pokemon
 function getMove(pokemon) {
 	// Set variables
 	var moveName = “”; //or make it an object?
@@ -198,9 +198,9 @@ function getMove(pokemon) {
 
 	// Return the move
 	return move;
-};
+};*/
 
-// Function that lets a pokemon use it’s move
+/*// Function that lets a pokemon use it’s move
 function useMove(attackingPokemon, move, defendingPokemon) {
 	// Set variables
 	//var damage = 0;
@@ -234,4 +234,4 @@ function useMove(attackingPokemon, move, defendingPokemon) {
 
 	// Return the move
 	return move;
-};
+};*/
