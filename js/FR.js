@@ -54,6 +54,12 @@ by GeOdin */
 // make a function for when all pokemon are fainted --> lastHealingLocation
 // give the pokemon a locatedIn property ("activePokemon1..6" / "PC")
 // give every pokemon that the player gets a unique number? --> pokemonID
+// make a pokedex object for object player?
+// arrange player.bag in the same way as in pokemon FireRed?
+//// KEY ITEMS POCKET
+//// POK&eacute BALLS POCKET
+// enter prompt that lets players decide how fast the progress quest should go?
+// text of going to mom after first battle is not correctly displayed
 
 function startGame() { 
 
@@ -110,26 +116,26 @@ function startGame() {
 			// Short introduction about Pokemon
 			
 			// Introduction Professor Oak
-			"Hello, there! <br/> Glad to meet you! ",
+			"Hello, there! <br/> Glad to meet you! ", //1
 			"Welcome to the world of POKeMON! ",
 			"My name is OAK. ",
 			"People affectionately refer to me <br/> as the POKeMON PROFESSOR. ",
-			"This world...",
-			"...is inhabited far and wide by creatures called POKeMON. ",//10
+			"This world...",//5
+			"...is inhabited far and wide by creatures called POKeMON. ",
 			"For some people, POKeMON are pets. <br/> Others use them for battling. ",
 			"As for myself... ",
 			"I study POKeMON as a profession. ",
 
 			// Introduction player
-			"But first, tell me a little about <br/> yourself. ",
+			"But first, tell me a little about <br/> yourself. ",//10
 			"Let's begin with your name. <br/> What is it? ",
-			"Right... <br/> So your name is " + playerName + ".", //16
+			"Right... <br/> So your name is " + playerName + ".",
 			
 			// Introduction rival
 			"This is my grandson.",
-			"He's been your rival since you both <br/> were babies. ", //18
-			"...Erm, what was his name now? ",
-			"That's right! I remember now! <br/> His name is " + rivalName + "! ",//20
+			"He's been your rival since you both <br/> were babies. ",
+			"...Erm, what was his name now? ",//15
+			"That's right! I remember now! <br/> His name is " + rivalName + "! ",
 			
 			playerName + "!",
 			"Your very own POKeMON legend is <br/> about to unfold! ",
@@ -139,83 +145,93 @@ function startGame() {
 			// PALLET TOWN // //http://bulbapedia.bulbagarden.net/wiki/File:Pallet_Town_FRLG.png (not yet used, in folder PalletTown in folder images)
 			///////////////// //prof oaks lab --> http://bulbapedia.bulbagarden.net/wiki/File:Professor_Oak_Lab_inside_FRLG.png (not yet used, in folder PalletTown in folder images)
 			// Own House
-			"You walk to your PC. ", 
-			"You withdraw the POTION from your PC. ", //25
+			"You walk to your PC. ",//20
+			"You withdraw the POTION from your PC. ",
 			"You walk down to your mom. ", 
 			"", 
 			"It said so on TV. ",
-			"Oh yes. PROF. OAK, next door, was <br/> looking for you. ",
+			"Oh yes. PROF. OAK, next door, was <br/> looking for you. ",//25
 			
 			// Walk to PROF. OAK's and getting your first Pokemon
-			"You walk out of your house. ", //30
-			"", 
-			"You walk into " + rivalName + ". ", 
+			"You walk out of your house. ",
+			"Pallet Town",
+			"You walk into " + rivalName + ". ",
 			rivalName + ": What, it's only " + playerName + "? <br/> Gramps isn't around. ",
-			"",
-			"You try to walk out of PALLET TOWN. ",//35
+			"",//30
+			"You try to walk out of PALLET TOWN. ",
 			"OAK: Hey! Wait! <br/> Don't go out! ",
 			"",
 			"OAK: It's unsafe! <br/> Wild POK&eacute;MON live in tall grass! ",
-			"You need your own POK&eacute;MON for <br/> your protection. ",
-			"I know! <br/> Here, come with me! ",//40
+			"You need your own POK&eacute;MON for <br/> your protection. ",//35
+			"I know! <br/> Here, come with me! ",
 			"You walk with PROF. OAK to his lab. ",
 			rivalName + ": Gramps! <br/> I'm fed up with waiting! ",
 			"OAK: " + rivalName + "? <br/> Let me think... ",
-			"Oh, that's right, I told you to <br/> come! Just wait! ",
-			"Here, " + playerName + ".",//45
+			"Oh, that's right, I told you to <br/> come! Just wait! ",//40
+			"Here, " + playerName + ".",
 			"There are three POK&eacute;MON here. ",
 			"Haha! ",
 			"The POK&eacute;MON are held inside <br/> these POK&eacute; BALLS. ",
-			"When I was young, I was a serious <br/> POK&eacute;MON TRAINER. ",
-			"But now, in my old age, I have <br/> only these three left. ",//50
+			"When I was young, I was a serious <br/> POK&eacute;MON TRAINER. ",//45
+			"But now, in my old age, I have <br/> only these three left. ",
 			"You can have one. <br/> Go on, choose! ",
 			rivalName + ": Hey! Gramps! No fair! <br/> What about me? ",
 			"OAK: Be patient, " + rivalName + ". <br/> You can have one, too! ",
-			"", 
-			playerName + " received the " + starterPokemon + " <br/> from PROF. OAK! ", //55
+			"",//50
+			playerName + " received the " + starterPokemon + " <br/> from PROF. OAK! ",
 			rivalName + ": I'll take this one, then! ",
 			rivalName + " received the " + starterPokemonRival + " <br/> from PROF. OAK! ", 
 			
 				// Your first battle
 			"OAK: If a wild POK&eacute;MON appears, <br/> your POK&eacute;MON can battle it. ",
-			"With it at your side, you should be <br/> able to reach the next town. ",
-			"", //60
+			"With it at your side, you should be <br/> able to reach the next town. ",//55
+			"",
 			rivalName + ": Wait, " + playerName + "! <br/> Let's check out our POK&Eacute;MON!",
 			"Come on, I'll take you on! ",
 			"RIVAL " + rivalName + " <br/> would like to battle! ",
-			"RIVAL " + rivalName + " sent <br/> out " + starterPokemonRival + "!", 
-			"Go! " + starterPokemon + "! ", //65
+			"RIVAL " + rivalName + " sent <br/> out " + starterPokemonRival + "!",//60
+			"Go! " + starterPokemon + "! ",
 			"OAK: Oh, for Pete's sake... <br/> So pushy, as always. ",
 			playerName + ". ",
 			"You've never had a POK&eacute;MON battle <br/> before, have you? ",
-			"A POK&eacute;MON battle is when TRAINERS <br/> pit their POK&eacute;MON against each ",
-			"other. ", //70
+			"A POK&eacute;MON battle is when TRAINERS <br/> pit their POK&eacute;MON against each ",//65
+			"other. ",
 			"The TRAINER that makes the other <br/> TRAINER's POK&eacute;MON faint by lowering ",
 			"their HP to '0', wins. ",
 			"But rather than talking about it, <br/> you'll learn more from experience. ",
-			"Try battling and see for yourself. ",
-			"", //75
+			"Try battling and see for yourself. ",//70
+			"",
 			"OAK: Inflicting damage on the foe <br/> is the key to any battle. ",
 			"",
 			"",
 			rivalName + ": Okay! I'll make my <br/> POK&eacute;MON battle to toughen it up!",
-			playerName + "! Gramps! <br/> Smell you later! ",
-			rivalName + " walks away. ", //80
+			playerName + "! Gramps! <br/> Smell you later! ",//75
+			rivalName + " walks away. ",
 			"You walk out of the door... ",
 			"... to your mom to heal your POK&eacute;MON ...",
-			"... and into ROUTE 1. ",
-			"",
-			"", //85
-			""
-			
 			
 			/////////////
 			// Route 1 // // route 1 http://bulbapedia.bulbagarden.net/wiki/File:Kanto_Route_1_FRLG.png (not yet used, in folder images)
 			/////////////
-			
+			"... and into ROUTE 1. ",
+			"",//80
+			"",
+			"",
+			"",
+			"",
+			"",//85
+			"",
+			"",
+			"",//random battle 5
+			"",
+
 			///////////////////
 			// Viridian City // // viridian city http://bulbapedia.bulbagarden.net/wiki/File:Viridian_City_FRLG.png (not yet used, in folder viridianCity in folder images)
 			///////////////////
+			"",//90 // Entering Viridian
+			""
+			
+			
 			
 			/////////////////
 			// Pallet Town // //http://bulbapedia.bulbagarden.net/wiki/File:Pallet_Town_FRLG.png (not yet used, in folder PalletTown in folder images)
@@ -488,8 +504,9 @@ function startGame() {
 		} else if(counter == 21) {
 			// Create the bag
 			player.bag = new createBag();
-			// Create a potion object in the bag
+			// Create a HEAL type in the bag
 			player.bag.HEAL = new createHEALtype();
+			// Create a potion object in the HEAL part of the bag
 			player.bag.HEAL.potion = new createItem("Potion");
 		} else if(counter == 22) {
 			document.getElementById("imageStory").src = "images/Mom.png"; // screenshot from Pokemon FireRed game from GAME FREAK inc.
@@ -536,8 +553,6 @@ function startGame() {
 				pokemonCaught[player.activePokemon1.Name] = 1;
 			};
 			document.getElementById("pokemonCaught").innerHTML = "<h3> Pok&eacute;dex: " + pokemonCaught.total() + "/151";
-			document.getElementById("pokemonCaught").style.display = "block";
-			document.getElementById("pokedex" + pokemonOne.Name).style.display = "block";
 		} else if(counter == 52) {
 			document.getElementById("imageStory").src = "images/Gary.png";// picture of Gary from http://bulbapedia.bulbagarden.net/wiki/Blue_%28game%29
 		} else if(counter == 53) {
@@ -600,7 +615,8 @@ function startGame() {
 			document.getElementById("imageStory").src = "images/Professor_Oak_XY.png"; // picture of Professor Oak from http://bulbapedia.bulbagarden.net/wiki/Professor_Oak_%28anime%29
 		} else if (counter == 73) {
 			// 1st battle
-			counterExtra = firstPokemonBattle(player, rival, counter); // first battle works, except that the usage of moves is not properly displayed; you also don't see the diminishing of HP, except for the end
+			firstPokemonBattle(player, rival, counter);
+			//counterExtra = firstPokemonBattle(player, rival, counter); // first battle works, except that the usage of moves is not properly displayed; you also don't see the diminishing of HP, except for the end
 			// perhaps I do need to use clearInterval to clear the current interval? or also use a var textFirstBattle that the function can scroll through --- http://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_win_clearinterval
 			// add opponent pokemon with currentHP/maxHP somewhere
 		} else if (counter == 74) {
@@ -672,6 +688,214 @@ function startGame() {
 		} else if (counter == 89) {
 			// add flee option to wildPokemonBattle function id wildPokemon.level >= player.activePokemon1.level
 			wildPokemonBattle(player, wildPokemon, location);
+		} else if (counter == 90) {
+			// Create the Route 1 location
+			locationName = "Viridian City";
+			for (i=0; i<locations.length; i++) {
+				if (locations[i][0] == locationName) {
+					location = new createLocation(
+						locations[i][0], 
+						locations[i][1], 
+						locations[i][2], 
+						locations[i][3], 
+						locations[i][4], 
+						locations[i][5], 
+						locations[i][6], 
+						locations[i][7], 
+						locations[i][8], 
+						locations[i][9],
+						locations[i][10],
+						locations[i][11],
+						locations[i][12]
+					);
+				};
+			};
+			document.getElementById("locationName").innerHTML = "<h2>" + location.Name + "</h2>";
+			document.getElementById("imageStory").src = "images/Viridian City1.png"; // screenshot from Pokemon FireRed game from GAME FREAK inc.
+			document.getElementById("pokemonRed").innerHTML = location.Name;
+		} else if (counter == 91) {
+			document.getElementById("imageStory").src = "images/Viridian City PokeCenter.png";
+			player.lastHealingLocation = new getHealingLocation("Viridian City PokeCenter");
+			document.getElementById("pokemonRed").innerHTML = "You enter the PokeCenter. ";
+		} else if (counter == 92) {
+			document.getElementById("imageStory").src = "images/Viridian City PokeCenter Inside.png";
+			healAllPokemon(player);
+			document.getElementById("pokemonRed").innerHTML = "We've restored your POK&eacute;MON to <br/>full health. ";
+		} else if (counter == 93) {
+			document.getElementById("imageStory").src = "images/Viridian City PokeMart.png";
+			document.getElementById("pokemonRed").innerHTML = "You enter the POK&eacute;MON MART. ";
+		} else if (counter == 94) {
+			document.getElementById("imageStory").src = "images/Viridian City PokeMart Inside.png";
+			document.getElementById("pokemonRed").innerHTML = "Hey! <br/>You came from Pallet Town? ";
+		} else if (counter == 95) {
+			document.getElementById("imageStory").src = "images/Viridian City PokeMart Inside2.png";
+			document.getElementById("pokemonRed").innerHTML = "You know PROF. OAK, right? ";
+		} else if (counter == 95) {
+			document.getElementById("pokemonRed").innerHTML = "His order came in. <br/> Can I get you to take it to him? ";
+		} else if (counter == 96) {
+			document.getElementById("pokemonRed").innerHTML = player.Name + " received OAK'S PARCEL <br/>from the POK&eacute;MON MART clerk. ";
+		} else if (counter == 96) {
+			document.getElementById("pokemonRed").innerHTML = player.Name + " put the OAK'S PARCEL <br/> in the KEY ITEMS POCKET. ";
+		} else if (counter == 97) {
+			document.getElementById("imageStory").src = "images/Viridian City PokeMart Inside3.png";
+			document.getElementById("pokemonRed").innerHTML = "You leave the POK&eacute;MON MART. ";
+		} else if (counter == 98) {
+			document.getElementById("imageStory").src = "images/Viridian City2.png";
+			document.getElementById("pokemonRed").innerHTML = "You leave Viridian City. ";
+		} else if (counter == 99) {
+			// Create the Route 1 location
+			locationName = "Route 1";
+			for (i=0; i<locations.length; i++) {
+				if (locations[i][0] == locationName) {
+					location = new createLocation(
+						locations[i][0], 
+						locations[i][1], 
+						locations[i][2], 
+						locations[i][3], 
+						locations[i][4], 
+						locations[i][5], 
+						locations[i][6], 
+						locations[i][7], 
+						locations[i][8], 
+						locations[i][9],
+						locations[i][10],
+						locations[i][11],
+						locations[i][12]
+					);
+				};
+			};
+			document.getElementById("locationName").innerHTML = "<h2>" + location.Name + "</h2>";
+			document.getElementById("imageStory").src = "images/Route1_2.png"; // screenshot from Pokemon FireRed game from GAME FREAK inc.
+			document.getElementById("pokemonRed").innerHTML = locationName;
+		} else if (counter == 100) {
+			wildPokemon = new createWildPokemon(location);
+			document.getElementById("imageStory").src = "images/wildPokemon/" + wildPokemon.Name + ".png"; // image from Bulbapedia // http://bulbapedia.bulbagarden.net/wiki/Main_Page
+			document.getElementById("pokemonRed").innerHTML = "Wild " + wildPokemon.Name + " level " + wildPokemon.level + " appeared!";
+		} else if (counter == 101) {
+			// add flee option to wildPokemonBattle function id wildPokemon.level >= player.activePokemon1.level
+			wildPokemonBattle(player, wildPokemon, location);
+		} else if(counter == 102) {
+			// Create the Pallet Town location
+			locationName = "Pallet Town";
+			for (i=0; i<locations.length; i++) {
+				if (locations[i][0] == locationName) {
+					location = new createLocation(
+						locations[i][0], 
+						locations[i][1], 
+						locations[i][2], 
+						locations[i][3], 
+						locations[i][4], 
+						locations[i][5], 
+						locations[i][6], 
+						locations[i][7], 
+						locations[i][8], 
+						locations[i][9],
+						locations[i][10],
+						locations[i][11],
+						locations[i][12]
+					);
+				};
+			};
+			player.lastHealingLocation = new getHealingLocation("MOM");
+			document.getElementById("locationName").innerHTML = "<h2>" + location.Name + "</h2>"; // <h3> Pallet Town </h3> does not work
+			document.getElementById("imageStory").src = "images/PalletTown_7.png"; // screenshot from Pokemon FireRed game from GAME FREAK inc.
+			document.getElementById("pokemonRed").innerHTML = location.Name;
+		} else if (counter == 103) {
+			document.getElementById("imageStory").src = "images/PalletTown_8.png";
+			document.getElementById("pokemonRed").innerHTML = "You enter PROF. OAK'S Lab. ";
+		} else if (counter == 104) {
+			document.getElementById("imageStory").src = "images/PalletTown_ProfOakLab6.png";
+			document.getElementById("pokemonRed").innerHTML = "OAK: Oh, " + player.Name + "! <br/> How is my old POK&eacute;MON? ";
+		} else if (counter == 105) {
+			document.getElementById("pokemonRed").innerHTML = "Well, it seems to be growing more </br>attached to you. ";
+		} else if (counter == 106) {
+			document.getElementById("pokemonRed").innerHTML = "You must be talented as a POK&eacute;MON </br>TRAINER. ";
+		} else if (counter == 107) {
+			document.getElementById("pokemonRed").innerHTML = "What's that? </br>You have something for me? ";
+		} else if (counter == 108) {
+			document.getElementById("pokemonRed").innerHTML = player.Name + " delivered OAK'S PARCEL. ";
+		} else if (counter == 109) {
+			document.getElementById("pokemonRed").innerHTML = "Ah! </br>It's the custom POK&eacute; BALL! ";
+		} else if (counter == 110) {
+			document.getElementById("pokemonRed").innerHTML = "I had it on order. </br>Thank you! ";
+		} else if (counter == 111) {
+			document.getElementById("imageStory").src = "images/PalletTown_ProfOakLab7.png";
+			document.getElementById("pokemonRed").innerHTML = rival.Name + ": Gramps! ";
+		} else if (counter == 112) {
+			document.getElementById("imageStory").src = "images/PalletTown_ProfOakLab8.png";
+			document.getElementById("pokemonRed").innerHTML = rival.Name + ": I almost forgot! <br/>What did you call me for? ";
+		} else if (counter == 113) {
+			document.getElementById("imageStory").src = "images/PalletTown_ProfOakLab9.png";
+			document.getElementById("pokemonRed").innerHTML = "OAK: Oh, right! <br/>I have a request for you two. ";
+		} else if (counter == 114) {
+			document.getElementById("imageStory").src = "images/PalletTown_ProfOakLab10.png";
+			document.getElementById("pokemonRed").innerHTML = "On the desk there is my invention, <br/>the POK&eacute;DEX! ";
+		} else if (counter == 115) {
+			document.getElementById("pokemonRed").innerHTML = "It automatically records data on <br/> POK&eacute;MON you've seen or caught. ";
+		} else if (counter == 116) {
+			document.getElementById("pokemonRed").innerHTML = "It's a high-tech encyclopedia! ";
+		} else if (counter == 117) {
+			document.getElementById("imageStory").src = "images/PalletTown_ProfOakLab11.png";
+			document.getElementById("pokemonRed").innerHTML = "OAK: " + player.Name + " and " + rival.Name + ". <br/> Take these with you. ";
+		} else if (counter == 118) {
+			document.getElementById("imageStory").src = "images/PalletTown_ProfOakLab12.png";
+			document.getElementById("pokemonRed").innerHTML = player.Name + " received the POK&eacute;DEX <br/>from PROF. OAK. ";
+			document.getElementById("pokemonCaught").style.display = "block";
+			document.getElementById("pokedex" + pokemonOne.Name).style.display = "block";
+		} else if (counter == 119) {
+			document.getElementById("pokemonRed").innerHTML = "OAK: You can't get detailed data <br/>on POK&eacute;MON by just seeing them. ";
+		} else if (counter == 120) {
+			document.getElementById("pokemonRed").innerHTML = "You must must catch them to obtain <br/>complete data. ";
+		} else if (counter == 121) {
+			document.getElementById("pokemonRed").innerHTML = "So here are some tools for <br/> catching wild POK&eacute;MON. ";
+		} else if (counter == 122) {
+			// Create a POKEBALL type in the bag
+			player.bag.POKEBALL = new createPOKEBALLtype();
+			// Create a pokeball object in the POKEBALL part of the bag
+			player.bag.POKEBALL.pokeball = new createItem("Pokeball");
+			player.bag.POKEBALL.pokeball.amount = 5;
+			document.getElementById("pokemonRed").innerHTML = player.Name + " received five POK&eacute; BALLS. ";
+		} else if (counter == 123) {
+			document.getElementById("pokemonRed").innerHTML = player.Name + " put the POK&eacute; BALLS <br/> in the POK&eacute; BALLS POCKET. ";
+		} else if (counter == 124) {
+			document.getElementById("pokemonRed").innerHTML = "When a wild POK&eacute;MON appears, <br/> it's a fair game. ";
+		} else if (counter == 125) {
+			document.getElementById("pokemonRed").innerHTML = "Just throw a POK&eacute BALL at it and <br/>try to catch it! ";
+		} else if (counter == 126) {
+			document.getElementById("pokemonRed").innerHTML = "This won't always work, however. ";
+		} else if (counter == 127) {
+			document.getElementById("pokemonRed").innerHTML = "A healthy POK&eacute;MON can escape. <br/>You have to be lucky! ";
+		} else if (counter == 128) {
+			document.getElementById("pokemonRed").innerHTML = "To make a complete guide on all <br/>the POK&eacute;MON in the world...";
+		} else if (counter == 129) {
+			document.getElementById("pokemonRed").innerHTML = "That was my dream!";
+		} else if (counter == 130) {
+			document.getElementById("pokemonRed").innerHTML = "But I'm too old <br/>I can't get the job done. ";
+		} else if (counter == 131) {
+			document.getElementById("pokemonRed").innerHTML = "So I want you two to fullfil my <br/>dream for me. ";
+		} else if (counter == 132) {
+			document.getElementById("pokemonRed").innerHTML = "Get moving, you two. ";
+		} else if (counter == 133) {
+			document.getElementById("pokemonRed").innerHTML = "This is a great undertaking in <br/>POK&eacute;MON history! ";
+		} else if (counter == 134) {
+			document.getElementById("pokemonRed").innerHTML = rival.Name + ": All right, Gramps! <br/>Leave it all to me! ";
+		} else if (counter == 135) {
+			document.getElementById("pokemonRed").innerHTML = player.Name + ", I hate to say it, but you <br/> won't be necessary for this. ";
+		} else if (counter == 136) {
+			document.getElementById("pokemonRed").innerHTML = "I know! I'll borrow a TOWN MAP <br/>from my sis! ";
+		} else if (counter == 137) {
+			document.getElementById("pokemonRed").innerHTML = "I'll tell her not to lend you one, <br/>" + player.Name + "! Hahaha! ";
+		} else if (counter == 138) {
+			document.getElementById("pokemonRed").innerHTML = "Don't bother coming around to my place after this! ";
+		} else if (counter == 139) {
+			document.getElementById("imageStory").src = "images/PalletTown_ProfOakLab13.png";
+			document.getElementById("pokemonRed").innerHTML = rival.Name + " leaves PROF. OAK'S LAB. ";
+		} else if (counter == 140) {
+			document.getElementById("imageStory").src = "images/PalletTown_ProfOakLab2.png";
+			document.getElementById("pokemonRed").innerHTML = "You also leave PROF. OAK'S LAB. ";
+		} else if (counter == 141) {
+			document.getElementById("imageStory").src = "images/PalletTown_6.png";
+			document.getElementById("pokemonRed").innerHTML = location.Name;
 /*		};
 		for(i=0;i<5;i++){
 			if(counter == 94 + counter2){

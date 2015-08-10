@@ -17,13 +17,15 @@ var locations = [
 	["locationName", "battleBackground", "trainerAmount", "trainer1", "pokemonAmount", "pokemon1Name", "pokemon1MinLevel", "pokemon1MaxLevel", "pokemon1Chance", "pokemon2Name", "pokemon2MinLevel", "pokemon2MaxLevel", "pokemon2Chance"],
 	["Introduction", "BattleGrass", 0, "", 0, "", 1, 1, 1.0, "", 1, 1, 0.0],
 	["Pallet Town", "BattleGrass", 0, "", 0, "", 1, 1, 1.0, "", 1, 1, 0.0],
-	["Route 1", "BattleGrass", 0, "BattleGrass", 2, "PIDGEY", 2, 5, 0.5, "RATTATA", 2, 4, 0.5],
+	["Route 1", "BattleGrass", 0, "", 2, "PIDGEY", 2, 5, 0.5, "RATTATA", 2, 4, 0.5],
+	["Viridian City", "BattleGrass", 0, "", 0, "", 1, 1, 1.0, "", 1, 1, 0.0],
  	["Hall of Fame", "BattleGrass", 0, "", 1, "", 1, 1, 1.0, "", 1, 1, 0.0]
 ];
 // Background information for the different healing locations
 var healingLocations = [
 	["healingLocationNumber", "healingLocationName", "healingLocationLocation", "healingLocationImage", "healingLocationText"],
-	["001", "MOM", getLocation("Pallet Town"), "images/Mom.png", "Mom healed all your Pok&eacute;mon. "]
+	["001", "MOM", getLocation("Pallet Town"), "images/Mom.PNG", "Mom healed all your Pok&eacute;mon. "],
+	["002", "Viridian City PokeCenter", getLocation("Viridian City"), "images/Viridian City PokeCenter.png", "We've restored your POK&eacute;MON to <br/>full health. "]
 ];
 
 // Function to create the different locations

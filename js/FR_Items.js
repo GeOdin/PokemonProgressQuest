@@ -40,6 +40,10 @@ function createHEALtype(){
 	// Creates the HEAL part of the bag
 };
 
+function createPOKEBALLtype(){
+	// Creates the POKEBALL part of the bag
+};
+
 function createItem(itemName) {
 	// if property player.bag[itemName] already exists, only add item
 		// player.bag[itemName].amount +=1; //does .amount work? or must it then be player.bag[itemName]["amount"] +=1;
@@ -91,6 +95,7 @@ function healPokemonWithItem(pokemonObject, healItemObject){
 			pokemonObject.currentHP = pokemonObject.maxHP;
 		};
 		document.getElementById("activePokemon1").innerHTML = pokemonObject.Name + "<br/>Lvl: " + pokemonObject.level + "<br/> <img src=images/pokemonIconsTransparent/" + pokemonObject.Name + ".png /> <br/>HP: " + pokemonObject.currentHP + "/" + pokemonObject.maxHP + "<br/> Exp: " + pokemonObject.currentExp + "/" + pokemonObject.expNextLevel;
+		document.getElementById("pokemonRed").innerHTML = healItemObject.Name + " is used on" + pokemonObject.Name;
 		healItemObject.amount -= 1;
 	};
 };
