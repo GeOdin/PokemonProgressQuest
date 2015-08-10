@@ -59,7 +59,8 @@ by GeOdin */
 //// KEY ITEMS POCKET
 //// POK&eacute BALLS POCKET
 // enter prompt that lets players decide how fast the progress quest should go?
-// text of going to mom after first battle is not correctly displayed
+// give locationObject an image property to show after battle (instead of only having the battle background with no pokemon after the battle ends)
+// sometimes player and opponent pokemon are not shown in wildPokemonBattle(...)
 
 function startGame() { 
 
@@ -621,15 +622,15 @@ function startGame() {
 			// add opponent pokemon with currentHP/maxHP somewhere
 		} else if (counter == 74) {
 			document.getElementById("imageStory").src = "images/PalletTown_ProfOakLab4.png"; // screenshot from Pokemon FireRed game from GAME FREAK inc.
-		} else if (counter == 76) {
-			document.getElementById("imageStory").src = "images/PalletTown_ProfOakLab5.png"; // screenshot from Pokemon FireRed game from GAME FREAK inc.
 		} else if (counter == 77) {
-			document.getElementById("imageStory").src = "images/PalletTown_6.png"; // screenshot from Pokemon FireRed game from GAME FREAK inc.
+			document.getElementById("imageStory").src = "images/PalletTown_ProfOakLab5.png"; // screenshot from Pokemon FireRed game from GAME FREAK inc.
 		} else if (counter == 78) {
+			document.getElementById("imageStory").src = "images/PalletTown_6.png"; // screenshot from Pokemon FireRed game from GAME FREAK inc.
+		} else if (counter == 79) {
 			document.getElementById("imageStory").src = "images/Mom.png";
 			player.activePokemon1.currentHP = player.activePokemon1.maxHP;
 			document.getElementById("activePokemon1").innerHTML = player.activePokemon1.Name + "<br/>Lvl: " + player.activePokemon1.level + "<br/> <img src=images/pokemonIconsTransparent/" + player.activePokemon1.Name + ".png /> <br/>HP: " + player.activePokemon1.currentHP + "/" + player.activePokemon1.maxHP + "<br/> Exp: " + player.activePokemon1.currentExp + "/" + player.activePokemon1.expNextLevel;
-		} else if (counter == 79) {
+		} else if (counter == 80) {
 			// Create the Route 1 location
 			locationName = "Route 1";
 			for (i=0; i<locations.length; i++) {
@@ -653,42 +654,42 @@ function startGame() {
 			};
 			document.getElementById("locationName").innerHTML = "<h2>" + location.Name + "</h2>";
 			document.getElementById("imageStory").src = "images/Route1.png"; // screenshot from Pokemon FireRed game from GAME FREAK inc.
-		} else if (counter == 80) {
-			wildPokemon = new createWildPokemon(location);
-			document.getElementById("imageStory").src = "images/wildPokemon/" + wildPokemon.Name + ".png"; // image from Bulbapedia // http://bulbapedia.bulbagarden.net/wiki/Main_Page
-			document.getElementById("pokemonRed").innerHTML = "Wild " + wildPokemon.Name + " level " + wildPokemon.level + " appeared!";
 		} else if (counter == 81) {
-			// add flee option to wildPokemonBattle function id wildPokemon.level >= player.activePokemon1.level
-			wildPokemonBattle(player, wildPokemon, location);
+			wildPokemon = new createWildPokemon(location);
+			document.getElementById("imageStory").src = "images/wildPokemon/" + wildPokemon.Name + ".png"; // image from Bulbapedia // http://bulbapedia.bulbagarden.net/wiki/Main_Page
+			document.getElementById("pokemonRed").innerHTML = "Wild " + wildPokemon.Name + " level " + wildPokemon.level + " appeared!";
 		} else if (counter == 82) {
-			wildPokemon = new createWildPokemon(location);
-			document.getElementById("imageStory").src = "images/wildPokemon/" + wildPokemon.Name + ".png"; // image from Bulbapedia // http://bulbapedia.bulbagarden.net/wiki/Main_Page
-			document.getElementById("pokemonRed").innerHTML = "Wild " + wildPokemon.Name + " level " + wildPokemon.level + " appeared!";
+			// add flee option to wildPokemonBattle function id wildPokemon.level >= player.activePokemon1.level
+			wildPokemonBattle(player, wildPokemon, location);
 		} else if (counter == 83) {
-			// add flee option to wildPokemonBattle function id wildPokemon.level >= player.activePokemon1.level
-			wildPokemonBattle(player, wildPokemon, location);
+			wildPokemon = new createWildPokemon(location);
+			document.getElementById("imageStory").src = "images/wildPokemon/" + wildPokemon.Name + ".png"; // image from Bulbapedia // http://bulbapedia.bulbagarden.net/wiki/Main_Page
+			document.getElementById("pokemonRed").innerHTML = "Wild " + wildPokemon.Name + " level " + wildPokemon.level + " appeared!";
 		} else if (counter == 84) {
-			wildPokemon = new createWildPokemon(location);
-			document.getElementById("imageStory").src = "images/wildPokemon/" + wildPokemon.Name + ".png"; // image from Bulbapedia // http://bulbapedia.bulbagarden.net/wiki/Main_Page
-			document.getElementById("pokemonRed").innerHTML = "Wild " + wildPokemon.Name + " level " + wildPokemon.level + " appeared!";
+			// add flee option to wildPokemonBattle function id wildPokemon.level >= player.activePokemon1.level
+			wildPokemonBattle(player, wildPokemon, location);
 		} else if (counter == 85) {
-			// add flee option to wildPokemonBattle function id wildPokemon.level >= player.activePokemon1.level
-			wildPokemonBattle(player, wildPokemon, location);
+			wildPokemon = new createWildPokemon(location);
+			document.getElementById("imageStory").src = "images/wildPokemon/" + wildPokemon.Name + ".png"; // image from Bulbapedia // http://bulbapedia.bulbagarden.net/wiki/Main_Page
+			document.getElementById("pokemonRed").innerHTML = "Wild " + wildPokemon.Name + " level " + wildPokemon.level + " appeared!";
 		} else if (counter == 86) {
-			wildPokemon = new createWildPokemon(location);
-			document.getElementById("imageStory").src = "images/wildPokemon/" + wildPokemon.Name + ".png"; // image from Bulbapedia // http://bulbapedia.bulbagarden.net/wiki/Main_Page
-			document.getElementById("pokemonRed").innerHTML = "Wild " + wildPokemon.Name + " level " + wildPokemon.level + " appeared!";
+			// add flee option to wildPokemonBattle function id wildPokemon.level >= player.activePokemon1.level
+			wildPokemonBattle(player, wildPokemon, location);
 		} else if (counter == 87) {
-			// add flee option to wildPokemonBattle function id wildPokemon.level >= player.activePokemon1.level
-			wildPokemonBattle(player, wildPokemon, location);
-		} else if (counter == 88) {
 			wildPokemon = new createWildPokemon(location);
 			document.getElementById("imageStory").src = "images/wildPokemon/" + wildPokemon.Name + ".png"; // image from Bulbapedia // http://bulbapedia.bulbagarden.net/wiki/Main_Page
 			document.getElementById("pokemonRed").innerHTML = "Wild " + wildPokemon.Name + " level " + wildPokemon.level + " appeared!";
-		} else if (counter == 89) {
+		} else if (counter == 88) {
 			// add flee option to wildPokemonBattle function id wildPokemon.level >= player.activePokemon1.level
 			wildPokemonBattle(player, wildPokemon, location);
+		} else if (counter == 89) {
+			wildPokemon = new createWildPokemon(location);
+			document.getElementById("imageStory").src = "images/wildPokemon/" + wildPokemon.Name + ".png"; // image from Bulbapedia // http://bulbapedia.bulbagarden.net/wiki/Main_Page
+			document.getElementById("pokemonRed").innerHTML = "Wild " + wildPokemon.Name + " level " + wildPokemon.level + " appeared!";
 		} else if (counter == 90) {
+			// add flee option to wildPokemonBattle function id wildPokemon.level >= player.activePokemon1.level
+			wildPokemonBattle(player, wildPokemon, location);
+		} else if (counter == 91) {
 			// Create the Route 1 location
 			locationName = "Viridian City";
 			for (i=0; i<locations.length; i++) {
@@ -713,36 +714,36 @@ function startGame() {
 			document.getElementById("locationName").innerHTML = "<h2>" + location.Name + "</h2>";
 			document.getElementById("imageStory").src = "images/Viridian City1.png"; // screenshot from Pokemon FireRed game from GAME FREAK inc.
 			document.getElementById("pokemonRed").innerHTML = location.Name;
-		} else if (counter == 91) {
+		} else if (counter == 92) {
 			document.getElementById("imageStory").src = "images/Viridian City PokeCenter.png";
 			player.lastHealingLocation = new getHealingLocation("Viridian City PokeCenter");
 			document.getElementById("pokemonRed").innerHTML = "You enter the PokeCenter. ";
-		} else if (counter == 92) {
+		} else if (counter == 93) {
 			document.getElementById("imageStory").src = "images/Viridian City PokeCenter Inside.png";
 			healAllPokemon(player);
 			document.getElementById("pokemonRed").innerHTML = "We've restored your POK&eacute;MON to <br/>full health. ";
-		} else if (counter == 93) {
+		} else if (counter == 94) {
 			document.getElementById("imageStory").src = "images/Viridian City PokeMart.png";
 			document.getElementById("pokemonRed").innerHTML = "You enter the POK&eacute;MON MART. ";
-		} else if (counter == 94) {
+		} else if (counter == 95) {
 			document.getElementById("imageStory").src = "images/Viridian City PokeMart Inside.png";
 			document.getElementById("pokemonRed").innerHTML = "Hey! <br/>You came from Pallet Town? ";
-		} else if (counter == 95) {
+		} else if (counter == 96) {
 			document.getElementById("imageStory").src = "images/Viridian City PokeMart Inside2.png";
 			document.getElementById("pokemonRed").innerHTML = "You know PROF. OAK, right? ";
-		} else if (counter == 95) {
-			document.getElementById("pokemonRed").innerHTML = "His order came in. <br/> Can I get you to take it to him? ";
-		} else if (counter == 96) {
-			document.getElementById("pokemonRed").innerHTML = player.Name + " received OAK'S PARCEL <br/>from the POK&eacute;MON MART clerk. ";
-		} else if (counter == 96) {
-			document.getElementById("pokemonRed").innerHTML = player.Name + " put the OAK'S PARCEL <br/> in the KEY ITEMS POCKET. ";
 		} else if (counter == 97) {
+			document.getElementById("pokemonRed").innerHTML = "His order came in. <br/> Can I get you to take it to him? ";
+		} else if (counter == 98) {
+			document.getElementById("pokemonRed").innerHTML = player.Name + " received OAK'S PARCEL <br/>from the POK&eacute;MON MART clerk. ";
+		} else if (counter == 99) {
+			document.getElementById("pokemonRed").innerHTML = player.Name + " put the OAK'S PARCEL <br/> in the KEY ITEMS POCKET. ";
+		} else if (counter == 100) {
 			document.getElementById("imageStory").src = "images/Viridian City PokeMart Inside3.png";
 			document.getElementById("pokemonRed").innerHTML = "You leave the POK&eacute;MON MART. ";
-		} else if (counter == 98) {
+		} else if (counter == 101) {
 			document.getElementById("imageStory").src = "images/Viridian City2.png";
 			document.getElementById("pokemonRed").innerHTML = "You leave Viridian City. ";
-		} else if (counter == 99) {
+		} else if (counter == 102) {
 			// Create the Route 1 location
 			locationName = "Route 1";
 			for (i=0; i<locations.length; i++) {
@@ -767,14 +768,14 @@ function startGame() {
 			document.getElementById("locationName").innerHTML = "<h2>" + location.Name + "</h2>";
 			document.getElementById("imageStory").src = "images/Route1_2.png"; // screenshot from Pokemon FireRed game from GAME FREAK inc.
 			document.getElementById("pokemonRed").innerHTML = locationName;
-		} else if (counter == 100) {
+		} else if (counter == 103) {
 			wildPokemon = new createWildPokemon(location);
 			document.getElementById("imageStory").src = "images/wildPokemon/" + wildPokemon.Name + ".png"; // image from Bulbapedia // http://bulbapedia.bulbagarden.net/wiki/Main_Page
 			document.getElementById("pokemonRed").innerHTML = "Wild " + wildPokemon.Name + " level " + wildPokemon.level + " appeared!";
-		} else if (counter == 101) {
+		} else if (counter == 104) {
 			// add flee option to wildPokemonBattle function id wildPokemon.level >= player.activePokemon1.level
 			wildPokemonBattle(player, wildPokemon, location);
-		} else if(counter == 102) {
+		} else if(counter == 105) {
 			// Create the Pallet Town location
 			locationName = "Pallet Town";
 			for (i=0; i<locations.length; i++) {
@@ -800,100 +801,100 @@ function startGame() {
 			document.getElementById("locationName").innerHTML = "<h2>" + location.Name + "</h2>"; // <h3> Pallet Town </h3> does not work
 			document.getElementById("imageStory").src = "images/PalletTown_7.png"; // screenshot from Pokemon FireRed game from GAME FREAK inc.
 			document.getElementById("pokemonRed").innerHTML = location.Name;
-		} else if (counter == 103) {
+		} else if (counter == 106) {
 			document.getElementById("imageStory").src = "images/PalletTown_8.png";
 			document.getElementById("pokemonRed").innerHTML = "You enter PROF. OAK'S Lab. ";
-		} else if (counter == 104) {
+		} else if (counter == 107) {
 			document.getElementById("imageStory").src = "images/PalletTown_ProfOakLab6.png";
 			document.getElementById("pokemonRed").innerHTML = "OAK: Oh, " + player.Name + "! <br/> How is my old POK&eacute;MON? ";
-		} else if (counter == 105) {
-			document.getElementById("pokemonRed").innerHTML = "Well, it seems to be growing more </br>attached to you. ";
-		} else if (counter == 106) {
-			document.getElementById("pokemonRed").innerHTML = "You must be talented as a POK&eacute;MON </br>TRAINER. ";
-		} else if (counter == 107) {
-			document.getElementById("pokemonRed").innerHTML = "What's that? </br>You have something for me? ";
 		} else if (counter == 108) {
-			document.getElementById("pokemonRed").innerHTML = player.Name + " delivered OAK'S PARCEL. ";
+			document.getElementById("pokemonRed").innerHTML = "Well, it seems to be growing more </br>attached to you. ";
 		} else if (counter == 109) {
-			document.getElementById("pokemonRed").innerHTML = "Ah! </br>It's the custom POK&eacute; BALL! ";
+			document.getElementById("pokemonRed").innerHTML = "You must be talented as a POK&eacute;MON </br>TRAINER. ";
 		} else if (counter == 110) {
-			document.getElementById("pokemonRed").innerHTML = "I had it on order. </br>Thank you! ";
+			document.getElementById("pokemonRed").innerHTML = "What's that? </br>You have something for me? ";
 		} else if (counter == 111) {
+			document.getElementById("pokemonRed").innerHTML = player.Name + " delivered OAK'S PARCEL. ";
+		} else if (counter == 112) {
+			document.getElementById("pokemonRed").innerHTML = "Ah! </br>It's the custom POK&eacute; BALL! ";
+		} else if (counter == 113) {
+			document.getElementById("pokemonRed").innerHTML = "I had it on order. </br>Thank you! ";
+		} else if (counter == 114) {
 			document.getElementById("imageStory").src = "images/PalletTown_ProfOakLab7.png";
 			document.getElementById("pokemonRed").innerHTML = rival.Name + ": Gramps! ";
-		} else if (counter == 112) {
+		} else if (counter == 115) {
 			document.getElementById("imageStory").src = "images/PalletTown_ProfOakLab8.png";
 			document.getElementById("pokemonRed").innerHTML = rival.Name + ": I almost forgot! <br/>What did you call me for? ";
-		} else if (counter == 113) {
+		} else if (counter == 116) {
 			document.getElementById("imageStory").src = "images/PalletTown_ProfOakLab9.png";
 			document.getElementById("pokemonRed").innerHTML = "OAK: Oh, right! <br/>I have a request for you two. ";
-		} else if (counter == 114) {
+		} else if (counter == 117) {
 			document.getElementById("imageStory").src = "images/PalletTown_ProfOakLab10.png";
 			document.getElementById("pokemonRed").innerHTML = "On the desk there is my invention, <br/>the POK&eacute;DEX! ";
-		} else if (counter == 115) {
+		} else if (counter == 118) {
 			document.getElementById("pokemonRed").innerHTML = "It automatically records data on <br/> POK&eacute;MON you've seen or caught. ";
-		} else if (counter == 116) {
+		} else if (counter == 119) {
 			document.getElementById("pokemonRed").innerHTML = "It's a high-tech encyclopedia! ";
-		} else if (counter == 117) {
+		} else if (counter == 120) {
 			document.getElementById("imageStory").src = "images/PalletTown_ProfOakLab11.png";
 			document.getElementById("pokemonRed").innerHTML = "OAK: " + player.Name + " and " + rival.Name + ". <br/> Take these with you. ";
-		} else if (counter == 118) {
+		} else if (counter == 121) {
 			document.getElementById("imageStory").src = "images/PalletTown_ProfOakLab12.png";
 			document.getElementById("pokemonRed").innerHTML = player.Name + " received the POK&eacute;DEX <br/>from PROF. OAK. ";
 			document.getElementById("pokemonCaught").style.display = "block";
 			document.getElementById("pokedex" + pokemonOne.Name).style.display = "block";
-		} else if (counter == 119) {
-			document.getElementById("pokemonRed").innerHTML = "OAK: You can't get detailed data <br/>on POK&eacute;MON by just seeing them. ";
-		} else if (counter == 120) {
-			document.getElementById("pokemonRed").innerHTML = "You must must catch them to obtain <br/>complete data. ";
-		} else if (counter == 121) {
-			document.getElementById("pokemonRed").innerHTML = "So here are some tools for <br/> catching wild POK&eacute;MON. ";
 		} else if (counter == 122) {
+			document.getElementById("pokemonRed").innerHTML = "OAK: You can't get detailed data <br/>on POK&eacute;MON by just seeing them. ";
+		} else if (counter == 123) {
+			document.getElementById("pokemonRed").innerHTML = "You must must catch them to obtain <br/>complete data. ";
+		} else if (counter == 124) {
+			document.getElementById("pokemonRed").innerHTML = "So here are some tools for <br/> catching wild POK&eacute;MON. ";
+		} else if (counter == 125) {
 			// Create a POKEBALL type in the bag
 			player.bag.POKEBALL = new createPOKEBALLtype();
 			// Create a pokeball object in the POKEBALL part of the bag
 			player.bag.POKEBALL.pokeball = new createItem("Pokeball");
 			player.bag.POKEBALL.pokeball.amount = 5;
 			document.getElementById("pokemonRed").innerHTML = player.Name + " received five POK&eacute; BALLS. ";
-		} else if (counter == 123) {
-			document.getElementById("pokemonRed").innerHTML = player.Name + " put the POK&eacute; BALLS <br/> in the POK&eacute; BALLS POCKET. ";
-		} else if (counter == 124) {
-			document.getElementById("pokemonRed").innerHTML = "When a wild POK&eacute;MON appears, <br/> it's a fair game. ";
-		} else if (counter == 125) {
-			document.getElementById("pokemonRed").innerHTML = "Just throw a POK&eacute BALL at it and <br/>try to catch it! ";
 		} else if (counter == 126) {
-			document.getElementById("pokemonRed").innerHTML = "This won't always work, however. ";
+			document.getElementById("pokemonRed").innerHTML = player.Name + " put the POK&eacute; BALLS <br/> in the POK&eacute; BALLS POCKET. ";
 		} else if (counter == 127) {
-			document.getElementById("pokemonRed").innerHTML = "A healthy POK&eacute;MON can escape. <br/>You have to be lucky! ";
+			document.getElementById("pokemonRed").innerHTML = "When a wild POK&eacute;MON appears, <br/> it's a fair game. ";
 		} else if (counter == 128) {
-			document.getElementById("pokemonRed").innerHTML = "To make a complete guide on all <br/>the POK&eacute;MON in the world...";
+			document.getElementById("pokemonRed").innerHTML = "Just throw a POK&eacute BALL at it and <br/>try to catch it! ";
 		} else if (counter == 129) {
-			document.getElementById("pokemonRed").innerHTML = "That was my dream!";
+			document.getElementById("pokemonRed").innerHTML = "This won't always work, however. ";
 		} else if (counter == 130) {
-			document.getElementById("pokemonRed").innerHTML = "But I'm too old <br/>I can't get the job done. ";
+			document.getElementById("pokemonRed").innerHTML = "A healthy POK&eacute;MON can escape. <br/>You have to be lucky! ";
 		} else if (counter == 131) {
-			document.getElementById("pokemonRed").innerHTML = "So I want you two to fullfil my <br/>dream for me. ";
+			document.getElementById("pokemonRed").innerHTML = "To make a complete guide on all <br/>the POK&eacute;MON in the world...";
 		} else if (counter == 132) {
-			document.getElementById("pokemonRed").innerHTML = "Get moving, you two. ";
+			document.getElementById("pokemonRed").innerHTML = "That was my dream!";
 		} else if (counter == 133) {
-			document.getElementById("pokemonRed").innerHTML = "This is a great undertaking in <br/>POK&eacute;MON history! ";
+			document.getElementById("pokemonRed").innerHTML = "But I'm too old <br/>I can't get the job done. ";
 		} else if (counter == 134) {
-			document.getElementById("pokemonRed").innerHTML = rival.Name + ": All right, Gramps! <br/>Leave it all to me! ";
+			document.getElementById("pokemonRed").innerHTML = "So I want you two to fullfil my <br/>dream for me. ";
 		} else if (counter == 135) {
-			document.getElementById("pokemonRed").innerHTML = player.Name + ", I hate to say it, but you <br/> won't be necessary for this. ";
+			document.getElementById("pokemonRed").innerHTML = "Get moving, you two. ";
 		} else if (counter == 136) {
-			document.getElementById("pokemonRed").innerHTML = "I know! I'll borrow a TOWN MAP <br/>from my sis! ";
+			document.getElementById("pokemonRed").innerHTML = "This is a great undertaking in <br/>POK&eacute;MON history! ";
 		} else if (counter == 137) {
-			document.getElementById("pokemonRed").innerHTML = "I'll tell her not to lend you one, <br/>" + player.Name + "! Hahaha! ";
+			document.getElementById("pokemonRed").innerHTML = rival.Name + ": All right, Gramps! <br/>Leave it all to me! ";
 		} else if (counter == 138) {
-			document.getElementById("pokemonRed").innerHTML = "Don't bother coming around to my place after this! ";
+			document.getElementById("pokemonRed").innerHTML = player.Name + ", I hate to say it, but you <br/> won't be necessary for this. ";
 		} else if (counter == 139) {
+			document.getElementById("pokemonRed").innerHTML = "I know! I'll borrow a TOWN MAP <br/>from my sis! ";
+		} else if (counter == 140) {
+			document.getElementById("pokemonRed").innerHTML = "I'll tell her not to lend you one, <br/>" + player.Name + "! Hahaha! ";
+		} else if (counter == 141) {
+			document.getElementById("pokemonRed").innerHTML = "Don't bother coming around to my place after this! ";
+		} else if (counter == 142) {
 			document.getElementById("imageStory").src = "images/PalletTown_ProfOakLab13.png";
 			document.getElementById("pokemonRed").innerHTML = rival.Name + " leaves PROF. OAK'S LAB. ";
-		} else if (counter == 140) {
+		} else if (counter == 143) {
 			document.getElementById("imageStory").src = "images/PalletTown_ProfOakLab2.png";
 			document.getElementById("pokemonRed").innerHTML = "You also leave PROF. OAK'S LAB. ";
-		} else if (counter == 141) {
+		} else if (counter == 144) {
 			document.getElementById("imageStory").src = "images/PalletTown_6.png";
 			document.getElementById("pokemonRed").innerHTML = location.Name;
 /*		};
