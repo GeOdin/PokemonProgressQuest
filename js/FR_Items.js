@@ -22,8 +22,9 @@ var items = [
 ];
 
 var healItems = [
-	["itemNumber", "itemName", "itemType", "stat", "statAdd", "amount"],
-	["001", "Potion", "HEAL", "HP", 20, 1]
+	["itemNumber", "itemName", "itemType", "stat", "statAdd", "amount", "statusCondition"],
+	["001", "Potion", "HEAL", "HP", 20, 1, ""],
+	["002", "Antidote", "HEAL", "", "", 0, "POISON"]
 ];
 
 var pokeballs = [
@@ -74,6 +75,7 @@ function createHealItem(itemObject){
 			itemObject.stat = healItems[i][3];
 			itemObject.statAdd = healItems[i][4];
 			itemObject.amount = healItems[i][5];
+			itemObject.statusCondition = healItems[i][6];
 		};
 	};
 };

@@ -823,6 +823,9 @@ function catchPokemon(wildPokemon, pokeball, player) {
 	var ballModifier = pokeball.catchRate;
 	var statusModifier = 1; // pokemon stat
 
+	// Show message that Pokeball is used
+	document.getElementById("pokemonRed").innerHTML = player.Name + " used <br/>" + pokeball.Name;
+
 	// Check whether the wildPokemon is caught
 	// http://www.serebii.net/games/capture.shtml
 	var catchValue = ((( 3 * maxHP - 2 * HP ) * (catchRate * ballModifier ) / (3 * maxHP) ) * statusModifier);
@@ -831,7 +834,7 @@ function catchPokemon(wildPokemon, pokeball, player) {
 	} else {
 		var shake = 1048560 / Math.sqrt(Math.sqrt(16711680 / catchValue));
 		for (i=0; i<4; i++){
-			//http://bulbapedia.bulbagarden.net/wiki/Catch_rate
+			// http://bulbapedia.bulbagarden.net/wiki/Catch_rate
 			var randNum0To65535 = 65535 * Math.random();
 			if (randNum0To65535 < shake) {
 				shakeCounter++;
@@ -862,7 +865,8 @@ function catchPokemon(wildPokemon, pokeball, player) {
 			//player.PC. ... = wildPokemon;
 			player.pokemonCaught[wildPokemon.Name] = 1;
 		};
-		document.getElementById("pokemonRed").innerHTML = "You caught the Pokemon.";
+		document.getElementById("pokemonRed").innerHTML = "Gotcha! <br/>" + wildPokemon.Name + " was caught! ";
+		document.getElementById("pokemonRed").innerHTML = wildPokemon.Name + "'s data was <br/>added to the Pok&eacute;DEX. ";
 		document.getElementById("pokemonCaught").innerHTML = "<h3> Pok&eacute;dex: " + player.pokemonCaught.total() + "/151";
 		document.getElementById("pokedex" + wildPokemon.Name).style.display = "block";
 	};
