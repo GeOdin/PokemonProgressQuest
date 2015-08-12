@@ -65,6 +65,8 @@ by GeOdin */
 // improve the quaity of some screenshots
 // is the damage still working for wildPokemonBattle(...)?
 // only try to catch pokemon if their HP is below a certain threshold?
+// http://javascript.info/tutorial/settimeout-setinterval
+
 function startGame() { 
 
 	// Variables 
@@ -96,7 +98,7 @@ function startGame() {
 	var location;
 	var lastHealingLocation;
 	var wildPokemon;
-	var gamePokemonFireRed = window.setInterval(change, 3000); //3000 for 3 seconds; //1 for quick testing purposes; //500 for slow testing purposes;
+	var gamePokemonFireRed = window.setInterval(change, 500); //3000 for 3 seconds; //1 for quick testing purposes; //500 for slow testing purposes;
 	gamePokemonFireRed;	
 	// Start game
 /*	if (confirm("Are you ready to play? \nIt takes 5 seconds to start the game. ") == true) {
@@ -315,11 +317,15 @@ function startGame() {
 						locations[i][5], 
 						locations[i][6], 
 						locations[i][7], 
-						locations[i][8], 
+						locations[i][8],
 						locations[i][9],
 						locations[i][10],
 						locations[i][11],
-						locations[i][12]
+						locations[i][12],
+						locations[i][13],
+						locations[i][14],
+						locations[i][15],
+						locations[i][16]
 					);
 				};
 			};
@@ -414,7 +420,11 @@ function startGame() {
 						locations[i][9],
 						locations[i][10],
 						locations[i][11],
-						locations[i][12]
+						locations[i][12],
+						locations[i][13],
+						locations[i][14],
+						locations[i][15],
+						locations[i][16]
 					);
 				};
 			};
@@ -667,7 +677,11 @@ function startGame() {
 						locations[i][9],
 						locations[i][10],
 						locations[i][11],
-						locations[i][12]
+						locations[i][12],
+						locations[i][13],
+						locations[i][14],
+						locations[i][15],
+						locations[i][16]
 					);
 				};
 			};
@@ -735,7 +749,11 @@ function startGame() {
 						locations[i][9],
 						locations[i][10],
 						locations[i][11],
-						locations[i][12]
+						locations[i][12],
+						locations[i][13],
+						locations[i][14],
+						locations[i][15],
+						locations[i][16]
 					);
 				};
 			};
@@ -789,7 +807,11 @@ function startGame() {
 						locations[i][9],
 						locations[i][10],
 						locations[i][11],
-						locations[i][12]
+						locations[i][12],
+						locations[i][13],
+						locations[i][14],
+						locations[i][15],
+						locations[i][16]
 					);
 				};
 			};
@@ -832,7 +854,11 @@ function startGame() {
 						locations[i][9],
 						locations[i][10],
 						locations[i][11],
-						locations[i][12]
+						locations[i][12],
+						locations[i][13],
+						locations[i][14],
+						locations[i][15],
+						locations[i][16]
 					);
 				};
 			};
@@ -976,7 +1002,11 @@ function startGame() {
 						locations[i][9],
 						locations[i][10],
 						locations[i][11],
-						locations[i][12]
+						locations[i][12],
+						locations[i][13],
+						locations[i][14],
+						locations[i][15],
+						locations[i][16]
 					);
 				};
 			};
@@ -1044,7 +1074,11 @@ function startGame() {
 						locations[i][9],
 						locations[i][10],
 						locations[i][11],
-						locations[i][12]
+						locations[i][12],
+						locations[i][13],
+						locations[i][14],
+						locations[i][15],
+						locations[i][16]
 					);
 				};
 			};
@@ -1052,29 +1086,115 @@ function startGame() {
 			document.getElementById("imageStory").src = "images/Viridian City1.png"; // screenshot from Pokemon FireRed game from GAME FREAK inc.
 			document.getElementById("pokemonRed").innerHTML = location.Name;
 		} else if (counter == 167) {
-			document.getElementById("imageStory").src = "images/Viridian City PokeCenter.png";
+			document.getElementById("imageStory").src = "images/Viridian City PokeCenter.png"; // screenshot from Pokemon FireRed game from GAME FREAK inc.
 			player.lastHealingLocation = new getHealingLocation("Viridian City PokeCenter");
 			document.getElementById("pokemonRed").innerHTML = "You enter the PokeCenter. ";
 		} else if (counter == 168) {
-			document.getElementById("imageStory").src = "images/Viridian City PokeCenter Inside.png";
+			document.getElementById("imageStory").src = "images/Viridian City PokeCenter Inside.png"; // screenshot from Pokemon FireRed game from GAME FREAK inc.
 			healAllPokemon(player);
 			document.getElementById("pokemonRed").innerHTML = "We've restored your POK&eacute;MON to <br/>full health. ";
 		} else if (counter == 169) {
-			document.getElementById("imageStory").src = "images/Viridian City PokeMart.png";
+			document.getElementById("imageStory").src = "images/Viridian City PokeMart.png"; // screenshot from Pokemon FireRed game from GAME FREAK inc.
 			document.getElementById("pokemonRed").innerHTML = "You enter the POK&eacute;MON MART. ";
 		} else if (counter == 170) {
-			document.getElementById("imageStory").src = "images/Viridian City PokeMart Inside2.png";
+			document.getElementById("imageStory").src = "images/Viridian City PokeMart Inside2.png"; // screenshot from Pokemon FireRed game from GAME FREAK inc.
 			document.getElementById("pokemonRed").innerHTML = "Hi there! <br/>May I help you? ";
 		} else if (counter == 171) {
-			document.getElementById("pokemonRed").innerHTML = "You buy 10 POK&eacuteBALLS, 2 potions, and 4 antidote. "; // pokeball 200, potion 300, antidote 100
 			player.bag.POKEBALL.pokeball.amount += 10;
 			player.bag.HEAL.potion.amount += 2;
 			// Create a potion object in the HEAL part of the bag
 			player.bag.HEAL.antidote = new createItem("Antidote");
 			player.bag.HEAL.antidote.amount = 4;
+			document.getElementById("pokemonRed").innerHTML = "You buy 10 Pok&eacuteballs, 2 Potions, and 4 Antidotes. "; // pokeball 200, potion 300, antidote 100
 		} else if (counter == 172) {
 			document.getElementById("pokemonRed").innerHTML = "Please come again! ";
-		} else if (counter > 173) {
+		} else if (counter == 173) {
+			document.getElementById("imageStory").src = "images/Viridian City PokeMart Inside3.png"; // screenshot from Pokemon FireRed game from GAME FREAK inc.
+			document.getElementById("pokemonRed").innerHTML = "You leave the POK&eacute; MART. ";
+		} else if (counter == 174) {
+			document.getElementById("imageStory").src = "images/Viridian City1.png"; // screenshot from Pokemon FireRed game from GAME FREAK inc.
+			document.getElementById("pokemonRed").innerHTML = location.Name;
+		} else if (counter == 175) {
+			//////////////
+			// Route 22 // http://bulbapedia.bulbagarden.net/wiki/File:Kanto_Route_22_FRLG.png
+			//////////////
+
+			// Create the Route 22 location
+			locationName = "Route 22";
+			for (i=0; i<locations.length; i++) {
+				if (locations[i][0] == locationName) {
+					location = new createLocation(
+						locations[i][0], 
+						locations[i][1], 
+						locations[i][2], 
+						locations[i][3], 
+						locations[i][4], 
+						locations[i][5], 
+						locations[i][6], 
+						locations[i][7], 
+						locations[i][8], 
+						locations[i][9],
+						locations[i][10],
+						locations[i][11],
+						locations[i][12],
+						locations[i][13],
+						locations[i][14],
+						locations[i][15],
+						locations[i][16]
+					);
+				};
+			};
+			document.getElementById("locationName").innerHTML = "<h2>" + location.Name + "</h2>";
+			document.getElementById("imageStory").src = "images/Route 22/Route 22_1.png"; // screenshot from Pokemon FireRed game from GAME FREAK inc.
+			document.getElementById("pokemonRed").innerHTML = location.Name;
+		} else if (counter == 176) {
+			wildPokemon = new createWildPokemon(location);
+			document.getElementById("imageStory").src = "images/wildPokemon/" + wildPokemon.Name + ".png"; // image from Bulbapedia // http://bulbapedia.bulbagarden.net/wiki/Main_Page
+			document.getElementById("pokemonRed").innerHTML = "Wild " + wildPokemon.Name + " level " + wildPokemon.level + " appeared!";
+		} else if (counter == 177) {
+			// add flee option to wildPokemonBattle function id wildPokemon.level >= player.activePokemon1.level
+			wildPokemonBattle(player, wildPokemon, location);
+		} else if (counter == 178) {
+			wildPokemon = new createWildPokemon(location);
+			document.getElementById("imageStory").src = "images/wildPokemon/" + wildPokemon.Name + ".png"; // image from Bulbapedia // http://bulbapedia.bulbagarden.net/wiki/Main_Page
+			document.getElementById("pokemonRed").innerHTML = "Wild " + wildPokemon.Name + " level " + wildPokemon.level + " appeared!";
+		} else if (counter == 179) {
+			// add flee option to wildPokemonBattle function id wildPokemon.level >= player.activePokemon1.level
+			wildPokemonBattle(player, wildPokemon, location);
+		} else if (counter == 180) {
+			wildPokemon = new createWildPokemon(location);
+			document.getElementById("imageStory").src = "images/wildPokemon/" + wildPokemon.Name + ".png"; // image from Bulbapedia // http://bulbapedia.bulbagarden.net/wiki/Main_Page
+			document.getElementById("pokemonRed").innerHTML = "Wild " + wildPokemon.Name + " level " + wildPokemon.level + " appeared!";
+		} else if (counter == 181) {
+			// add flee option to wildPokemonBattle function id wildPokemon.level >= player.activePokemon1.level
+			wildPokemonBattle(player, wildPokemon, location);
+
+			// Either 3-5 battles here
+			var randNumb0To2 = 2 * Math.round(2 * Math.random());
+			counter += randNumb0To2;
+		} else if (counter == 182) {
+			wildPokemon = new createWildPokemon(location);
+			document.getElementById("imageStory").src = "images/wildPokemon/" + wildPokemon.Name + ".png"; // image from Bulbapedia // http://bulbapedia.bulbagarden.net/wiki/Main_Page
+			document.getElementById("pokemonRed").innerHTML = "Wild " + wildPokemon.Name + " level " + wildPokemon.level + " appeared!";
+		} else if (counter == 183) {
+			// add flee option to wildPokemonBattle function id wildPokemon.level >= player.activePokemon1.level
+			wildPokemonBattle(player, wildPokemon, location);
+		} else if (counter == 184) {
+			wildPokemon = new createWildPokemon(location);
+			document.getElementById("imageStory").src = "images/wildPokemon/" + wildPokemon.Name + ".png"; // image from Bulbapedia // http://bulbapedia.bulbagarden.net/wiki/Main_Page
+			document.getElementById("pokemonRed").innerHTML = "Wild " + wildPokemon.Name + " level " + wildPokemon.level + " appeared!";
+		} else if (counter == 185) {
+			// add flee option to wildPokemonBattle function id wildPokemon.level >= player.activePokemon1.level
+			wildPokemonBattle(player, wildPokemon, location);
+		// include battle with rival;
+		// trainers are part of location
+		// make them objects // special one for rival? // since he give more comments usually?
+		} else if (counter == 186) {
+			document.getElementById("imageStory").src = "images/Viridian City3.png"; // screenshot from Pokemon FireRed game from GAME FREAK inc.
+			document.getElementById("pokemonRed").innerHTML = "Then this guy tells you how to catch a POK&eacute;MON. ";
+			// He gives you a teachy tv
+
+		} else if (counter > 186) {
 			gameWon(player, location);
 			return;
 		};

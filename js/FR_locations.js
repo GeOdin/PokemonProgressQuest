@@ -5,22 +5,28 @@
  *
  * This file contains:
  * var locations // with background information about the different locations
+ * var healingLocations // with background information about the healingLocations
  * function createLocation(...) // to create the different locations
+ * function getLocation(...)
+ * function createHealingLocation(...)
+ * function getHealingLocation(...)
+ * function createWildPokemon(...)
+ * function setBattleBackGround(...)
+ * function healAllPokemon(...)
  */
- // Add healingLocations/ make it a special version of locations
- // also create call to lastHealingPlace to teleport to if player faints
- // add background for battle as part of location
- // add items you can buy per city pokemart?
+// add items you can buy per city pokemart?
+// make objects of the trainers
 
 // Background information about the different locations (make different variables for routes and cities?)
 // include locationNumber
 var locations = [
-	["locationName", "battleBackground", "trainerAmount", "trainer1", "pokemonAmount", "pokemon1Name", "pokemon1MinLevel", "pokemon1MaxLevel", "pokemon1Chance", "pokemon2Name", "pokemon2MinLevel", "pokemon2MaxLevel", "pokemon2Chance"],
-	["Introduction", "BattleGrass", 0, "", 0, "", 1, 1, 1.0, "", 1, 1, 0.0],
-	["Pallet Town", "BattleGrass", 0, "", 0, "", 1, 1, 1.0, "", 1, 1, 0.0],
-	["Route 1", "BattleGrass", 0, "", 2, "PIDGEY", 2, 5, 0.5, "RATTATA", 2, 4, 0.5],
-	["Viridian City", "BattleGrass", 0, "", 0, "", 1, 1, 1.0, "", 1, 1, 0.0],
- 	["Hall of Fame", "BattleGrass", 0, "", 1, "", 1, 1, 1.0, "", 1, 1, 0.0]
+	["locationName", "battleBackground", "trainerAmount", "trainer1Number", "pokemonAmount", "pokemon1Name", "pokemon1MinLevel", "pokemon1MaxLevel", "pokemon1Chance", "pokemon2Name", "pokemon2MinLevel", "pokemon2MaxLevel", "pokemon2Chance", "pokemon3Name", "pokemon3MinLevel", "pokemon3MaxLevel", "pokemon3Chance"],
+	["Introduction", "BattleGrass", 0, "", 0, "", 1, 1, 1.0, "", 1, 1, 0.0, "", 1, 1, 0.0],
+	["Pallet Town", "BattleGrass", 0, "", 0, "", 1, 1, 1.0, "", 1, 1, 0.0, "", 1, 1, 0.0],
+	["Route 1", "BattleGrass", 0, "", 2, "PIDGEY", 2, 5, 0.5, "RATTATA", 2, 4, 0.5, "", 1, 1, 0.0],
+	["Viridian City", "BattleGrass", 0, "", 0, "", 1, 1, 1.0, "", 1, 1, 0.0, "", 1, 1, 0.0],
+	["Route 22", "BattleGrass", 1, "002", 3, "RATTATA", 2, 5, 0.45, "MANKEY", 2, 5, 0.45, "SPEAROW", 3, 5, 0.1],
+ 	["Hall of Fame", "BattleGrass", 0, "", 1, "", 1, 1, 1.0, "", 1, 1, 0.0, "", 1, 1, 0.0]
 ];
 // Background information for the different healing locations
 var healingLocations = [
@@ -29,11 +35,16 @@ var healingLocations = [
 	["002", "Viridian City PokeCenter", getLocation("Viridian City"), "images/Viridian City PokeCenter.png", "We've restored your POK&eacute;MON to <br/>full health. "]
 ];
 
+var trainers = [
+	["trainerNumber", "trainerName", "trainerMoney", "pokemon1Name", "pokemon1Level", "pokemon2Name", "pokemon2Level", "pokemon3Name", "pokemon3Level", "pokemon4Name", "pokemon4Level", "pokemon5Name", "pokemon5Level", "pokemon6Name", "pokemon6Level"],
+	["002", "trainerName", "trainerMoney", "pokemon1Name", "pokemon1Level", "pokemon2Name", "pokemon2Level", "pokemon3Name", "pokemon3Level", "pokemon4Name", "pokemon4Level", "pokemon5Name", "pokemon5Level", "pokemon6Name", "pokemon6Level"]
+];
+
 // Function to create the different locations
 // add amount of trainers
 // add amount of pokemon
 // add items and amount of items?
-function createLocation(locationName, battleBackground, trainerAmount, trainer1, pokemonAmount, pokemon1Name, pokemon1MinLevel, pokemon1MaxLevel, pokemon1Chance, pokemon2Name, pokemon2MinLevel, pokemon2MaxLevel, pokemon2Chance) {
+function createLocation(locationName, battleBackground, trainerAmount, trainer1, pokemonAmount, pokemon1Name, pokemon1MinLevel, pokemon1MaxLevel, pokemon1Chance, pokemon2Name, pokemon2MinLevel, pokemon2MaxLevel, pokemon2Chance, pokemon3Name, pokemon3MinLevel, pokemon3MaxLevel, pokemon3Chance) {
 	this.Name = locationName; //0
 	this.battleBackground = battleBackground; //1
 	this.trainerAmount = trainerAmount; //2
@@ -47,6 +58,10 @@ function createLocation(locationName, battleBackground, trainerAmount, trainer1,
 	this.pokemon2MinLevel = pokemon2MinLevel; //10
 	this.pokemon2MaxLevel = pokemon2MaxLevel; //11
 	this.pokemon2Chance = pokemon2Chance; //12
+	this.pokemon3Name = pokemon3Name; //13
+	this.pokemon3MinLevel = pokemon3MinLevel; //14
+	this.pokemon3MaxLevel = pokemon3MaxLevel; //15
+	this.pokemon3Chance = pokemon3Chance; //16
 };
 
 function getLocation(locationName){
@@ -73,6 +88,14 @@ function getLocation(locationName){
 	return newLocation;
 };
 
+function createHealingLocation(healingLocationNumber, healingLocationName, healingLocationLocation, healingLocationImage, healingLocationText){
+	this.number = healingLocationNumber;
+	this.Name = healingLocationName;
+	this.locatedIn = healingLocationLocation;
+	this.image = healingLocationImage;
+	this.storyText = healingLocationText;
+};
+
 // Function to create a healing location
 function getHealingLocation(healingLocationName){
 	var newHealingLocation;
@@ -88,14 +111,6 @@ function getHealingLocation(healingLocationName){
 		};
 	};
 	return newHealingLocation;
-};
-
-function createHealingLocation(healingLocationNumber, healingLocationName, healingLocationLocation, healingLocationImage, healingLocationText){
-	this.number = healingLocationNumber;
-	this.Name = healingLocationName;
-	this.locatedIn = healingLocationLocation;
-	this.image = healingLocationImage;
-	this.storyText = healingLocationText;
 };
 
 // Function to create wild Pokemon for a certain location 
@@ -177,3 +192,15 @@ function healAllPokemon(player) {
 		};
 	};
 };
+
+/*// Get trainerName
+function getTrainerName(trainerNumber) {
+	var trainerName;
+	for (i=0; i<trainer.length; i++) {
+		// do something
+		if (trainer[i][0] == trainerNumber) {
+			trainerName = trainer[i][1];
+			return trainerName;
+		};
+	};
+};*/
