@@ -8,6 +8,7 @@ by GeOdin -->
 <html>
 	<head>
 		<link type="text/css" rel="stylesheet" href="stylesheetPokemonFireRed.css"/>
+		<link rel="shortcut icon" type="image/png" href="favicon.png" />
 		<script src="js/FR.js">
 		</script>
 		<script src="js/FR_Battle.js">
@@ -24,6 +25,8 @@ by GeOdin -->
 		</script>
 		<script src="js/FR_Player.js">
 		</script>
+<!--		<script src="js/FR_Player_WebPage.js">
+		</script> -->
 		<script src="js/FR_PKMN.js">
 		</script>
 		<script src="js/FR_PKMNcaught.js">
@@ -34,12 +37,31 @@ by GeOdin -->
 		</script>
 <!--		<script src="js/FR_StoryText.js">
 		</script> -->
+		<script src="FR_Webpages.js">
+		</script>
 		<script src="js/FR_WildPokemonBattle.js">
 		</script>
 		<!-- test should be deleted in final version -->
 <!--		<script type="js/test_20150731.js">
 		</script> -->
 		<script src="js/test.js"> 
+		</script>
+		<script>
+			function createPlayerPage() {
+				// Set variables for webpage
+			    var playerName = "Madeleine";
+			    var playerGender = "girl";
+			    var playerMoney = "3000";
+			    var potionAmount = 1;
+
+			    // Set variables for the creation of the webpage
+			    var playerWindow = window.open("", "MsgWindow", "width=200, height=450");
+			    var webHead = "<html><head><link rel='shortcut icon' type='image/png' href='favicon.png' /><title>Player</title></head>";
+			    var webBody = "<body bgcolor=#202020><font color=#FFFFFF><center><h2>Player: "+playerName+"</h2><img src='images/FireRed_"+playerGender+".png' /><br/>Money: "+playerMoney+"</center></font></body></html>";
+
+			    // Create the webpage
+			    playerWindow.document.write(webHead+webBody);
+			};
 		</script>
 		<title>
 			Pok&eacute;mon Progress Quest - Pok&eacute;mon FireRed
@@ -71,7 +93,7 @@ by GeOdin -->
 		</div>
 		<div id="main">
 			<div id="playerStats">
-				<a href="#" onclick="window.open('playerStats.html', 'Player', 'width=300,height=200');">
+				<a href="#" onclick="createPlayerPage()">
 					<div id="player">
 					</div>
 					<img id="imgPlayer" /> <br/>
@@ -118,6 +140,16 @@ by GeOdin -->
 				<div id="pokedexSQUIRTLE">
 					<a href="#" onclick="window.open('pokedex/SQUIRTLE.html', 'SQUIRTLE', 'width=300,height=200');">
 						SQUIRTLE 
+					</a> <br/>
+				</div>
+				<div id="pokedexRATTATA">
+					<a href="#" onclick="window.open('pokedex/RATTATA.html', 'RATTATA', 'width=300,height=200');">
+						RATTATA
+					</a> <br/>
+				</div>
+				<div id="pokedexPIDGEY">
+					<a href="#" onclick="window.open('pokedex/PIDGEY.html', 'PIDGEY', 'width=300,height=200');">
+						PIDGEY
 					</a> <br/>
 				</div>
 			</div>

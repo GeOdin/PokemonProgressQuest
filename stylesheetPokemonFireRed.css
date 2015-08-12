@@ -149,7 +149,7 @@ body h3 {
 
 #playerMoney img{
 	height: 3vh;
-	vertical-align: middle;
+	vertical-align: top;
 }
 
 #playerMoneyAmount {
@@ -294,6 +294,14 @@ body h3 {
 }
 
 #pokedexSQUIRTLE{
+	display: none;
+}
+
+#pokedexRATTATA{
+	display: none;
+}
+
+#pokedexPIDGEY{
 	display: none;
 }
 

@@ -7,29 +7,79 @@ by GeOdin -->
 
 <html>
 	<head>
-		<link type="text/css" rel="stylesheet" href="stylesheetPokemonFireRed.css"/>
-<!--		<script src="js/FR.js">
+		<link type="text/css" rel="stylesheet" href="stylesheetPokemonFireRedPlayer.css"/>
+		<link rel="shortcut icon" type="image/png" href="favicon.png" />
+		<script src="js/FR.js">
+		</script>
+		<script src="js/FR_Battle.js">
+		</script>
+		<script src="js/FR_BattleActions.js">
+		</script>
+		<script src="js/FR_FirstPokemonBattle.js">
+		</script>
+		<script src="js/FR_GameWon.js">
+		</script>
+		<script src="js/FR_Items.js">
+		</script>
+		<script src="js/FR_Locations.js">
+		</script>
+		<script src="js/FR_Player.js">
+		</script>
+		<script src="js/FR_Player_WebPage.js">
+		</script>
+		<script src="js/FR_PKMN.js">
+		</script>
+		<script src="js/FR_PKMNcaught.js">
+		</script>
+<!--		<script src="js/FR_PKMNmoves.js">
 		</script> -->
+		<script src="js/FR_Rival.js">
+		</script>
+<!--		<script src="js/FR_StoryText.js">
+		</script> -->
+		<script src="js/FR_WildPokemonBattle.js">
+		</script>
+		<!-- test should be deleted in final version -->
+<!--		<script type="js/test_20150731.js">
+		</script> -->
+		<script src="js/test.js"> 
+		</script>
 		<script type="text/javascript">
 			function close_window() {
     			close();
     		}
 		</script>
 		<title>
-			Player player.Name
+			Player
 		</title>
 	</head>
-	<body>
+	<body onload="getPlayerWebPage();">
 		<a href="#" onclick="close_window()" style="text-decoration: none; color: #D0D0D0;">
 			<div id="wholePage">
 				<h2>
-					Player player.Name
+					Player <p id="player2"></p>
 				</h2>
 				<img src="images/FireRed_girl.png" /> <br/>
-				Money: 3000 Pok&eacute;dollar <br/>
+				<div id="playerMoney2">
+				Money: <img src="images/pokedollar.png" /> <!-- image from http://www.reddit.com/r/pokemon/comments/2tup93/how_do_you_pronounce_the_pokemon_currency_symbol/ --> <p id="playerMoneyAmount2">
+					</p> <br/>
+				</div>
 				Items: <br/>
 				Heal Items: Potion <br/>
 			</div>
 		</a>
 	</body>
 </html>
+
+<!-- 			<div id="playerStats">
+				<a href="#" onclick="window.open('playerStats.html', 'Player', 'width=300,height=200');">
+					<div id="player">
+					</div>
+					<img id="imgPlayer" /> <br/>
+				<div id="playerMoney">
+					<img src="images/pokedollar.png" /> <!-- image from http://www.reddit.com/r/pokemon/comments/2tup93/how_do_you_pronounce_the_pokemon_currency_symbol/ -->
+<!--					<p id="playerMoneyAmount">
+					</p>
+				</div> <br/>
+				</a>
+			</div> -->

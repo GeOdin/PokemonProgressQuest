@@ -28,7 +28,7 @@ var healItems = [
 var pokeballs = [
 	// catchrate in percentage
 	["itemNumber", "itemName", "itemType", "catchRate", "amount"],
-	["101", "Pokeball", "POKEBALL", 100, 1]
+	["101", "Pokeball", "POKEBALL", 1, 0]
 ];
 
 // Create a bag object
