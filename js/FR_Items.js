@@ -13,6 +13,7 @@
  * healPokemonWithItem(healItemObject);
  */
  // add max amount of certain items?
+ // add price of items?
 
 var items = [
 	["itemNumber", "itemName", "itemType"],

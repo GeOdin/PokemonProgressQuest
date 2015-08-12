@@ -10,6 +10,7 @@
  // Add healingLocations/ make it a special version of locations
  // also create call to lastHealingPlace to teleport to if player faints
  // add background for battle as part of location
+ // add items you can buy per city pokemart?
 
 // Background information about the different locations (make different variables for routes and cities?)
 // include locationNumber
@@ -148,7 +149,8 @@ function createWildPokemon(locationObject) {
 					pokemonStats[i][18],
 					pokemonStats[i][19],
 					pokemonStats[i][20],
-					pokemonStats[i][21]
+					pokemonStats[i][21],
+					pokemonStats[i][22]
 				);
 			};
 		};

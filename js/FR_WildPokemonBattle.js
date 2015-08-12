@@ -816,12 +816,12 @@ function getExpWildPokemonBattle(wildPokemon) {
 function catchPokemon(wildPokemon, pokeball, player) {
 	// Set variables
 	var wildPokemonCaught = false;
+	var shakeCounter = 0;
 	var maxHP = wildPokemon.maxHP;
 	var HP = wildPokemon.currentHP;
-	var catchRate = 255; //pokemon stat
-	var ballModifier = pokeball.catchRate; // pokeball stat
+	var catchRate = wildPokemon.catchRate;
+	var ballModifier = pokeball.catchRate;
 	var statusModifier = 1; // pokemon stat
-	var shakeCounter = 0;
 
 	// Check whether the wildPokemon is caught
 	// http://www.serebii.net/games/capture.shtml

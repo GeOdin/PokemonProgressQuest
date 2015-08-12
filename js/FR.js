@@ -198,7 +198,8 @@ function startGame() {
 							pokemonStats[i][18],
 							pokemonStats[i][19],
 							pokemonStats[i][20],
-							pokemonStats[i][21]
+							pokemonStats[i][21],
+							pokemonStats[i][22]
 						);
 					}
 				}
@@ -269,7 +270,8 @@ function startGame() {
 							pokemonStats[i][18],
 							pokemonStats[i][19],
 							pokemonStats[i][20],
-							pokemonStats[i][21]
+							pokemonStats[i][21],
+							pokemonStats[i][22]
 					);}
 				}
 			}
