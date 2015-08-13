@@ -56,7 +56,6 @@ by GeOdin */
 // arrange player.bag in the same way as in pokemon FireRed?
 //// KEY ITEMS POCKET
 //// POK&eacute BALLS POCKET
-// enter prompt that lets players decide how fast the progress quest should go?
 // give locationObject an image property to show after battle (instead of only having the battle background with no pokemon after the battle ends)
 // sometimes player and opponent pokemon are not shown in wildPokemonBattle(...)
 // add quest log?
@@ -79,6 +78,8 @@ by GeOdin */
 //// make text for playerGender and starterPokemon all of the choices for faster testing (see comment after choosing this)
 ////// playerGender = prompt("Now tell me. Are you a boy? \nOr are you a girl? ", "Boy, girl");
 ////// starterPokemon = prompt("Which Pokemon do you want as a starter? ", "Bulbasaur/ Charmander/ Squirtle");
+// add option to nickname your starter (var starterNickname?) (Sean)
+// ask for a favorite pokemon at the start, to make sure the game keeps that Pokemon in the activePokemon, and you hava a 100% chance to obtain that Pokemon
 
 function startGame() { 
 
@@ -111,7 +112,13 @@ function startGame() {
 	var location;
 	var lastHealingLocation;
 	var wildPokemon;
-	var gamePokemonFireRed = window.setInterval(change, 3000); //3000 for 3 seconds; //1 for quick testing purposes; //500 for slow testing purposes;
+	var interval;
+
+	while (isNaN(interval) == true){
+		interval = 1000 * prompt("How much time should be between different events? \n1 = 1 second. ", 3);
+	};
+
+	var gamePokemonFireRed = window.setInterval(change, interval); //3000 for 3 seconds; //1 for quick testing purposes; //500 for slow testing purposes;
 	gamePokemonFireRed;	
 	// Start game
 /*	if (confirm("Are you ready to play? \nIt takes 5 seconds to start the game. ") == true) {
