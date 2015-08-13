@@ -21,6 +21,7 @@ by GeOdin */
 // reset amount of damage from attacks after battle (delete effects of growl, for example)
 // document.getElementById("imageStory") --> HallofFame.png picture keeps popping up after restarting the game
 // add PAUSE button (which turns into a CONTINUE-button) to pause/ continue the game --> save value of counter and restart change() function with continue button
+//// add var progress that gets the same value as counter to store the counter value and use that for the pause/ continue button?
 // show mainpage and pokemon red buttons before game is started (and after game is finished)?
 // add disclaimer?
 // add credits/ read through at the start?
@@ -74,6 +75,10 @@ by GeOdin */
 //// Heal all Pokemon that go into the PC
 //// add location of pokemon to pokedex (activePokemon / pc?)
 // add battle against rival on route 22
+// Final version:
+//// make text for playerGender and starterPokemon all of the choices for faster testing (see comment after choosing this)
+////// playerGender = prompt("Now tell me. Are you a boy? \nOr are you a girl? ", "Boy, girl");
+////// starterPokemon = prompt("Which Pokemon do you want as a starter? ", "Bulbasaur/ Charmander/ Squirtle");
 
 function startGame() { 
 
@@ -169,13 +174,13 @@ function startGame() {
 			// Get the player's gender
 			// currently, you can cancel this and the picture of oak stays
 			while(!(playerGender == "boy" | playerGender == "girl")) { // while(playerGender === "boy" | playerGender === "b" | playerGender === "male" | playerGender === "m" | playerGender === "girl" | playerGender === "g" | playerGender === "female" | playerGender === "f") {} // get this to work!
-				playerGender = prompt("Now tell me. Are you a boy? \nOr are you a girl? ", "Boy / girl");
+				playerGender = prompt("Now tell me. Are you a boy? \nOr are you a girl? ", "Girl"); // final version: make it playerGender = prompt("Now tell me. Are you a boy? \nOr are you a girl? ", "Boy / girl");
 				playerGender = playerGender.toLowerCase();
 			};
 			
 			// Get the starter Pokemon
 			while(!(starterPokemon == "BULBASAUR" | starterPokemon == "CHARMANDER" | starterPokemon == "SQUIRTLE")) {
-				starterPokemon = prompt("Which Pokemon do you want as a starter? ", "Bulbasaur / Charmander / Squirtle");
+				starterPokemon = prompt("Which Pokemon do you want as a starter? ", "Charmander"); // fina; version: make it starterPokemon = prompt("Which Pokemon do you want as a starter? ", "Bulbasaur / Charmander / Squirtle");
 				starterPokemon = starterPokemon.toUpperCase();
 			};
 			//player.starterPokemon = starterPokemon;

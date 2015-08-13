@@ -869,6 +869,7 @@ function catchPokemon(wildPokemon, pokeball, player) {
 					player[activePokemonCall] = wildPokemon;
 					player.pokemonCaught[wildPokemon.Name] = 1;
 					document.getElementById(activePokemonCall).innerHTML = player[activePokemonCall].Name + "<br/>Lvl: " + player[activePokemonCall].level + "<br/> <img src=images/pokemonIconsTransparent/" + player[activePokemonCall].Name + ".png /> <br/>HP: " + player[activePokemonCall].currentHP + "/" + player[activePokemonCall].maxHP + "<br/> Exp: " + player[activePokemonCall].currentExp + "/" + player[activePokemonCall].expNextLevel;
+					document.getElementById("pokemonRed").innerHTML = "Gotcha! <br/>" + wildPokemon.Name + " was caught! ";
 				};
 			};
 		};
@@ -881,11 +882,12 @@ function catchPokemon(wildPokemon, pokeball, player) {
 					if (player.pokemonCaught[wildPokemon.Name] == 0) {
 						player[pcPokemonCall] = wildPokemon;
 						player.pokemonCaught[wildPokemon.Name] = 1;
+						document.getElementById("pokemonRed").innerHTML = "Gotcha! <br/>" + wildPokemon.Name + " was caught! ";
+						document.getElementById("pokemonRed".innerHTML) = wildPokemon.Name + " was sent to the PC. ";
 					};
 				};
 			};
 		};
-		document.getElementById("pokemonRed").innerHTML = "Gotcha! <br/>" + wildPokemon.Name + " was caught! ";
 		document.getElementById("pokemonRed").innerHTML = wildPokemon.Name + "'s data was <br/>added to the Pok&eacute;DEX. ";
 		document.getElementById("pokemonCaught").innerHTML = "<h3> Pok&eacute;dex: " + player.pokemonCaught.total() + "/151";
 		document.getElementById("pokedex" + wildPokemon.Name).style.display = "block";
