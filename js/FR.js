@@ -11,12 +11,11 @@ by GeOdin */
 // Story used from Pokemon FireRed
 // change pokemonRed in pokemonFireRed
 // movie of start of game: https://www.youtube.com/watch?v=yUS1IcC5CBY
-// in var tekst, Pokemon can be POK&eacute;MON
+// in #pokemonRed text, Pokemon can be POK&eacute;MON
 // show map where you currently are --> town map http://bulbapedia.bulbagarden.net/wiki/File:Viridian_City_FRLG.png (in folder townMap in folder images, currently not yet used)
 // use male / female screenshots depending on playerGender
 // make Pokemonnames, stats and moves all uppercase?
 // include documentation for all files
-// set up some sort of in-game PC-system
 // chance to encounter a shiny?
 // show images of pokemon on top of battle image and flip pokemon image of opponent ? --> https://css-tricks.com/snippets/css/flip-an-image/
 // reset amount of damage from attacks after battle (delete effects of growl, for example)
@@ -30,7 +29,6 @@ by GeOdin */
 ////  then add function to arrange the level up
 // add flee option to/before wildPokemonBattle function when wildPokemon.level >= player.activePokemon1.level -2 // -1 ?
 // add also flee option to/before wildPokemonBattle when the player.activePokemon1.currentHP < ((2/3) * player.activePokemon1.maxHP) // or something like that?
-// add var healingLocations to FR_locations.js
 // add var lastVisitedHealingLocation to FR.js, so that player can either return there by choice (pokemon low on health) or by teleport (when all pokemon are fainted/currentHP 0)
 // test wildPokemonBattle --> set wildPokemon as #activePokemon1 in html code
 // make wild pokemon appeared part of start of wildPokemonBattle function?
@@ -66,6 +64,16 @@ by GeOdin */
 // is the damage still working for wildPokemonBattle(...)?
 // only try to catch pokemon if their HP is below a certain threshold?
 // http://javascript.info/tutorial/settimeout-setinterval
+// add cheat code that with player.Name = "cheat" and rival.Name = "code" you start with all pokemon level 99
+//// C: Cubone/ Chansey/ Charizard/ Cloyster
+//// H: Horsea/ Haunter/ Hitmonchan/ Hitmonlee/ Hypno
+//// E: Exeggutor/ Electabuzz/ Electrode
+//// A: Arcanine/ Articuno
+//// T: Tangela/ Tauros
+//// set all pokemonCaught to 1
+//// Heal all Pokemon that go into the PC
+//// add location of pokemon to pokedex (activePokemon / pc?)
+// add battle against rival on route 22
 
 function startGame() { 
 
@@ -98,7 +106,7 @@ function startGame() {
 	var location;
 	var lastHealingLocation;
 	var wildPokemon;
-	var gamePokemonFireRed = window.setInterval(change, 500); //3000 for 3 seconds; //1 for quick testing purposes; //500 for slow testing purposes;
+	var gamePokemonFireRed = window.setInterval(change, 3000); //3000 for 3 seconds; //1 for quick testing purposes; //500 for slow testing purposes;
 	gamePokemonFireRed;	
 	// Start game
 /*	if (confirm("Are you ready to play? \nIt takes 5 seconds to start the game. ") == true) {
@@ -156,20 +164,20 @@ function startGame() {
 			// Get the player's name
 			while (playerName.length < 1) { //typeof playerName == "undefined" | 
 				playerName = prompt("Let's begin with your name. \nWhat is it? ", "YOUR NAME?");//insert Yes/no option?
-			}
+			};
 			
 			// Get the player's gender
 			// currently, you can cancel this and the picture of oak stays
 			while(!(playerGender == "boy" | playerGender == "girl")) { // while(playerGender === "boy" | playerGender === "b" | playerGender === "male" | playerGender === "m" | playerGender === "girl" | playerGender === "g" | playerGender === "female" | playerGender === "f") {} // get this to work!
 				playerGender = prompt("Now tell me. Are you a boy? \nOr are you a girl? ", "Boy / girl");
 				playerGender = playerGender.toLowerCase();
-			}
+			};
 			
 			// Get the starter Pokemon
 			while(!(starterPokemon == "BULBASAUR" | starterPokemon == "CHARMANDER" | starterPokemon == "SQUIRTLE")) {
 				starterPokemon = prompt("Which Pokemon do you want as a starter? ", "Bulbasaur / Charmander / Squirtle");
 				starterPokemon = starterPokemon.toUpperCase();
-			}
+			};
 			//player.starterPokemon = starterPokemon;
 			var starterPokemonLevel = 5;
 
@@ -221,8 +229,8 @@ function startGame() {
 				"" // active pokemon 6
 			); 
 			// Save the player's name and money as coockies
-			savePlayerName(player.Name);
-			savePlayerMoney(player.money);
+/*			savePlayerName(player.Name);
+			savePlayerMoney(player.money);*/
 
 			// Get the rival's name
 			rivalName = prompt("What is the name of your rival? ", "RIVAL's NAME");
@@ -325,7 +333,15 @@ function startGame() {
 						locations[i][13],
 						locations[i][14],
 						locations[i][15],
-						locations[i][16]
+						locations[i][16],
+						locations[i][17],
+						locations[i][18],
+						locations[i][19],
+						locations[i][20],
+						locations[i][21],
+						locations[i][22],
+						locations[i][23],
+						locations[i][24]
 					);
 				};
 			};
@@ -424,7 +440,15 @@ function startGame() {
 						locations[i][13],
 						locations[i][14],
 						locations[i][15],
-						locations[i][16]
+						locations[i][16],
+						locations[i][17],
+						locations[i][18],
+						locations[i][19],
+						locations[i][20],
+						locations[i][21],
+						locations[i][22],
+						locations[i][23],
+						locations[i][24]
 					);
 				};
 			};
@@ -681,7 +705,15 @@ function startGame() {
 						locations[i][13],
 						locations[i][14],
 						locations[i][15],
-						locations[i][16]
+						locations[i][16],
+						locations[i][17],
+						locations[i][18],
+						locations[i][19],
+						locations[i][20],
+						locations[i][21],
+						locations[i][22],
+						locations[i][23],
+						locations[i][24]
 					);
 				};
 			};
@@ -753,7 +785,15 @@ function startGame() {
 						locations[i][13],
 						locations[i][14],
 						locations[i][15],
-						locations[i][16]
+						locations[i][16],
+						locations[i][17],
+						locations[i][18],
+						locations[i][19],
+						locations[i][20],
+						locations[i][21],
+						locations[i][22],
+						locations[i][23],
+						locations[i][24]
 					);
 				};
 			};
@@ -811,7 +851,15 @@ function startGame() {
 						locations[i][13],
 						locations[i][14],
 						locations[i][15],
-						locations[i][16]
+						locations[i][16],
+						locations[i][17],
+						locations[i][18],
+						locations[i][19],
+						locations[i][20],
+						locations[i][21],
+						locations[i][22],
+						locations[i][23],
+						locations[i][24]
 					);
 				};
 			};
@@ -858,7 +906,15 @@ function startGame() {
 						locations[i][13],
 						locations[i][14],
 						locations[i][15],
-						locations[i][16]
+						locations[i][16],
+						locations[i][17],
+						locations[i][18],
+						locations[i][19],
+						locations[i][20],
+						locations[i][21],
+						locations[i][22],
+						locations[i][23],
+						locations[i][24]
 					);
 				};
 			};
@@ -1006,7 +1062,15 @@ function startGame() {
 						locations[i][13],
 						locations[i][14],
 						locations[i][15],
-						locations[i][16]
+						locations[i][16],
+						locations[i][17],
+						locations[i][18],
+						locations[i][19],
+						locations[i][20],
+						locations[i][21],
+						locations[i][22],
+						locations[i][23],
+						locations[i][24]
 					);
 				};
 			};
@@ -1078,7 +1142,15 @@ function startGame() {
 						locations[i][13],
 						locations[i][14],
 						locations[i][15],
-						locations[i][16]
+						locations[i][16],
+						locations[i][17],
+						locations[i][18],
+						locations[i][19],
+						locations[i][20],
+						locations[i][21],
+						locations[i][22],
+						locations[i][23],
+						locations[i][24]
 					);
 				};
 			};
@@ -1140,7 +1212,15 @@ function startGame() {
 						locations[i][13],
 						locations[i][14],
 						locations[i][15],
-						locations[i][16]
+						locations[i][16],
+						locations[i][17],
+						locations[i][18],
+						locations[i][19],
+						locations[i][20],
+						locations[i][21],
+						locations[i][22],
+						locations[i][23],
+						locations[i][24]
 					);
 				};
 			};
@@ -1189,12 +1269,210 @@ function startGame() {
 		// include battle with rival;
 		// trainers are part of location
 		// make them objects // special one for rival? // since he give more comments usually?
+		// back to Viridian City
 		} else if (counter == 186) {
 			document.getElementById("imageStory").src = "images/Viridian City3.png"; // screenshot from Pokemon FireRed game from GAME FREAK inc.
 			document.getElementById("pokemonRed").innerHTML = "Then this guy tells you how to catch a POK&eacute;MON. ";
 			// He gives you a teachy tv
+		} else if (counter == 187) {
+			//////////////
+			// Route 22 // http://bulbapedia.bulbagarden.net/wiki/File:Kanto_Route_2_FRLG.png
+			//////////////
 
-		} else if (counter > 186) {
+			// Create the Route 2 location
+			locationName = "Route 2";
+			for (i=0; i<locations.length; i++) {
+				if (locations[i][0] == locationName) {
+					location = new createLocation(
+						locations[i][0], 
+						locations[i][1], 
+						locations[i][2], 
+						locations[i][3], 
+						locations[i][4], 
+						locations[i][5], 
+						locations[i][6], 
+						locations[i][7], 
+						locations[i][8], 
+						locations[i][9],
+						locations[i][10],
+						locations[i][11],
+						locations[i][12],
+						locations[i][13],
+						locations[i][14],
+						locations[i][15],
+						locations[i][16],
+						locations[i][17],
+						locations[i][18],
+						locations[i][19],
+						locations[i][20],
+						locations[i][21],
+						locations[i][22],
+						locations[i][23],
+						locations[i][24]
+					);
+				};
+			};
+			document.getElementById("locationName").innerHTML = "<h2>" + location.Name + "</h2>";
+			document.getElementById("imageStory").src = "images/Route 2/FRLG_Route_2.png"; // image from http://bulbapedia.bulbagarden.net/wiki/File:Kanto_Route_2_FRLG.png
+			document.getElementById("pokemonRed").innerHTML = location.Name;
+		} else if (counter == 188) {
+			wildPokemon = new createWildPokemon(location);
+			document.getElementById("imageStory").src = "images/wildPokemon/" + wildPokemon.Name + ".png"; // image from Bulbapedia // http://bulbapedia.bulbagarden.net/wiki/Main_Page
+			document.getElementById("pokemonRed").innerHTML = "Wild " + wildPokemon.Name + " level " + wildPokemon.level + " appeared!";
+		} else if (counter == 189) {
+			// add flee option to wildPokemonBattle function id wildPokemon.level >= player.activePokemon1.level
+			wildPokemonBattle(player, wildPokemon, location);
+
+			// Either 1-2 battles here
+			var randNumb0Or2 = 2 * Math.round(Math.random());
+			counter += randNumb0Or2;
+		} else if (counter == 190) {
+			wildPokemon = new createWildPokemon(location);
+			document.getElementById("imageStory").src = "images/wildPokemon/" + wildPokemon.Name + ".png"; // image from Bulbapedia // http://bulbapedia.bulbagarden.net/wiki/Main_Page
+			document.getElementById("pokemonRed").innerHTML = "Wild " + wildPokemon.Name + " level " + wildPokemon.level + " appeared!";
+		} else if (counter == 191) {
+			// add flee option to wildPokemonBattle function id wildPokemon.level >= player.activePokemon1.level
+			wildPokemonBattle(player, wildPokemon, location);
+		} else if (counter == 192) {
+			/////////////////////
+			// Viridian Forest // http://bulbapedia.bulbagarden.net/wiki/File:Viridian_Forest_FRLG.png
+			/////////////////////
+
+			// Create the Viridian Forest location
+			locationName = "Viridian Forest";
+			for (i=0; i<locations.length; i++) {
+				if (locations[i][0] == locationName) {
+					location = new createLocation(
+						locations[i][0], 
+						locations[i][1], 
+						locations[i][2], 
+						locations[i][3], 
+						locations[i][4], 
+						locations[i][5], 
+						locations[i][6], 
+						locations[i][7], 
+						locations[i][8], 
+						locations[i][9],
+						locations[i][10],
+						locations[i][11],
+						locations[i][12],
+						locations[i][13],
+						locations[i][14],
+						locations[i][15],
+						locations[i][16],
+						locations[i][17],
+						locations[i][18],
+						locations[i][19],
+						locations[i][20],
+						locations[i][21],
+						locations[i][22],
+						locations[i][23],
+						locations[i][24]
+					);
+				};
+			};
+			document.getElementById("locationName").innerHTML = "<h2>" + location.Name + "</h2>";
+			document.getElementById("imageStory").src = "images/Viridian Forest/Viridian_Forest_FRLG.png"; // image from http://bulbapedia.bulbagarden.net/wiki/File:Viridian_Forest_FRLG.png
+			document.getElementById("pokemonRed").innerHTML = location.Name;
+		} else if (counter == 193) {
+			wildPokemon = new createWildPokemon(location);
+			document.getElementById("imageStory").src = "images/wildPokemon/" + wildPokemon.Name + ".png"; // image from Bulbapedia // http://bulbapedia.bulbagarden.net/wiki/Main_Page
+			document.getElementById("pokemonRed").innerHTML = "Wild " + wildPokemon.Name + " level " + wildPokemon.level + " appeared!";
+		} else if (counter == 194) {
+			// add flee option to wildPokemonBattle function id wildPokemon.level >= player.activePokemon1.level
+			wildPokemonBattle(player, wildPokemon, location);
+		} else if (counter == 195) {
+			wildPokemon = new createWildPokemon(location);
+			document.getElementById("imageStory").src = "images/wildPokemon/" + wildPokemon.Name + ".png"; // image from Bulbapedia // http://bulbapedia.bulbagarden.net/wiki/Main_Page
+			document.getElementById("pokemonRed").innerHTML = "Wild " + wildPokemon.Name + " level " + wildPokemon.level + " appeared!";
+		} else if (counter == 196) {
+			// add flee option to wildPokemonBattle function id wildPokemon.level >= player.activePokemon1.level
+			wildPokemonBattle(player, wildPokemon, location);
+		} else if (counter == 197) {
+			wildPokemon = new createWildPokemon(location);
+			document.getElementById("imageStory").src = "images/wildPokemon/" + wildPokemon.Name + ".png"; // image from Bulbapedia // http://bulbapedia.bulbagarden.net/wiki/Main_Page
+			document.getElementById("pokemonRed").innerHTML = "Wild " + wildPokemon.Name + " level " + wildPokemon.level + " appeared!";
+		} else if (counter == 198) {
+			// add flee option to wildPokemonBattle function id wildPokemon.level >= player.activePokemon1.level
+			wildPokemonBattle(player, wildPokemon, location);
+
+			// Either 3-5 battles here
+			var randNumb0To2 = 2 * Math.round(2 * Math.random());
+			counter += randNumb0To2;
+		} else if (counter == 199) {
+			wildPokemon = new createWildPokemon(location);
+			document.getElementById("imageStory").src = "images/wildPokemon/" + wildPokemon.Name + ".png"; // image from Bulbapedia // http://bulbapedia.bulbagarden.net/wiki/Main_Page
+			document.getElementById("pokemonRed").innerHTML = "Wild " + wildPokemon.Name + " level " + wildPokemon.level + " appeared!";
+		} else if (counter == 200) {
+			// add flee option to wildPokemonBattle function id wildPokemon.level >= player.activePokemon1.level
+			wildPokemonBattle(player, wildPokemon, location);
+		} else if (counter == 201) {
+			wildPokemon = new createWildPokemon(location);
+			document.getElementById("imageStory").src = "images/wildPokemon/" + wildPokemon.Name + ".png"; // image from Bulbapedia // http://bulbapedia.bulbagarden.net/wiki/Main_Page
+			document.getElementById("pokemonRed").innerHTML = "Wild " + wildPokemon.Name + " level " + wildPokemon.level + " appeared!";
+		} else if (counter == 202) {
+			// add flee option to wildPokemonBattle function id wildPokemon.level >= player.activePokemon1.level
+			wildPokemonBattle(player, wildPokemon, location);
+		} else if (counter == 203) {
+			//////////////
+			// Route 22 // http://bulbapedia.bulbagarden.net/wiki/File:Kanto_Route_2_FRLG.png
+			//////////////
+
+			// Create the Route 2 location
+			locationName = "Route 2";
+			for (i=0; i<locations.length; i++) {
+				if (locations[i][0] == locationName) {
+					location = new createLocation(
+						locations[i][0], 
+						locations[i][1], 
+						locations[i][2], 
+						locations[i][3], 
+						locations[i][4], 
+						locations[i][5], 
+						locations[i][6], 
+						locations[i][7], 
+						locations[i][8], 
+						locations[i][9],
+						locations[i][10],
+						locations[i][11],
+						locations[i][12],
+						locations[i][13],
+						locations[i][14],
+						locations[i][15],
+						locations[i][16],
+						locations[i][17],
+						locations[i][18],
+						locations[i][19],
+						locations[i][20],
+						locations[i][21],
+						locations[i][22],
+						locations[i][23],
+						locations[i][24]
+					);
+				};
+			};
+			document.getElementById("locationName").innerHTML = "<h2>" + location.Name + "</h2>";
+			document.getElementById("imageStory").src = "images/Route 2/FRLG_Route_2.png"; // image from http://bulbapedia.bulbagarden.net/wiki/File:Kanto_Route_2_FRLG.png
+			document.getElementById("pokemonRed").innerHTML = location.Name;
+		} else if (counter == 204) {
+			wildPokemon = new createWildPokemon(location);
+			document.getElementById("imageStory").src = "images/wildPokemon/" + wildPokemon.Name + ".png"; // image from Bulbapedia // http://bulbapedia.bulbagarden.net/wiki/Main_Page
+			document.getElementById("pokemonRed").innerHTML = "Wild " + wildPokemon.Name + " level " + wildPokemon.level + " appeared!";
+		} else if (counter == 205) {
+			// add flee option to wildPokemonBattle function id wildPokemon.level >= player.activePokemon1.level
+			wildPokemonBattle(player, wildPokemon, location);
+
+			// Either 1-2 battles here
+			var randNumb0Or2 = 2 * Math.round(Math.random());
+			counter += randNumb0Or2;
+		} else if (counter == 206) {
+			wildPokemon = new createWildPokemon(location);
+			document.getElementById("imageStory").src = "images/wildPokemon/" + wildPokemon.Name + ".png"; // image from Bulbapedia // http://bulbapedia.bulbagarden.net/wiki/Main_Page
+			document.getElementById("pokemonRed").innerHTML = "Wild " + wildPokemon.Name + " level " + wildPokemon.level + " appeared!";
+		} else if (counter == 207) {
+			// add flee option to wildPokemonBattle function id wildPokemon.level >= player.activePokemon1.level
+			wildPokemonBattle(player, wildPokemon, location);
+		} else if (counter > 207) {
 			gameWon(player, location);
 			return;
 		};

@@ -20,13 +20,15 @@
 // Background information about the different locations (make different variables for routes and cities?)
 // include locationNumber
 var locations = [
-	["locationName", "battleBackground", "trainerAmount", "trainer1Number", "pokemonAmount", "pokemon1Name", "pokemon1MinLevel", "pokemon1MaxLevel", "pokemon1Chance", "pokemon2Name", "pokemon2MinLevel", "pokemon2MaxLevel", "pokemon2Chance", "pokemon3Name", "pokemon3MinLevel", "pokemon3MaxLevel", "pokemon3Chance"],
-	["Introduction", "BattleGrass", 0, "", 0, "", 1, 1, 1.0, "", 1, 1, 0.0, "", 1, 1, 0.0],
-	["Pallet Town", "BattleGrass", 0, "", 0, "", 1, 1, 1.0, "", 1, 1, 0.0, "", 1, 1, 0.0],
-	["Route 1", "BattleGrass", 0, "", 2, "PIDGEY", 2, 5, 0.5, "RATTATA", 2, 4, 0.5, "", 1, 1, 0.0],
-	["Viridian City", "BattleGrass", 0, "", 0, "", 1, 1, 1.0, "", 1, 1, 0.0, "", 1, 1, 0.0],
-	["Route 22", "BattleGrass", 1, "002", 3, "RATTATA", 2, 5, 0.45, "MANKEY", 2, 5, 0.45, "SPEAROW", 3, 5, 0.1],
- 	["Hall of Fame", "BattleGrass", 0, "", 1, "", 1, 1, 1.0, "", 1, 1, 0.0, "", 1, 1, 0.0]
+	["locationName", "battleBackground", "trainerAmount", "trainer1Number", "pokemonAmount", "pokemon1Name", "pokemon1MinLevel", "pokemon1MaxLevel", "pokemon1Chance", "pokemon2Name", "pokemon2MinLevel", "pokemon2MaxLevel", "pokemon2Chance", "pokemon3Name", "pokemon3MinLevel", "pokemon3MaxLevel", "pokemon3Chance", "pokemon4Name", "pokemon4MinLevel", "pokemon4MaxLevel", "pokemon4Chance", "pokemon5Name", "pokemon5MinLevel", "pokemon5MaxLevel", "pokemon5Chance"],
+	["Introduction", "BattleGrass", 0, "", 0, "", 1, 1, 1.0, "", 1, 1, 0.0, "", 1, 1, 0.0, "", 1, 1, 0.0, "", 1, 1, 0.0],
+	["Pallet Town", "BattleGrass", 0, "", 0, "", 1, 1, 1.0, "", 1, 1, 0.0, "", 1, 1, 0.0, "", 1, 1, 0.0, "", 1, 1, 0.0],
+	["Route 1", "BattleGrass", 0, "", 2, "PIDGEY", 2, 5, 0.5, "RATTATA", 2, 4, 0.5, "", 1, 1, 0.0, "", 1, 1, 0.0, "", 1, 1, 0.0],
+	["Viridian City", "BattleGrass", 0, "", 0, "", 1, 1, 1.0, "", 1, 1, 0.0, "", 1, 1, 0.0, "", 1, 1, 0.0, "", 1, 1, 0.0],
+	["Route 22", "BattleGrass", 1, "002", 3, "RATTATA", 2, 5, 0.45, "MANKEY", 2, 5, 0.45, "SPEAROW", 3, 5, 0.1, "", 1, 1, 0.0, "", 1, 1, 0.0],
+	["Route 2", "BattleGrass", 0, "", 4, "PIDGEY", 2, 5, 0.45, "RATTATA", 2, 5, 0.45, "CATEPIE", 4, 5, 0.05, "WEEDLE", 4, 5, 0.05, "", 1, 1, 0.0],
+	["Viridian Forest", "BattleGrass", 0, "", 4, "CATERPIE", 3, 5, 0.4, "WEEDLE", 3, 5, 0.4, "METAPOD", 5, 5, 0.05, "KAKUNA", 4, 6, 0.1, "PIKACHU", 3, 5, 0.05],
+ 	["Hall of Fame", "BattleGrass", 0, "", 1, "", 1, 1, 1.0, "", 1, 1, 0.0, "", 1, 1, 0.0, "", 1, 1, 0.0, "", 1, 1, 0.0]
 ];
 // Background information for the different healing locations
 var healingLocations = [
@@ -44,7 +46,7 @@ var trainers = [
 // add amount of trainers
 // add amount of pokemon
 // add items and amount of items?
-function createLocation(locationName, battleBackground, trainerAmount, trainer1, pokemonAmount, pokemon1Name, pokemon1MinLevel, pokemon1MaxLevel, pokemon1Chance, pokemon2Name, pokemon2MinLevel, pokemon2MaxLevel, pokemon2Chance, pokemon3Name, pokemon3MinLevel, pokemon3MaxLevel, pokemon3Chance) {
+function createLocation(locationName, battleBackground, trainerAmount, trainer1, pokemonAmount, pokemon1Name, pokemon1MinLevel, pokemon1MaxLevel, pokemon1Chance, pokemon2Name, pokemon2MinLevel, pokemon2MaxLevel, pokemon2Chance, pokemon3Name, pokemon3MinLevel, pokemon3MaxLevel, pokemon3Chance, pokemon4Name, pokemon4MinLevel, pokemon4MaxLevel, pokemon4Chance, pokemon5Name, pokemon5MinLevel, pokemon5MaxLevel, pokemon5Chance) {
 	this.Name = locationName; //0
 	this.battleBackground = battleBackground; //1
 	this.trainerAmount = trainerAmount; //2
@@ -62,6 +64,14 @@ function createLocation(locationName, battleBackground, trainerAmount, trainer1,
 	this.pokemon3MinLevel = pokemon3MinLevel; //14
 	this.pokemon3MaxLevel = pokemon3MaxLevel; //15
 	this.pokemon3Chance = pokemon3Chance; //16
+	this.pokemon4Name = pokemon4Name; //17
+	this.pokemon4MinLevel = pokemon4MinLevel; //18
+	this.pokemon4MaxLevel = pokemon4MaxLevel; //19
+	this.pokemon4Chance = pokemon4Chance; //20
+	this.pokemon5Name = pokemon5Name; //21
+	this.pokemon5MinLevel = pokemon5MinLevel; //22
+	this.pokemon5MaxLevel = pokemon5MaxLevel; //23
+	this.pokemon5Chance = pokemon5Chance; //24
 };
 
 function getLocation(locationName){
@@ -81,7 +91,19 @@ function getLocation(locationName){
 				locations[i][9],
 				locations[i][10],
 				locations[i][11],
-				locations[i][12]
+				locations[i][12],
+				locations[i][13],
+				locations[i][14],
+				locations[i][15],
+				locations[i][16],
+				locations[i][17],
+				locations[i][18],
+				locations[i][19],
+				locations[i][20],
+				locations[i][21],
+				locations[i][22],
+				locations[i][23],
+				locations[i][24]
 			);
 		};
 	};

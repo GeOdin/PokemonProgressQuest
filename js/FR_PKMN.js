@@ -130,6 +130,7 @@ var expNeededPerExpGroup = [
 //Pokemon background information per pokemon
 var pokemon = [
 	//level 1 and accompanying stats and moves by default, or level of evolvement
+	// add pokemonEvolveItem
 	["pokemonNumber", "pokemonName", "pokemonLevel", "pokemonType1", "pokemonType2", "pokemonEvolveLevel", "pokemonEvolvePokemon", "hp", "attack", "defense", "spattack", "spdefense", "speed", "pokemonMove1", "pokemonMove2", "pokemonMove3", "pokemonMove4", "expGroup", "currentExp", "expNextLevel", "baseExpYield", "catchRate"], //0
 	["001", "BULBASAUR", 1, "GRASS", "POISON", 16, "IVYSAUR", 12, 6, 6, 6, 6, 6, "Tackle", "", "", "", "expGroup", "currentExp", "expNextLevel", 64, "catchRate"], //1
 	["002", "IVYSAUR", 16, "GRASS", "POISON", 32, "VENUSAUR", "HP", "Attack", "Defense", "Sp. Attack", "Sp. Defense", "Speed", "", "", "", "", "expGroup", "currentExp", "expNextLevel", 141, "catchRate"],
@@ -140,11 +141,11 @@ var pokemon = [
 	["007", "SQUIRTLE", 1, "WATER", "", 16, "WARTORTLE", 12, 6, 6, 6, 6, 6, "Tackle", "", "", "", "expGroup", "currentExp", "expNextLevel", 66, "catchRate"],
 	["008", "WARTORTLE", 16, "WATER", "", 36, "BLASTOISE", "HP", "Attack", "Defense", "Sp. Attack", "Sp. Defense", "Speed", "", "", "", "", "expGroup", "currentExp", "expNextLevel", 143, "catchRate"],
 	["009", "BLASTOISE", 36, "WATER", "", 0, "", "HP", "Attack", "Defense", "Sp. Attack", "Sp. Defense", "Speed", "", "", "", "", "expGroup", "currentExp", "expNextLevel", 210, "catchRate"],
-	["010", "CATERPIE", 1, "BUG", "", 7, "METAPOD", "HP", "Attack", "Defense", "Sp. Attack", "Sp. Defense", "Speed", "Tackle", "String Shot", "", "", "expGroup", "currentExp", "expNextLevel", 53, "catchRate"],
-	["011", "METAPOD", 7, "BUG", "", 10, "BUTTERFREE", "HP", "Attack", "Defense", "Sp. Attack", "Sp. Defense", "Speed", "Tackle", "String Shot", "Harden", "", "expGroup", "currentExp", "expNextLevel", 72, "catchRate"],
+	["010", "CATERPIE", 1, "BUG", "", 7, "METAPOD", 12, 5, 6, 5, 5, 6, "Tackle", "String Shot", "", "", "MEDIUMFAST", 0, getExpNeededForNextLevel(1, "MEDIUMFAST"), 53, 255],
+	["011", "METAPOD", 1, "BUG", "", 10, "BUTTERFREE", 12, 5, 6, 5, 5, 5, "Harden", "", "", "", "MEDIUMFAST", 0, getExpNeededForNextLevel(1, "MEDIUMFAST"), 72, 120],
 	["012", "BUTTERFREE", 10, "BUG", "FLYING", 0, "", "HP", "Attack", "Defense", "Sp. Attack", "Sp. Defense", "Speed", "Tackle", "String Shot", "Harden", "Confusion", "expGroup", "currentExp", "expNextLevel", 160, "catchRate"],
-	["013", "WEEDLE", 1, "BUG", "POISON", 7, "KAKUNA", "HP", "Attack", "Defense", "Sp. Attack", "Sp. Defense", "Speed", "Poison Sting", "String Shot", "", "", "expGroup", "currentExp", "expNextLevel", 52, "catchRate"],
-	["014", "KAKUNA", 7, "BUG", "POISON", 10, "BEEDRILL", "HP", "Attack", "Defense", "Sp. Attack", "Sp. Defense", "Speed", "Poison Sting", "String Shot", "Harden", "", "expGroup", "currentExp", "expNextLevel", 71, "catchRate"],
+	["013", "WEEDLE", 1, "BUG", "POISON", 7, "KAKUNA", 12, 6, 5, 5, 5, 6, "Poison Sting", "String Shot", "", "", "MEDIUMFAST", 0, getExpNeededForNextLevel(1, "MEDIUMFAST"), 52, 255],
+	["014", "KAKUNA", 1, "BUG", "POISON", 10, "BEEDRILL", 12, 5, 6, 5, 5, 6, "Harden", "", "", "", "MEDIUMFAST", 0, getExpNeededForNextLevel(1, "MEDIUMFAST"), 71, 120],
 	["015", "BEEDRILL", 10, "BUG", "POISON", 0, "", "HP", "Attack", "Defense", "Sp. Attack", "Sp. Defense", "Speed", "Poison Sting", "String Shot", "Harden", "Fury Attack", "expGroup", "currentExp", "expNextLevel", 159, "catchRate"],
 	["016", "PIDGEY", 1, "NORMAL", "FLYING", 18, "PIDGEOTTO", 12, 6, 6, 6, 6, 6, "Tackle", "", "", "", "expGroup", "currentExp", "expNextLevel", 55, 255],
 	["017", "PIDGEOTTO", 18, "NORMAL", "FLYING", 36, "PIDGEOT", "HP", "Attack", "Defense", "Sp. Attack", "Sp. Defense", "Speed", "Tackle", "Sand-attack", "Gust", "Quick Attack", "expGroup", "currentExp", "expNextLevel", 113, "catchRate"],
@@ -155,7 +156,7 @@ var pokemon = [
 	["022", "FEAROW", "pokemonLevel", "pokemonType1", "pokemonType2", "pokemonEvolveLevel", "pokemonEvolvePokemon", "hp", "attack", "defense", "spattack", "spdefense", "speed", "pokemonMove1", "pokemonMove2", "pokemonMove3", "pokemonMove4", "expGroup", "currentExp", "expNextLevel", 162, "catchRate"],
 	["023", "EKANS", 1, "pokemonType1", "pokemonType2", "pokemonEvolveLevel", "pokemonEvolvePokemon", "hp", "attack", "defense", "spattack", "spdefense", "speed", "pokemonMove1", "pokemonMove2", "pokemonMove3", "pokemonMove4", "expGroup", "currentExp", "expNextLevel", "baseExpYield", "catchRate"],
 	["024", "ARBOK", "pokemonLevel", "pokemonType1", "pokemonType2", "pokemonEvolveLevel", "pokemonEvolvePokemon", "hp", "attack", "defense", "spattack", "spdefense", "speed", "pokemonMove1", "pokemonMove2", "pokemonMove3", "pokemonMove4", "expGroup", "currentExp", "expNextLevel", "baseExpYield", "catchRate"],
-	["025", "PIKACHU", 1, "pokemonType1", "pokemonType2", "pokemonEvolveLevel", "pokemonEvolvePokemon", "hp", "attack", "defense", "spattack", "spdefense", "speed", "pokemonMove1", "pokemonMove2", "pokemonMove3", "pokemonMove4", "expGroup", "currentExp", "expNextLevel", "baseExpYield", "catchRate"],
+	["025", "PIKACHU", 1, "ELECTRIC", "", 0, "RAICHU", 12, 6, 5, 6, 6, 7, "Thundershock", "Growl", "", "", "MEDIUMFAST", 0, getExpNeededForNextLevel(1, "MEDIUMFAST"), 82, 190],
 	["026", "RAICHU", "pokemonLevel", "pokemonType1", "pokemonType2", "pokemonEvolveLevel", "pokemonEvolvePokemon", "hp", "attack", "defense", "spattack", "spdefense", "speed", "pokemonMove1", "pokemonMove2", "pokemonMove3", "pokemonMove4", "expGroup", "currentExp", "expNextLevel", "baseExpYield", "catchRate"],
 	["027", "SANDSHREW", 1, "pokemonType1", "pokemonType2", "pokemonEvolveLevel", "pokemonEvolvePokemon", "hp", "attack", "defense", "spattack", "spdefense", "speed", "pokemonMove1", "pokemonMove2", "pokemonMove3", "pokemonMove4", "expGroup", "currentExp", "expNextLevel", "baseExpYield", "catchRate"],
 	["028", "SANDSLASH", "pokemonLevel", "pokemonType1", "pokemonType2", "pokemonEvolveLevel", "pokemonEvolvePokemon", "hp", "attack", "defense", "spattack", "spdefense", "speed", "pokemonMove1", "pokemonMove2", "pokemonMove3", "pokemonMove4", "expGroup", "currentExp", "expNextLevel", "baseExpYield", "catchRate"],
@@ -186,7 +187,7 @@ var pokemon = [
 	["053", "PERSIAN", "pokemonLevel", "pokemonType1", "pokemonType2", "pokemonEvolveLevel", "pokemonEvolvePokemon", "hp", "attack", "defense", "spattack", "spdefense", "speed", "pokemonMove1", "pokemonMove2", "pokemonMove3", "pokemonMove4", "expGroup", "currentExp", "expNextLevel", "baseExpYield", "catchRate"],
 	["054", "PSYDUCK", 1, "pokemonType1", "pokemonType2", "pokemonEvolveLevel", "pokemonEvolvePokemon", "hp", "attack", "defense", "spattack", "spdefense", "speed", "pokemonMove1", "pokemonMove2", "pokemonMove3", "pokemonMove4", "expGroup", "currentExp", "expNextLevel", "baseExpYield", "catchRate"],
 	["055", "GOLDUCK", "pokemonLevel", "pokemonType1", "pokemonType2", "pokemonEvolveLevel", "pokemonEvolvePokemon", "hp", "attack", "defense", "spattack", "spdefense", "speed", "pokemonMove1", "pokemonMove2", "pokemonMove3", "pokemonMove4", "expGroup", "currentExp", "expNextLevel", "baseExpYield", "catchRate"],
-	["056", "MANKEY", 1, "FIGHT", "", 28, "PRIMEAPE", 12, 6, 6, 6, 6, 6, "Scratch", "Leer", "", "", "MEDIUMFAST", 0, getExpNeededForNextLevel(1, "MEDIUMFAST"), 74, 190],
+	["056", "MANKEY", 1, "FIGHTING", "", 28, "PRIMEAPE", 12, 6, 6, 6, 6, 6, "Scratch", "Leer", "", "", "MEDIUMFAST", 0, getExpNeededForNextLevel(1, "MEDIUMFAST"), 74, 190],
 	["057", "PRIMEAPE", "pokemonLevel", "pokemonType1", "pokemonType2", "pokemonEvolveLevel", "pokemonEvolvePokemon", "hp", "attack", "defense", "spattack", "spdefense", "speed", "pokemonMove1", "pokemonMove2", "pokemonMove3", "pokemonMove4", "expGroup", "currentExp", "expNextLevel", 149, "catchRate"],
 	["058", "GROWLITHE", 1, "pokemonType1", "pokemonType2", "pokemonEvolveLevel", "pokemonEvolvePokemon", "hp", "attack", "defense", "spattack", "spdefense", "speed", "pokemonMove1", "pokemonMove2", "pokemonMove3", "pokemonMove4", "expGroup", "currentExp", "expNextLevel", "baseExpYield", "catchRate"],
 	["059", "ARCANINE", "pokemonLevel", "pokemonType1", "pokemonType2", "pokemonEvolveLevel", "pokemonEvolvePokemon", "hp", "attack", "defense", "spattack", "spdefense", "speed", "pokemonMove1", "pokemonMove2", "pokemonMove3", "pokemonMove4", "expGroup", "currentExp", "expNextLevel", "baseExpYield", "catchRate"],
@@ -342,6 +343,46 @@ var pokemonStats = [ //make the variables here the same as for the function crea
 	["007", "SQUIRTLE", 14, "WATER", "", 16, "WARTORTLE", 40, 40, 24, 29, 25, 29, 23, "Tackle", "Tail Whip", "Bubble", "Water Gun", "MEDIUMSLOW", 0, getExpNeededForNextLevel(14, "MEDIUMSLOW"), getBaseExpYield("007"), getCatchRate("007")],
 	["007", "SQUIRTLE", 15, "WATER", "", 16, "WARTORTLE", 42, 42, 26, 31, 26, 30, 24, "Tackle", "Tail Whip", "Bubble", "Water Gun", "MEDIUMSLOW", 0, getExpNeededForNextLevel(15, "MEDIUMSLOW"), getBaseExpYield("007"), getCatchRate("007")],
 	["007", "SQUIRTLE", 16, "WATER", "", 16, "WARTORTLE", 45, 45, 27, 33, 27, 33, 25, "Tackle", "Tail Whip", "Bubble", "Water Gun", "MEDIUMSLOW", 0, getExpNeededForNextLevel(16, "MEDIUMSLOW"), getBaseExpYield("007"), getCatchRate("007")],
+	["010", "CATERPIE", 1, "BUG", "", 7, "METAPOD", 12, 12, 5, 6, 5, 5, 6, "Tackle", "String Shot", "", "", "MEDIUMFAST", 0, getExpNeededForNextLevel(1, "MEDIUMFAST"), getBaseExpYield("010"), getCatchRate("010")],
+	["010", "CATERPIE", 2, "BUG", "", 7, "METAPOD", 14, 14, 6, 7, 6, 6, 7, "Tackle", "String Shot", "", "", "MEDIUMFAST", 0, getExpNeededForNextLevel(2, "MEDIUMFAST"), getBaseExpYield("010"), getCatchRate("010")],
+	["010", "CATERPIE", 3, "BUG", "", 7, "METAPOD", 16, 16, 7, 8, 7, 7, 8, "Tackle", "String Shot", "", "", "MEDIUMFAST", 0, getExpNeededForNextLevel(3, "MEDIUMFAST"), getBaseExpYield("010"), getCatchRate("010")],
+	["010", "CATERPIE", 4, "BUG", "", 7, "METAPOD", 18, 18, 8, 9, 7, 7, 9, "Tackle", "String Shot", "", "", "MEDIUMFAST", 0, getExpNeededForNextLevel(4, "MEDIUMFAST"), getBaseExpYield("010"), getCatchRate("010")],
+	["010", "CATERPIE", 5, "BUG", "", 7, "METAPOD", 21, 21, 9, 11, 8, 8, 12, "Tackle", "String Shot", "", "", "MEDIUMFAST", 0, getExpNeededForNextLevel(5, "MEDIUMFAST"), getBaseExpYield("010"), getCatchRate("010")],
+	["010", "CATERPIE", 6, "BUG", "", 7, "METAPOD", 23, 23, 11, 12, 9, 9, 13, "Tackle", "String Shot", "", "", "MEDIUMFAST", 0, getExpNeededForNextLevel(6, "MEDIUMFAST"), getBaseExpYield("010"), getCatchRate("010")],
+	["010", "CATERPIE", 7, "BUG", "", 7, "METAPOD", 25, 25, 12, 13, 9, 9, 14, "Tackle", "String Shot", "", "", "MEDIUMFAST", 0, getExpNeededForNextLevel(7, "MEDIUMFAST"), getBaseExpYield("010"), getCatchRate("010")],
+	["010", "CATERPIE", 8, "BUG", "", 7, "METAPOD", 27, 27, 13, 14, 11, 11, 15, "Tackle", "String Shot", "", "", "MEDIUMFAST", 0, getExpNeededForNextLevel(8, "MEDIUMFAST"), getBaseExpYield("010"), getCatchRate("010")],
+	["010", "CATERPIE", 9, "BUG", "", 7, "METAPOD", 29, 29, 14, 15, 12, 12, 16, "Tackle", "String Shot", "", "", "MEDIUMFAST", 0, getExpNeededForNextLevel(9, "MEDIUMFAST"), getBaseExpYield("010"), getCatchRate("010")],
+	["010", "CATERPIE", 10, "BUG", "", 7, "METAPOD", 32, 32, 15, 16, 13, 13, 18, "Tackle", "String Shot", "", "", "MEDIUMFAST", 0, getExpNeededForNextLevel(10, "MEDIUMFAST"), getBaseExpYield("010"), getCatchRate("010")],
+	["011", "METAPOD", 1, "BUG", "", 10, "BUTTERFREE", 12, 12, 5, 6, 5, 5, 5, "Harden", "", "", "", "MEDIUMFAST", 0, getExpNeededForNextLevel(1, "MEDIUMFAST"), getBaseExpYield("011"), getCatchRate("011")],
+	["011", "METAPOD", 2, "BUG", "", 10, "BUTTERFREE", 14, 14, 6, 7, 6, 6, 6, "Harden", "", "", "", "MEDIUMFAST", 0, getExpNeededForNextLevel(2, "MEDIUMFAST"), getBaseExpYield("011"), getCatchRate("011")],
+	["011", "METAPOD", 3, "BUG", "", 10, "BUTTERFREE", 16, 16, 7, 9, 7, 7, 7, "Harden", "", "", "", "MEDIUMFAST", 0, getExpNeededForNextLevel(3, "MEDIUMFAST"), getBaseExpYield("011"), getCatchRate("011")],
+	["011", "METAPOD", 4, "BUG", "", 10, "BUTTERFREE", 19, 19, 7, 11, 8, 8, 8, "Harden", "", "", "", "MEDIUMFAST", 0, getExpNeededForNextLevel(4, "MEDIUMFAST"), getBaseExpYield("011"), getCatchRate("011")],
+	["011", "METAPOD", 5, "BUG", "", 10, "BUTTERFREE", 21, 21, 8, 13, 9, 9, 9, "Harden", "", "", "", "MEDIUMFAST", 0, getExpNeededForNextLevel(5, "MEDIUMFAST"), getBaseExpYield("011"), getCatchRate("011")],
+	["011", "METAPOD", 6, "BUG", "", 10, "BUTTERFREE", 23, 23, 9, 14, 9, 9, 11, "Harden", "", "", "", "MEDIUMFAST", 0, getExpNeededForNextLevel(6, "MEDIUMFAST"), getBaseExpYield("011"), getCatchRate("011")],
+	["011", "METAPOD", 7, "BUG", "", 10, "BUTTERFREE", 26, 26, 9, 15, 11, 11, 12, "Tackle", "String Shot", "Harden", "", "MEDIUMFAST", 0, getExpNeededForNextLevel(7, "MEDIUMFAST"), getBaseExpYield("011"), getCatchRate("011")],
+	["011", "METAPOD", 8, "BUG", "", 10, "BUTTERFREE", 28, 28, 11, 17, 12, 12, 13, "Tackle", "String Shot", "Harden", "", "MEDIUMFAST", 0, getExpNeededForNextLevel(8, "MEDIUMFAST"), getBaseExpYield("011"), getCatchRate("011")],
+	["011", "METAPOD", 9, "BUG", "", 10, "BUTTERFREE", 30, 30, 12, 18, 13, 13, 14, "Tackle", "String Shot", "Harden", "", "MEDIUMFAST", 0, getExpNeededForNextLevel(9, "MEDIUMFAST"), getBaseExpYield("011"), getCatchRate("011")],
+	["011", "METAPOD", 10, "BUG", "", 10, "BUTTERFREE", 33, 33, 13, 20, 14, 14, 15, "Tackle", "String Shot", "Harden", "", "MEDIUMFAST", 0, getExpNeededForNextLevel(10, "MEDIUMFAST"), getBaseExpYield("011"), getCatchRate("011")],
+	["013", "WEEDLE", 1, "BUG", "POISON", 7, "KAKUNA", 12, 12, 6, 5, 5, 5, 6, "Poison Sting", "String Shot", "", "", "MEDIUMFAST", 0, getExpNeededForNextLevel(1, "MEDIUMFAST"), getBaseExpYield("013"), getCatchRate("013")],
+	["013", "WEEDLE", 2, "BUG", "POISON", 7, "KAKUNA", 14, 14, 7, 6, 6, 6, 7, "Poison Sting", "String Shot", "", "", "MEDIUMFAST", 0, getExpNeededForNextLevel(2, "MEDIUMFAST"), getBaseExpYield("013"), getCatchRate("013")],
+	["013", "WEEDLE", 3, "BUG", "POISON", 7, "KAKUNA", 16, 16, 8, 7, 7, 7, 8, "Poison Sting", "String Shot", "", "", "MEDIUMFAST", 0, getExpNeededForNextLevel(3, "MEDIUMFAST"), getBaseExpYield("013"), getCatchRate("013")],
+	["013", "WEEDLE", 4, "BUG", "POISON", 7, "KAKUNA", 18, 18, 9, 8, 7, 7, 11, "Poison Sting", "String Shot", "", "", "MEDIUMFAST", 0, getExpNeededForNextLevel(4, "MEDIUMFAST"), getBaseExpYield("013"), getCatchRate("013")],
+	["013", "WEEDLE", 5, "BUG", "POISON", 7, "KAKUNA", 20, 20, 11, 9, 8, 8, 12, "Poison Sting", "String Shot", "", "", "MEDIUMFAST", 0, getExpNeededForNextLevel(5, "MEDIUMFAST"), getBaseExpYield("013"), getCatchRate("013")],
+	["013", "WEEDLE", 6, "BUG", "POISON", 7, "KAKUNA", 22, 22, 12, 11, 9, 9, 13, "Poison Sting", "String Shot", "", "", "MEDIUMFAST", 0, getExpNeededForNextLevel(6, "MEDIUMFAST"), getBaseExpYield("013"), getCatchRate("013")],
+	["013", "WEEDLE", 7, "BUG", "POISON", 7, "KAKUNA", 24, 24, 13, 12, 9, 9, 15, "Poison Sting", "String Shot", "", "", "MEDIUMFAST", 0, getExpNeededForNextLevel(7, "MEDIUMFAST"), getBaseExpYield("013"), getCatchRate("013")],
+	["013", "WEEDLE", 8, "BUG", "POISON", 7, "KAKUNA", 26, 26, 14, 13, 11, 11, 16, "Poison Sting", "String Shot", "", "", "MEDIUMFAST", 0, getExpNeededForNextLevel(8, "MEDIUMFAST"), getBaseExpYield("013"), getCatchRate("013")],
+	["013", "WEEDLE", 9, "BUG", "POISON", 7, "KAKUNA", 28, 28, 15, 14, 12, 12, 17, "Poison Sting", "String Shot", "", "", "MEDIUMFAST", 0, getExpNeededForNextLevel(9, "MEDIUMFAST"), getBaseExpYield("013"), getCatchRate("013")],
+	["013", "WEEDLE", 10, "BUG", "POISON", 7, "KAKUNA", 31, 31, 16, 15, 13, 13, 19, "Poison Sting", "String Shot", "", "", "MEDIUMFAST", 0, getExpNeededForNextLevel(10, "MEDIUMFAST"), getBaseExpYield("013"), getCatchRate("013")],
+	["014", "KAKUNA", 1, "BUG", "POISON", 10, "BEEDRILL", 12, 12, 5, 6, 5, 5, 6, "Harden", "", "", "", "MEDIUMFAST", 0, getExpNeededForNextLevel(1, "MEDIUMFAST"), getBaseExpYield("014"), getCatchRate("014")],
+	["014", "KAKUNA", 2, "BUG", "POISON", 10, "BEEDRILL", 14, 14, 6, 7, 6, 6, 7, "Harden", "", "", "", "MEDIUMFAST", 0, getExpNeededForNextLevel(2, "MEDIUMFAST"), getBaseExpYield("014"), getCatchRate("014")],
+	["014", "KAKUNA", 3, "BUG", "POISON", 10, "BEEDRILL", 16, 16, 7, 8, 7, 7, 8, "Harden", "", "", "", "MEDIUMFAST", 0, getExpNeededForNextLevel(3, "MEDIUMFAST"), getBaseExpYield("014"), getCatchRate("014")],
+	["014", "KAKUNA", 4, "BUG", "POISON", 10, "BEEDRILL", 18, 18, 8, 11, 8, 8, 9, "Harden", "", "", "", "MEDIUMFAST", 0, getExpNeededForNextLevel(4, "MEDIUMFAST"), getBaseExpYield("014"), getCatchRate("014")],
+	["014", "KAKUNA", 5, "BUG", "POISON", 10, "BEEDRILL", 21, 21, 9, 12, 9, 9, 11, "Harden", "", "", "", "MEDIUMFAST", 0, getExpNeededForNextLevel(5, "MEDIUMFAST"), getBaseExpYield("014"), getCatchRate("014")],
+	["014", "KAKUNA", 6, "BUG", "POISON", 10, "BEEDRILL", 23, 23, 9, 13, 9, 9, 12, "Harden", "", "", "", "MEDIUMFAST", 0, getExpNeededForNextLevel(6, "MEDIUMFAST"), getBaseExpYield("014"), getCatchRate("014")],
+	["014", "KAKUNA", 7, "BUG", "POISON", 10, "BEEDRILL", 25, 25, 11, 15, 11, 11, 13, "Poison Sting", "String Shot", "Harden", "", "MEDIUMFAST", 0, getExpNeededForNextLevel(7, "MEDIUMFAST"), getBaseExpYield("014"), getCatchRate("014")],
+	["014", "KAKUNA", 8, "BUG", "POISON", 10, "BEEDRILL", 27, 27, 12, 16, 12, 12, 14, "Poison Sting", "String Shot", "Harden", "", "MEDIUMFAST", 0, getExpNeededForNextLevel(8, "MEDIUMFAST"), getBaseExpYield("014"), getCatchRate("014")],
+	["014", "KAKUNA", 9, "BUG", "POISON", 10, "BEEDRILL", 29, 29, 13, 17, 13, 13, 15, "Poison Sting", "String Shot", "Harden", "", "MEDIUMFAST", 0, getExpNeededForNextLevel(9, "MEDIUMFAST"), getBaseExpYield("014"), getCatchRate("014")],
+	["014", "KAKUNA", 10, "BUG", "POISON", 10, "BEEDRILL", 32, 32, 14, 19, 14, 14, 16, "Poison Sting", "String Shot", "Harden", "", "MEDIUMFAST", 0, getExpNeededForNextLevel(10, "MEDIUMFAST"), getBaseExpYield("014"), getCatchRate("014")],
 	["016", "PIDGEY", 1, "NORMAL", "FLYING", 18, "PIDGEOTTO", 12, 12, 6, 6, 6, 6, 6, "Tackle", "", "", "", "MEDIUMSLOW", 0, getExpNeededForNextLevel(1, "MEDIUMSLOW"), getBaseExpYield("016"), getCatchRate("016")],
 	["016", "PIDGEY", 2, "NORMAL", "FLYING", 18, "PIDGEOTTO", 14, 14, 7, 7, 7, 7, 7, "Tackle", "", "", "", "MEDIUMSLOW", 0, getExpNeededForNextLevel(2, "MEDIUMSLOW"), getBaseExpYield("016"), getCatchRate("016")],
 	["016", "PIDGEY", 3, "NORMAL", "FLYING", 18, "PIDGEOTTO", 16, 16, 8, 8, 8, 8, 9, "Tackle", "", "", "", "MEDIUMSLOW", 0, getExpNeededForNextLevel(3, "MEDIUMSLOW"), getBaseExpYield("016"), getCatchRate("016")],
@@ -357,11 +398,21 @@ var pokemonStats = [ //make the variables here the same as for the function crea
 	["021", "SPEAROW", 3, "NORMAL", "FLYING", 20, "FEAROW", 16, 16, 9, 7, 7, 7, 11, "Peck", "Growl", "", "", "MEDIUMFAST", 0, getExpNeededForNextLevel(3, "MEDIUMFAST"), getBaseExpYield("021"), getCatchRate("021")],
 	["021", "SPEAROW", 4, "NORMAL", "FLYING", 20, "FEAROW", 18, 18, 12, 8, 8, 8, 12, "Peck", "Growl", "", "", "MEDIUMFAST", 0, getExpNeededForNextLevel(4, "MEDIUMFAST"), getBaseExpYield("021"), getCatchRate("021")],
 	["021", "SPEAROW", 5, "NORMAL", "FLYING", 20, "FEAROW", 20, 20, 13, 9, 9, 9, 14, "Peck", "Growl", "", "", "MEDIUMFAST", 0, getExpNeededForNextLevel(5, "MEDIUMFAST"), getBaseExpYield("021"), getCatchRate("021")],
-	["056", "MANKEY", 1, "FIGHT", "", 28, "PRIMEAPE", 12, 12, 6, 6, 6, 6, 6, "Scratch", "Leer", "", "", "MEDIUMFAST", 0, getExpNeededForNextLevel(1, "MEDIUMFAST"), getBaseExpYield("056"), getCatchRate("056")],
-	["056", "MANKEY", 2, "FIGHT", "", 28, "PRIMEAPE", 14, 14, 8, 7, 7, 7, 8, "Scratch", "Leer", "", "", "MEDIUMFAST", 0, getExpNeededForNextLevel(2, "MEDIUMFAST"), getBaseExpYield("056"), getCatchRate("056")],
-	["056", "MANKEY", 3, "FIGHT", "", 28, "PRIMEAPE", 16, 16, 11, 8, 8, 8, 11, "Scratch", "Leer", "", "", "MEDIUMFAST", 0, getExpNeededForNextLevel(3, "MEDIUMFAST"), getBaseExpYield("056"), getCatchRate("056")],
-	["056", "MANKEY", 4, "FIGHT", "", 28, "PRIMEAPE", 18, 18, 13, 9, 9, 9, 12, "Scratch", "Leer", "", "", "MEDIUMFAST", 0, getExpNeededForNextLevel(4, "MEDIUMFAST"), getBaseExpYield("056"), getCatchRate("056")],
-	["056", "MANKEY", 5, "FIGHT", "", 28, "PRIMEAPE", 20, 20, 15, 11, 11, 12, 14, "Scratch", "Leer", "", "", "MEDIUMFAST", 0, getExpNeededForNextLevel(5, "MEDIUMFAST"), getBaseExpYield("056"), getCatchRate("056")]
+	["025", "PIKACHU", 1, "ELECTRIC", "", 0, "RAICHU", 12, 12, 6, 5, 6, 6, 7, "Thundershock", "Growl", "", "", "MEDIUMFAST", 0, getExpNeededForNextLevel(1, "MEDIUMFAST"), getBaseExpYield("025"), getCatchRate("025")],
+	["025", "PIKACHU", 2, "ELECTRIC", "", 0, "RAICHU", 14, 14, 7, 6, 7, 7, 9, "Thundershock", "Growl", "", "", "MEDIUMFAST", 0, getExpNeededForNextLevel(2, "MEDIUMFAST"), getBaseExpYield("025"), getCatchRate("025")],
+	["025", "PIKACHU", 3, "ELECTRIC", "", 0, "RAICHU", 16, 16, 9, 7, 8, 8, 12, "Thundershock", "Growl", "", "", "MEDIUMFAST", 0, getExpNeededForNextLevel(3, "MEDIUMFAST"), getBaseExpYield("025"), getCatchRate("025")],
+	["025", "PIKACHU", 4, "ELECTRIC", "", 0, "RAICHU", 18, 18, 11, 8, 11, 9, 14, "Thundershock", "Growl", "", "", "MEDIUMFAST", 0, getExpNeededForNextLevel(4, "MEDIUMFAST"), getBaseExpYield("025"), getCatchRate("025")],
+	["025", "PIKACHU", 5, "ELECTRIC", "", 0, "RAICHU", 20, 20, 13, 9, 12, 11, 16, "Thundershock", "Growl", "", "", "MEDIUMFAST", 0, getExpNeededForNextLevel(5, "MEDIUMFAST"), getBaseExpYield("025"), getCatchRate("025")],
+	["025", "PIKACHU", 6, "ELECTRIC", "", 0, "RAICHU", 22, 22, 14, 11, 13, 12, 18, "Thundershock", "Growl", "Tail Whip", "", "MEDIUMFAST", 0, getExpNeededForNextLevel(6, "MEDIUMFAST"), getBaseExpYield("025"), getCatchRate("025")],
+	["025", "PIKACHU", 7, "ELECTRIC", "", 0, "RAICHU", 24, 24, 15, 12, 15, 13, 20, "Thundershock", "Growl", "Tail Whip", "", "MEDIUMFAST", 0, getExpNeededForNextLevel(7, "MEDIUMFAST"), getBaseExpYield("025"), getCatchRate("025")],
+	["025", "PIKACHU", 8, "ELECTRIC", "", 0, "RAICHU", 26, 26, 17, 13, 16, 14, 23, "Thundershock", "Thunder Wave", "Growl", "Tail Whip", "MEDIUMFAST", 0, getExpNeededForNextLevel(8, "MEDIUMFAST"), getBaseExpYield("025"), getCatchRate("025")],
+	["025", "PIKACHU", 9, "ELECTRIC", "", 0, "RAICHU", 28, 28, 18, 14, 17, 15, 25, "Thundershock", "Thunder Wave", "Growl", "Tail Whip", "MEDIUMFAST", 0, getExpNeededForNextLevel(9, "MEDIUMFAST"), getBaseExpYield("025"), getCatchRate("025")],
+	["025", "PIKACHU", 10, "ELECTRIC", "", 0, "RAICHU", 30, 30, 20, 15, 19, 17, 28, "Thundershock", "Thunder Wave", "Growl", "Tail Whip", "MEDIUMFAST", 0, getExpNeededForNextLevel(10, "MEDIUMFAST"), getBaseExpYield("025"), getCatchRate("025")],
+	["056", "MANKEY", 1, "FIGHTING", "", 28, "PRIMEAPE", 12, 12, 6, 6, 6, 6, 6, "Scratch", "Leer", "", "", "MEDIUMFAST", 0, getExpNeededForNextLevel(1, "MEDIUMFAST"), getBaseExpYield("056"), getCatchRate("056")],
+	["056", "MANKEY", 2, "FIGHTING", "", 28, "PRIMEAPE", 14, 14, 8, 7, 7, 7, 8, "Scratch", "Leer", "", "", "MEDIUMFAST", 0, getExpNeededForNextLevel(2, "MEDIUMFAST"), getBaseExpYield("056"), getCatchRate("056")],
+	["056", "MANKEY", 3, "FIGHTING", "", 28, "PRIMEAPE", 16, 16, 11, 8, 8, 8, 11, "Scratch", "Leer", "", "", "MEDIUMFAST", 0, getExpNeededForNextLevel(3, "MEDIUMFAST"), getBaseExpYield("056"), getCatchRate("056")],
+	["056", "MANKEY", 4, "FIGHTING", "", 28, "PRIMEAPE", 18, 18, 13, 9, 9, 9, 12, "Scratch", "Leer", "", "", "MEDIUMFAST", 0, getExpNeededForNextLevel(4, "MEDIUMFAST"), getBaseExpYield("056"), getCatchRate("056")],
+	["056", "MANKEY", 5, "FIGHTING", "", 28, "PRIMEAPE", 20, 20, 15, 11, 11, 12, 14, "Scratch", "Leer", "", "", "MEDIUMFAST", 0, getExpNeededForNextLevel(5, "MEDIUMFAST"), getBaseExpYield("056"), getCatchRate("056")]
 ];
 
 // Pokemon moves background information
@@ -403,6 +454,10 @@ var pokemonMoves = [
 	["Tackle", "NORMAL", "Physical", 35, 50, 100, "", "", ""], // http://bulbapedia.bulbagarden.net/wiki/Tackle_(move)
 	// Add effect
 	["Tail Whip", "NORMAL", "Status", 30, 0, 100, "defenseOpponent", -1, -6], //http://bulbapedia.bulbagarden.net/wiki/Tail_Whip_%28move%29
+	// Add effect
+	["Thundershock", "ELECTRIC", "Special", 30, 40, 100, "", "", ""], //http://bulbapedia.bulbagarden.net/wiki/Thunder_Shock_(move)
+	// Add effect
+	["Thunder Wave", "ELECTRIC", "Status", 20, 0, 100, "", "", ""], // http://bulbapedia.bulbagarden.net/wiki/Thunder_Wave_(move)
 	// Add effect
 	["Vine Whip", "GRASS", "Physical", 25, 45, 100, "", "", ""],
 	["Water Gun", "WATER", "Special", 25, 40, 100, "", "", ""], // http://bulbapedia.bulbagarden.net/wiki/Water_Gun_(move)

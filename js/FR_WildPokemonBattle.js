@@ -110,7 +110,8 @@ function wildPokemonBattle(player, wildPokemon, locationObject) {
 															pokemonStats[i][18],
 															expTemp,
 															pokemonStats[i][20],
-															pokemonStats[i][21]
+															pokemonStats[i][21],
+															pokemonStats[i][22]
 														);
 													};
 												};
@@ -175,7 +176,8 @@ function wildPokemonBattle(player, wildPokemon, locationObject) {
 														pokemonStats[i][18],
 														expTemp,
 														pokemonStats[i][20],
-														pokemonStats[i][21]
+														pokemonStats[i][21],
+														pokemonStats[i][22]
 													);
 												};
 											};
@@ -252,7 +254,8 @@ function wildPokemonBattle(player, wildPokemon, locationObject) {
 														pokemonStats[i][18],
 														expTemp,
 														pokemonStats[i][20],
-														pokemonStats[i][21]
+														pokemonStats[i][21],
+														pokemonStats[i][22]
 													);
 												};
 											};
@@ -317,7 +320,8 @@ function wildPokemonBattle(player, wildPokemon, locationObject) {
 													pokemonStats[i][18],
 													expTemp,
 													pokemonStats[i][20],
-													pokemonStats[i][21]
+													pokemonStats[i][21],
+													pokemonStats[i][22]
 												);
 											};
 										};
@@ -450,7 +454,8 @@ function wildPokemonBattle(player, wildPokemon, locationObject) {
 															pokemonStats[i][18],
 															expTemp,
 															pokemonStats[i][20],
-															pokemonStats[i][21]
+															pokemonStats[i][21],
+															pokemonStats[i][22]
 														);
 													};
 												};
@@ -515,7 +520,8 @@ function wildPokemonBattle(player, wildPokemon, locationObject) {
 														pokemonStats[i][18],
 														expTemp,
 														pokemonStats[i][20],
-														pokemonStats[i][21]
+														pokemonStats[i][21],
+														pokemonStats[i][22]
 													);
 												};
 											};
@@ -592,7 +598,8 @@ function wildPokemonBattle(player, wildPokemon, locationObject) {
 														pokemonStats[i][18],
 														expTemp,
 														pokemonStats[i][20],
-														pokemonStats[i][21]
+														pokemonStats[i][21],
+														pokemonStats[i][22]
 													);
 												};
 											};
@@ -657,7 +664,8 @@ function wildPokemonBattle(player, wildPokemon, locationObject) {
 													pokemonStats[i][18],
 													expTemp,
 													pokemonStats[i][20],
-													pokemonStats[i][21]
+													pokemonStats[i][21],
+													pokemonStats[i][22]
 												);
 											};
 										};
@@ -696,12 +704,16 @@ function getWeaknessWildPokemon(move, defendingPokemon) {// Array with weaknesse
 	var weakness2 = 1;
 	var totalWeakness;
 	// Pokemon Type Chart from http://pokemondb.net/type
-	var weaknessResistanceWildPokemon = [ // update this
-		["WEAKNESS", "FIRE", "GRASS", "NORMAL", "WATER"],
-		["FIRE", 0.5, 2, 1, 0.5],
-		["GRASS", 0.5, 0.5, 1, 2],
-		["NORMAL", 1, 1, 1, 1],
-		["WATER", 2, 0.5, 1, 0.5]
+	var weaknessResistanceWildPokemon = [ // update this // ICE, GROUND, FLYING, PSYCHIC, ROCK, GHOST, DRAGON, DARK, STEEL
+		["WEAKNESS", "BUG", "ELECTRIC", "FIGHTING", "FIRE", "GRASS", "NORMAL", "POISON", "WATER"],
+		["BUG", 1, 1, 0.5, 0.5, 2, 1, 0.5, 1],
+		["ELECTRIC", 1, 0.5, 1, 1, 0.5, 1, 1, 2],
+		["FIGHTING", 0.5, 1, 1, 1, 1, 2, 0.5, 1],
+		["FIRE", 2, 1, 1, 0.5, 2, 1, 1, 0.5],
+		["GRASS", 0.5, 1, 1, 0.5, 0.5, 1, 0.5, 2],
+		["NORMAL", 1, 1, 1, 1, 1, 1, 1, 1],
+		["POISON", 1, 1, 1, 1, 2, 1, 0.5, 1],
+		["WATER", 1, 1, 1, 2, 0.5, 1, 1, 0.5]
 	];
 	for (i=0; i<weaknessResistanceWildPokemon.length; i++) {
 		for (j=0; j<weaknessResistanceWildPokemon.length; j++) {
@@ -862,8 +874,16 @@ function catchPokemon(wildPokemon, pokeball, player) {
 		};
 		if (player.pokemonCaught[wildPokemon.Name] == 0) {
 			// sent pokemon to the pc (add PC as location)
-			//player.PC. ... = wildPokemon;
-			player.pokemonCaught[wildPokemon.Name] = 1;
+			for (i=0; i<6; i++) {
+				var pcPokemonNumber = i + 1;
+				var pcPokemonCall = "pc" + pcPokemonNumber;
+				if (player.hasOwnProperty(pcPokemonCall) == false) {
+					if (player.pokemonCaught[wildPokemon.Name] == 0) {
+						player[pcPokemonCall] = wildPokemon;
+						player.pokemonCaught[wildPokemon.Name] = 1;
+					};
+				};
+			};
 		};
 		document.getElementById("pokemonRed").innerHTML = "Gotcha! <br/>" + wildPokemon.Name + " was caught! ";
 		document.getElementById("pokemonRed").innerHTML = wildPokemon.Name + "'s data was <br/>added to the Pok&eacute;DEX. ";
