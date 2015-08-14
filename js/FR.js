@@ -80,6 +80,11 @@ by GeOdin */
 ////// starterPokemon = prompt("Which Pokemon do you want as a starter? ", "Bulbasaur/ Charmander/ Squirtle");
 // add option to nickname your starter (var starterNickname?) (Sean)
 // ask for a favorite pokemon at the start, to make sure the game keeps that Pokemon in the activePokemon, and you hava a 100% chance to obtain that Pokemon
+// use of coockies: (not implemented (yet?))
+//// This site uses cookies. By continuing to use this site, you are agreeing to our use of cookies. (http://pokemon-online.eu/download)
+// Use Pokedex entries from pokemon universe?
+// Add pc property to var healingLocations with the value true/ false depending on location
+//// if there's a pc -> all pokemon can be healed and the function switchPokemonPC(player) can be used
 
 function startGame() { 
 
@@ -115,7 +120,7 @@ function startGame() {
 	var interval;
 
 	while (isNaN(interval) == true){
-		interval = 1000 * prompt("How much time should be between different events? \n1 = 1 second. ", 3);
+		interval = 1000 * prompt("How much time should be between different events? \n\n1 = 1 second. \nIt also takes that long before the game starts.", 3);
 	};
 
 	var gamePokemonFireRed = window.setInterval(change, interval); //3000 for 3 seconds; //1 for quick testing purposes; //500 for slow testing purposes;
@@ -245,7 +250,7 @@ function startGame() {
 			savePlayerMoney(player.money);*/
 
 			// Get the rival's name
-			rivalName = prompt("What is the name of your rival? ", "RIVAL's NAME");
+			rivalName = prompt("What is the name of your rival? ", "Gary"); // change Gary into RIVAL'S NAME in final version?
 			while (rivalName.length < 1) {
 				rivalName = prompt("RIVAL's NAME? ", ""); // alert("...Er, was it " + rivalName + "? "); //insert Yes/no option?
 			};

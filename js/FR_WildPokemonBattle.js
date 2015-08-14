@@ -881,6 +881,8 @@ function catchPokemon(wildPokemon, pokeball, player) {
 				if (player.hasOwnProperty(pcPokemonCall) == false) {
 					if (player.pokemonCaught[wildPokemon.Name] == 0) {
 						player[pcPokemonCall] = wildPokemon;
+						// Heal Caught Pokemon if it goed to the PC
+						player[pcPokemonCall].currentHP = player[pcPokemonCall].maxHP;
 						player.pokemonCaught[wildPokemon.Name] = 1;
 						document.getElementById("pokemonRed").innerHTML = "Gotcha! <br/>" + wildPokemon.Name + " was caught! ";
 						document.getElementById("pokemonRed".innerHTML) = wildPokemon.Name + " was sent to the PC. ";
