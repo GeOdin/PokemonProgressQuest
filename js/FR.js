@@ -84,6 +84,8 @@ by GeOdin */
 //// This site uses cookies. By continuing to use this site, you are agreeing to our use of cookies. (http://pokemon-online.eu/download)
 // Use Pokedex entries from pokemon universe?
 //// if there's a pc -> all pokemon can be healed and the function switchPokemonPC(player) can be used
+////// create a new function useHealingLocation(...) for this?
+////// or make it part of the function getHealingLocation(...)?
 
 function startGame() { 
 
