@@ -83,7 +83,6 @@ by GeOdin */
 // use of coockies: (not implemented (yet?))
 //// This site uses cookies. By continuing to use this site, you are agreeing to our use of cookies. (http://pokemon-online.eu/download)
 // Use Pokedex entries from pokemon universe?
-// Add pc property to var healingLocations with the value true/ false depending on location
 //// if there's a pc -> all pokemon can be healed and the function switchPokemonPC(player) can be used
 
 function startGame() { 

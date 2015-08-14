@@ -32,9 +32,9 @@ var locations = [
 ];
 // Background information for the different healing locations
 var healingLocations = [
-	["healingLocationNumber", "healingLocationName", "healingLocationLocation", "healingLocationImage", "healingLocationText"],
-	["001", "MOM", getLocation("Pallet Town"), "images/Mom.PNG", "Mom healed all your Pok&eacute;mon. "],
-	["002", "Viridian City PokeCenter", getLocation("Viridian City"), "images/Viridian City PokeCenter.png", "We've restored your POK&eacute;MON to <br/>full health. "]
+	["healingLocationNumber", "healingLocationName", "healingLocationLocation", "healingLocationPC", "healingLocationImage", "healingLocationText"],
+	["001", "MOM", getLocation("Pallet Town"), false, "images/Mom.PNG", "Mom healed all your Pok&eacute;mon. "],
+	["002", "Viridian City PokeCenter", getLocation("Viridian City"), true, "images/Viridian City PokeCenter.png", "We've restored your POK&eacute;MON to <br/>full health. "]
 ];
 
 var trainers = [
@@ -110,10 +110,11 @@ function getLocation(locationName){
 	return newLocation;
 };
 
-function createHealingLocation(healingLocationNumber, healingLocationName, healingLocationLocation, healingLocationImage, healingLocationText){
+function createHealingLocation(healingLocationNumber, healingLocationName, healingLocationLocation, healingLocationPC, healingLocationImage, healingLocationText){
 	this.number = healingLocationNumber;
 	this.Name = healingLocationName;
 	this.locatedIn = healingLocationLocation;
+	this.pc = healingLocationPC;
 	this.image = healingLocationImage;
 	this.storyText = healingLocationText;
 };
@@ -128,7 +129,8 @@ function getHealingLocation(healingLocationName){
 				healingLocations[i][1],
 				healingLocations[i][2],
 				healingLocations[i][3],
-				healingLocations[i][4]
+				healingLocations[i][4],
+				healingLocations[i][5]
 			);
 		};
 	};
