@@ -30,13 +30,13 @@ function firstPokemonBattle(player, rival, counter) {
 				if (player.activePokemon1.speed >= rival.activePokemon1.speed) {
 					damage = calculateDamageFirstBattle(rival.activePokemon1, move = getMoveFirstBattle(rival.activePokemon1), player.activePokemon1);
 					player.activePokemon1.currentHP -= damage;
-					document.getElementById("activePokemon1").innerHTML = player.activePokemon1.Name + "<br/>Lvl: " + player.activePokemon1.level + "<br/> <img src=images/pokemonIconsTransparent/" + player.activePokemon1.Name + ".png /> <br/>HP: " + player.activePokemon1.currentHP + "/" + player.activePokemon1.maxHP + "<br/> Exp: " + player.activePokemon1.currentExp + "/" + player.activePokemon1.expNextLevel;
+					setActivePokemonText(player);
 					document.getElementById("pokemonRed").innerHTML = rival.activePokemon1.Name + " used " + rival.activePokemon1.move1.Name + ".";
 					if (player.activePokemon1.currentHP <=0) {
 						if (player.activePokemon1.currentHP < 0) {
 							player.activePokemon1.currentHP = 0;
 						};
-					document.getElementById("activePokemon1").innerHTML = player.activePokemon1.Name + "<br/>Lvl: " + player.activePokemon1.level + "<br/> <img src=images/pokemonIconsTransparent/" + player.activePokemon1.Name + ".png /> <br/>HP: " + player.activePokemon1.currentHP + "/" + player.activePokemon1.maxHP + "<br/> Exp: " + player.activePokemon1.currentExp + "/" + player.activePokemon1.expNextLevel;
+					setActivePokemonText(player);
 					document.getElementById("pokemonRed").innerHTML = player.activePokemon1.Name + " fainted.";
 					document.getElementById("pokemonRed").innerHTML = rival.Name + ": " + rival.activePokemon1.Name + ", come back!";
 					document.getElementById("pokemonRed").innerHTML = rival.Name + ": Yeah! <br/> Am I great or what? ";
@@ -64,7 +64,7 @@ function firstPokemonBattle(player, rival, counter) {
 							exp = getExpFirstBattle(rival);
 							// add exp to current exp
 							player.activePokemon1.currentExp = player.activePokemon1.currentExp + exp;
-							document.getElementById("activePokemon1").innerHTML = player.activePokemon1.Name + "<br/>Lvl: " + player.activePokemon1.level + "<br/> <img src=images/pokemonIconsTransparent/" + player.activePokemon1.Name + ".png /> <br/>HP: " + player.activePokemon1.currentHP + "/" + player.activePokemon1.maxHP + "<br/> Exp: " + player.activePokemon1.currentExp + "/" + player.activePokemon1.expNextLevel;
+							setActivePokemonText(player);
 
 							// Level up if necessary
 							if (player.activePokemon1.currentExp >= player.activePokemon1.expNextLevel) {
@@ -105,7 +105,7 @@ function firstPokemonBattle(player, rival, counter) {
 								};
 								createPokemonMoves(player.activePokemon1);
 								player.activePokemon1.currentExp = expTemp;
-								document.getElementById("activePokemon1").innerHTML = player.activePokemon1.Name + "<br/>Lvl: " + player.activePokemon1.level + "<br/> <img src=images/pokemonIconsTransparent/" + player.activePokemon1.Name + ".png /> <br/>HP: " + player.activePokemon1.currentHP + "/" + player.activePokemon1.maxHP + "<br/> Exp: " + player.activePokemon1.currentExp + "/" + player.activePokemon1.expNextLevel;
+								setActivePokemonText(player);
 								document.getElementById("pokemonRed").innerHTML = player.activePokemon1.Name + " leveled up! ";
 							};
 							// Add story?
@@ -144,7 +144,7 @@ function firstPokemonBattle(player, rival, counter) {
 							exp = getExpFirstBattle(rival);
 							// add exp to current exp
 							player.activePokemon1.currentExp = player.activePokemon1.currentExp + exp;
-							document.getElementById("activePokemon1").innerHTML = player.activePokemon1.Name + "<br/>Lvl: " + player.activePokemon1.level + "<br/> <img src=images/pokemonIconsTransparent/" + player.activePokemon1.Name + ".png /> <br/>HP: " + player.activePokemon1.currentHP + "/" + player.activePokemon1.maxHP + "<br/> Exp: " + player.activePokemon1.currentExp + "/" + player.activePokemon1.expNextLevel;
+							setActivePokemonText(player);
 
 							// Level up if necessary
 							if (player.activePokemon1.currentExp >= player.activePokemon1.expNextLevel) {
@@ -185,7 +185,7 @@ function firstPokemonBattle(player, rival, counter) {
 								};
 								createPokemonMoves(player.activePokemon1);
 								player.activePokemon1.currentExp = expTemp;
-								document.getElementById("activePokemon1").innerHTML = player.activePokemon1.Name + "<br/>Lvl: " + player.activePokemon1.level + "<br/> <img src=images/pokemonIconsTransparent/" + player.activePokemon1.Name + ".png /> <br/>HP: " + player.activePokemon1.currentHP + "/" + player.activePokemon1.maxHP + "<br/> Exp: " + player.activePokemon1.currentExp + "/" + player.activePokemon1.expNextLevel;
+								setActivePokemonText(player);
 								document.getElementById("pokemonRed").innerHTML = player.activePokemon1.Name + " leveled up! ";
 							};
 							// Add story?
@@ -204,13 +204,13 @@ function firstPokemonBattle(player, rival, counter) {
 				} else if (player.activePokemon1.speed < rival.activePokemon1.speed) {
 					damage = calculateDamageFirstBattle(rival.activePokemon1, move = getMoveFirstBattle(rival.activePokemon1), player.activePokemon1);
 					player.activePokemon1.currentHP -= damage;
-					document.getElementById("activePokemon1").innerHTML = player.activePokemon1.Name + "<br/>Lvl: " + player.activePokemon1.level + "<br/> <img src=images/pokemonIconsTransparent/" + player.activePokemon1.Name + ".png /> <br/>HP: " + player.activePokemon1.currentHP + "/" + player.activePokemon1.maxHP + "<br/> Exp: " + player.activePokemon1.currentExp + "/" + player.activePokemon1.expNextLevel;
+					setActivePokemonText(player);
 					document.getElementById("pokemonRed").innerHTML = rival.activePokemon1.Name + " used " + rival.activePokemon1.move1.Name + ".";
 					if (player.activePokemon1.currentHP <=0) {
 						if (player.activePokemon1.currentHP < 0) {
 							player.activePokemon1.currentHP = 0;
 						};
-					document.getElementById("activePokemon1").innerHTML = player.activePokemon1.Name + "<br/>Lvl: " + player.activePokemon1.level + "<br/> <img src=images/pokemonIconsTransparent/" + player.activePokemon1.Name + ".png /> <br/>HP: " + player.activePokemon1.currentHP + "/" + player.activePokemon1.maxHP + "<br/> Exp: " + player.activePokemon1.currentExp + "/" + player.activePokemon1.expNextLevel;
+					setActivePokemonText(player);
 					document.getElementById("pokemonRed").innerHTML = player.activePokemon1.Name + " fainted.";
 					document.getElementById("pokemonRed").innerHTML = rival.Name + ": " + rival.activePokemon1.Name + ", come back!";
 					document.getElementById("pokemonRed").innerHTML = rival.Name + ": Yeah! <br/> Am I great or what? ";

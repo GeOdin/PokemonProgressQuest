@@ -6,6 +6,7 @@
  *
  * This file contains the following functions:
  * checkDoubleTypes(player);
+ * checkMissingTypes(player);
  */
 
 ////////////////////////////
@@ -14,7 +15,7 @@
 
 // Function to check whether the activePokemon of the player have different Pokemon with the same type
 function checkDoubleTypes(player){
-	var doubleTypes = [""];
+	var doubleTypes = [];
 	for (i=0; i<6; i++) {
 		var pokemon1Call = "activePokemon" + (i+1);
 		// check current pokemon types
@@ -61,7 +62,6 @@ function checkDoubleTypes(player){
 	};*/
 	// make it random which marked pokemon with doubleTypes is switched out
 	//// starter excluded
-	// remove "" from array?
 	// check pokemon that have types from doubleTypes
 	// make sure that starterPokemon is not switched
 	// count amount of times the types are double? -> so many pokemon can be switched
@@ -99,17 +99,6 @@ function checkMissingTypes(player) {
 	return missingTypes;
 };
 
-//////////////////////////////////////
-// Switch Pokemon Outside of Battle //
-//////////////////////////////////////
-
-/*
- * If player caught another Pokemon in battle which is set as an active Pokemon? (to level weaker Pokemon)
- *
- * function switchPokemonInsideBattle(player);
- *
- */
-
 /////////////////////////////////////
 // Switch Pokemon Inside of Battle //
 /////////////////////////////////////
@@ -122,17 +111,61 @@ function checkMissingTypes(player) {
  *
  */
 
+/////////////////////////////////
+// Switch Pokemon After Battle //
+/////////////////////////////////
+
+/*
+ * If player caught another Pokemon in battle which is set as an active Pokemon? (to level weaker Pokemon)
+ *
+ * function switchPokemonInsideBattle(player);
+ *
+ */
+
 ////////////////////////
  // Switch Pokemon PC //
 ////////////////////////
 
 /*
  * If player has better pokemon in pc
- * Missing type?
  * Higher level of same type?
- *
- * function switchPokemonPC(player);
  */
+
+// Function to optimalize switching Pokemon when there's a PC
+function switchPokemonPC(player){
+	// Set variables
+	num = 0;
+	// Check which types are missing
+	var missingTypesActive = checkMissingTypes(player); // returns array with missing types
+	// Missing types that are represented in the pc
+	var missingTypesPC = {};
+
+	// Check which types are double
+	var doubleTypes = checkDoubleTypes(player);
+
+	// Check whether there are pokemon in the PC that comply with one of the missing types
+	var pcPokemonCall = "pc" + (num + 1);
+	while (player.hasOwnProperty(pcPokemonCall) == true) {
+		for (i=0; i<missingTypes.length; i++) {
+			if (player[pcPokemonCall].type1 == missingTypesActive[i]) {
+				// Check whether type already exists in object missingTypesPC
+				if (missingTypesPC.hasOwnProperty(missingTypesActive[i])) {
+					// Add pokemon to the missingTypes property
+				} else {
+					// create missingTypes property
+						// missingTypesPC[missingTypesActive[i]] = {};
+				};
+			};
+			if (player[pcPokemonCall].type2 == missingTypesActive[i]) {
+				//
+			};
+		};
+	};
+	// change the activePokemon to pc
+	// change the pc to activePokemon
+		// make it random which pokemon is choosen from the pc?
+			// include priority list?
+};
 
 ///////////////////
 // Priority List //
@@ -145,18 +178,20 @@ function checkMissingTypes(player) {
  * Make 6 groups of types (e.g., combine ground and rock) and try to arrange them within activePokemon1..6
  */
 
-////////////////////////
-// Check Missing Type //
-////////////////////////
+/* FIRE Pokemon:
+ * CHARMANDER (starter)
+ * CHARMELEON (starter)
+ * CHARIZARD (starter)
+ */
 
-/*
-var typesIncluded = [""];
-for (i=0; i<6; i++) {
-	var pokemonCall = "activePokemon" + (i+1);
-	for (j=0; j=typesIncluded.length; j++) {
-		// if type does not exist yet in array
-		// typesIncluded.push(player[pokemonCall].type1);
-	};
-};
+/* GRASS Pokemon:
+ * BULBASAUR (starter)
+ * IVYSAUR (starter)
+ * VENUSAUR (starter)
+ */
 
+/* WATER Pokemon:
+ * SQUIRTLE (starter)
+ * WARTORTLE (starter)
+ * BLASTOISE (starter)
  */

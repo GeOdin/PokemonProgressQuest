@@ -4,6 +4,7 @@
 //// createPokemon(pokemonNumber, pokemonName, pokemonLevel, pokemonType1, pokemonType2, pokemonEvolveLevel, pokemonEvolvePokemon, currentHP, maxHP, attack, defense, spattack, spdefense, speed, pokemonMove1, pokemonMove2, pokemonMove3, pokemonMove4);
 //// createPokemonMoves(pokemonObject);
 //// setPokemonMove(pokemonMoveName, pokemonMoveType, pokemonMoveCategory, pokemonMovePP, pokemonMovePower, pokemonMoveAccuracy, pokemonMoveEffect)
+//// setActivePokemonText(player)
 
 var expNeededPerExpGroup = [
 	// Equations for exp per exp group (from Bulbapedia // http://bulbapedia.bulbagarden.net/wiki/Experience):
@@ -131,58 +132,60 @@ var expNeededPerExpGroup = [
 var pokemon = [
 	//level 1 and accompanying stats and moves by default, or level of evolvement
 	// add pokemonEvolveItem
-	["pokemonNumber", "pokemonName", "pokemonLevel", "pokemonType1", "pokemonType2", "pokemonEvolveLevel", "pokemonEvolvePokemon", "hp", "attack", "defense", "spattack", "spdefense", "speed", "pokemonMove1", "pokemonMove2", "pokemonMove3", "pokemonMove4", "expGroup", "currentExp", "expNextLevel", "baseExpYield", "catchRate"], //0
-	["001", "BULBASAUR", 1, "GRASS", "POISON", 16, "IVYSAUR", 12, 6, 6, 6, 6, 6, "Tackle", "", "", "", "expGroup", "currentExp", "expNextLevel", 64, "catchRate"], //1
-	["002", "IVYSAUR", 16, "GRASS", "POISON", 32, "VENUSAUR", "HP", "Attack", "Defense", "Sp. Attack", "Sp. Defense", "Speed", "", "", "", "", "expGroup", "currentExp", "expNextLevel", 141, "catchRate"],
-	["003", "VENUSAUR", 32, "GRASS", "POISON", 0, "", "HP", "Attack", "Defense", "Sp. Attack", "Sp. Defense", "Speed", "", "", "", "", "expGroup", "currentExp", "expNextLevel", 208, "catchRate"],
-	["004", "CHARMANDER", 1, "FIRE", "", 16, "CHARMELEON", 12, 6, 6, 6, 6, 6, "Scratch", "Growl", "", "", "expGroup", "currentExp", "expNextLevel", 65, "catchRate"],
-	["005", "CHARMELEON", 16, "FIRE", "", 36, "CHARIZARD", "HP", "Attack", "Defense", "Sp. Attack", "Sp. Defense", "Speed", "", "", "", "", "expGroup", "currentExp", "expNextLevel", 142, "catchRate"],
-	["006", "CHARIZARD", 36, "FIRE", "FLYING", 0, "", "HP", "Attack", "Defense", "Sp. Attack", "Sp. Defense", "Speed", "", "", "", "", "expGroup", "currentExp", "expNextLevel", 209, "catchRate"],
-	["007", "SQUIRTLE", 1, "WATER", "", 16, "WARTORTLE", 12, 6, 6, 6, 6, 6, "Tackle", "", "", "", "expGroup", "currentExp", "expNextLevel", 66, "catchRate"],
-	["008", "WARTORTLE", 16, "WATER", "", 36, "BLASTOISE", "HP", "Attack", "Defense", "Sp. Attack", "Sp. Defense", "Speed", "", "", "", "", "expGroup", "currentExp", "expNextLevel", 143, "catchRate"],
-	["009", "BLASTOISE", 36, "WATER", "", 0, "", "HP", "Attack", "Defense", "Sp. Attack", "Sp. Defense", "Speed", "", "", "", "", "expGroup", "currentExp", "expNextLevel", 210, "catchRate"],
+	// add Missingno (missing number) as pokemon?
+	["pokemonNumber", "pokemonName", "pokemonLevel", "pokemonType1", "pokemonType2", "pokemonEvolveLevel", "pokemonEvolvePokemon", "hp", "attack", "defense", "spattack", "spdefense", "speed", "pokemonMove1", "pokemonMove2", "pokemonMove3", "pokemonMove4", "expGroup", "currentExp", "expNextLevel", "baseExpYield", "catchRate"],
+	["001", "BULBASAUR", 1, "GRASS", "POISON", 16, "IVYSAUR", 12, 6, 6, 6, 6, 6, "Tackle", "", "", "", "MEDIUMSLOW", 0, getExpNeededForNextLevel(1, "MEDIUMSLOW"), 64, 45],
+	["002", "IVYSAUR", 1, "GRASS", "POISON", 32, "VENUSAUR", 12, 6, 6, 6, 6, 6, "Tackle", "Growl", "Leech Seed", "", "MEDIUMSLOW", 0, getExpNeededForNextLevel(1, "MEDIUMSLOW"), 141, 45],
+	["003", "VENUSAUR", 1, "GRASS", "POISON", 0, "", 12, 6, 6, 7, 7, 6, "Tackle", "Growl", "Leech Seed", "Vine Whip", "MEDIUMSLOW", 0, getExpNeededForNextLevel(1, "MEDIUMSLOW"), 208, 45],
+	["004", "CHARMANDER", 1, "FIRE", "", 16, "CHARMELEON", 12, 6, 6, 6, 6, 6, "Scratch", "Growl", "", "", "MEDIUMSLOW", 0, getExpNeededForNextLevel(1, "MEDIUMSLOW"), 65, 45],
+	["005", "CHARMELEON", 1, "FIRE", "", 36, "CHARIZARD", 12, 6, 6, 6, 6, 6, "Scratch", "Growl", "Ember", "", "MEDIUMSLOW", 0, getExpNeededForNextLevel(1, "MEDIUMSLOW"), 142, 45],
+	["006", "CHARIZARD", 1, "FIRE", "FLYING", 0, "", 12, 6, 6, 7, 6, 7, "Scratch", "Growl", "Ember", "Smokescreen", "MEDIUMSLOW", 0, getExpNeededForNextLevel(1, "MEDIUMSLOW"), 209, 45],
+	["007", "SQUIRTLE", 1, "WATER", "", 16, "WARTORTLE", 12, 6, 6, 6, 6, 6, "Tackle", "", "", "", "MEDIUMSLOW", 0, getExpNeededForNextLevel(1, "MEDIUMSLOW"), 66, 45],
+	["008", "WARTORTLE", 1, "WATER", "", 36, "BLASTOISE", 12, 6, 6, 6, 6, 6, "Tackle", "Tail Whip", "Bubble", "", "MEDIUMSLOW", 0, getExpNeededForNextLevel(1, "MEDIUMSLOW"), 143, 45],
+	["009", "BLASTOISE", 1, "WATER", "", 0, "", 12, 6, 7, 7, 7, 6, "Tackle", "Tail Whip", "Bubble", "Withdraw", "MEDIUMSLOW", 0, getExpNeededForNextLevel(1, "MEDIUMSLOW"), 210, 45],
 	["010", "CATERPIE", 1, "BUG", "", 7, "METAPOD", 12, 5, 6, 5, 5, 6, "Tackle", "String Shot", "", "", "MEDIUMFAST", 0, getExpNeededForNextLevel(1, "MEDIUMFAST"), 53, 255],
 	["011", "METAPOD", 1, "BUG", "", 10, "BUTTERFREE", 12, 5, 6, 5, 5, 5, "Harden", "", "", "", "MEDIUMFAST", 0, getExpNeededForNextLevel(1, "MEDIUMFAST"), 72, 120],
-	["012", "BUTTERFREE", 10, "BUG", "FLYING", 0, "", "HP", "Attack", "Defense", "Sp. Attack", "Sp. Defense", "Speed", "Tackle", "String Shot", "Harden", "Confusion", "expGroup", "currentExp", "expNextLevel", 160, "catchRate"],
+	["012", "BUTTERFREE", 1, "BUG", "FLYING", 0, "", 12, 6, 6, 6, 6, 6, "Confusion", "", "", "", "MEDIUMFAST", 0, getExpNeededForNextLevel(1, "MEDIUMFAST"), 160, 45],
 	["013", "WEEDLE", 1, "BUG", "POISON", 7, "KAKUNA", 12, 6, 5, 5, 5, 6, "Poison Sting", "String Shot", "", "", "MEDIUMFAST", 0, getExpNeededForNextLevel(1, "MEDIUMFAST"), 52, 255],
 	["014", "KAKUNA", 1, "BUG", "POISON", 10, "BEEDRILL", 12, 5, 6, 5, 5, 6, "Harden", "", "", "", "MEDIUMFAST", 0, getExpNeededForNextLevel(1, "MEDIUMFAST"), 71, 120],
-	["015", "BEEDRILL", 10, "BUG", "POISON", 0, "", "HP", "Attack", "Defense", "Sp. Attack", "Sp. Defense", "Speed", "Poison Sting", "String Shot", "Harden", "Fury Attack", "expGroup", "currentExp", "expNextLevel", 159, "catchRate"],
-	["016", "PIDGEY", 1, "NORMAL", "FLYING", 18, "PIDGEOTTO", 12, 6, 6, 6, 6, 6, "Tackle", "", "", "", "expGroup", "currentExp", "expNextLevel", 55, 255],
-	["017", "PIDGEOTTO", 18, "NORMAL", "FLYING", 36, "PIDGEOT", "HP", "Attack", "Defense", "Sp. Attack", "Sp. Defense", "Speed", "Tackle", "Sand-attack", "Gust", "Quick Attack", "expGroup", "currentExp", "expNextLevel", 113, "catchRate"],
-	["018", "PIDGEOT", 36, "NORMAL", "FLYING", 0, "", "HP", "Attack", "Defense", "Sp. Attack", "Sp. Defense", "Speed", "Wing Attack", "Quick Attack", "Tackle", "Gust", "expGroup", "currentExp", "expNextLevel", 172, "catchRate"],
-	["019", "RATTATA", 1, "NORMAL", "", 20, "RATICATE", 11, 6, 6, 6, 5, 6, "Tackle", "Tail Whip", "", "", "expGroup", "currentExp", "expNextLevel", 57, 255],
-	["020", "RATICATE", 20, "NORMAL", "", 0, "", "HP", "Attack", "Defense", "Sp. Attack", "Sp. Defense", "Speed", "Tackle", "Tail Whip", "Quick Attack", "Hyper Fang", "expGroup", "currentExp", "expNextLevel", 116, "catchRate"],
+	["015", "BEEDRILL", 1, "BUG", "POISON", 0, "", 12, 6, 6, 6, 6, 6, "Fury Attack", "", "", "", "MEDIUMFAST", 0, getExpNeededForNextLevel(1, "MEDIUMFAST"), 159, 45],
+	["016", "PIDGEY", 1, "NORMAL", "FLYING", 18, "PIDGEOTTO", 12, 6, 6, 6, 6, 6, "Tackle", "", "", "", "MEDIUMSLOW", 0, getExpNeededForNextLevel(1, "MEDIUMSLOW"), 55, 255],
+	["017", "PIDGEOTTO", 1, "NORMAL", "FLYING", 36, "PIDGEOT", 12, 6, 6, 6, 6, 6, "Tackle", "Sand-attack", "Gust", "", "MEDIUMSLOW", 0, getExpNeededForNextLevel(1, "MEDIUMSLOW"), 113, 120],
+	["018", "PIDGEOT", 1, "NORMAL", "FLYING", 0, "", 12, 6, 6, 6, 6, 7, "Tackle", "Sand-attack", "Gust", "Quick Attack", "MEDIUMSLOW", 0, getExpNeededForNextLevel(1, "MEDIUMSLOW"), 172, 45],
+	["019", "RATTATA", 1, "NORMAL", "", 20, "RATICATE", 11, 6, 6, 6, 5, 6, "Tackle", "Tail Whip", "", "", "MEDIUMFAST", 0, getExpNeededForNextLevel(1, "MEDIUMFAST"), 57, 255],
+	["020", "RATICATE", 1, "NORMAL", "", 0, "", 12, 6, 6, 6, 6, 7, "Tackle", "Tail Whip", "Quick Attack", "", "MEDIUMFAST", 0, getExpNeededForNextLevel(1, "MEDIUMFAST"), 116, 127],
 	["021", "SPEAROW", 1, "NORMAL", "FLYING", 20, "FEAROW", 12, 6, 5, 5, 5, 6, "Peck", "Growl", "", "", "MEDIUMFAST", 0, getExpNeededForNextLevel(1, "MEDIUMFAST"), 58, 255],
-	["022", "FEAROW", "pokemonLevel", "pokemonType1", "pokemonType2", "pokemonEvolveLevel", "pokemonEvolvePokemon", "hp", "attack", "defense", "spattack", "spdefense", "speed", "pokemonMove1", "pokemonMove2", "pokemonMove3", "pokemonMove4", "expGroup", "currentExp", "expNextLevel", 162, "catchRate"],
-	["023", "EKANS", 1, "pokemonType1", "pokemonType2", "pokemonEvolveLevel", "pokemonEvolvePokemon", "hp", "attack", "defense", "spattack", "spdefense", "speed", "pokemonMove1", "pokemonMove2", "pokemonMove3", "pokemonMove4", "expGroup", "currentExp", "expNextLevel", "baseExpYield", "catchRate"],
-	["024", "ARBOK", "pokemonLevel", "pokemonType1", "pokemonType2", "pokemonEvolveLevel", "pokemonEvolvePokemon", "hp", "attack", "defense", "spattack", "spdefense", "speed", "pokemonMove1", "pokemonMove2", "pokemonMove3", "pokemonMove4", "expGroup", "currentExp", "expNextLevel", "baseExpYield", "catchRate"],
+	["022", "FEAROW", 1, "NORMAL", "FLYING", 0, "", 12, 7, 6, 6, 6, 7, "Peck", "Growl", "Leer", "Fury Attack", "MEDIUMFAST", 0, getExpNeededForNextLevel(1, "MEDIUMFAST"), 162, 90],
+	["023", "EKANS", 1, "POISON", "", 22, "ARBOK", 12, 6, 6, 6, 6, 6, "Wrap", "Leer", "", "", "MEDIUMFAST", 0, getExpNeededForNextLevel(1, "MEDIUMFAST"), 62, 255],
+	["024", "ARBOK", 1, "POISON", "", 0, "", 12, 7, 6, 6, 6, 6, "Wrap", "Leer", "Poison Sting", "Bite", "MEDIUMFAST", 0, getExpNeededForNextLevel(1, "MEDIUMFAST"), 147, 90],
 	["025", "PIKACHU", 1, "ELECTRIC", "", 0, "RAICHU", 12, 6, 5, 6, 6, 7, "Thundershock", "Growl", "", "", "MEDIUMFAST", 0, getExpNeededForNextLevel(1, "MEDIUMFAST"), 82, 190],
-	["026", "RAICHU", "pokemonLevel", "pokemonType1", "pokemonType2", "pokemonEvolveLevel", "pokemonEvolvePokemon", "hp", "attack", "defense", "spattack", "spdefense", "speed", "pokemonMove1", "pokemonMove2", "pokemonMove3", "pokemonMove4", "expGroup", "currentExp", "expNextLevel", "baseExpYield", "catchRate"],
-	["027", "SANDSHREW", 1, "pokemonType1", "pokemonType2", "pokemonEvolveLevel", "pokemonEvolvePokemon", "hp", "attack", "defense", "spattack", "spdefense", "speed", "pokemonMove1", "pokemonMove2", "pokemonMove3", "pokemonMove4", "expGroup", "currentExp", "expNextLevel", "baseExpYield", "catchRate"],
-	["028", "SANDSLASH", "pokemonLevel", "pokemonType1", "pokemonType2", "pokemonEvolveLevel", "pokemonEvolvePokemon", "hp", "attack", "defense", "spattack", "spdefense", "speed", "pokemonMove1", "pokemonMove2", "pokemonMove3", "pokemonMove4", "expGroup", "currentExp", "expNextLevel", "baseExpYield", "catchRate"],
-	["029", "NIDORAN_FEMALE", 1, "pokemonType1", "pokemonType2", "pokemonEvolveLevel", "pokemonEvolvePokemon", "hp", "attack", "defense", "spattack", "spdefense", "speed", "pokemonMove1", "pokemonMove2", "pokemonMove3", "pokemonMove4", "expGroup", "currentExp", "expNextLevel", "baseExpYield", "catchRate"],
-	["030", "NIDORINA", "pokemonLevel", "pokemonType1", "pokemonType2", "pokemonEvolveLevel", "pokemonEvolvePokemon", "hp", "attack", "defense", "spattack", "spdefense", "speed", "pokemonMove1", "pokemonMove2", "pokemonMove3", "pokemonMove4", "expGroup", "currentExp", "expNextLevel", "baseExpYield", "catchRate"],
-	["031", "NIDOQUEEN", "pokemonLevel", "pokemonType1", "pokemonType2", "pokemonEvolveLevel", "pokemonEvolvePokemon", "hp", "attack", "defense", "spattack", "spdefense", "speed", "pokemonMove1", "pokemonMove2", "pokemonMove3", "pokemonMove4", "expGroup", "currentExp", "expNextLevel", "baseExpYield", "catchRate"],
-	["032", "NIDORAN_MALE", 1, "pokemonType1", "pokemonType2", "pokemonEvolveLevel", "pokemonEvolvePokemon", "hp", "attack", "defense", "spattack", "spdefense", "speed", "pokemonMove1", "pokemonMove2", "pokemonMove3", "pokemonMove4", "expGroup", "currentExp", "expNextLevel", "baseExpYield", "catchRate"],
-	["033", "NIDORINO", "pokemonLevel", "pokemonType1", "pokemonType2", "pokemonEvolveLevel", "pokemonEvolvePokemon", "hp", "attack", "defense", "spattack", "spdefense", "speed", "pokemonMove1", "pokemonMove2", "pokemonMove3", "pokemonMove4", "expGroup", "currentExp", "expNextLevel", "baseExpYield", "catchRate"],
-	["034", "NIDOKING", "pokemonLevel", "pokemonType1", "pokemonType2", "pokemonEvolveLevel", "pokemonEvolvePokemon", "hp", "attack", "defense", "spattack", "spdefense", "speed", "pokemonMove1", "pokemonMove2", "pokemonMove3", "pokemonMove4", "expGroup", "currentExp", "expNextLevel", "baseExpYield", "catchRate"],
-	["035", "CLEFAIRY", 1, "pokemonType1", "pokemonType2", "pokemonEvolveLevel", "pokemonEvolvePokemon", "hp", "attack", "defense", "spattack", "spdefense", "speed", "pokemonMove1", "pokemonMove2", "pokemonMove3", "pokemonMove4", "expGroup", "currentExp", "expNextLevel", "baseExpYield", "catchRate"],
-	["036", "CLEFABLE", "pokemonLevel", "pokemonType1", "pokemonType2", "pokemonEvolveLevel", "pokemonEvolvePokemon", "hp", "attack", "defense", "spattack", "spdefense", "speed", "pokemonMove1", "pokemonMove2", "pokemonMove3", "pokemonMove4", "expGroup", "currentExp", "expNextLevel", "baseExpYield", "catchRate"],
-	["037", "VULPIX", 1, "pokemonType1", "pokemonType2", "pokemonEvolveLevel", "pokemonEvolvePokemon", "hp", "attack", "defense", "spattack", "spdefense", "speed", "pokemonMove1", "pokemonMove2", "pokemonMove3", "pokemonMove4", "expGroup", "currentExp", "expNextLevel", "baseExpYield", "catchRate"],
-	["038", "NINETALES", "pokemonLevel", "pokemonType1", "pokemonType2", "pokemonEvolveLevel", "pokemonEvolvePokemon", "hp", "attack", "defense", "spattack", "spdefense", "speed", "pokemonMove1", "pokemonMove2", "pokemonMove3", "pokemonMove4", "expGroup", "currentExp", "expNextLevel", "baseExpYield", "catchRate"],
-	["039", "JIGGLYPUFF", 1, "pokemonType1", "pokemonType2", "pokemonEvolveLevel", "pokemonEvolvePokemon", "hp", "attack", "defense", "spattack", "spdefense", "speed", "pokemonMove1", "pokemonMove2", "pokemonMove3", "pokemonMove4", "expGroup", "currentExp", "expNextLevel", "baseExpYield", "catchRate"],
-	["040", "WIGGLYTUFF", "pokemonLevel", "pokemonType1", "pokemonType2", "pokemonEvolveLevel", "pokemonEvolvePokemon", "hp", "attack", "defense", "spattack", "spdefense", "speed", "pokemonMove1", "pokemonMove2", "pokemonMove3", "pokemonMove4", "expGroup", "currentExp", "expNextLevel", "baseExpYield", "catchRate"],
-	["041", "ZUBAT", 1, "pokemonType1", "pokemonType2", "pokemonEvolveLevel", "pokemonEvolvePokemon", "hp", "attack", "defense", "spattack", "spdefense", "speed", "pokemonMove1", "pokemonMove2", "pokemonMove3", "pokemonMove4", "expGroup", "currentExp", "expNextLevel", "baseExpYield", "catchRate"],
-	["042", "GOLBAT", "pokemonLevel", "pokemonType1", "pokemonType2", "pokemonEvolveLevel", "pokemonEvolvePokemon", "hp", "attack", "defense", "spattack", "spdefense", "speed", "pokemonMove1", "pokemonMove2", "pokemonMove3", "pokemonMove4", "expGroup", "currentExp", "expNextLevel", "baseExpYield", "catchRate"],
-	["043", "ODDISH", 1, "pokemonType1", "pokemonType2", "pokemonEvolveLevel", "pokemonEvolvePokemon", "hp", "attack", "defense", "spattack", "spdefense", "speed", "pokemonMove1", "pokemonMove2", "pokemonMove3", "pokemonMove4", "expGroup", "currentExp", "expNextLevel", "baseExpYield", "catchRate"],
-	["044", "GLOOM", "pokemonLevel", "pokemonType1", "pokemonType2", "pokemonEvolveLevel", "pokemonEvolvePokemon", "hp", "attack", "defense", "spattack", "spdefense", "speed", "pokemonMove1", "pokemonMove2", "pokemonMove3", "pokemonMove4", "expGroup", "currentExp", "expNextLevel", "baseExpYield", "catchRate"],
-	["045", "VILEPLUME", "pokemonLevel", "pokemonType1", "pokemonType2", "pokemonEvolveLevel", "pokemonEvolvePokemon", "hp", "attack", "defense", "spattack", "spdefense", "speed", "pokemonMove1", "pokemonMove2", "pokemonMove3", "pokemonMove4", "expGroup", "currentExp", "expNextLevel", "baseExpYield", "catchRate"],
-	["046", "PARAS", 1, "pokemonType1", "pokemonType2", "pokemonEvolveLevel", "pokemonEvolvePokemon", "hp", "attack", "defense", "spattack", "spdefense", "speed", "pokemonMove1", "pokemonMove2", "pokemonMove3", "pokemonMove4", "expGroup", "currentExp", "expNextLevel", "baseExpYield", "catchRate"],
-	["047", "PARASECT", "pokemonLevel", "pokemonType1", "pokemonType2", "pokemonEvolveLevel", "pokemonEvolvePokemon", "hp", "attack", "defense", "spattack", "spdefense", "speed", "pokemonMove1", "pokemonMove2", "pokemonMove3", "pokemonMove4", "expGroup", "currentExp", "expNextLevel", "baseExpYield", "catchRate"],
-	["048", "VENONAT", 1, "pokemonType1", "pokemonType2", "pokemonEvolveLevel", "pokemonEvolvePokemon", "hp", "attack", "defense", "spattack", "spdefense", "speed", "pokemonMove1", "pokemonMove2", "pokemonMove3", "pokemonMove4", "expGroup", "currentExp", "expNextLevel", "baseExpYield", "catchRate"],
-	["049", "VENOMOTH", "pokemonLevel", "pokemonType1", "pokemonType2", "pokemonEvolveLevel", "pokemonEvolvePokemon", "hp", "attack", "defense", "spattack", "spdefense", "speed", "pokemonMove1", "pokemonMove2", "pokemonMove3", "pokemonMove4", "expGroup", "currentExp", "expNextLevel", "baseExpYield", "catchRate"],
-	["050", "DIGLETT", 1, "pokemonType1", "pokemonType2", "pokemonEvolveLevel", "pokemonEvolvePokemon", "hp", "attack", "defense", "spattack", "spdefense", "speed", "pokemonMove1", "pokemonMove2", "pokemonMove3", "pokemonMove4", "expGroup", "currentExp", "expNextLevel", "baseExpYield", "catchRate"],
-	["051", "DUGTRIO", "pokemonLevel", "pokemonType1", "pokemonType2", "pokemonEvolveLevel", "pokemonEvolvePokemon", "hp", "attack", "defense", "spattack", "spdefense", "speed", "pokemonMove1", "pokemonMove2", "pokemonMove3", "pokemonMove4", "expGroup", "currentExp", "expNextLevel", "baseExpYield", "catchRate"],
+	["026", "RAICHU", 1, "ELECTRIC", "", 0, "", 12, 7, 6, 7, 6, 7, "Thundershock", "Tail Whip", "Quick Attack", "Thunderbolt", "MEDIUMFAST", 0, getExpNeededForNextLevel(1, "MEDIUMFAST"), 122, 75],
+	["027", "SANDSHREW", 1, "GROUND", "", 22, "SANDSLASH", 12, 6, 7, 5, 5, 6, "Scratch", "", "", "", "MEDIUMFAST", 0, getExpNeededForNextLevel(1, "MEDIUMFAST"), 93, 255],
+	["028", "SANDSLASH", 1, "GROUND", "", 0, "", 12, 7, 7, 6, 6, 6, "Scratch", "Defense Curl", "Sand-attack", "", "MEDIUMFAST", 0, getExpNeededForNextLevel(1, "MEDIUMFAST"), 163, 90],
+	["029", "NIDORAN_FEMALE", 1, "POISON", "", 16, "NIDORINA", 12, 6, 6, 6, 6, 6, "Growl", "Scratch", "", "", "MEDIUMSLOW", 0, getExpNeededForNextLevel(1, "MEDIUMSLOW"), 59, 235],
+	["030", "NIDORINA", 1, "POISON", "", 0, "NIDOQUEEN", 12, 6, 6, 6, 6, 6, "Growl", "Scratch", "", "", "MEDIUMSLOW", 0, getExpNeededForNextLevel(1, "MEDIUMSLOW"), 117, 120],
+	["031", "NIDOQUEEN", 1, "POISON", "GROUND", 0, "", 13, 6, 7, 6, 7, 6, "Scratch", "Tail Whip", "Double Kick", "Poison Sting", "MEDIUMSLOW", 0, getExpNeededForNextLevel(1, "MEDIUMSLOW"), 194, 45],
+	["032", "NIDORAN_MALE", 1, "POISON", "", 16, "NIDORINO", 12, 6, 6, 6, 6, 6, "Peck", "Leer", "", "", "MEDIUMSLOW", 0, getExpNeededForNextLevel(1, "MEDIUMSLOW"), 60, 235],
+	["033", "NIDORINO", 1, "POISON", "", 0, "NIDOKING", 12, 6, 6, 6, 6, 6, "Peck", "Leer", "", "", "MEDIUMSLOW", 0, getExpNeededForNextLevel(1, "MEDIUMSLOW"), 118, 120],
+	["034", "NIDOKING", 1, "POISON", "GROUND", 0, "", 12, 7, 6, 7, 6, 7, "Peck", "Focus Energy", "Double Kick", "Poison Sting", "MEDIUMSLOW", 0, getExpNeededForNextLevel(1, "MEDIUMSLOW"), 195, 45],
+	["035", "CLEFAIRY", 1, "NORMAL", "", 0, "CLEFABLE", 12, 6, 6, 6, 6, 6, "Pound", "Growl", "", "", "FAST", 0, getExpNeededForNextLevel(1, "FAST"), 68, 150],
+	["036", "CLEFABLE", 1, "NORMAL", "", 0, "", 13, 6, 6, 7, 7, 6, "Sing", "Doubleslap", "Minimize", "Metronome", "FAST", 0, getExpNeededForNextLevel(1, "FAST"), 129, 25],
+	["037", "VULPIX", 1, "FIRE", "", 0, "NINETALES", 12, 6, 6, 6, 6, 6, "Ember", "", "", "", "MEDIUMFAST", 0, getExpNeededForNextLevel(1, "MEDIUMFAST"), 63, 190],
+	["038", "NINETALES", 1, "FIRE", "", 0, "", 12, 6, 6, 6, 7, 7, "Ember", "Quick Attack", "Confuse Ray", "Safeguard", "MEDIUMFAST", 0, getExpNeededForNextLevel(1, "MEDIUMFAST"), 178, 75],
+	["039", "JIGGLYPUFF", 1, "NORMAL", "", 0, "WIGGLYTUFF", 13, 6, 5, 6, 5, 5, "Sing", "", "", "", "FAST", 0, getExpNeededForNextLevel(1, "FAST"), 76, 170],
+	["040", "WIGGLYTUFF", 1, "NORMAL", "", 0, "", 14, 6, 6, 6, 6, 6, "Doubleslap", "Sing", "Disable", "Defense Curl", "FAST", 0, getExpNeededForNextLevel(1, "FAST"), 109, 50],
+	["041", "ZUBAT", 1, "POISON", "FLYING", 22, "GOLBAT", 12, 6, 6, 5, 6, 6, "Leech Life", "", "", "", "MEDIUMFAST", 0, getExpNeededForNextLevel(1, "MEDIUMFAST"), 54, 255],
+	["042", "GOLBAT", 1, "POISON", "FLYING", 0, "", 12, 6, 6, 6, 6, 7, "Screech", "Leech Life", "Astonish", "Supersonic", "expGroup", "currentExp", "expNextLevel", "baseExpYield", "catchRate"],
+	["043", "ODDISH", 1, "GRASS", "POISON", 21, "GLOOM", 12, 6, 6, 6, 6, 5, "Absorb", "", "", "", "MEDIUMSLOW", 0, getExpNeededForNextLevel(1, "MEDIUMSLOW"), 78, 255],
+	["044", "GLOOM", 1, "GRASS", "POISON", 0, "VILEPLUME", 12, 6, 6, 7, 6, 6, "Absorb", "Sweet Scent", "Poisonpowder", "", "MEDIUMSLOW", 0, getExpNeededForNextLevel(1, "MEDIUMSLOW"), 132, 120],
+	["045", "VILEPLUME", 1, "GRASS", "POISON", 0, "", 12, 6, 7, 7, 7, 6, "Absorb", "Aromatherapy", "Stun Spore", "Mega Drain", "MEDIUMSLOW", 0, getExpNeededForNextLevel(1, "MEDIUMSLOW"), 184, 45],
+	["046", "PARAS", 1, "BUG", "GRASS", 24, "PARASECT", 12, 6, 6, 6, 6, 5, "Scratch", "", "", "", "MEDIUMFAST", 0, getExpNeededForNextLevel(1, "MEDIUMFAST"), 70, 190],
+	["047", "PARASECT", 24, "BUG", "GRASS", 0, "", 12, 7, 6, 6, 6, 6, "Scratch", "Stun Spore", "Poisonpowder", "", "MEDIUMFAST", 0, getExpNeededForNextLevel(1, "MEDIUMFAST"), 128, 75],
+	["048", "VENONAT", 1, "BUG", "POISON", 31, "VENOMOTH", 12, 6, 6, 6, 6, 6, "Tackle", "Disable", "Foresight", "", "MEDIUMFAST", 0, getExpNeededForNextLevel(1, "MEDIUMFAST"), 75, 190],
+	// Supersonic is also a move that could be one of Venomoth its moves // http://www.serebii.net/pokedex-rs/049.shtml
+	["049", "VENOMOTH", 31, "BUG", "POISON", 0, "", 12, 6, 6, 7, 6, 7, "Silver Wind", "Tackle", "Disable", "Foresight", "MEDIUMFAST", 0, getExpNeededForNextLevel(1, "MEDIUMFAST"), 138, 75],
+	["050", "DIGLETT", 1, "GROUND", "", 26, "DUGTRIO", 11, 6, 5, 6, 6, 7, "Sand-attack", "Growl", "", "", "MEDIUMFAST", 0, getExpNeededForNextLevel(1, "MEDIUMFAST"), 81, 255],
+	["051", "DUGTRIO", 26, "GROUND", "", 0, "", 12, 6, 6, 6, 6, 7, "Tri Attack", "Scratch", "Sand-attack", "Growl", "MEDIUMFAST", 0, getExpNeededForNextLevel(1, "MEDIUMFAST"), 153, 50],
 	["052", "MEOWTH", 1, "pokemonType1", "pokemonType2", "pokemonEvolveLevel", "pokemonEvolvePokemon", "hp", "attack", "defense", "spattack", "spdefense", "speed", "pokemonMove1", "pokemonMove2", "pokemonMove3", "pokemonMove4", "expGroup", "currentExp", "expNextLevel", "baseExpYield", "catchRate"],
 	["053", "PERSIAN", "pokemonLevel", "pokemonType1", "pokemonType2", "pokemonEvolveLevel", "pokemonEvolvePokemon", "hp", "attack", "defense", "spattack", "spdefense", "speed", "pokemonMove1", "pokemonMove2", "pokemonMove3", "pokemonMove4", "expGroup", "currentExp", "expNextLevel", "baseExpYield", "catchRate"],
 	["054", "PSYDUCK", 1, "pokemonType1", "pokemonType2", "pokemonEvolveLevel", "pokemonEvolvePokemon", "hp", "attack", "defense", "spattack", "spdefense", "speed", "pokemonMove1", "pokemonMove2", "pokemonMove3", "pokemonMove4", "expGroup", "currentExp", "expNextLevel", "baseExpYield", "catchRate"],
@@ -416,13 +419,38 @@ var pokemonStats = [ //make the variables here the same as for the function crea
 ];
 
 // Pokemon moves background information
+// make empty one for pokemonMove1 in case I forget to delete it for a Pokemon?
+// Add effect chance?
 var pokemonMoves = [
 	//add "Effect" for moves with type "Status" ? add PP-max for when PP UP items are introduced? //also add description? //perhaps make accuracy a float instead of integer?
 	["Name", "Type", "category", "pp", "power", "accuracy", "statOpponent", "statOpponentDecrease", "statOpponentMaxDecrease"], //http://bulbapedia.bulbagarden.net/wiki/Confusion_(move)
+	// Add effect
+	["Absorb", "GRASS", "Special", 25, 20, 100, "", "", ""], // http://bulbapedia.bulbagarden.net/wiki/Absorb_(move)
+	// Add effect
+	["Aromatherapy", "GRASS", "Status", 5, 0, 100, "", "", ""], // accuracy is actually --- // http://bulbapedia.bulbagarden.net/wiki/Aromatherapy_%28move%29
+	// Add effect
+	["Astonish", "GHOST", "Physical", 15, 30, 100, "", "", ""], // http://bulbapedia.bulbagarden.net/wiki/Astonish_(move)
+	// Add effect
+	["Bite", "DARK", "Physical", 25, 60, 100, "", "", ""], // http://bulbapedia.bulbagarden.net/wiki/Bite_(move)
 	["Bubble", "WATER", "Special", 30, 40, 100, "", "", ""], // http://bulbapedia.bulbagarden.net/wiki/Bubble_(move)
-	["Confusion", "PSYCHIC", "Special", 25, 50, 100, "", "", ""], //http://bulbapedia.bulbagarden.net/wiki/Growl_%28move%29
+	// Add effect
+	["Confuse Ray", "GHOST", "Status", 10, 0, 100, "", "", ""], // http://bulbapedia.bulbagarden.net/wiki/Confuse_Ray_(move)
+	// Add effect
+	["Confusion", "PSYCHIC", "Special", 25, 50, 100, "", "", ""], // http://bulbapedia.bulbagarden.net/wiki/Confusion_(move)
+	// Add effect
+	["Defense Curl", "NORMAL", "Status", 40, 0, 100, "", "", ""], //  accuracy is actually --- instead of 100% // http://bulbapedia.bulbagarden.net/wiki/Defense_Curl_(move)
+	// Add effect
+	["Disable", "NORMAL", "Status", 20, 0, 100, "", "", ""], // http://bulbapedia.bulbagarden.net/wiki/Disable_(move)
+	// Add effect
+	["Double Kick", "FIGHTING", "Physical", 30, 30, 100, "", "", ""], // http://bulbapedia.bulbagarden.net/wiki/Double_Kick_(move)
+	// Add effect
+	["Doubleslap", "NORMAL", "Physical", 10, 15, 85, "", "", ""], // http://bulbapedia.bulbagarden.net/wiki/Double_Slap_(move)
 	// Add effect
 	["Ember", "FIRE", "Special", 25, 40, 100, "", "", ""], // http://bulbapedia.bulbagarden.net/wiki/Ember_(move)
+	// Add effect
+	["Focus Energy", "NORMAL", "Status", 30, 0, 100, "", "", ""], // accuracy is actually --- // http://bulbapedia.bulbagarden.net/wiki/Focus_Energy_(move)
+	// Add fact for Fury attack that the attack can hit 2-5 times! - http://bulbapedia.bulbagarden.net/wiki/Fury_Attack_(move)
+	["Foresight", "NORMAL", "Status", 40, 0, 100, "", "", ""], // accuracy actually --- instead of  100 // http://bulbapedia.bulbagarden.net/wiki/Foresight_(move)
 	// Add fact for Fury attack that the attack can hit 2-5 times! - http://bulbapedia.bulbagarden.net/wiki/Fury_Attack_(move)
 	["Fury Attack", "NORMAL", "Physical", 20, 15, 85, "", "", ""], //http://bulbapedia.bulbagarden.net/wiki/Fury_Attack_(move)
 	// Add effect of attack -= 1 until end of battle
@@ -432,38 +460,67 @@ var pokemonMoves = [
 	["Harden", "NORMAL", "Status", 30, 0, 100, "", "", ""], //accuracy is actually --- instead of 100% //http://bulbapedia.bulbagarden.net/wiki/Harden_(move)
 	["Hyper Fang", "NORMAL", "Physical", 15, 80, 90, "", "", ""], // http://bulbapedia.bulbagarden.net/wiki/Hyper_Fang_(move)
 	// Add effect
+	["Leech Life", "BUG", "Physical", 15, 20, 100, "", "", ""], // http://bulbapedia.bulbagarden.net/wiki/Leech_Life_(move)
+	// Add effect
 	["Leech Seed", "GRASS", "Status", 10, 0, 90, "", "", ""], // http://bulbapedia.bulbagarden.net/wiki/Leech_Seed_(move)
 	// Add effect
 	["Leer", "NORMAL", "Status", 30, 0, 100, "", "", ""], // http://bulbapedia.bulbagarden.net/wiki/Leer_(move)
+	// Add effect
+	["Mega Drain", "GRASS", "Special", 15, 40, 100, "", "", ""], // http://bulbapedia.bulbagarden.net/wiki/Mega_Drain_(move)
+	// Add effect
+	["Metronome", "NORMAL", "Status", 10, 0, 100, "", "", ""], // accuracy is actually --- // http://bulbapedia.bulbagarden.net/wiki/Metronome_(move)
+	// Add effect
+	["Minimize", "NORMAL", "Status", 10, 0, 100, "", "", ""], // accuracy is actually --- // http://bulbapedia.bulbagarden.net/wiki/Minimize_(move)
 	["Peck", "FLYING", "Physical", 35, 35, 100, "", "", ""], // http://bulbapedia.bulbagarden.net/wiki/Peck_(move)
 	// Add effect
 	["Poisonpowder", "POISON", "Status", 35, 0, 75, "", "", ""], // http://bulbapedia.bulbagarden.net/wiki/Poison_Powder_(move)
 	// Add effect
 	["Poison Sting", "POISON", "Physical", 35, 15, 100, "", "", ""], //http://bulbapedia.bulbagarden.net/wiki/Poison_Sting_(move)
+	["Pound", "NORMAL", "Physical", 35, 40, 100, "", "", ""], // http://bulbapedia.bulbagarden.net/wiki/Pound_(move)
 	// priority +1 for Quick Attack
 	["Quick Attack", "NORMAL", "Physical", 30, 40, 100, "", "", ""], // http://bulbapedia.bulbagarden.net/wiki/Quick_Attack_(move)
 	// Add effect
 	["Sand-attack", "GROUND", "Status", 15, 0, 100, "", "", ""], // http://bulbapedia.bulbagarden.net/wiki/Sand_Attack_(move)
+	// Add effect
+	["Safeguard", "NORMAL", "Status", 25, 0, 100, "", "", ""], // ACCURACY IS ACTUALLY --- // http://bulbapedia.bulbagarden.net/wiki/Safeguard_(move)
 	["Scratch", "NORMAL", "Physical", 35, 40, 100, "", "", ""], //http://bulbapedia.bulbagarden.net/wiki/Scratch_%28move%29
+	// Add effect
+	["Screech", "NORMAL", "Status", 40, 0, 85, "", "", ""], // http://bulbapedia.bulbagarden.net/wiki/Screech_(move)
+	// Add effect
+	["Silver Wind", "BUG", "Special", 5, 60, 100, "", "", ""], // http://bulbapedia.bulbagarden.net/wiki/Silver_Wind_(move)
+	// Add effect
+	["Sing", "NORMAL", "Status", 15, 0, 55, "", "", ""], // http://bulbapedia.bulbagarden.net/wiki/Sing_(move)
 	// Add effect
 	["Sleep Powder", "GRASS", "Status", 15, 0, 75, "", "", ""], // http://bulbapedia.bulbagarden.net/wiki/Sleep_Powder_(move)
 	// Add effect
 	["Smokescreen", "NORMAL", "Status", 20, 0, 100, "", "", ""], // http://bulbapedia.bulbagarden.net/wiki/Smokescreen_(move)
 	// Add effect
 	["String Shot", "BUG", "Status", 40, 0, 95, "", "", ""], //http://bulbapedia.bulbagarden.net/wiki/String_Shot_(move)
+	// Add effect
+	["Stun Spore", "GRASS", "Status", 30, 0, 75, "", "", ""], // http://bulbapedia.bulbagarden.net/wiki/Stun_Spore_(move)
+	// Add effect
+	["Supersonic", "NORMAL", "Status", 20, 0, 55, "", "", ""], // http://bulbapedia.bulbagarden.net/wiki/Supersonic_(move)
+	// Add effect
+	["Sweet Scent", "NORMAL", "Status", 20, 0, 100, "", "", ""], // bulbapedia.bulbagarden.net/wiki/Sweet_Scent_(move)
 	["Tackle", "NORMAL", "Physical", 35, 50, 100, "", "", ""], // http://bulbapedia.bulbagarden.net/wiki/Tackle_(move)
 	// Add effect
 	["Tail Whip", "NORMAL", "Status", 30, 0, 100, "defenseOpponent", -1, -6], //http://bulbapedia.bulbagarden.net/wiki/Tail_Whip_%28move%29
 	// Add effect
 	["Thundershock", "ELECTRIC", "Special", 30, 40, 100, "", "", ""], //http://bulbapedia.bulbagarden.net/wiki/Thunder_Shock_(move)
 	// Add effect
+	["Thunderbolt", "ELECTRIC", "Special", 15, 90, 100, "", "", ""], // http://bulbapedia.bulbagarden.net/wiki/Thunderbolt_(move)
+	// Add effect
 	["Thunder Wave", "ELECTRIC", "Status", 20, 0, 100, "", "", ""], // http://bulbapedia.bulbagarden.net/wiki/Thunder_Wave_(move)
 	// Add effect
-	["Vine Whip", "GRASS", "Physical", 25, 45, 100, "", "", ""],
+	["Tri Attack", "NORMAL", "Special", 10, 80, 100, "", "", ""], // http://bulbapedia.bulbagarden.net/wiki/Tri_Attack_(move)
+	// Add effect
+	["Vine Whip", "GRASS", "Physical", 25, 45, 100, "", "", ""], // http://bulbapedia.bulbagarden.net/wiki/Vine_Whip_%28move%29
 	["Water Gun", "WATER", "Special", 25, 40, 100, "", "", ""], // http://bulbapedia.bulbagarden.net/wiki/Water_Gun_(move)
 	["Wing Attack", "FLYING", "Physical", 35, 60, 100, "", "", ""], // http://bulbapedia.bulbagarden.net/wiki/Wing_Attack_(move)
 	// Add effect
 	["Withdraw", "WATER", "Status", 40, 0, 100, "", "", ""], // accuracy is actually --- instead of 100% // http://bulbapedia.bulbagarden.net/wiki/Withdraw_(move)
+	// Add effect
+	["Wrap", "NORMAL", "Physical", 20, 15, 90, "", "", ""], // http://bulbapedia.bulbagarden.net/wiki/Wrap_(move)
 	["", "", "", 0, 0, 0, "", "", ""] // for when pokemon don't have all 4 moves yet
 ];
 
@@ -621,6 +678,17 @@ function createPokemonMoves(pokemonObject) {
 				pokemonMoves[i][8]
 			); 
 			pokemonObject.move4 = moveFour;
+		};
+	};
+};
+
+function setActivePokemonText(player){
+	for(i=0; i<6; i++) {
+		var activePokemonCall = "activePokemon" + (i+1);
+		if (player[activePokemonCall] != "") {
+			document.getElementById(activePokemonCall).innerHTML = player[activePokemonCall].Name + "<br/>Lvl: " + player[activePokemonCall].level + "<br/> <img src=images/pokemonIconsTransparent/" + player[activePokemonCall].Name + ".png /> <br/>HP: " + player[activePokemonCall].currentHP + "/" + player[activePokemonCall].maxHP + "<br/><progress id='health' value=" + player[activePokemonCall].currentHP + " max=" + player[activePokemonCall].maxHP + " style='height:1vh;width:60%;'></progress> <br/>Exp: " + player[activePokemonCall].currentExp + "/" + player[activePokemonCall].expNextLevel;
+			document.getElementById("activePokemonTitle").style.display = "block";
+			document.getElementById("activePokemon").style.display = "block";
 		};
 	};
 };

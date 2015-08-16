@@ -4,88 +4,144 @@ Javascript code for the Pokemon FireRed Progress Quest
 Made on 20-07-2015
 by GeOdin */
 
-// This includes the functions:
-//// startGame();
-////// change();
+/* This includes the functions:
+ * startGame();
+ * * change();
+ */
 
-// Story used from Pokemon FireRed
-// change pokemonRed in pokemonFireRed
-// movie of start of game: https://www.youtube.com/watch?v=yUS1IcC5CBY
-// in #pokemonRed text, Pokemon can be POK&eacute;MON
-// show map where you currently are --> town map http://bulbapedia.bulbagarden.net/wiki/File:Viridian_City_FRLG.png (in folder townMap in folder images, currently not yet used)
-// use male / female screenshots depending on playerGender
-// make Pokemonnames, stats and moves all uppercase?
-// include documentation for all files
-// chance to encounter a shiny?
-// show images of pokemon on top of battle image and flip pokemon image of opponent ? --> https://css-tricks.com/snippets/css/flip-an-image/
-// reset amount of damage from attacks after battle (delete effects of growl, for example)
-// document.getElementById("imageStory") --> HallofFame.png picture keeps popping up after restarting the game
-// add PAUSE button (which turns into a CONTINUE-button) to pause/ continue the game --> save value of counter and restart change() function with continue button
-//// add var progress that gets the same value as counter to store the counter value and use that for the pause/ continue button?
-// show mainpage and pokemon red buttons before game is started (and after game is finished)?
-// add disclaimer?
-// add credits/ read through at the start?
-// sprites for Pokemon Firered: http://www.spriters-resource.com/game_boy_advance/pokemonfireredleafgreen/sheet/3713/
-// add possibility that moves crit
-////  then add function to arrange the level up
-// add flee option to/before wildPokemonBattle function when wildPokemon.level >= player.activePokemon1.level -2 // -1 ?
-// add also flee option to/before wildPokemonBattle when the player.activePokemon1.currentHP < ((2/3) * player.activePokemon1.maxHP) // or something like that?
-// add var lastVisitedHealingLocation to FR.js, so that player can either return there by choice (pokemon low on health) or by teleport (when all pokemon are fainted/currentHP 0)
-// test wildPokemonBattle --> set wildPokemon as #activePokemon1 in html code
-// make wild pokemon appeared part of start of wildPokemonBattle function?
-// use counter also as input for battle functions to properly show them, also get counter back as output or a variable for the difference
-// use an if statement to check whether or not to run the main setInterval // http://javascript.info/tutorial/settimeout-setinterval
-// other kind of setInterval // http://www.thecodeship.com/web-development/alternative-to-javascript-evil-setinterval/
-//// problem is that Javascript does not support multi-threading
-//// multi-treading with web workers:
-////// http://www.htmlgoodies.com/html5/tutorials/introducing-html-5-web-workers-bringing-multi-threading-to-javascript.html#fbid=r2YYsyj7_ud
-////// https://msdn.microsoft.com/en-us/hh549259.aspx
-////// http://www.infoq.com/articles/js_multithread
-// add EV-training
-// also add --- as current HP for lvl 100 Pokemon
-// more elaborative exp-gained-formula: http://bulbapedia.bulbagarden.net/wiki/Experience
-// add function to check whether pokemon levels up in battle(check exp?)
-// make the use of the potion in FR_FirstPokemonBattle.js a function healPokemonWithItem(healItem) from FR_Items.js (potion object is already created as player.bag.potion);
-// make a bag html page pop-up (like for the pokedex) for #playerStats that shows the bag and items in the bag (among other stuff?)
-// make the battle back-ground variable, depending on laction (make it a property of location)
-// make location an object of player, like lastHealingLocation is also an object of player
-// make a function for when all pokemon are fainted --> lastHealingLocation
-// give the pokemon a locatedIn property ("activePokemon1..6" / "PC")
-// give every pokemon that the player gets a unique number? --> pokemonID
-// make a pokedex object for object player?
-// arrange player.bag in the same way as in pokemon FireRed?
-//// KEY ITEMS POCKET
-//// POK&eacute BALLS POCKET
-// give locationObject an image property to show after battle (instead of only having the battle background with no pokemon after the battle ends)
-// sometimes player and opponent pokemon are not shown in wildPokemonBattle(...)
-// add quest log?
-// add achievements?
-// improve the quaity of some screenshots
-// is the damage still working for wildPokemonBattle(...)?
-// only try to catch pokemon if their HP is below a certain threshold?
-// http://javascript.info/tutorial/settimeout-setinterval
-// add cheat code that with player.Name = "cheat" and rival.Name = "code" you start with all pokemon level 99
-//// C: Cubone/ Chansey/ Charizard/ Cloyster
-//// H: Horsea/ Haunter/ Hitmonchan/ Hitmonlee/ Hypno
-//// E: Exeggutor/ Electabuzz/ Electrode
-//// A: Arcanine/ Articuno
-//// T: Tangela/ Tauros
-//// set all pokemonCaught to 1
-//// Heal all Pokemon that go into the PC
-//// add location of pokemon to pokedex (activePokemon / pc?)
-// add battle against rival on route 22
-// Final version:
-//// make text for playerGender and starterPokemon all of the choices for faster testing (see comment after choosing this)
-////// playerGender = prompt("Now tell me. Are you a boy? \nOr are you a girl? ", "Boy, girl");
-////// starterPokemon = prompt("Which Pokemon do you want as a starter? ", "Bulbasaur/ Charmander/ Squirtle");
-// add option to nickname your starter (var starterNickname?) (Sean)
-// ask for a favorite pokemon at the start, to make sure the game keeps that Pokemon in the activePokemon, and you hava a 100% chance to obtain that Pokemon
-// use of coockies: (not implemented (yet?))
-//// This site uses cookies. By continuing to use this site, you are agreeing to our use of cookies. (http://pokemon-online.eu/download)
-// Use Pokedex entries from pokemon universe?
-//// if there's a pc -> all pokemon can be healed and the function switchPokemonPC(player) can be used
-////// create a new function useHealingLocation(...) for this?
-////// or make it part of the function getHealingLocation(...)?
+/////////////
+// General //
+/////////////
+
+/* change pokemonRed in pokemonFireRed
+ * make Pokemonnames, stats and moves all uppercase?
+ * include documentation for all files
+ * document.getElementById("imageStory") --> HallofFame.png picture keeps popping up after restarting the game
+ * add disclaimer?
+ * add credits/ read through at the start?
+ * sprites for Pokemon Firered: http://www.spriters-resource.com/game_boy_advance/pokemonfireredleafgreen/sheet/3713/
+ * add EV-training
+ * also add --- as current HP for lvl 100 Pokemon
+ * make a bag html page pop-up (like for the pokedex) for #playerStats that shows the bag and items in the bag (among other stuff?)
+ * make location an object of player, like lastHealingLocation is also an object of player
+ * make a pokedex object for object player?
+ * arrange player.bag in the same way as in pokemon FireRed?
+ * * KEY ITEMS POCKET
+ * * POK&eacute BALLS POCKET
+ * add quest log?
+ * add achievements?
+ * improve the quaity of some screenshots
+ * add cheat code that with player.Name = "cheat" and rival.Name = "code" you start with all pokemon level 99
+ * * C: Cubone/ Chansey/ Charizard/ Cloyster
+ * * H: Horsea/ Haunter/ Hitmonchan/ Hitmonlee/ Hypno
+ * * E: Exeggutor/ Electabuzz/ Electrode
+ * * A: Arcanine/ Articuno
+ * * T: Tangela/ Tauros
+ * * set all pokemonCaught to 1
+ */
+
+/////////////
+// Battles //
+/////////////
+
+/* reset amount of damage from attacks after battle (delete effects of growl, for example)
+ * add possibility that moves crit
+ * add function to arrange the level up
+ * add flee option to/before wildPokemonBattle function when wildPokemon.level >= player.activePokemon1.level -2 // -1 ?
+ * add also flee option to/before wildPokemonBattle when the player.activePokemon1.currentHP < ((2/3) * player.activePokemon1.maxHP) // or something like that?
+ * add function to check whether pokemon levels up in battle(check exp?)
+ * make the use of the potion in FR_FirstPokemonBattle.js a function healPokemonWithItem(healItem) from FR_Items.js (potion object is already created as player.bag.potion);
+ * make a function for when all pokemon are fainted --> lastHealingLocation
+ */
+
+////////////////////
+// Map/ Locations //
+////////////////////
+
+/* show map where you currently are --> town map http://bulbapedia.bulbagarden.net/wiki/File:Viridian_City_FRLG.png (in folder townMap in folder images, currently not yet used)
+ * add var lastVisitedHealingLocation to FR.js, so that player can either return there by choice (pokemon low on health) or by teleport (when all pokemon are fainted/currentHP 0)
+ * give locationObject an image property to show after battle (instead of only having the battle background with no pokemon after the battle ends)
+ */
+
+/////////////
+// Pokemon //
+/////////////
+
+/* give the pokemon a locatedIn property ("activePokemon1..6" / "PC")
+ * give every pokemon that the player gets a unique number? --> pokemonID
+ * Heal all Pokemon that go into the PC
+ * add location of pokemon to pokedex (activePokemon / pc?)
+ */
+
+//////////////////
+// Wild Pokemon //
+//////////////////
+
+/* chance to encounter a shiny?
+ * test wildPokemonBattle --> set wildPokemon as #activePokemon1 in html code
+ * use counter also as input for battle functions to properly show them, also get counter back as output or a variable for the difference
+ * sometimes player and opponent pokemon are not shown in wildPokemonBattle(...)
+ * is the damage still working for wildPokemonBattle(...)?
+ * only try to catch pokemon if their HP is below a certain threshold?
+ */
+
+///////////
+// Story //
+///////////
+
+/* Story used from Pokemon FireRed
+ * movie of start of game: https://www.youtube.com/watch?v=yUS1IcC5CBY
+ * in #pokemonRed text, Pokemon can be POK&eacute;MON
+ * use male / female screenshots depending on playerGender
+ * add PAUSE button (which turns into a CONTINUE-button) to pause/ continue the game --> save value of counter and restart change() function with continue button
+ * * add var progress that gets the same value as counter to store the counter value and use that for the pause/ continue button?
+ * use an if statement to check whether or not to run the main setInterval // http://javascript.info/tutorial/settimeout-setinterval
+ * other kind of setInterval // http://www.thecodeship.com/web-development/alternative-to-javascript-evil-setinterval/
+ * * problem is that Javascript does not support multi-threading
+ * * multi-treading with web workers:
+ * * * http://www.htmlgoodies.com/html5/tutorials/introducing-html-5-web-workers-bringing-multi-threading-to-javascript.html#fbid=r2YYsyj7_ud
+ * * * https://msdn.microsoft.com/en-us/hh549259.aspx
+ * * * http://www.infoq.com/articles/js_multithread
+ * http://javascript.info/tutorial/settimeout-setinterval
+ * add battle against rival on route 22
+ */
+
+///////////////////
+// Final Version //
+///////////////////
+
+/* make text for playerGender and starterPokemon all of the choices for faster testing (see comment after choosing this)
+ * * playerGender = prompt("Now tell me. Are you a boy? \nOr are you a girl? ", "Boy, girl");
+ * * starterPokemon = prompt("Which Pokemon do you want as a starter? ", "Bulbasaur/ Charmander/ Squirtle");
+ * add option to nickname your starter (var starterNickname?) (Sean)
+ * ask for a favorite pokemon at the start, to make sure the game keeps that Pokemon in the activePokemon, and you hava a 100% chance to obtain that Pokemon
+ * use of coockies: (not implemented (yet?))
+ * * This site uses cookies. By continuing to use this site, you are agreeing to our use of cookies. (http://pokemon-online.eu/download)
+ * Use Pokedex entries from pokemon universe?
+ * if there's a pc -> all pokemon can be healed and the function switchPokemonPC(player) can be used
+ * * create a new function useHealingLocation(...) for this?
+ * * or make it part of the function getHealingLocation(...)?
+ * arrays: http://stackoverflow.com/questions/6254050/how-to-add-an-object-into-an-array
+ * * http://stackoverflow.com/questions/251402/create-an-empty-object-in-javascript-with-or-new-object
+ * add feature where you get to trade your pokemon and get them back (e.g., Kadabra --> Alakazam)
+ * hp bars
+ * * http://stackoverflow.com/questions/20277052/how-to-make-a-health-bar
+ * * http://getbootstrap.com/components/#progress
+ * Pokedex
+ * * picture of Pokedex on default
+ * * If you click on it, you see the amount of captured Pokemon and their entries on the same place (same div)
+ * * if you click on it again, you see the default picture of the pokedex
+ * Player
+ * * Name and picture of player by default, including money
+ * * if you click on it, you see the bag
+ * * * <h2> Bag </h2>
+ * * * <h3>KEY ITEMS POCKET</h3>
+ * * * OAK'S PARCEL <br/>
+ * * * <h3> HEAL ITEMS POCKET </h3>
+ * * * Potions: #potionsAmount <br/>
+ * * * <h3> POKé BALLS POCKET </h3>
+ * * * POKé BALLS: #pokeballAmount <br/>
+ */
 
 function startGame() { 
 
@@ -572,9 +628,7 @@ function startGame() {
 				document.getElementById("pokemonRed").innerHTML = "Hm! " + player.starterPokemon + " is your choice. <br/> It's one worth raising. ";
 			}
 			document.getElementById("imageStory").src = "images/wildPokemon/" + player.starterPokemon + ".png"; // image from Bulbapedia // http://bulbapedia.bulbagarden.net/wiki/Main_Page
-			document.getElementById("activePokemon1").innerHTML = player.activePokemon1.Name + "<br/>Lvl: " + player.activePokemon1.level + "<br/> <img src=images/pokemonIconsTransparent/" + player.activePokemon1.Name + ".png /> <br/>HP: " + player.activePokemon1.currentHP + "/" + player.activePokemon1.maxHP + "<br/> Exp: " + player.activePokemon1.currentExp + "/" + player.activePokemon1.expNextLevel;
-			document.getElementById("activePokemonTitle").style.display = "block";
-			document.getElementById("activePokemon").style.display = "block";
+			setActivePokemonText(player);
 			player.pokemonCaught = pokemonCaught;
 			if (player.pokemonCaught[player.activePokemon1.Name] == 0) {
 				player.pokemonCaught[player.activePokemon1.Name] = 1;
@@ -655,7 +709,7 @@ function startGame() {
 					if (player.activePokemon1.currentHP > player.activePokemon1.maxHP) {
 						player.activePokemon1.currentHP = player.activePokemon1.maxHP;
 					};
-					document.getElementById("activePokemon1").innerHTML = player.activePokemon1.Name + "<br/>Lvl: " + player.activePokemon1.level + "<br/> <img src=images/pokemonIconsTransparent/" + player.activePokemon1.Name + ".png /> <br/>HP: " + player.activePokemon1.currentHP + "/" + player.activePokemon1.maxHP + "<br/> Exp: " + player.activePokemon1.currentExp + "/" + player.activePokemon1.expNextLevel;
+					setActivePokemonText(player);
 				};
 			// Rival has first move
 			} else if (player.activePokemon1.speed < rival.activePokemon1.speed) {
@@ -667,7 +721,7 @@ function startGame() {
 				} else if (rival.activePokemon1.Name == "SQUIRTLE") {
 					player.activePokemon1.currentHP -= 5;
 				};
-				document.getElementById("activePokemon1").innerHTML = player.activePokemon1.Name + "<br/>Lvl: " + player.activePokemon1.level + "<br/> <img src=images/pokemonIconsTransparent/" + player.activePokemon1.Name + ".png /> <br/>HP: " + player.activePokemon1.currentHP + "/" + player.activePokemon1.maxHP + "<br/> Exp: " + player.activePokemon1.currentExp + "/" + player.activePokemon1.expNextLevel;
+				setActivePokemonText(player);
 			};
 /*			//pause current setInterval --> http://stackoverflow.com/questions/8432127/stop-setinterval-function-for-an-amount-of-time
 			pokemonBattleStartFirst(player, rival); //this is not functional; check whether all objects are proper objects
@@ -695,7 +749,7 @@ function startGame() {
 		} else if (counter == 78) {
 			document.getElementById("imageStory").src = "images/Mom.png";
 			player.activePokemon1.currentHP = player.activePokemon1.maxHP;
-			document.getElementById("activePokemon1").innerHTML = player.activePokemon1.Name + "<br/>Lvl: " + player.activePokemon1.level + "<br/> <img src=images/pokemonIconsTransparent/" + player.activePokemon1.Name + ".png /> <br/>HP: " + player.activePokemon1.currentHP + "/" + player.activePokemon1.maxHP + "<br/> Exp: " + player.activePokemon1.currentExp + "/" + player.activePokemon1.expNextLevel;
+			setActivePokemonText(player);
 			document.getElementById("pokemonRed").innerHTML = "... to your mom to heal your POK&eacute;MON ...";
 		} else if (counter == 79) {
 			/////////////

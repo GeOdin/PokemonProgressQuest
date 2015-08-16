@@ -76,7 +76,7 @@ function wildPokemonBattle(player, wildPokemon, locationObject) {
 										// Add exp
 										exp = getExpWildPokemonBattle(wildPokemon);
 										player.activePokemon1.currentExp = player.activePokemon1.currentExp + exp;
-										document.getElementById("activePokemon1").innerHTML = player.activePokemon1.Name + "<br/>Lvl: " + player.activePokemon1.level + "<br/> <img src=images/pokemonIconsTransparent/" + player.activePokemon1.Name + ".png /> <br/>HP: " + player.activePokemon1.currentHP + "/" + player.activePokemon1.maxHP + "<br/> Exp: " + player.activePokemon1.currentExp + "/" + player.activePokemon1.expNextLevel;
+										setActivePokemonText(player);
 
 										// Level up if necessary
 										if (player.activePokemon1.currentExp >= player.activePokemon1.expNextLevel) {
@@ -117,7 +117,7 @@ function wildPokemonBattle(player, wildPokemon, locationObject) {
 												};
 											};
 											createPokemonMoves(player.activePokemon1);
-											document.getElementById("activePokemon1").innerHTML = player.activePokemon1.Name + "<br/>Lvl: " + player.activePokemon1.level + "<br/> <img src=images/pokemonIconsTransparent/" + player.activePokemon1.Name + ".png /> <br/>HP: " + player.activePokemon1.currentHP + "/" + player.activePokemon1.maxHP + "<br/> Exp: " + player.activePokemon1.currentExp + "/" + player.activePokemon1.expNextLevel;
+											setActivePokemonText(player);
 											document.getElementById("pokemonRed").innerHTML = player.activePokemon1.Name + " leveled up! ";
 										};
 										// Add story?
@@ -142,7 +142,7 @@ function wildPokemonBattle(player, wildPokemon, locationObject) {
 									// Add exp
 									exp = getExpWildPokemonBattle(wildPokemon);
 									player.activePokemon1.currentExp = player.activePokemon1.currentExp + exp;
-									document.getElementById("activePokemon1").innerHTML = player.activePokemon1.Name + "<br/>Lvl: " + player.activePokemon1.level + "<br/> <img src=images/pokemonIconsTransparent/" + player.activePokemon1.Name + ".png /> <br/>HP: " + player.activePokemon1.currentHP + "/" + player.activePokemon1.maxHP + "<br/> Exp: " + player.activePokemon1.currentExp + "/" + player.activePokemon1.expNextLevel;
+									setActivePokemonText(player);
 
 									// Level up if necessary
 									if (player.activePokemon1.currentExp >= player.activePokemon1.expNextLevel) {
@@ -183,7 +183,7 @@ function wildPokemonBattle(player, wildPokemon, locationObject) {
 											};
 										};
 										createPokemonMoves(player.activePokemon1);
-										document.getElementById("activePokemon1").innerHTML = player.activePokemon1.Name + "<br/>Lvl: " + player.activePokemon1.level + "<br/> <img src=images/pokemonIconsTransparent/" + player.activePokemon1.Name + ".png /> <br/>HP: " + player.activePokemon1.currentHP + "/" + player.activePokemon1.maxHP + "<br/> Exp: " + player.activePokemon1.currentExp + "/" + player.activePokemon1.expNextLevel;
+										setActivePokemonText(player);
 										document.getElementById("pokemonRed").innerHTML = player.activePokemon1.Name + " leveled up! ";
 									};
 									// Add story?
@@ -220,7 +220,7 @@ function wildPokemonBattle(player, wildPokemon, locationObject) {
 									// Add exp
 									exp = getExpWildPokemonBattle(wildPokemon);
 									player.activePokemon1.currentExp = player.activePokemon1.currentExp + exp;
-									document.getElementById("activePokemon1").innerHTML = player.activePokemon1.Name + "<br/>Lvl: " + player.activePokemon1.level + "<br/> <img src=images/pokemonIconsTransparent/" + player.activePokemon1.Name + ".png /> <br/>HP: " + player.activePokemon1.currentHP + "/" + player.activePokemon1.maxHP + "<br/> Exp: " + player.activePokemon1.currentExp + "/" + player.activePokemon1.expNextLevel;
+									setActivePokemonText(player);
 
 									// Level up if necessary
 									if (player.activePokemon1.currentExp >= player.activePokemon1.expNextLevel) {
@@ -261,7 +261,7 @@ function wildPokemonBattle(player, wildPokemon, locationObject) {
 											};
 										};
 										createPokemonMoves(player.activePokemon1);
-										document.getElementById("activePokemon1").innerHTML = player.activePokemon1.Name + "<br/>Lvl: " + player.activePokemon1.level + "<br/> <img src=images/pokemonIconsTransparent/" + player.activePokemon1.Name + ".png /> <br/>HP: " + player.activePokemon1.currentHP + "/" + player.activePokemon1.maxHP + "<br/> Exp: " + player.activePokemon1.currentExp + "/" + player.activePokemon1.expNextLevel;
+										setActivePokemonText(player);
 										document.getElementById("pokemonRed").innerHTML = player.activePokemon1.Name + " leveled up! ";
 									};
 									// Add story?
@@ -286,7 +286,7 @@ function wildPokemonBattle(player, wildPokemon, locationObject) {
 								// Add exp
 								exp = getExpWildPokemonBattle(wildPokemon);
 								player.activePokemon1.currentExp = player.activePokemon1.currentExp + exp;
-								document.getElementById("activePokemon1").innerHTML = player.activePokemon1.Name + "<br/>Lvl: " + player.activePokemon1.level + "<br/> <img src=images/pokemonIconsTransparent/" + player.activePokemon1.Name + ".png /> <br/>HP: " + player.activePokemon1.currentHP + "/" + player.activePokemon1.maxHP + "<br/> Exp: " + player.activePokemon1.currentExp + "/" + player.activePokemon1.expNextLevel;
+								setActivePokemonText(player);
 
 								// Level up if necessary
 								if (player.activePokemon1.currentExp >= player.activePokemon1.expNextLevel) {
@@ -327,7 +327,7 @@ function wildPokemonBattle(player, wildPokemon, locationObject) {
 										};
 									};
 									createPokemonMoves(player.activePokemon1);
-									document.getElementById("activePokemon1").innerHTML = player.activePokemon1.Name + "<br/>Lvl: " + player.activePokemon1.level + "<br/> <img src=images/pokemonIconsTransparent/" + player.activePokemon1.Name + ".png /> <br/>HP: " + player.activePokemon1.currentHP + "/" + player.activePokemon1.maxHP + "<br/> Exp: " + player.activePokemon1.currentExp + "/" + player.activePokemon1.expNextLevel;
+									setActivePokemonText(player);
 									document.getElementById("pokemonRed").innerHTML = player.activePokemon1.Name + " leveled up! ";
 								};
 								// Add story?
@@ -341,7 +341,7 @@ function wildPokemonBattle(player, wildPokemon, locationObject) {
 				} else if (player.activePokemon1.speed < wildPokemon.speed) {
 					damage = calculateDamageWildPokemon(wildPokemon, move = getMoveWildPokemonBattle(wildPokemon), player.activePokemon1);
 					player.activePokemon1.currentHP -= damage;
-					document.getElementById("activePokemon1").innerHTML = player.activePokemon1.Name + "<br/>Lvl: " + player.activePokemon1.level + "<br/> <img src=images/pokemonIconsTransparent/" + player.activePokemon1.Name + ".png /> <br/>HP: " + player.activePokemon1.currentHP + "/" + player.activePokemon1.maxHP + "<br/> Exp: " + player.activePokemon1.currentExp + "/" + player.activePokemon1.expNextLevel;
+					setActivePokemonText(player);
 					document.getElementById("pokemonRed").innerHTML = wildPokemon.Name + " used " + wildPokemon.move1.Name + ".";
 					if (player.activePokemon1.currentHP <=0) {
 						if (player.activePokemon1.currentHP < 0) {
@@ -350,12 +350,12 @@ function wildPokemonBattle(player, wildPokemon, locationObject) {
 						document.getElementById("imageStoryPlayerPokemon").style.display = "none";
 						document.getElementById("imageStoryOpponentPokemon").style.display = "none";
 						document.getElementById("pokemonRed").src = "images/wildPokemon/" + player.activePokemon1.Name + ".png";
-						document.getElementById("activePokemon1").innerHTML = player.activePokemon1.Name + "<br/>Lvl: " + player.activePokemon1.level + "<br/> <img src=images/pokemonIconsTransparent/" + player.activePokemon1.Name + ".png /> <br/>HP: " + player.activePokemon1.currentHP + "/" + player.activePokemon1.maxHP + "<br/> Exp: " + player.activePokemon1.currentExp + "/" + player.activePokemon1.expNextLevel;
+						setActivePokemonText(player);
 						document.getElementById("pokemonRed").innerHTML = player.activePokemon1.Name + " fainted.";
 						document.getElementById("imageStory").src = player.lastHealingLocation.image;
 						document.getElementById("pokemonRed").innerHTML = player.lastHealingLocation.storyText;
 						healAllPokemon(player);
-						document.getElementById("activePokemon1").innerHTML = player.activePokemon1.Name + "<br/>Lvl: " + player.activePokemon1.level + "<br/> <img src=images/pokemonIconsTransparent/" + player.activePokemon1.Name + ".png /> <br/>HP: " + player.activePokemon1.currentHP + "/" + player.activePokemon1.maxHP + "<br/> Exp: " + player.activePokemon1.currentExp + "/" + player.activePokemon1.expNextLevel;
+						setActivePokemonText(player);
 						return;
 					};
 				};
@@ -368,7 +368,7 @@ function wildPokemonBattle(player, wildPokemon, locationObject) {
 				if (player.activePokemon1.speed < wildPokemon.speed) {
 					damage = calculateDamageWildPokemon(wildPokemon, move = getMoveWildPokemonBattle(wildPokemon), player.activePokemon1);
 					player.activePokemon1.currentHP -= damage;
-					document.getElementById("activePokemon1").innerHTML = player.activePokemon1.Name + "<br/>Lvl: " + player.activePokemon1.level + "<br/> <img src=images/pokemonIconsTransparent/" + player.activePokemon1.Name + ".png /> <br/>HP: " + player.activePokemon1.currentHP + "/" + player.activePokemon1.maxHP + "<br/> Exp: " + player.activePokemon1.currentExp + "/" + player.activePokemon1.expNextLevel;
+					setActivePokemonText(player);
 					document.getElementById("pokemonRed").innerHTML = wildPokemon.Name + " used " + wildPokemon.move1.Name + ".";
 					if (player.activePokemon1.currentHP <=0) {
 						if (player.activePokemon1.currentHP < 0) {
@@ -377,12 +377,12 @@ function wildPokemonBattle(player, wildPokemon, locationObject) {
 						document.getElementById("imageStoryPlayerPokemon").style.display = "none";
 						document.getElementById("imageStoryOpponentPokemon").style.display = "none";
 						document.getElementById("pokemonRed").src = "images/wildPokemon/" + player.activePokemon1.Name + ".png";
-						document.getElementById("activePokemon1").innerHTML = player.activePokemon1.Name + "<br/>Lvl: " + player.activePokemon1.level + "<br/> <img src=images/pokemonIconsTransparent/" + player.activePokemon1.Name + ".png /> <br/>HP: " + player.activePokemon1.currentHP + "/" + player.activePokemon1.maxHP + "<br/> Exp: " + player.activePokemon1.currentExp + "/" + player.activePokemon1.expNextLevel;
+						setActivePokemonText(player);
 						document.getElementById("pokemonRed").innerHTML = player.activePokemon1.Name + " fainted.";
 						document.getElementById("imageStory").src = player.lastHealingLocation.image;
 						document.getElementById("pokemonRed").innerHTML = player.lastHealingLocation.storyText;
 						healAllPokemon(player);
-						document.getElementById("activePokemon1").innerHTML = player.activePokemon1.Name + "<br/>Lvl: " + player.activePokemon1.level + "<br/> <img src=images/pokemonIconsTransparent/" + player.activePokemon1.Name + ".png /> <br/>HP: " + player.activePokemon1.currentHP + "/" + player.activePokemon1.maxHP + "<br/> Exp: " + player.activePokemon1.currentExp + "/" + player.activePokemon1.expNextLevel;
+						setActivePokemonText(player);
 						return;
 					};
 				// ... or let the player do his move.
@@ -420,7 +420,7 @@ function wildPokemonBattle(player, wildPokemon, locationObject) {
 										// Add exp
 										exp = getExpWildPokemonBattle(wildPokemon);
 										player.activePokemon1.currentExp = player.activePokemon1.currentExp + exp;
-										document.getElementById("activePokemon1").innerHTML = player.activePokemon1.Name + "<br/>Lvl: " + player.activePokemon1.level + "<br/> <img src=images/pokemonIconsTransparent/" + player.activePokemon1.Name + ".png /> <br/>HP: " + player.activePokemon1.currentHP + "/" + player.activePokemon1.maxHP + "<br/> Exp: " + player.activePokemon1.currentExp + "/" + player.activePokemon1.expNextLevel;
+										setActivePokemonText(player);
 
 										// Level up if necessary
 										if (player.activePokemon1.currentExp >= player.activePokemon1.expNextLevel) {
@@ -461,7 +461,7 @@ function wildPokemonBattle(player, wildPokemon, locationObject) {
 												};
 											};
 											createPokemonMoves(player.activePokemon1);
-											document.getElementById("activePokemon1").innerHTML = player.activePokemon1.Name + "<br/>Lvl: " + player.activePokemon1.level + "<br/> <img src=images/pokemonIconsTransparent/" + player.activePokemon1.Name + ".png /> <br/>HP: " + player.activePokemon1.currentHP + "/" + player.activePokemon1.maxHP + "<br/> Exp: " + player.activePokemon1.currentExp + "/" + player.activePokemon1.expNextLevel;
+											setActivePokemonText(player);
 											document.getElementById("pokemonRed").innerHTML = player.activePokemon1.Name + " leveled up! ";
 										};
 										// Add story?
@@ -486,7 +486,7 @@ function wildPokemonBattle(player, wildPokemon, locationObject) {
 									// Add exp
 									exp = getExpWildPokemonBattle(wildPokemon);
 									player.activePokemon1.currentExp = player.activePokemon1.currentExp + exp;
-									document.getElementById("activePokemon1").innerHTML = player.activePokemon1.Name + "<br/>Lvl: " + player.activePokemon1.level + "<br/> <img src=images/pokemonIconsTransparent/" + player.activePokemon1.Name + ".png /> <br/>HP: " + player.activePokemon1.currentHP + "/" + player.activePokemon1.maxHP + "<br/> Exp: " + player.activePokemon1.currentExp + "/" + player.activePokemon1.expNextLevel;
+									setActivePokemonText(player);
 
 									// Level up if necessary
 									if (player.activePokemon1.currentExp >= player.activePokemon1.expNextLevel) {
@@ -527,7 +527,7 @@ function wildPokemonBattle(player, wildPokemon, locationObject) {
 											};
 										};
 										createPokemonMoves(player.activePokemon1);
-										document.getElementById("activePokemon1").innerHTML = player.activePokemon1.Name + "<br/>Lvl: " + player.activePokemon1.level + "<br/> <img src=images/pokemonIconsTransparent/" + player.activePokemon1.Name + ".png /> <br/>HP: " + player.activePokemon1.currentHP + "/" + player.activePokemon1.maxHP + "<br/> Exp: " + player.activePokemon1.currentExp + "/" + player.activePokemon1.expNextLevel;
+										setActivePokemonText(player);
 										document.getElementById("pokemonRed").innerHTML = player.activePokemon1.Name + " leveled up! ";
 									};
 									// Add story?
@@ -564,7 +564,7 @@ function wildPokemonBattle(player, wildPokemon, locationObject) {
 									// Add exp
 									exp = getExpWildPokemonBattle(wildPokemon);
 									player.activePokemon1.currentExp = player.activePokemon1.currentExp + exp;
-									document.getElementById("activePokemon1").innerHTML = player.activePokemon1.Name + "<br/>Lvl: " + player.activePokemon1.level + "<br/> <img src=images/pokemonIconsTransparent/" + player.activePokemon1.Name + ".png /> <br/>HP: " + player.activePokemon1.currentHP + "/" + player.activePokemon1.maxHP + "<br/> Exp: " + player.activePokemon1.currentExp + "/" + player.activePokemon1.expNextLevel;
+									setActivePokemonText(player);
 
 									// Level up if necessary
 									if (player.activePokemon1.currentExp >= player.activePokemon1.expNextLevel) {
@@ -605,7 +605,7 @@ function wildPokemonBattle(player, wildPokemon, locationObject) {
 											};
 										};
 										createPokemonMoves(player.activePokemon1);
-										document.getElementById("activePokemon1").innerHTML = player.activePokemon1.Name + "<br/>Lvl: " + player.activePokemon1.level + "<br/> <img src=images/pokemonIconsTransparent/" + player.activePokemon1.Name + ".png /> <br/>HP: " + player.activePokemon1.currentHP + "/" + player.activePokemon1.maxHP + "<br/> Exp: " + player.activePokemon1.currentExp + "/" + player.activePokemon1.expNextLevel;
+										setActivePokemonText(player);
 										document.getElementById("pokemonRed").innerHTML = player.activePokemon1.Name + " leveled up! ";
 									};
 									// Add story?
@@ -630,7 +630,7 @@ function wildPokemonBattle(player, wildPokemon, locationObject) {
 								// Add exp
 								exp = getExpWildPokemonBattle(wildPokemon);
 								player.activePokemon1.currentExp = player.activePokemon1.currentExp + exp;
-								document.getElementById("activePokemon1").innerHTML = player.activePokemon1.Name + "<br/>Lvl: " + player.activePokemon1.level + "<br/> <img src=images/pokemonIconsTransparent/" + player.activePokemon1.Name + ".png /> <br/>HP: " + player.activePokemon1.currentHP + "/" + player.activePokemon1.maxHP + "<br/> Exp: " + player.activePokemon1.currentExp + "/" + player.activePokemon1.expNextLevel;
+								setActivePokemonText(player);
 
 								// Level up if necessary
 								if (player.activePokemon1.currentExp >= player.activePokemon1.expNextLevel) {
@@ -671,7 +671,7 @@ function wildPokemonBattle(player, wildPokemon, locationObject) {
 										};
 									};
 									createPokemonMoves(player.activePokemon1);
-									document.getElementById("activePokemon1").innerHTML = player.activePokemon1.Name + "<br/>Lvl: " + player.activePokemon1.level + "<br/> <img src=images/pokemonIconsTransparent/" + player.activePokemon1.Name + ".png /> <br/>HP: " + player.activePokemon1.currentHP + "/" + player.activePokemon1.maxHP + "<br/> Exp: " + player.activePokemon1.currentExp + "/" + player.activePokemon1.expNextLevel;
+									setActivePokemonText(player);
 									document.getElementById("pokemonRed").innerHTML = player.activePokemon1.Name + " leveled up! ";
 								};
 								// Add story?
@@ -868,7 +868,7 @@ function catchPokemon(wildPokemon, pokeball, player) {
 				if (player.pokemonCaught[wildPokemon.Name] == 0) {
 					player[activePokemonCall] = wildPokemon;
 					player.pokemonCaught[wildPokemon.Name] = 1;
-					document.getElementById(activePokemonCall).innerHTML = player[activePokemonCall].Name + "<br/>Lvl: " + player[activePokemonCall].level + "<br/> <img src=images/pokemonIconsTransparent/" + player[activePokemonCall].Name + ".png /> <br/>HP: " + player[activePokemonCall].currentHP + "/" + player[activePokemonCall].maxHP + "<br/> Exp: " + player[activePokemonCall].currentExp + "/" + player[activePokemonCall].expNextLevel;
+					setActivePokemonText(player);
 					document.getElementById("pokemonRed").innerHTML = "Gotcha! <br/>" + wildPokemon.Name + " was caught! ";
 				};
 			};

@@ -22,10 +22,10 @@ body h3 {
 }
 
 #activePokemon{
-	position: fixed;
+	position: absolute;
 	top: 0.5%;
 	display: block;
-	height: 25vh; /*was 21.95 vh*/
+	height: 27vh; /*was 21.95 vh*/
 	width: 98%;
 	margin: auto;
 	background-color: #404040;
@@ -55,6 +55,7 @@ body h3 {
 	left: 0px;
 	width: 19.67%;
 	margin: auto;
+	overflow-y: auto;
 }
 
 #activePokemonStats{
@@ -73,41 +74,41 @@ body h3 {
 #activePokemon2 {
 	position: fixed;
 	top: 2.6vh;
-	left: 35%;
+	left: 33%;
 	display: inline-block;
 }
 
 #activePokemon3 {
 	position: fixed;
 	top: 2.6vh;
-	left: 48%;
+	left: 46%;
 	display: inline-block;
 }
 
 #activePokemon4 {
 	position: fixed;
 	top: 2.6vh;
-	left: 61%;
+	left: 59%;
 	display: inline-block;
 }
 
 #activePokemon5 {
 	position: fixed;
 	top: 2.6vh;
-	left: 74%;
+	left: 72%;
 	display: inline-block;
 }
 
 #activePokemon6 {
 	position: fixed;
 	top: 2.6vh;
-	left: 87%;
+	left: 85%;
 	display: inline-block;
 }
 
 #main {
 	position: absolute;
-	top: 25.8vh; /*was 22.75vh*/
+	top: 27.5vh; /*was 22.75vh*/
 	left: 0.75%;
 	right: 0.75%;
 	bottom: 16.47vh;
