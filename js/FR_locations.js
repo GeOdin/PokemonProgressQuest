@@ -20,15 +20,20 @@
 // Background information about the different locations (make different variables for routes and cities?)
 // include locationNumber
 var locations = [
-	["locationName", "battleBackground", "trainerAmount", "trainer1Number", "pokemonAmount", "pokemon1Name", "pokemon1MinLevel", "pokemon1MaxLevel", "pokemon1Chance", "pokemon2Name", "pokemon2MinLevel", "pokemon2MaxLevel", "pokemon2Chance", "pokemon3Name", "pokemon3MinLevel", "pokemon3MaxLevel", "pokemon3Chance", "pokemon4Name", "pokemon4MinLevel", "pokemon4MaxLevel", "pokemon4Chance", "pokemon5Name", "pokemon5MinLevel", "pokemon5MaxLevel", "pokemon5Chance"],
-	["Introduction", "BattleGrass", 0, "", 0, "", 1, 1, 1.0, "", 1, 1, 0.0, "", 1, 1, 0.0, "", 1, 1, 0.0, "", 1, 1, 0.0],
-	["Pallet Town", "BattleGrass", 0, "", 0, "", 1, 1, 1.0, "", 1, 1, 0.0, "", 1, 1, 0.0, "", 1, 1, 0.0, "", 1, 1, 0.0],
-	["Route 1", "BattleGrass", 0, "", 2, "PIDGEY", 2, 5, 0.5, "RATTATA", 2, 4, 0.5, "", 1, 1, 0.0, "", 1, 1, 0.0, "", 1, 1, 0.0],
-	["Viridian City", "BattleGrass", 0, "", 0, "", 1, 1, 1.0, "", 1, 1, 0.0, "", 1, 1, 0.0, "", 1, 1, 0.0, "", 1, 1, 0.0],
-	["Route 22", "BattleGrass", 1, "002", 3, "RATTATA", 2, 5, 0.45, "MANKEY", 2, 5, 0.45, "SPEAROW", 3, 5, 0.1, "", 1, 1, 0.0, "", 1, 1, 0.0],
-	["Route 2", "BattleGrass", 0, "", 4, "PIDGEY", 2, 5, 0.45, "RATTATA", 2, 5, 0.45, "CATEPIE", 4, 5, 0.05, "WEEDLE", 4, 5, 0.05, "", 1, 1, 0.0],
-	["Viridian Forest", "BattleGrass", 0, "", 4, "CATERPIE", 3, 5, 0.4, "WEEDLE", 3, 5, 0.4, "METAPOD", 5, 5, 0.05, "KAKUNA", 4, 6, 0.1, "PIKACHU", 3, 5, 0.05],
- 	["Hall of Fame", "BattleGrass", 0, "", 1, "", 1, 1, 1.0, "", 1, 1, 0.0, "", 1, 1, 0.0, "", 1, 1, 0.0, "", 1, 1, 0.0]
+	["locationName", "battleBackground", "trainerAmount", "trainer1Number", "pokemonAmount", "pokemon1Name", "pokemon1MinLevel", "pokemon1MaxLevel", "pokemon1Chance", "pokemon2Name", "pokemon2MinLevel", "pokemon2MaxLevel", "pokemon2Chance", "pokemon3Name", "pokemon3MinLevel", "pokemon3MaxLevel", "pokemon3Chance", "pokemon4Name", "pokemon4MinLevel", "pokemon4MaxLevel", "pokemon4Chance", "pokemon5Name", "pokemon5MinLevel", "pokemon5MaxLevel", "pokemon5Chance", "pokemon6Name", "pokemon6MinLevel", "pokemon6MaxLevel", "pokemon6Chance"],
+	["Introduction", "BattleGrass", 0, "", 0, "", 1, 1, 1.0, "", 1, 1, 0.0, "", 1, 1, 0.0, "", 1, 1, 0.0, "", 1, 1, 0.0, "", 1, 1, 0.0],
+	["Pallet Town", "BattleGrass", 0, "", 0, "", 1, 1, 1.0, "", 1, 1, 0.0, "", 1, 1, 0.0, "", 1, 1, 0.0, "", 1, 1, 0.0, "", 1, 1, 0.0],
+	["Route 1", "BattleGrass", 0, "", 2, "PIDGEY", 2, 5, 0.5, "RATTATA", 2, 4, 0.5, "", 1, 1, 0.0, "", 1, 1, 0.0, "", 1, 1, 0.0, "", 1, 1, 0.0],
+	["Viridian City", "BattleGrass", 0, "", 0, "", 1, 1, 1.0, "", 1, 1, 0.0, "", 1, 1, 0.0, "", 1, 1, 0.0, "", 1, 1, 0.0, "", 1, 1, 0.0],
+	["Route 22", "BattleGrass", 1, "002", 3, "RATTATA", 2, 5, 0.45, "MANKEY", 2, 5, 0.45, "SPEAROW", 3, 5, 0.1, "", 1, 1, 0.0, "", 1, 1, 0.0, "", 1, 1, 0.0],
+	["Route 2", "BattleGrass", 0, "", 4, "PIDGEY", 2, 5, 0.45, "RATTATA", 2, 5, 0.45, "CATEPIE", 4, 5, 0.05, "WEEDLE", 4, 5, 0.05, "", 1, 1, 0.0, "", 1, 1, 0.0],
+	["Viridian Forest", "BattleGrass", 0, "", 5, "CATERPIE", 3, 5, 0.4, "WEEDLE", 3, 5, 0.4, "METAPOD", 5, 5, 0.05, "KAKUNA", 4, 6, 0.1, "PIKACHU", 3, 5, 0.05, "", 1, 1, 0.0],
+	["Route 3", "BattleGrass", 0, "", 6, "SPEAROW", 6, 8, 0.35, "PIDGEY", 6, 7, 0.3, "NIDORAN_MALE", 6, 7, 0.14, "JIGGLYPUFF", 3, 7, 0.1, "MANKEY", 7, 7, 0.1, "NIDORAN_FEMALE", 6, 6, 0.01],
+	["Route 4 - West", "BattleGrass", 0, "", 0, "", 1, 1, 1.0, "", 1, 1, 0.0, "", 1, 1, 0.0, "", 1, 1, 0.0, "", 1, 1, 0.0, "", 1, 1, 0.0],
+	["Mt. Moon - 1F", "BattleGrass", 0, "", 4, "ZUBAT", 7, 10, 0.69, "GEODUDE", 7, 9, 0.25, "PARAS", 8, 8, 0.05, "CLEFAIRY", 8, 8, 0.01, "", 1, 1, 0.0, "", 1, 1, 0.0],
+	["Mt. Moon - B1F", "BattleGrass", 0, "", 1, "PARAS", 5, 10, 1, "", 1, 1, 0, "", 1, 1, 0, "", 1, 1, 0, "", 1, 1, 0.0, "", 1, 1, 0.0],
+//	["Mt. Moon - B2F", "BattleGrass", 0, "", 4, "ZUBAT", 8, 11, 0.49, "GEODUDE", 9, 10, 0.3, "PARAS", 10, 12, 0.15, "CLEFAIRY", 10, 12, 0.06, "", 1, 1, 0.0, "", 1, 1, 0.0], // ZUBAT 8-11, GEODUDE 9-10, PARAS 10-12, CLEFAIRY 10-12 http://bulbapedia.bulbagarden.net/wiki/File:Mt_Moon_B2F_FRLG.png
+ 	["Hall of Fame", "BattleGrass", 0, "", 1, "", 1, 1, 1.0, "", 1, 1, 0.0, "", 1, 1, 0.0, "", 1, 1, 0.0, "", 1, 1, 0.0, "", 1, 1, 0.0]
 ];
 // Background information for the different healing locations
 var healingLocations = [
@@ -46,7 +51,7 @@ var trainers = [
 // add amount of trainers
 // add amount of pokemon
 // add items and amount of items?
-function createLocation(locationName, battleBackground, trainerAmount, trainer1, pokemonAmount, pokemon1Name, pokemon1MinLevel, pokemon1MaxLevel, pokemon1Chance, pokemon2Name, pokemon2MinLevel, pokemon2MaxLevel, pokemon2Chance, pokemon3Name, pokemon3MinLevel, pokemon3MaxLevel, pokemon3Chance, pokemon4Name, pokemon4MinLevel, pokemon4MaxLevel, pokemon4Chance, pokemon5Name, pokemon5MinLevel, pokemon5MaxLevel, pokemon5Chance) {
+function createLocation(locationName, battleBackground, trainerAmount, trainer1, pokemonAmount, pokemon1Name, pokemon1MinLevel, pokemon1MaxLevel, pokemon1Chance, pokemon2Name, pokemon2MinLevel, pokemon2MaxLevel, pokemon2Chance, pokemon3Name, pokemon3MinLevel, pokemon3MaxLevel, pokemon3Chance, pokemon4Name, pokemon4MinLevel, pokemon4MaxLevel, pokemon4Chance, pokemon5Name, pokemon5MinLevel, pokemon5MaxLevel, pokemon5Chance, pokemon6Name, pokemon6MinLevel, pokemon6MaxLevel, pokemon6Chance) {
 	this.Name = locationName; //0
 	this.battleBackground = battleBackground; //1
 	this.trainerAmount = trainerAmount; //2
@@ -72,6 +77,10 @@ function createLocation(locationName, battleBackground, trainerAmount, trainer1,
 	this.pokemon5MinLevel = pokemon5MinLevel; //22
 	this.pokemon5MaxLevel = pokemon5MaxLevel; //23
 	this.pokemon5Chance = pokemon5Chance; //24
+	this.pokemon6Name = pokemon6Name; //25
+	this.pokemon6MinLevel = pokemon6MinLevel; //26
+	this.pokemon6MaxLevel = pokemon6MaxLevel; //27
+	this.pokemon6Chance = pokemon6Chance; //28
 };
 
 function getLocation(locationName){
@@ -103,7 +112,11 @@ function getLocation(locationName){
 				locations[i][21],
 				locations[i][22],
 				locations[i][23],
-				locations[i][24]
+				locations[i][24],
+				locations[i][25],
+				locations[i][26],
+				locations[i][27],
+				locations[i][28]
 			);
 		};
 	};

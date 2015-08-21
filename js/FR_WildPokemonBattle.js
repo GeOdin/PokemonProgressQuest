@@ -53,12 +53,79 @@ function wildPokemonBattle(player, wildPokemon, locationObject) {
 							// Catch wildPokemon
 							if (player.bag.POKEBALL.pokeball.amount > 0) {
 								if (player.pokemonCaught[wildPokemon.Name] == 0) {
-									// Try to catch the wildPokemon
-									catchPokemon(wildPokemon, player.bag.POKEBALL.pokeball, player);
-									if (player.pokemonCaught[wildPokemon.Name] > 0) {
-										document.getElementById("imageStoryPlayerPokemon").style.display = "none";
-										document.getElementById("imageStoryOpponentPokemon").style.display = "none";
-										return;
+									if (wildPokemon.currentHP <= ((1/5)*wildPokemon.maxHP) || (wildPokemon.catchRate == 255)){
+										// Try to catch the wildPokemon
+										catchPokemon(wildPokemon, player.bag.POKEBALL.pokeball, player);
+										if (player.pokemonCaught[wildPokemon.Name] > 0) {
+											document.getElementById("imageStoryPlayerPokemon").style.display = "none";
+											document.getElementById("imageStoryOpponentPokemon").style.display = "none";
+											return;
+										};
+									} else {
+										// Attack wildPokemon
+										damage = calculateDamageWildPokemon(player.activePokemon1, player.activePokemon1.move1, wildPokemon);
+										wildPokemon.currentHP -= damage;
+										// diminish pp for this move?
+										document.getElementById("pokemonRed").innerHTML = player.activePokemon1.Name + " used " + player.activePokemon1.move1.Name + ".";
+										// Check whether wildPokemon is fainted
+										if (wildPokemon.currentHP <= 0) {
+											if (wildPokemon.currentHP < 0) {
+												wildPokemon.currentHP = 0;
+											};
+											document.getElementById("pokemonRed").innerHTML = wildPokemon.Name + " fainted.";
+
+											// Add exp
+											exp = getExpWildPokemonBattle(wildPokemon);
+											player.activePokemon1.currentExp = player.activePokemon1.currentExp + exp;
+											setActivePokemonText(player);
+
+											// Level up if necessary
+											if (player.activePokemon1.currentExp >= player.activePokemon1.expNextLevel) {
+												expTemp = player.activePokemon1.currentExp - player.activePokemon1.expNextLevel;
+												// Actual levelling
+												player.activePokemon1.level++;
+												document.getElementById("imageStory").src = "images/wildPokemon/" + player.activePokemon1.Name + ".png"; // image from bulbapedia
+									 			for (i=0; i<pokemonStats.length; i++) {
+													if (pokemonStats[i][1] == player.activePokemon1.Name) {
+														if (pokemonStats[i][2] == player.activePokemon1.level) {
+															// Create the starterPokemon Object
+															player.activePokemon1 = new createPokemon(
+																pokemonStats[i][0], 
+																pokemonStats[i][1],
+																pokemonStats[i][2],
+																pokemonStats[i][3],
+																pokemonStats[i][4],
+																pokemonStats[i][5],
+																pokemonStats[i][6],
+																player.activePokemon1.currentHP + (pokemonStats[i][7] - pokemonStats[i-1][7]), // add difference between current and next level HP
+																pokemonStats[i][8],
+																pokemonStats[i][9],
+																pokemonStats[i][10],
+																pokemonStats[i][11],
+																pokemonStats[i][12],
+																pokemonStats[i][13],
+																pokemonStats[i][14],
+																pokemonStats[i][15],
+																pokemonStats[i][16],
+																pokemonStats[i][17],
+																pokemonStats[i][18],
+																expTemp,
+																pokemonStats[i][20],
+																pokemonStats[i][21],
+																pokemonStats[i][22]
+															);
+														};
+													};
+												};
+												createPokemonMoves(player.activePokemon1);
+												setActivePokemonText(player);
+												document.getElementById("pokemonRed").innerHTML = player.activePokemon1.Name + " leveled up! ";
+											};
+											// Add story?
+											document.getElementById("imageStoryPlayerPokemon").style.display = "none";
+											document.getElementById("imageStoryOpponentPokemon").style.display = "none";
+											return;
+										};
 									};
 								} else {
 									// Attack wildPokemon
@@ -197,12 +264,79 @@ function wildPokemonBattle(player, wildPokemon, locationObject) {
 						// Catch wildPokemon
 						if (player.bag.POKEBALL.pokeball.amount > 0) {
 							if (player.pokemonCaught[wildPokemon.Name] == 0) {
-								// Try to catch the wildPokemon
-								catchPokemon(wildPokemon, player.bag.POKEBALL.pokeball, player);
-								if (player.pokemonCaught[wildPokemon.Name] > 0) {
-									document.getElementById("imageStoryPlayerPokemon").style.display = "none";
-									document.getElementById("imageStoryOpponentPokemon").style.display = "none";
-									return;
+								if (wildPokemon.currentHP <= ((1/5)*wildPokemon.maxHP) || (wildPokemon.catchRate == 255)) {
+									// Try to catch the wildPokemon
+									catchPokemon(wildPokemon, player.bag.POKEBALL.pokeball, player);
+									if (player.pokemonCaught[wildPokemon.Name] > 0) {
+										document.getElementById("imageStoryPlayerPokemon").style.display = "none";
+										document.getElementById("imageStoryOpponentPokemon").style.display = "none";
+										return;
+									};
+								} else {
+									// Attack wildPokemon
+									damage = calculateDamageWildPokemon(player.activePokemon1, player.activePokemon1.move1, wildPokemon);
+									wildPokemon.currentHP -= damage;
+									// diminish pp for this move?
+									document.getElementById("pokemonRed").innerHTML = player.activePokemon1.Name + " used " + player.activePokemon1.move1.Name + ".";
+									// Check whether wildPokemon is fainted
+									if (wildPokemon.currentHP <= 0) {
+										if (wildPokemon.currentHP < 0) {
+											wildPokemon.currentHP = 0;
+										};
+										document.getElementById("pokemonRed").innerHTML = wildPokemon.Name + " fainted.";
+
+										// Add exp
+										exp = getExpWildPokemonBattle(wildPokemon);
+										player.activePokemon1.currentExp = player.activePokemon1.currentExp + exp;
+										setActivePokemonText(player);
+
+										// Level up if necessary
+										if (player.activePokemon1.currentExp >= player.activePokemon1.expNextLevel) {
+											expTemp = player.activePokemon1.currentExp - player.activePokemon1.expNextLevel;
+											// Actual levelling
+											player.activePokemon1.level++;
+											document.getElementById("imageStory").src = "images/wildPokemon/" + player.activePokemon1.Name + ".png"; // image from bulbapedia
+								 			for (i=0; i<pokemonStats.length; i++) {
+												if (pokemonStats[i][1] == player.activePokemon1.Name) {
+													if (pokemonStats[i][2] == player.activePokemon1.level) {
+														// Create the starterPokemon Object
+														player.activePokemon1 = new createPokemon(
+															pokemonStats[i][0], 
+															pokemonStats[i][1],
+															pokemonStats[i][2],
+															pokemonStats[i][3],
+															pokemonStats[i][4],
+															pokemonStats[i][5],
+															pokemonStats[i][6],
+															player.activePokemon1.currentHP + (pokemonStats[i][7] - pokemonStats[i-1][7]), // add difference between current and next level HP
+															pokemonStats[i][8],
+															pokemonStats[i][9],
+															pokemonStats[i][10],
+															pokemonStats[i][11],
+															pokemonStats[i][12],
+															pokemonStats[i][13],
+															pokemonStats[i][14],
+															pokemonStats[i][15],
+															pokemonStats[i][16],
+															pokemonStats[i][17],
+															pokemonStats[i][18],
+															expTemp,
+															pokemonStats[i][20],
+															pokemonStats[i][21],
+															pokemonStats[i][22]
+														);
+													};
+												};
+											};
+											createPokemonMoves(player.activePokemon1);
+											setActivePokemonText(player);
+											document.getElementById("pokemonRed").innerHTML = player.activePokemon1.Name + " leveled up! ";
+										};
+										// Add story?
+										document.getElementById("imageStoryPlayerPokemon").style.display = "none";
+										document.getElementById("imageStoryOpponentPokemon").style.display = "none";
+										return;
+									};
 								};
 							} else {
 								// Attack wildPokemon
@@ -397,12 +531,79 @@ function wildPokemonBattle(player, wildPokemon, locationObject) {
 							// Catch wildPokemon
 							if (player.bag.POKEBALL.pokeball.amount > 0) {
 								if (player.pokemonCaught[wildPokemon.Name] == 0) {
-									// Try to catch the wildPokemon
-									catchPokemon(wildPokemon, player.bag.POKEBALL.pokeball, player);
-									if (player.pokemonCaught[wildPokemon.Name] > 0) {
-										document.getElementById("imageStoryPlayerPokemon").style.display = "none";
-										document.getElementById("imageStoryOpponentPokemon").style.display = "none";
-										return;
+									if (wildPokemon.currentHP <= ((1/5)*wildPokemon.maxHP) || (wildPokemon.catchRate == 255)) {
+										// Try to catch the wildPokemon
+										catchPokemon(wildPokemon, player.bag.POKEBALL.pokeball, player);
+										if (player.pokemonCaught[wildPokemon.Name] > 0) {
+											document.getElementById("imageStoryPlayerPokemon").style.display = "none";
+											document.getElementById("imageStoryOpponentPokemon").style.display = "none";
+											return;
+										};
+									} else {
+										// Attack wildPokemon
+										damage = calculateDamageWildPokemon(player.activePokemon1, player.activePokemon1.move1, wildPokemon);
+										wildPokemon.currentHP -= damage;
+										// diminish pp for this move?
+										document.getElementById("pokemonRed").innerHTML = player.activePokemon1.Name + " used " + player.activePokemon1.move1.Name + ".";
+										// Check whether wildPokemon is fainted
+										if (wildPokemon.currentHP <= 0) {
+											if (wildPokemon.currentHP < 0) {
+												wildPokemon.currentHP = 0;
+											};
+											document.getElementById("pokemonRed").innerHTML = wildPokemon.Name + " fainted.";
+
+											// Add exp
+											exp = getExpWildPokemonBattle(wildPokemon);
+											player.activePokemon1.currentExp = player.activePokemon1.currentExp + exp;
+											setActivePokemonText(player);
+
+											// Level up if necessary
+											if (player.activePokemon1.currentExp >= player.activePokemon1.expNextLevel) {
+												expTemp = player.activePokemon1.currentExp - player.activePokemon1.expNextLevel;
+												// Actual levelling
+												player.activePokemon1.level++;
+												document.getElementById("imageStory").src = "images/wildPokemon/" + player.activePokemon1.Name + ".png"; // image from bulbapedia
+									 			for (i=0; i<pokemonStats.length; i++) {
+													if (pokemonStats[i][1] == player.activePokemon1.Name) {
+														if (pokemonStats[i][2] == player.activePokemon1.level) {
+															// Create the starterPokemon Object
+															player.activePokemon1 = new createPokemon(
+																pokemonStats[i][0], 
+																pokemonStats[i][1],
+																pokemonStats[i][2],
+																pokemonStats[i][3],
+																pokemonStats[i][4],
+																pokemonStats[i][5],
+																pokemonStats[i][6],
+																player.activePokemon1.currentHP + (pokemonStats[i][7] - pokemonStats[i-1][7]), // add difference between current and next level HP
+																pokemonStats[i][8],
+																pokemonStats[i][9],
+																pokemonStats[i][10],
+																pokemonStats[i][11],
+																pokemonStats[i][12],
+																pokemonStats[i][13],
+																pokemonStats[i][14],
+																pokemonStats[i][15],
+																pokemonStats[i][16],
+																pokemonStats[i][17],
+																pokemonStats[i][18],
+																expTemp,
+																pokemonStats[i][20],
+																pokemonStats[i][21],
+																pokemonStats[i][22]
+															);
+														};
+													};
+												};
+												createPokemonMoves(player.activePokemon1);
+												setActivePokemonText(player);
+												document.getElementById("pokemonRed").innerHTML = player.activePokemon1.Name + " leveled up! ";
+											};
+											// Add story?
+											document.getElementById("imageStoryPlayerPokemon").style.display = "none";
+											document.getElementById("imageStoryOpponentPokemon").style.display = "none";
+											return;
+										};
 									};
 								} else {
 									// Attack wildPokemon
@@ -541,12 +742,79 @@ function wildPokemonBattle(player, wildPokemon, locationObject) {
 						// Catch wildPokemon
 						if (player.bag.POKEBALL.pokeball.amount > 0) {
 							if (player.pokemonCaught[wildPokemon.Name] == 0) {
-								// Try to catch the wildPokemon
-								catchPokemon(wildPokemon, player.bag.POKEBALL.pokeball, player);
-								if (player.pokemonCaught[wildPokemon.Name] > 0) {
-									document.getElementById("imageStoryPlayerPokemon").style.display = "none";
-									document.getElementById("imageStoryOpponentPokemon").style.display = "none";
-									return;
+								if (wildPokemon.currentHP <= ((1/5)*wildPokemon.maxHP) || (wildPokemon.catchRate == 255)) {
+									// Try to catch the wildPokemon
+									catchPokemon(wildPokemon, player.bag.POKEBALL.pokeball, player);
+									if (player.pokemonCaught[wildPokemon.Name] > 0) {
+										document.getElementById("imageStoryPlayerPokemon").style.display = "none";
+										document.getElementById("imageStoryOpponentPokemon").style.display = "none";
+										return;
+									};
+								} else {
+									// Attack wildPokemon
+									damage = calculateDamageWildPokemon(player.activePokemon1, player.activePokemon1.move1, wildPokemon);
+									wildPokemon.currentHP -= damage;
+									// diminish pp for this move?
+									document.getElementById("pokemonRed").innerHTML = player.activePokemon1.Name + " used " + player.activePokemon1.move1.Name + ".";
+									// Check whether wildPokemon is fainted
+									if (wildPokemon.currentHP <= 0) {
+										if (wildPokemon.currentHP < 0) {
+											wildPokemon.currentHP = 0;
+										};
+										document.getElementById("pokemonRed").innerHTML = wildPokemon.Name + " fainted.";
+
+										// Add exp
+										exp = getExpWildPokemonBattle(wildPokemon);
+										player.activePokemon1.currentExp = player.activePokemon1.currentExp + exp;
+										setActivePokemonText(player);
+
+										// Level up if necessary
+										if (player.activePokemon1.currentExp >= player.activePokemon1.expNextLevel) {
+											expTemp = player.activePokemon1.currentExp - player.activePokemon1.expNextLevel;
+											// Actual levelling
+											player.activePokemon1.level++;
+											document.getElementById("imageStory").src = "images/wildPokemon/" + player.activePokemon1.Name + ".png"; // image from bulbapedia
+								 			for (i=0; i<pokemonStats.length; i++) {
+												if (pokemonStats[i][1] == player.activePokemon1.Name) {
+													if (pokemonStats[i][2] == player.activePokemon1.level) {
+														// Create the starterPokemon Object
+														player.activePokemon1 = new createPokemon(
+															pokemonStats[i][0], 
+															pokemonStats[i][1],
+															pokemonStats[i][2],
+															pokemonStats[i][3],
+															pokemonStats[i][4],
+															pokemonStats[i][5],
+															pokemonStats[i][6],
+															player.activePokemon1.currentHP + (pokemonStats[i][7] - pokemonStats[i-1][7]), // add difference between current and next level HP
+															pokemonStats[i][8],
+															pokemonStats[i][9],
+															pokemonStats[i][10],
+															pokemonStats[i][11],
+															pokemonStats[i][12],
+															pokemonStats[i][13],
+															pokemonStats[i][14],
+															pokemonStats[i][15],
+															pokemonStats[i][16],
+															pokemonStats[i][17],
+															pokemonStats[i][18],
+															expTemp,
+															pokemonStats[i][20],
+															pokemonStats[i][21],
+															pokemonStats[i][22]
+														);
+													};
+												};
+											};
+											createPokemonMoves(player.activePokemon1);
+											setActivePokemonText(player);
+											document.getElementById("pokemonRed").innerHTML = player.activePokemon1.Name + " leveled up! ";
+										};
+										// Add story?
+										document.getElementById("imageStoryPlayerPokemon").style.display = "none";
+										document.getElementById("imageStoryOpponentPokemon").style.display = "none";
+										return;
+									};
 								};
 							} else {
 								// Attack wildPokemon
@@ -704,16 +972,25 @@ function getWeaknessWildPokemon(move, defendingPokemon) {// Array with weaknesse
 	var weakness2 = 1;
 	var totalWeakness;
 	// Pokemon Type Chart from http://pokemondb.net/type
-	var weaknessResistanceWildPokemon = [ // update this // ICE, GROUND, FLYING, PSYCHIC, ROCK, GHOST, DRAGON, DARK, STEEL
-		["WEAKNESS", "BUG", "ELECTRIC", "FIGHTING", "FIRE", "GRASS", "NORMAL", "POISON", "WATER"],
-		["BUG", 1, 1, 0.5, 0.5, 2, 1, 0.5, 1],
-		["ELECTRIC", 1, 0.5, 1, 1, 0.5, 1, 1, 2],
-		["FIGHTING", 0.5, 1, 1, 1, 1, 2, 0.5, 1],
-		["FIRE", 2, 1, 1, 0.5, 2, 1, 1, 0.5],
-		["GRASS", 0.5, 1, 1, 0.5, 0.5, 1, 0.5, 2],
-		["NORMAL", 1, 1, 1, 1, 1, 1, 1, 1],
-		["POISON", 1, 1, 1, 1, 2, 1, 0.5, 1],
-		["WATER", 1, 1, 1, 2, 0.5, 1, 1, 0.5]
+	var weaknessResistanceWildPokemon = [
+		["WEAKNESS", "BUG", "DARK", "DRAGON", "ELECTRIC", "FIGHTING", "FLYING", "FIRE", "GHOST", "GRASS", "GROUND", "ICE", "NORMAL", "POISON", "PSYCHIC", "ROCK", "STEEL", "WATER"],
+		["BUG", 1, 2, 1, 1, 0.5, 0.5, 0.5, 0.5, 2, 1, 1, 1, 0.5, 2, 1, 0.5, 1],
+		["DARK", 1, 0.5, 1, 1, 0.5, 1, 1, 2, 1, 1, 1, 1, 1, 2, 1, 0.5, 1],
+		["DRAGON", 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0.5, 1],
+		["ELECTRIC", 1, 1, 0.5, 0.5, 1, 2, 1, 1, 0.5, 0, 1, 1, 1, 1, 1, 1, 2],
+		["FIGHTING", 0.5, 2, 1, 1, 1, 0.5, 1, 0, 1, 1, 2, 2, 0.5, 0.5, 2, 2, 1],
+		["FLYING", 2, 1, 1, 0.5, 2, 1, 1, 1, 2, 1, 1, 1, 1, 1, 0.5, 0.5, 1],
+		["FIRE", 2, 1, 0.5, 1, 1, 1, 0.5, 1, 2, 1, 2, 1, 1, 1, 0.5, 2, 0.5],
+		["GHOST", 1, 0.5, 1, 1, 1, 1, 1, 2, 1, 1, 1, 0, 1, 2, 1, 0.5, 1],
+		["GRASS", 0.5, 1, 0.5, 1, 1, 0.5, 0.5, 1, 0.5, 2, 1, 1, 0.5, 1, 2, 0.5, 2],
+		["GROUND", 0.5, 1, 1, 2, 1, 0, 2, 1, 0.5, 1, 1, 1, 2, 1, 2, 2, 1],
+		["ICE", 1, 1, 2, 1, 1, 2, 0.5, 1, 2, 2, 0.5, 1, 1, 1, 1, 0.5, 0.5],
+		["NORMAL", 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0.5, 0.5, 1],
+		["POISON", 1, 1, 1, 1, 1, 1, 1, 0.5, 2, 0.5, 1, 1, 0.5, 1, 0.5, 0, 1],
+		["PSYCHIC", 1, 0, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 2, 0.5, 1, 0.5, 1],
+		["ROCK", 2, 1, 1, 1, 0.5, 2, 2, 1, 1, 0.5, 2, 1, 1, 1, 1, 0.5, 1],
+		["STEEL", 1, 1, 1, 0.5, 1, 1, 0.5, 1, 1, 1, 2, 1, 1, 1, 2, 0.5, 0.5],
+		["WATER", 1, 1, 0.5, 1, 1, 1, 2, 1, 0.5, 2, 1, 1, 1, 1, 2, 1, 0.5]
 	];
 	for (i=0; i<weaknessResistanceWildPokemon.length; i++) {
 		for (j=0; j<weaknessResistanceWildPokemon.length; j++) {
@@ -875,23 +1152,21 @@ function catchPokemon(wildPokemon, pokeball, player) {
 		};
 		if (player.pokemonCaught[wildPokemon.Name] == 0) {
 			// sent pokemon to the pc (add PC as location)
-			for (i=0; i<6; i++) {
-				var pcPokemonNumber = i + 1;
-				var pcPokemonCall = "pc" + pcPokemonNumber;
-				if (player.hasOwnProperty(pcPokemonCall) == false) {
-					if (player.pokemonCaught[wildPokemon.Name] == 0) {
-						player[pcPokemonCall] = wildPokemon;
-						// Heal Caught Pokemon if it goed to the PC
-						player[pcPokemonCall].currentHP = player[pcPokemonCall].maxHP;
-						player.pokemonCaught[wildPokemon.Name] = 1;
-						document.getElementById("pokemonRed").innerHTML = "Gotcha! <br/>" + wildPokemon.Name + " was caught! ";
-						document.getElementById("pokemonRed".innerHTML) = wildPokemon.Name + " was sent to the PC. ";
-					};
+			var pcPokemonNumber = i + 1;
+			var pcPokemonCall = "pc" + pcPokemonNumber;
+			if (player[pcPokemonCall] == "") {
+				if (player.pokemonCaught[wildPokemon.Name] == 0) {
+					player[pcPokemonCall] = wildPokemon;
+					// Heal Caught Pokemon if it goed to the PC
+					player[pcPokemonCall].currentHP = player[pcPokemonCall].maxHP;
+					player.pokemonCaught[wildPokemon.Name] = 1;
+					document.getElementById("pokemonRed").innerHTML = "Gotcha! <br/>" + wildPokemon.Name + " was caught! ";
+					document.getElementById("pokemonRed".innerHTML) = wildPokemon.Name + " was sent to the PC. ";
 				};
 			};
 		};
 		document.getElementById("pokemonRed").innerHTML = wildPokemon.Name + "'s data was <br/>added to the Pok&eacute;DEX. ";
-		document.getElementById("pokemonCaught").innerHTML = "<h3> Pok&eacute;dex: " + player.pokemonCaught.total() + "/151";
+		setPokemonCaught(player);
 		document.getElementById("pokedex" + wildPokemon.Name).style.display = "block";
 	};
 	pokeball.amount -=1;
