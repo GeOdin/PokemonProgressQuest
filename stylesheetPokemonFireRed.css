@@ -1,0 +1,628 @@
+/*
+stylesheetPokemonFireRed.css
+For the layout for the Pokemon FireRed Progress Quests
+Made on 25-07-2015
+by GeOdin */
+/* make activePokemon1..6 position not fixed (but absolute/relative), so that a scrollbar can be done properly with overflow-y: auto; */
+
+body {
+	background-color: #202020;
+	text-align: center;
+	color: #D0D0D0;
+}
+
+body h2 {
+	font-size: 1.5em;
+	color: white;
+}
+
+body h3 {
+	font-size: 1.2em;
+	color: white;
+}
+
+#activePokemon{
+	position: absolute;
+	top: 0.5%;
+	display: block;
+	height: 27vh; /*was 21.95 vh*/
+	width: 98%;
+	margin: auto;
+	background-color: #404040;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	border: 2px solid #909090;
+	overflow-y: auto;
+}
+
+#activePokemon a:link{
+	text-decoration: none;
+	color: #D0D0D0;
+}
+
+#activePokemon a:visited{
+	color: #D0D0D0;
+}
+
+#activePokemon a:active{
+	color: #D0D0D0;
+}
+
+#activePokemonTitle{
+	display: none;
+	position: absolute;
+	top: 25%;
+	left: 0px;
+	width: 19.67%;
+	margin: auto;
+	overflow-y: auto;
+}
+
+#activePokemonStats{
+	position: absolute;
+	left: 20.95%;
+	height: 100%;
+}
+
+#activePokemon1 {
+	position: fixed;
+	top: 2.6vh;
+	left: 20%;
+	display: inline-block;
+}
+
+#activePokemon2 {
+	position: fixed;
+	top: 2.6vh;
+	left: 33%;
+	display: inline-block;
+}
+
+#activePokemon3 {
+	position: fixed;
+	top: 2.6vh;
+	left: 46%;
+	display: inline-block;
+}
+
+#activePokemon4 {
+	position: fixed;
+	top: 2.6vh;
+	left: 59%;
+	display: inline-block;
+}
+
+#activePokemon5 {
+	position: fixed;
+	top: 2.6vh;
+	left: 72%;
+	display: inline-block;
+}
+
+#activePokemon6 {
+	position: fixed;
+	top: 2.6vh;
+	left: 85%;
+	display: inline-block;
+}
+
+#main {
+	position: absolute;
+	top: 27.5vh; /*was 22.75vh*/
+	left: 0.75%;
+	right: 0.75%;
+	bottom: 16.47vh;
+	width: 97%;
+}
+
+#playerStats {
+	position: absolute;
+	left: 0%;
+	height: 100%;
+	width: 20%;
+	border: 2px solid #909090;
+	overflow-y: auto;
+}
+
+#playerStats a:link{
+	text-decoration: none;
+	color: #D0D0D0;
+}
+
+#playerStats a:visited{
+	color: #D0D0D0;
+}
+
+#playerStats a:active{
+	color: #D0D0D0;
+}
+
+#imgPlayer {
+	display: none;
+	height: 30vh;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#playerMoney{
+	display: none;
+}
+
+#playerMoney img{
+	height: 3vh;
+	vertical-align: top;
+}
+
+#playerMoneyAmount {
+	display: inline;
+}
+
+#story {
+	position: absolute;
+	left: 20.25%;
+	height: 100%;
+	width: 60.67%;
+	border: 2px solid #909090;
+	overflow-y: auto;
+}
+
+#story p {
+	font-size: 1.2em;
+	color: #D0D0D0;
+}
+
+#imageStory{
+	display: none;
+	height: 25vh;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#imageStoryPlayerPokemon{
+	display: none;
+	position: absolute;
+	top: 57%;
+	left: 30%;
+	width: 10%;
+	z-index: 2;
+/* code to flip an image horizontal from:
+ * https://css-tricks.com/snippets/css/flip-an-image/
+ */
+    -moz-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+    filter: FlipH;
+    -ms-filter: "FlipH";
+}
+
+#imageStoryOpponentPokemon{
+	display: none;
+	position: absolute;
+	top: 40%;
+	left: 58.5%;
+	width: 10%;
+	z-index: 1;
+}
+
+#pokemonOnTop1{
+	display: none;
+	position: absolute;
+	top: 37%;
+	left: 34%;
+	width: 10%;
+	z-index: 3;
+}
+
+#pokemonOnTop2{
+	display: none;
+	position: absolute;
+	top: 35%;
+	left: 45%;
+	width: 10%;
+	z-index: 4;
+}
+
+#pokemonOnTop3{
+	display: none;
+	position: absolute;
+	top: 37%;
+	left: 56%;
+	width: 10%;
+	z-index: 2;
+}
+
+#pokemonOnTop4{
+	display: none;
+	position: absolute;
+	top: 50%;
+	left: 33%;
+	width: 10%;
+	z-index: 6;
+}
+
+#pokemonOnTop5{
+	display: none;
+	position: absolute;
+	top: 50.5%;
+	left: 45.5%;
+	width: 10%;
+	z-index: 7;
+}
+
+#pokemonOnTop6{
+	display: none;
+	position: absolute;
+	top: 50%;
+	left: 58%;
+	width: 10%;
+	z-index: 5;
+}
+
+#pokedex {
+	position: absolute;
+	display: block;
+	left: 81.1%;
+	height: 100%;
+	width: 20%;
+	border: 2px solid #909090;
+	overflow-y: auto;
+}
+
+#pokemonCaught {
+	display: none;
+}
+
+#pokedex a:link{
+	text-decoration: none;
+	color: #D0D0D0;
+}
+
+#pokedex a:visited{
+	color: #D0D0D0;
+}
+
+#pokedex a:active{
+	color: #D0D0D0;
+}
+
+#pokedexBULBASAUR{
+	display: none;
+}
+
+#pokedexIVYSAUR{
+	display: none;
+}
+
+#pokedexVENUSAUR{
+	display: none;
+}
+
+#pokedexCHARMANDER{
+	display: none;
+}
+
+#pokedexCHARMELEON{
+	display: none;
+}
+
+#pokedexCHARIZARD{
+	display: none;
+}
+
+#pokedexSQUIRTLE{
+	display: none;
+}
+
+#pokedexWARTORTLE{
+	display: none;
+}
+
+#pokedexBLASTOISE{
+	display: none;
+}
+
+#pokedexCATERPIE{
+	display: none;
+}
+
+#pokedexMETAPOD{
+	display: none;
+}
+
+#pokedexBUTTERFREE{
+	display: none;
+}
+
+#pokedexWEEDLE{
+	display: none;
+}
+
+#pokedexKAKUNA{
+	display: none;
+}
+
+#pokedexBEEDRILL{
+	display: none;
+}
+
+#pokedexPIDGEY{
+	display: none;
+}
+
+#pokedexPIDGEOTTO{
+	display: none;
+}
+
+#pokedexPIDGEOT{
+	display: none;
+}
+
+#pokedexRATTATA{
+	display: none;
+}
+
+#pokedexRATICATE{
+	display: none;
+}
+
+#pokedexSPEAROW{
+	display: none;
+}
+
+#pokedexFEAROW{
+	display: none;
+}
+
+#pokedexEKANS{
+	display: none;
+}
+
+#pokedexARBOK{
+	display: none;
+}
+
+#pokedexPIKACHU{
+	display: none;
+}
+
+#pokedexRAICHU{
+	display: none;
+}
+
+#pokedexSANDSHREW{
+	display: none;
+}
+
+#pokedexSANDSLASH{
+	display: none;
+}
+
+#pokedexNIDORAN_FEMALE{
+	display: none;
+}
+
+#pokedexNIDORINA{
+	display: none;
+}
+
+#pokedexNIDOQUEEN{
+	display: none;
+}
+
+#pokedexNIDORAN_MALE{
+	display: none;
+}
+
+#pokedexNIDORINO{
+	display: none;
+}
+
+#pokedexNIDOKING{
+	display: none;
+}
+
+#pokedexCLEFAIRY{
+	display: none;
+}
+
+#pokedexCLEFABLE{
+	display: none;
+}
+
+#pokedexVULPIX{
+	display: none;
+}
+
+#pokedexNINETALES{
+	display: none;
+}
+
+#pokedexJIGGLYPUFF{
+	display: none;
+}
+
+#pokedexWIGGLYTUFF{
+	display: none;
+}
+
+#pokedexZUBAT{
+	display: none;
+}
+
+#pokedexGOLBAT{
+	display: none;
+}
+
+#pokedexODDISH{
+	display: none;
+}
+
+#pokedexGLOOM{
+	display: none;
+}
+
+#pokedexVILEPLUME{
+	display: none;
+}
+
+#pokedexPARAS{
+	display: none;
+}
+
+#pokedexPARASECT{
+	display: none;
+}
+
+#pokedexVENONAT{
+	display: none;
+}
+
+#pokedexVENOMOTH{
+	display: none;
+}
+
+#pokedexDIGLETT{
+	display: none;
+}
+
+#pokedexDUGTRIO{
+	display: none;
+}
+
+#pokedexMEOWTH{
+	display: none;
+}
+
+#pokedexPERSIAN{
+	display: none;
+}
+
+#pokedexPSYDUCK{
+	display: none;
+}
+
+#pokedexGOLDUCK{
+	display: none;
+}
+
+#pokedexMANKEY{
+	display: none;
+}
+
+#pokedexPRIMEAPE{
+	display: none;
+}
+
+#pokedexGROWLITHE{
+	display: none;
+}
+
+#pokedexARCANINE{
+	display: none;
+}
+
+#pokedexPOLIWAG{
+	display: none;
+}
+
+#pokedexPOLIWHIRL{
+	display: none;
+}
+
+#pokedexPOLIWRATH{
+	display: none;
+}
+
+#pokedexGEODUDE{
+	display: none;
+}
+
+#pokedexMAGIKARP{
+	display: none;
+}
+
+#badges {
+	position: absolute;
+	bottom: 0.5%;
+	display: block;
+	height: 15vh;
+	width: 98%;
+	margin: auto;
+	background-color: #404040;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+	border: 2px solid #909090;
+	overflow-y: auto;
+}
+
+#badgesTitle{
+	display: none;
+	position: absolute;
+	top: 25%;
+	left: 0px;
+	width: 19.67%;
+	margin: auto;
+}
+
+#badgesImages{
+	position: absolute;
+	left: 20.95%;
+	height: 100%;
+}
+
+#badge1 {
+	display: none;
+	position: fixed;
+	top: 87.75vh;
+	left: 22.5%;
+}
+
+#badge2 {
+	display: none;
+	position: fixed;
+	top: 87.75vh;
+	left: 32%;
+}
+
+#badge3 {
+	display: none;
+	position: fixed;
+	top: 87.75vh;
+	left: 42%;
+}
+
+#badge4 {
+	display: none;
+	position: fixed;
+	top: 87.75vh;
+	left: 52%;
+}
+
+#badge5 {
+	display: none;
+	position: fixed;
+	top: 87.75vh;
+	left: 62%;
+}
+
+#badge6 {
+	display: none;
+	position: fixed;
+	top: 87.75vh;
+	left: 72%;
+}
+
+#badge7 {
+	display: none;
+	position: fixed;
+	top: 87.75vh;
+	left: 82%;
+}
+
+#badge8 {
+	display: none;
+	position: fixed;
+	top: 87.75vh;
+	left: 91.5%;
+}

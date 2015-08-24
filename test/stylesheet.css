@@ -1,0 +1,208 @@
+/* 
+stylesheet.css
+Stylesheet for the Pokemon Progress Quests
+Made on 20-07-2015
+by GeOdin */
+/* position: http://www.w3schools.com/css/css_positioning.asp */
+
+body {
+	background-color: #202020;
+	text-align: left;
+/*	margin-top: 0;
+	margin-bottom: 0;
+	margin-left: 0;
+	margin-right: 0;
+	margin-height: 0;
+	margin-width: 0;*/
+/*	overflow: hidden; --- hides scrollbar vertical and horizontal*/
+}
+
+#table {
+	height: 97vh;
+	width: 100%;
+	border: #999999 2px solid;
+	background-color: #202020; /*was #acd1b2;*/
+	border-top-left-radius: 15px;
+	border-top-right-radius: 15px;
+	border-bottom-left-radius: 15px;
+	border-bottom-right-radius: 15px;
+/* 	border-spacing: 0px; */
+/*	padding: 2px;*/
+}
+
+/* #td {
+	vertical-align: center;
+} */
+
+h2 {
+	font-family: Verdana;
+	font-weight: bold;
+	text-align: center;
+/*	padding-top: 15px;
+	padding-bottom: 5px;*/
+	color: white;
+}
+
+h3 {
+	font-family: Verdana;
+	font-weight: bold;
+	text-align: center;
+/*	padding-top: 15px;
+	padding-bottom: 5px;*/
+	color: white;
+}
+
+p {
+	font-family: Tahoma;
+	font-size: 1em;
+}
+
+#header {
+	height: 15vh;
+/*	position: top;*/
+/*	bottom: 105px;*/
+/*	top: 5px;*/
+	background-color: #404040;
+	border-top-left-radius: 15px;
+	border-top-right-radius: 15px;
+	vertical-align: middle; /* not necessary*/
+}
+
+#tableOfContent{
+	height: 50vh;
+	width: 20%;
+	float: center;
+}
+
+#buttonTags{
+	border: 2px solid #000000;
+	margin: auto;
+/* 	float:left;
+	position: relative; */
+/* 	left: 10px;
+	bottom: 0px; */
+	border-radius: 7px;
+	background-color: gray;
+	height: 30px;
+	width: 150px;
+}
+
+#buttonTags p{
+	float: left;
+	position: relative;
+	left: 10px;
+	bottom: 10px;
+	font-size: 1em;
+	color: white;
+/* 	text-align: center; */
+}
+
+#buttonTags2{
+	border: 2px solid #000000;
+	margin: auto;/* 
+	float:left;
+	position: relative;
+	left: 10px;
+	bottom: 0px; */
+	border-radius: 7px;
+	background-color: gray;
+	height: 30px;
+	width: 150px;
+}
+
+#buttonTags2 p{
+	float: left;
+	position: relative;
+	left: 20px;
+	bottom: 10px;
+	font-size: 1em;
+	color: white;
+/* 	text-align: center; */
+}
+
+#mainFrame{
+	height: 50vh;
+/* 	width: 50%; */
+	float: center;
+	position: relative;
+/* 	left: 10px; */
+	color: black;
+	font-family: verdana;
+}
+
+#mainFrame p{
+	/* text-align: left; */
+	/* left: 10px; */
+	color: white;
+	font-size: 1em;
+}
+
+#mainFrame h2{
+	font-family: Verdana;
+	font-weight: bold;
+	color: white;
+	font-size: 2em;
+}
+
+#mainFrame h3{
+	font-family: Verdana;
+	color: #202020;
+	font-size: 1em;
+}
+
+#buttonStart{
+	display: block;
+	border: 2px solid #000000;
+	margin: auto;
+/* 	float:left; */
+/* 	position: relative; */
+/* 	left: 10px; */
+/* 	bottom: 10px; */
+	border-radius: 7px;
+	background-color: gray;
+	height: 30px;
+	width: 100px;
+	text-align: center;
+	cursor: pointer;
+	cursor: hand;
+}
+
+#buttonStart p{
+	position: relative;
+/* 	margin: auto; */
+	font-size: 1em;
+	color: white;
+	bottom: 10px;
+}
+
+#credits{
+	color: #A0A0A0;
+	text-align: center;
+}
+
+#credits h3{
+	color: #606060;
+}
+
+#credits a:link{
+	color: #A0A0A0;
+}
+
+#credits a:visited{
+	color: #A0A0A0;
+}
+
+#credits a:active{
+	color: #A0A0A0;
+}
+
+#footer{
+	height: 10vh;
+/*	clear: both;*/
+/* position: fixed;*/
+	margin: auto;
+	border-bottom-left-radius: 15px;
+	border-bottom-right-radius: 15px;
+	background-color: #404040;
+	vertical-align: middle; /* not necessary*/
+}
