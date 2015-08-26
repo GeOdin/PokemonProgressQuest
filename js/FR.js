@@ -89,6 +89,9 @@ by GeOdin */
  * add location of pokemon to pokedex (activePokemon / pc?)
  * implement a function that Pokemon can learn a new move upon levelling, but don't do it by default
  * refactor function createPokemon (FR_PKMN.js) to have pokemon.moveOne as pokemon.move1..4
+ * add all pokemonMoves (FR_PKMN.js)
+ * add all pokemon (FR_PKMN.js)
+ * add all pokemonStats (FR_PKMN.js)
  */
 
 //////////////////
@@ -210,6 +213,7 @@ function startGame() {
 	var lastHealingLocation;
 	var wildPokemon;
 	var interval;
+	var cheatCode = false;
 
 	while (isNaN(interval) == true){
 		interval = 1000 * prompt("How much time should be between different events? \n\n1 = 1 second. \nIt also takes that long before the game starts.", 3);
@@ -418,6 +422,11 @@ function startGame() {
 			// Update the sterterPokemonRival object with move objects
 			createPokemonMoves(rival.activePokemon1);
 
+			player.pokemonCaught = pokemonCaught;
+			// Check whether the cheat code is inserted
+			// Return cheatcode = true if this is the case
+			checkCheat(player, rival);
+
 			// Show the short introduction
 			window.alert("In the world which you are about to \nenter, you will embark on a grand \nadventure with you as the hero. \n\nSpeak to people and check things \nwherever you go, be it towns, roads, \nor caves. Gather information and \nhints from every source. ");
 			window.alert("New paths will open to you by helping \npeople in need, overcoming challenges, \nand solving mysteries. \n\nAt times, you will be challenged by \nothers and attacked by wild creatures. \nBe brave and keep pushing on. ");
@@ -610,9 +619,8 @@ function startGame() {
 			}
 			document.getElementById("imageStory").src = "images/wildPokemon/" + player.starterPokemon + ".png"; // image from Bulbapedia // http://bulbapedia.bulbagarden.net/wiki/Main_Page
 			setActivePokemonText(player);
-			player.pokemonCaught = pokemonCaught;
-			if (player.pokemonCaught[player.activePokemon1.Name] == 0) {
-				player.pokemonCaught[player.activePokemon1.Name] = 1;
+			if (player.pokemonCaught[starterPokemon] == 0) {
+				player.pokemonCaught[starterPokemon] = 1;
 			};
 			setPokemonCaught(player);
 		} else if (counter == 51) {
@@ -896,6 +904,23 @@ function startGame() {
 			document.getElementById("imageStory").src = "images/PalletTown_ProfOakLab12.png"; // screenshot from Pokemon FireRed game from GAME FREAK inc.
 			document.getElementById("pokemonRed").innerHTML = player.Name + " received the POK&eacute;DEX <br/>from PROF. OAK. ";
 			document.getElementById("pokemonCaught").style.display = "block";
+/*			for (i=0; i<151; i++) {
+				// Get pokemonName
+				var pokemonNumber = i + 1;
+				pokemonNumber = String(pokemonNumber);
+				if (pokemonNumber < 10) {
+					pokemonNumber = "00" + pokemonNumber;
+				} else if (pokemonNumber < 100) {
+					pokemonNumber = "0" + pokemonNumber;
+				};
+				var pokemonName = getPokemonName(pokemonNumber);
+
+				// Show pokemon in pokedex if it's caught
+				if (player.pokemonCaught[pokemonName] == 1) {
+					var pokedexPokemonName = "pokedex" + pokemonName;
+					document.getElementById(pokedexPokemonName).style.display = "block";
+				};
+			};*/
 			document.getElementById("pokedex" + pokemonOne.Name).style.display = "block";
 		} else if (counter == 123) {
 			document.getElementById("pokemonRed").innerHTML = "OAK: You can't get detailed data <br/>on POK&eacute;MON by just seeing them. ";
