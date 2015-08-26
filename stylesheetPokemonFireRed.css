@@ -1,8 +1,8 @@
 /*
-stylesheetPokemonFireRed.css
-For the layout for the Pokemon FireRed Progress Quests
-Made on 25-07-2015
-by GeOdin */
+ * stylesheetPokemonFireRed.css
+ * For the layout for the Pokemon FireRed Progress Quests
+ * Made on 25-07-2015
+ * by GeOdin */
 /* make activePokemon1..6 position not fixed (but absolute/relative), so that a scrollbar can be done properly with overflow-y: auto; */
 
 body {
