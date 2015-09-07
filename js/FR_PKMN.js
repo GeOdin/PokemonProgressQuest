@@ -224,18 +224,18 @@ var pokemon = [
 	["087", "DEWGONG", 1, "WATER", "ICE", 0, "", 13, 6, 6, 6, 7, 6, "Signal Beam", "Headbutt", "Icy Wind", "Aurora Beam", "MEDIUMFAST", 0, getExpNeededForNextLevel(1, "MEDIUMFAST"), 176, 75],
 	["088", "GRIMER", 1, "POISON", "", 38, "MUK", 12, 6, 6, 6, 6, 5, "Poison Gas", "Pound", "", "", "MEDIUMFAST", 0, getExpNeededForNextLevel(1, "MEDIUMFAST"), 90, 190],
 	["089", "MUK", 1, "POISON", "", 0, "", 13, 7, 6, 6, 7, 6, "Poison Gas", "Pound", "Harden", "", "MEDIUMFAST", 0, getExpNeededForNextLevel(1, "MEDIUMFAST"), 157, 75],
-	["090", "SHELLDER", 1, "pokemonType1", "pokemonType2", "pokemonEvolveLevel", "pokemonEvolvePokemon", "hp", "attack", "defense", "spattack", "spdefense", "speed", "pokemonMove1", "pokemonMove2", "pokemonMove3", "pokemonMove4", "expGroup", 0, "expNextLevel", "baseExpYield", "catchRate"],
-	["091", "CLOYSTER", 1, "pokemonType1", "pokemonType2", "pokemonEvolveLevel", "pokemonEvolvePokemon", "hp", "attack", "defense", "spattack", "spdefense", "speed", "pokemonMove1", "pokemonMove2", "pokemonMove3", "pokemonMove4", "expGroup", 0, "expNextLevel", "baseExpYield", "catchRate"],
-	["092", "GASTLY", 1, "pokemonType1", "pokemonType2", "pokemonEvolveLevel", "pokemonEvolvePokemon", "hp", "attack", "defense", "spattack", "spdefense", "speed", "pokemonMove1", "pokemonMove2", "pokemonMove3", "pokemonMove4", "expGroup", 0, "expNextLevel", "baseExpYield", "catchRate"],
-	["093", "HAUNTER", 1, "pokemonType1", "pokemonType2", "pokemonEvolveLevel", "pokemonEvolvePokemon", "hp", "attack", "defense", "spattack", "spdefense", "speed", "pokemonMove1", "pokemonMove2", "pokemonMove3", "pokemonMove4", "expGroup", 0, "expNextLevel", "baseExpYield", "catchRate"],
-	["094", "GENGAR", 1, "pokemonType1", "pokemonType2", "pokemonEvolveLevel", "pokemonEvolvePokemon", "hp", "attack", "defense", "spattack", "spdefense", "speed", "pokemonMove1", "pokemonMove2", "pokemonMove3", "pokemonMove4", "expGroup", 0, "expNextLevel", "baseExpYield", "catchRate"],
-	["095", "ONIX", 1, "pokemonType1", "pokemonType2", "pokemonEvolveLevel", "pokemonEvolvePokemon", "hp", "attack", "defense", "spattack", "spdefense", "speed", "pokemonMove1", "pokemonMove2", "pokemonMove3", "pokemonMove4", "expGroup", 0, "expNextLevel", "baseExpYield", "catchRate"],
-	["096", "DROWZEE", 1, "pokemonType1", "pokemonType2", "pokemonEvolveLevel", "pokemonEvolvePokemon", "hp", "attack", "defense", "spattack", "spdefense", "speed", "pokemonMove1", "pokemonMove2", "pokemonMove3", "pokemonMove4", "expGroup", 0, "expNextLevel", "baseExpYield", "catchRate"],
-	["097", "HYPNO", 1, "pokemonType1", "pokemonType2", "pokemonEvolveLevel", "pokemonEvolvePokemon", "hp", "attack", "defense", "spattack", "spdefense", "speed", "pokemonMove1", "pokemonMove2", "pokemonMove3", "pokemonMove4", "expGroup", 0, "expNextLevel", "baseExpYield", "catchRate"],
-	["098", "KRABBY", 1, "pokemonType1", "pokemonType2", "pokemonEvolveLevel", "pokemonEvolvePokemon", "hp", "attack", "defense", "spattack", "spdefense", "speed", "pokemonMove1", "pokemonMove2", "pokemonMove3", "pokemonMove4", "expGroup", 0, "expNextLevel", "baseExpYield", "catchRate"],
-	["099", "KINGLER", 1, "pokemonType1", "pokemonType2", "pokemonEvolveLevel", "pokemonEvolvePokemon", "hp", "attack", "defense", "spattack", "spdefense", "speed", "pokemonMove1", "pokemonMove2", "pokemonMove3", "pokemonMove4", "expGroup", 0, "expNextLevel", "baseExpYield", "catchRate"],
-	["100", "VOLTORB", 1, "pokemonType1", "pokemonType2", "pokemonEvolveLevel", "pokemonEvolvePokemon", "hp", "attack", "defense", "spattack", "spdefense", "speed", "pokemonMove1", "pokemonMove2", "pokemonMove3", "pokemonMove4", "expGroup", 0, "expNextLevel", "baseExpYield", "catchRate"],
-	["101", "ELECTRODE", 1, "pokemonType1", "pokemonType2", "pokemonEvolveLevel", "pokemonEvolvePokemon", "hp", "attack", "defense", "spattack", "spdefense", "speed", "pokemonMove1", "pokemonMove2", "pokemonMove3", "pokemonMove4", "expGroup", 0, "expNextLevel", "baseExpYield", "catchRate"],
+	["090", "SHELLDER", 1, "WATER", "", 0, "CLOYSTER", 11, 6, 7, 6, 5, 6, "Tackle", "Withdraw", "", "", "SLOW", 0, getExpNeededForNextLevel(1, "SLOW"), 97, 190],
+	["091", "CLOYSTER", 1, "WATER", "ICE", 0, "", 12, 7, 8, 7, 6, 6, "Withdraw", "Supersonic", "Aurora Beam", "Protect", "SLOW", 0, getExpNeededForNextLevel(1, "SLOW"), 203, 60],
+	["092", "GASTLY", 1, "GHOST", "POISON", 25, "HAUNTER", 11, 6, 5, 7, 6, 6, "Hypnosis", "Lick", "", "", "MEDIUMSLOW", 0, getExpNeededForNextLevel(1, "MEDIUMSLOW"), 95, 190],
+	["093", "HAUNTER", 1, "GHOST", "POISON", 0, "GENGAR", 12, 6, 6, 7, 6, 7, "Hypnosis", "Lick", "Spite", "", "MEDIUMSLOW", 0, getExpNeededForNextLevel(1, "MEDIUMSLOW"), 126, 90],
+	["094", "GENGAR", 1, "GHOST", "POISON", 0, "", 12, 6, 6, 7, 6, 7, "Hypnosis", "Lick", "Spite", "", "MEDIUMSLOW", 0, getExpNeededForNextLevel(1, "MEDIUMSLOW"), 190, 45],
+	["095", "ONIX", 1, "ROCK", "GROUND", 0, "", 12, 6, 8, 5, 6, 6, "Tackle", "Screech", "", "", "MEDIUMFAST", 0, getExpNeededForNextLevel(1, "MEDIUMFAST"), 108, 45],
+	["096", "DROWZEE", 1, "PSYCHIC", "", 26, "HYPNO", 12, 6, 6, 6, 7, 6, "Pound", "Hypnosis", "", "", "MEDIUMFAST", 0, getExpNeededForNextLevel(1, "MEDIUMFAST"), 102, 190],
+	["097", "HYPNO", 1, "PSYCHIC", "", 0, "", 13, 6, 6, 6, 7, 6, "Nightmare", "Pound", "Hypnosis", "Confusion", "MEDIUMFAST", 0, getExpNeededForNextLevel(1, "MEDIUMFAST"), 165, 75],
+	["098", "KRABBY", 1, "WATER", "", 28, "KINGLER", 11, 7, 7, 5, 5, 6, "Bubble", "", "", "", "MEDIUMFAST", 0, getExpNeededForNextLevel(1, "MEDIUMFAST"), 115, 225],
+	["099", "KINGLER", 1, "WATER", "", 0, "", 12, 7, 7, 6, 6, 6, "Metal Claw", "Bubble", "Leer", "Vicegrip", "MEDIUMFAST", 0, getExpNeededForNextLevel(1, "MEDIUMFAST"), 206, 60],
+	["100", "VOLTORB", 1, "ELECTRIC", "", 30, "ELECTRODE", 12, 5, 6, 6, 6, 7, "Charge", "Tackle", "", "", "MEDIUMFAST", 0, getExpNeededForNextLevel(1, "MEDIUMFAST"), 103, 190],
+	["101", "ELECTRODE", 1, "ELECTRIC", "", 0, "", 12, 6, 6, 6, 6, 8, "Charge", "Tackle", "Screech", "Sonicboom", "MEDIUMFAST", 0, getExpNeededForNextLevel(1, "MEDIUMFAST"), 150, 60],
 	["102", "EXEGGCUTE", 1, "pokemonType1", "pokemonType2", "pokemonEvolveLevel", "pokemonEvolvePokemon", "hp", "attack", "defense", "spattack", "spdefense", "speed", "pokemonMove1", "pokemonMove2", "pokemonMove3", "pokemonMove4", "expGroup", 0, "expNextLevel", "baseExpYield", "catchRate"],
 	["103", "EXEGGUTOR", 1, "pokemonType1", "pokemonType2", "pokemonEvolveLevel", "pokemonEvolvePokemon", "hp", "attack", "defense", "spattack", "spdefense", "speed", "pokemonMove1", "pokemonMove2", "pokemonMove3", "pokemonMove4", "expGroup", 0, "expNextLevel", "baseExpYield", "catchRate"],
 	["104", "CUBONE", 1, "pokemonType1", "pokemonType2", "pokemonEvolveLevel", "pokemonEvolvePokemon", "hp", "attack", "defense", "spattack", "spdefense", "speed", "pokemonMove1", "pokemonMove2", "pokemonMove3", "pokemonMove4", "expGroup", 0, "expNextLevel", "baseExpYield", "catchRate"],
@@ -738,10 +738,22 @@ var pokemonStats = [ //make the variables here the same as for the function crea
 	["087", "DEWGONG", 1, "WATER", "ICE", 0, "", 13, 13, 6, 6, 6, 7, 6, "Signal Beam", "Headbutt", "Icy Wind", "Aurora Beam", "MEDIUMFAST", 0, getExpNeededForNextLevel(1, "MEDIUMFAST"), getBaseExpYield("087"), getCatchRate("087")],
 	["088", "GRIMER", 1, "POISON", "", 38, "MUK", 12, 12, 6, 6, 6, 6, 5, "Poison Gas", "Pound", "", "", "MEDIUMFAST", 0, getExpNeededForNextLevel(1, "MEDIUMFAST"), getBaseExpYield("088"), getCatchRate("088")],
 	["089", "MUK", 1, "POISON", "", 0, "", 13, 13, 7, 6, 6, 7, 6, "Poison Gas", "Pound", "Harden", "", "MEDIUMFAST", 0, getExpNeededForNextLevel(1, "MEDIUMFAST"), getBaseExpYield("089"), getCatchRate("089")],
-	["129", "MAGIKARP", 5, "WATER", "", 20, "GYARADOS", 11, 11, 5, 6, 5, 5, 6, "Splash", "", "", "", "SLOW", 0, getExpNeededForNextLevel(5, "SLOW"), getBaseExpYield("129"), getCatchRate("129")],
-//	["129", "MAGIKARP", 2, "pokemonType1", "pokemonType2", "pokemonEvolveLevel", "pokemonEvolvePokemon", "currentHP", "hp", "attack", "defense", "spattack", "spdefense", "speed", "pokemonMove1", "pokemonMove2", "pokemonMove3", "pokemonMove4", "expGroup", 0, "expNextLevel", "baseExpYield", "catchRate"],
-//	["129", "MAGIKARP", 3, "pokemonType1", "pokemonType2", "pokemonEvolveLevel", "pokemonEvolvePokemon", "currentHP", "hp", "attack", "defense", "spattack", "spdefense", "speed", "pokemonMove1", "pokemonMove2", "pokemonMove3", "pokemonMove4", "expGroup", 0, "expNextLevel", "baseExpYield", "catchRate"],
-//	["129", "MAGIKARP", 4, "pokemonType1", "pokemonType2", "pokemonEvolveLevel", "pokemonEvolvePokemon", "currentHP", "hp", "attack", "defense", "spattack", "spdefense", "speed", "pokemonMove1", "pokemonMove2", "pokemonMove3", "pokemonMove4", "expGroup", 0, "expNextLevel", "baseExpYield", "catchRate"],
+	["090", "SHELLDER", 1, "WATER", "", 0, "CLOYSTER", 11, 11, 6, 7, 6, 5, 6, "Tackle", "Withdraw", "", "", "SLOW", 0, getExpNeededForNextLevel(1, "SLOW"), getBaseExpYield("090"), getCatchRate("090")],
+	["091", "CLOYSTER", 1, "WATER", "ICE", 0, "", 12, 12, 7, 8, 7, 6, 6, "Withdraw", "Supersonic", "Aurora Beam", "Protect", "SLOW", 0, getExpNeededForNextLevel(1, "SLOW"), getBaseExpYield("091"), getCatchRate("091")],
+	["092", "GASTLY", 1, "GHOST", "POISON", 25, "HAUNTER", 11, 11, 6, 5, 7, 6, 6, "Hypnosis", "Lick", "", "", "MEDIUMSLOW", 0, getExpNeededForNextLevel(1, "MEDIUMSLOW"), getBaseExpYield("092"), getCatchRate("092")],
+	["093", "HAUNTER", 1, "GHOST", "POISON", 0, "GENGAR", 12, 12, 6, 6, 7, 6, 7, "Hypnosis", "Lick", "Spite", "", "MEDIUMSLOW", 0, getExpNeededForNextLevel(1, "MEDIUMSLOW"), getBaseExpYield("093"), getCatchRate("093")],
+	["094", "GENGAR", 1, "GHOST", "POISON", 0, "", 12, 12, 6, 6, 7, 6, 7, "Hypnosis", "Lick", "Spite", "", "MEDIUMSLOW", 0, getExpNeededForNextLevel(1, "MEDIUMSLOW"), getBaseExpYield("094"), getCatchRate("094")],
+	["095", "ONIX", 1, "ROCK", "GROUND", 0, "", 12, 12, 6, 8, 5, 6, 6, "Tackle", "Screech", "", "", "MEDIUMFAST", 0, getExpNeededForNextLevel(1, "MEDIUMFAST"), getBaseExpYield("095"), getCatchRate("095")],
+	["096", "DROWZEE", 1, "PSYCHIC", "", 26, "HYPNO", 12, 12, 6, 6, 6, 7, 6, "Pound", "Hypnosis", "", "", "MEDIUMFAST", 0, getExpNeededForNextLevel(1, "MEDIUMFAST"), getBaseExpYield("096"), getCatchRate("096")],
+	["097", "HYPNO", 1, "PSYCHIC", "", 0, "", 13, 13, 6, 6, 6, 7, 6, "Nightmare", "Pound", "Hypnosis", "Confusion", "MEDIUMFAST", 0, getExpNeededForNextLevel(1, "MEDIUMFAST"), getBaseExpYield("097"), getCatchRate("097")],
+	["098", "KRABBY", 1, "WATER", "", 28, "KINGLER", 11, 11, 7, 7, 5, 5, 6, "Bubble", "", "", "", "MEDIUMFAST", 0, getExpNeededForNextLevel(1, "MEDIUMFAST"), getBaseExpYield("098"), getCatchRate("098")],
+	["099", "KINGLER", 1, "WATER", "", 0, "", 12, 12, 7, 7, 6, 6, 6, "Metal Claw", "Bubble", "Leer", "Vicegrip", "MEDIUMFAST", 0, getExpNeededForNextLevel(1, "MEDIUMFAST"), getBaseExpYield("099"), getCatchRate("099")],
+	["100", "VOLTORB", 1, "ELECTRIC", "", 30, "ELECTRODE", 12, 12, 5, 6, 6, 6, 7, "Charge", "Tackle", "", "", "MEDIUMFAST", 0, getExpNeededForNextLevel(1, "MEDIUMFAST"), getBaseExpYield("100"), getCatchRate("100")],
+	["101", "ELECTRODE", 1, "ELECTRIC", "", 0, "", 12, 12, 6, 6, 6, 6, 8, "Charge", "Tackle", "Screech", "Sonicboom", "MEDIUMFAST", 0, getExpNeededForNextLevel(1, "MEDIUMFAST"), getBaseExpYield("101"), getCatchRate("101")],
+	["129", "MAGIKARP", 1, "WATER", "", 20, "GYARADOS", 11, 11, 5, 6, 5, 5, 6, "Splash", "", "", "", "SLOW", 0, getExpNeededForNextLevel(1, "SLOW"), getBaseExpYield("129"), getCatchRate("129")],
+//	["129", "MAGIKARP", 2, "WATER", "", 20, "GYARADOS", "currentHP", "hp", "attack", "defense", "spattack", "spdefense", "speed", "Splash", "", "", "", "SLOW", 0, getExpNeededForNextLevel(2, "SLOW"), getBaseExpYield("129"), getCatchRate("129")],
+//	["129", "MAGIKARP", 3, "WATER", "", 20, "GYARADOS", "currentHP", "hp", "attack", "defense", "spattack", "spdefense", "speed", "Splash", "", "", "", "SLOW", 0, getExpNeededForNextLevel(3, "SLOW"), getBaseExpYield("129"), getCatchRate("129")],
+//	["129", "MAGIKARP", 4, "WATER", "", 20, "GYARADOS", "currentHP", "hp", "attack", "defense", "spattack", "spdefense", "speed", "Splash", "", "", "", "SLOW", 0, getExpNeededForNextLevel(4, "SLOW"), getBaseExpYield("129"), getCatchRate("129")],
 	["129", "MAGIKARP", 5, "WATER", "", 20, "GYARADOS", 18, 18, 7, 13, 8, 8, 15, "Splash", "", "", "", "SLOW", 0, getExpNeededForNextLevel(5, "SLOW"), getBaseExpYield("129"), getCatchRate("129")]
 ];
 
@@ -762,6 +774,8 @@ var pokemonMoves = [
 	// Add effect
 	["Bite", "DARK", "Physical", 25, 60, 100, "", "", ""], // http://bulbapedia.bulbagarden.net/wiki/Bite_(move)
 	["Bubble", "WATER", "Special", 30, 40, 100, "", "", ""], // http://bulbapedia.bulbagarden.net/wiki/Bubble_(move)
+	// Add effect
+	["Charge", "ELECTRIC", "Status", 20, 0, 100, "", "", ""], // accuracy actually --- // http://bulbapedia.bulbagarden.net/wiki/Charge_(move)
 	// Add effect
 	["Confuse Ray", "GHOST", "Status", 10, 0, 100, "", "", ""], // http://bulbapedia.bulbagarden.net/wiki/Confuse_Ray_(move)
 	// Add effect
@@ -813,6 +827,8 @@ var pokemonMoves = [
 	// Add effect
 	["Leer", "NORMAL", "Status", 30, 0, 100, "", "", ""], // http://bulbapedia.bulbagarden.net/wiki/Leer_(move)
 	// Add effect
+	["Lick", "GHOST", "Physical", 30, 30, 100, "", "", ""], // http://bulbapedia.bulbagarden.net/wiki/Lick_(move)
+	// Add effect
 	["Low Kick", "FIGHTING", "Physical", 20, 40, 100, "", "", ""], // power varies // http://bulbapedia.bulbagarden.net/wiki/Low_Kick_(move)
 	// Add effect
 	["Mega Drain", "GRASS", "Special", 15, 40, 100, "", "", ""], // http://bulbapedia.bulbagarden.net/wiki/Mega_Drain_(move)
@@ -827,6 +843,8 @@ var pokemonMoves = [
 	// Add effect
 	["Mud Sport", "GROUND", "Status", 15, 0, 100, "", "", ""], // accuracy is actually --- // http://bulbapedia.bulbagarden.net/wiki/Mud_Sport_(move)
 	// Add effect
+	["Nightmare", "GHOST", "Status", 15, 0, 100, "", "", ""], // http://bulbapedia.bulbagarden.net/wiki/Nightmare_(move)
+	// Add effect
 	["Odor Sleuth", "NORMAL", "Status", 40, 0, 100, "", "", ""], // accuracy is actually --- // http://bulbapedia.bulbagarden.net/wiki/Odor_Sleuth_(move)
 	["Peck", "FLYING", "Physical", 35, 35, 100, "", "", ""], // http://bulbapedia.bulbagarden.net/wiki/Peck_(move)
 	// Add effect
@@ -836,6 +854,8 @@ var pokemonMoves = [
 	// Add effect
 	["Poison Sting", "POISON", "Physical", 35, 15, 100, "", "", ""], //http://bulbapedia.bulbagarden.net/wiki/Poison_Sting_(move)
 	["Pound", "NORMAL", "Physical", 35, 40, 100, "", "", ""], // http://bulbapedia.bulbagarden.net/wiki/Pound_(move)
+	// Add effect
+	["Protect", "NORMAL", "Status", 10, 0, 100, "", "", ""], // accuracy is actually --- // http://bulbapedia.bulbagarden.net/wiki/Protect_(move)
 	// Add effect
 	["Pursuit", "DARK", "Physical", 20, 40, 100, "", "", ""], // http://bulbapedia.bulbagarden.net/wiki/Pursuit_(move)
 	// priority +1 for Quick Attack
@@ -866,7 +886,11 @@ var pokemonMoves = [
 	// Add effect
 	["Smokescreen", "NORMAL", "Status", 20, 0, 100, "", "", ""], // http://bulbapedia.bulbagarden.net/wiki/Smokescreen_(move)
 	// Add effect
-	["Splash", "NORMAL", "Status", 40, 0, 0, "", "", ""], // accuracy is actually --- // http://bulbapedia.bulbagarden.net/wiki/Splash_(move)
+	["Sonicboom", "NORMAL", "Special", 20, 0, 90, "", "", ""], // http://bulbapedia.bulbagarden.net/wiki/Sonic_Boom_(move)
+	// Add effect
+	["Spite", "GHOST", "Status", 10, 0, 100, "", "", ""], // http://bulbapedia.bulbagarden.net/wiki/Spite_(move)
+	// Add effect
+	["Splash", "NORMAL", "Status", 40, 0, 100, "", "", ""], // accuracy is actually --- // http://bulbapedia.bulbagarden.net/wiki/Splash_(move)
 	// Add effect
 	["String Shot", "BUG", "Status", 40, 0, 95, "", "", ""], //http://bulbapedia.bulbagarden.net/wiki/String_Shot_(move)
 	// Add effect
@@ -890,6 +914,8 @@ var pokemonMoves = [
 	["Thunder Wave", "ELECTRIC", "Status", 20, 0, 100, "", "", ""], // http://bulbapedia.bulbagarden.net/wiki/Thunder_Wave_(move)
 	// Add effect
 	["Tri Attack", "NORMAL", "Special", 10, 80, 100, "", "", ""], // http://bulbapedia.bulbagarden.net/wiki/Tri_Attack_(move)
+	// Add effect
+	["Vicegrip", "NORMAL", "Physical", 30, 55, 100, "", "", ""], // http://bulbapedia.bulbagarden.net/wiki/Vice_Grip_(move)
 	// Add effect
 	["Vine Whip", "GRASS", "Physical", 25, 45, 100, "", "", ""], // http://bulbapedia.bulbagarden.net/wiki/Vine_Whip_%28move%29
 	["Water Gun", "WATER", "Special", 25, 40, 100, "", "", ""], // http://bulbapedia.bulbagarden.net/wiki/Water_Gun_(move)
