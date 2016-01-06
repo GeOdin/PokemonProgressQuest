@@ -276,7 +276,7 @@ function startGame() {
 
 			// Get the player's name
 			while (playerName.length < 1) { //typeof playerName == "undefined" | 
-				playerName = prompt("Let's begin with your name. \nWhat is it? ", "YOUR NAME?");//insert Yes/no option?
+				playerName = prompt("Let's begin with your name. \nWhat is it? ", "Chariza");//insert Yes/no option?
 			};
 			
 			// Get the player's gender
