@@ -340,7 +340,7 @@ function startGame() {
 				"", // active pokemon 4
 				"", // active pokemon 5
 				"" // active pokemon 6
-			); 
+			);
 			// Set pcPokemon
 			for (i=0; i<151; i++) {
 				var pcPokemonNumber = i + 1;
