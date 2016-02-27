@@ -1,71 +1,184 @@
-<!DOCTYPE html>
-<!-- 
-index.html
-Main Page of the Pokemon Progress Quests
-Made on 20-07-2015
-by GeOdin -->
+<!--
+	index.html
+	HTML-page for the new Pokémon Progress Quest browser game
+	Made on 2016-02-24
+	By GeOdin
+	Last modified on 2016-02-27
+	-->
+
+<!-- Begin html -->
 <html>
+
+	<!-- Begin head -->
 	<head>
-		<link type="text/css" rel="stylesheet" href="stylesheet.css"/>
-		<link rel="shortcut icon" type="image/png" href="favicon.png" />
+
+		<!-- Meta data -->
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<!-- images from serebii.net/pokedex-rs -->
+
+		<!-- References to CSS, jQuery and JavaScript-file -->
+		<link type="text/css" rel="stylesheet" href="css/stylesheet.css"/>
+		<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"> </script>
+		<script src="js/app.js"> </script>
+		<script src="js/PKMN.js"> </script>
+		<script src="js/PKMNcaught.js"> </script>
+
+		<!-- Begin title -->
 		<title>
-			Pok&eacute;mon Progress Quest
-		</title>
-	</head>
+			Pokémon Progress Quest (PPQ)
+		</title> <!-- End title -->
+
+	</head> <!-- End head -->
+
+	<!-- Begin body -->
 	<body>
-		<table id="table" border=2>
-			<tbody>
-				<tr>
-					<td id="header" colspan=2>
-						<p>
-							<h2>
-								Pok&eacute;mon Progress Quest
-							</h2>
-						</p>
-					</td>
-				</tr>
-				<tr>
-					<td id="tableOfContent">
-						<a href="index.html" style="text-decoration:none;">
-							<div id="buttonTags"> 
-								<p>
-									Main Page
-								</p>
-							</div> <br/>
-						</a>
-						<a href="pokemonRedStart.html" style="text-decoration:none;">
-							<div id="buttonTags2"> 
-								<p>
-									Pok&eacute;mon FireRed
-								</p>
-							</div> <br/>
-						</a>
-						<a href="credits.html" style="text-decoration:none;">
-							<div id="buttonTags"> 
-								<p>
-									Credits
-								</p>
-							</div>
-						</a>
-					</td>
-					<td id="mainFrame">
-						<p>
-							<h2>
-								Main Page
-							</h2>
-						</p>
-					</td>
-				</tr>
-				<tr>
-					<td id="footer" colspan=2>
-						<p>
-							<h3>
-								Credits Pok&eacute;mon: Nintento
-							</h3>
-						</p>
-					</td>
-				</tr>
-			</tbody>
-		</table>
-	</body>
-</html>
+
+		<!-- Begin #wrapper -->
+		<div id="wrapper">
+
+			<!-- Begin #activePokemon -->
+			<div id="activePokemon" class="headerfooter">
+
+				<!-- Begin #activePokemonTitle -->
+				<div id="activePokemonTitle">
+					<h3> Active Pok&eacute;mon </h3>
+				</div> <br/> <!-- End #activePokemonTitle -->
+
+				<!-- Begin #activePokemonText -->
+				<div id="activePokemonText"> <!-- images from serebii.net/pokedex-rs -->
+
+					<!-- Begin #activePokemon1 -->
+					<div id="activePokemon1" class="activePokemon1-6">
+					</div> <!-- End #activePokemon1 -->
+
+					<!-- Begin #activePokemon2 -->
+					<div id="activePokemon2" class="activePokemon1-6">
+					</div> <!-- End #activePokemon2 -->
+
+					<!-- Begin #activePokemon3 -->
+					<div id="activePokemon3" class="activePokemon1-6">
+					</div> <!-- End #activePokemon3 -->
+
+					<!-- Begin #activePokemon4 -->
+					<div id="activePokemon4" class="activePokemon1-6">
+					</div> <!-- End #activePokemon4 -->
+
+					<!-- Begin #activePokemon5 -->
+					<div id="activePokemon5" class="activePokemon1-6">
+					</div> <!-- End #activePokemon5 -->
+
+					<!-- Begin #activePokemon6 -->
+					<div id="activePokemon6" class="activePokemon1-6">
+					</div> <!-- End #activePokemon6 -->
+
+				</div> <!-- End #activePokemonText -->
+
+			</div> <!-- End #activePokemon -->
+
+			<!-- Begin #player -->
+			<div id="player" class="sides">
+				<!-- Begin #playerTitle -->
+				<div id="playerTitle">
+				</div> <!-- End #playerTitle -->
+				<!-- Begin #playerImage -->
+				<div id="playerImage">
+				</div> <!-- End #playerImage -->
+				<!-- Begin #playerText -->
+				<div id="playerText">
+				</div> <!-- End #playerText -->
+			</div> <!-- End #player -->
+
+			<!-- Begin #event -->
+			<div id="event">
+
+				<!-- Begin #eventTitle -->
+				<div id="eventTitle">
+				</div> <!-- End #eventTitle -->
+
+				<!-- Begin #eventImage -->
+				<div id="eventImage">
+				</div> <!-- End #eventImage -->
+
+				<!-- Begin #eventText -->
+				<div id="eventText">
+				</div> <!-- End #eventText -->
+
+			</div> <!-- End #event -->
+
+			<!-- Begin #pokedex -->
+			<div id="pokedex" class="sides">
+
+				<!-- Begin #pokemonCaught -->
+				<div id="pokemonCaught">
+				</div> <br/> <!-- End #pokemonCaught -->
+
+				<!-- Begin #pokedexEntries -->
+				<div id="pokedexEntries">
+				</div> <!-- End #pokedexEntries -->
+
+			</div> <!-- End #pokedex -->
+
+			<!-- Begin #badges -->
+			<div id="badges" class="headerfooter">
+
+				<!-- Begin #badgesTitle -->
+				<div id="badgesTitle">
+					<h3> Badges </h3>
+				</div> <br/> <!-- End #badgesTitle -->
+
+				<!-- Begin #badgesText -->
+				<div id="badgesText">
+
+					<!-- Begin #badge1 -->
+					<div id="badge1" class="badges1-8">
+						<img src="images/badges/BOULDER BADGE.png" />
+					</div> <!-- End #badge1 -->
+
+					<!-- Begin #badge2 -->
+					<div id="badge2" class="badges1-8">
+						<img src="images/badges/CASCADE BADGE.png" />
+					</div> <!-- End #badge2 -->
+
+					<!-- Begin #badge3 -->
+					<div id="badge3" class="badges1-8">
+						<img src="images/badges/THUNDER BADGE.png" />
+					</div> <!-- End #badge3 -->
+
+					<!-- Begin #badge4 -->
+					<div id="badge4" class="badges1-8">
+						<img src="images/badges/RAINBOW BADGE.png" />
+					</div> <!-- End #badge4 -->
+
+					<!-- Begin #badge5 -->
+					<div id="badge5" class="badges1-8">
+						<img src="images/badges/SOUL BADGE.png" />
+					</div> <!-- End #badge5 -->
+
+					<!-- Begin #badge6 -->
+					<div id="badge6" class="badges1-8">
+						<img src="images/badges/MARSH BADGE.png" />
+					</div> <!-- End #badge6 -->
+
+					<!-- Begin #badge7 -->
+					<div id="badge7" class="badges1-8">
+						<img src="images/badges/VOLCANO BADGE.png" />
+					</div> <!-- End #badge7 -->
+
+					<!-- Begin #badge8 -->
+					<div id="badge8" class="badges1-8">
+						<img src="images/badges/EARTH BADGE.png" />
+					</div> <!-- End #badge8 -->
+
+				</div> <br/> <!-- End #badgesText -->
+
+				<div id="reference">
+					As far as I know, Pok&eacute;mon belongs to <a href="http://www.nintendo.com/">Nintendo</a>. All pictures used are from <a href="http://bulbapedia.bulbagarden.net/wiki/Main_Page">Bulbapedia</a>.
+				</div>
+
+			</div> <!-- End #badges -->
+
+		</div> <!-- End #wrapper -->
+
+	</body> <!-- End body -->
+
+</html> <!-- End #html -->

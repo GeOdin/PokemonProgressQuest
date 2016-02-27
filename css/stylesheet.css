@@ -1,0 +1,173 @@
+/* stylesheet.css
+ * CSS sheet for the Pokémon Progress Quest webpage
+ * Made on 2016-02-24
+ * By GeOdin
+ * Last modified on 2016-02-25
+ */
+
+/* reset all padding and margins to 0 */
+* {
+	padding: 0;
+	margin: 0;
+}
+
+/* body */
+body {
+	height: 100vh;
+	width: 100%;
+	text-align: center;
+}
+
+/* #wrapper */
+#wrapper {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+}
+
+.headerFooter {
+	position: absolute;
+	left: 0%;
+	width: 100%;
+	background-color: #202020;
+	color: white; /* #D0D0D0 */
+}
+
+/* #activePokemon */
+#activePokemon {
+	top: 0vh;
+	border-top-left-radius: 17px;
+	border-top-right-radius: 17px;
+	height: 30vh;
+}
+
+/* #activePokemonTitle */
+#activePokemonTitle {
+	top: 10vh;
+	height: 3vh;
+}
+
+/* #activePokemonText */
+#activePokemonText {
+	top: 2.5vh;
+	height: 17.5vh;
+	color: #909090;
+}
+
+/* .activePokemon1-6 */
+.activePokemon1-6 {
+	display: inline-block;
+	width: 16%;
+}
+
+/* .sides */
+.sides {
+	position: absolute;
+	top: 30vh;
+	height: 50vh;
+	width: 20%;
+	background-color: #909090;
+	font-size: 1.2em;
+}
+
+/* #player */
+#player {
+	left: 0%;
+	overflow-y: auto;
+}
+
+/* #playerImage */
+#playerImage img {
+	height: 40%;
+}
+
+/* #event */
+#event {
+	position: absolute;
+	top: 30vh;
+	left: 20%;
+	height: 60vh;
+	width: 60%;
+	background-color: white;
+	color: black;
+	font-size: 1.2em;
+}
+
+/* #eventTitle */
+#eventTitle {
+	position: absolute;
+	top: 10%;
+	width: 100%;
+}
+
+/* #eventImage */
+#eventImage {
+	position: absolute;
+	top: 32.5%;
+	width: 100%;
+}
+
+/* #eventText */
+#eventText {
+	position: absolute;
+	top: 65%;
+	width: 100%;
+}
+
+/* #pokedex */
+#pokedex {
+	right: 0%;
+	overflow-y: auto;
+}
+
+#pokedexEntries p {
+	font-size: 1em;
+}
+
+/* #badges */
+#badges {
+	bottom: 0vh;
+	border-bottom-left-radius: 17px;
+	border-bottom-right-radius: 17px;
+	height: 20vh;
+}
+
+/* #badgesTitle */
+#badgesTitle {
+	position: absolute;
+	top: 2.5%;
+	width: 100%;
+}
+
+/* #badgesText */
+#badgesText {
+	position: absolute;
+	top: 7vh;
+	height: 100%;
+	width: 100%;
+	overflow-y: auto;
+}
+
+/* .badges1-8 */
+.badges1-8 {
+	display: none;
+}
+
+/* .badges1-8 */
+.badges1-8 img {
+	float: left;
+	margin-left: 3.7%;
+	margin-right: 3.7%;
+}
+
+/* #reference */
+#reference {
+	position: absolute;
+	width: 100%;
+	bottom: 0vh;
+}
+
+#reference a {
+	color: #909090;
+	text-decoration: none;
+}
